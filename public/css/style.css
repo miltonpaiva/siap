@@ -12403,25 +12403,15 @@ h3 {
   padding: 0 0.3rem;
 }
 
-.ativo {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -ms-flex-direction: row;
-      flex-direction: row;
-  padding: 0;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-  list-style: none;
-  padding-top: 0.7rem;
-  padding: 0 0.3rem;
-}
-
-.progresso li::before {
+.progresso li:before {
   content: url("http://localhost:8080/proj-laravel/siap/public/img/foguete_inativo.png");
 }
 
-.ativo li::before {
+.progresso li.completo:before {
+  content: url("http://localhost:8080/proj-laravel/siap/public/img/foguete_completo.png");
+}
+
+.progresso li.ativo:before {
   content: url("http://localhost:8080/proj-laravel/siap/public/img/foguete_ativo.png");
 }
 
