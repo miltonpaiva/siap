@@ -13,6 +13,21 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+
 Route::get('/', function () {
-    return view('welcome');
+    return view('home');
 });
+Route::get('/home', function () {
+    return view('home');
+});
+Route::get('/cadastro', function () {
+    return view('home');
+});
+
+Route::get('/inscricao', function () {
+    return view('inscricao');
+});
+
+Route::post('/user/register/', 'UsersController@register');
+
+Route::get('/questions/list/', 'ResponsesController@questionsList');
