@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>SIAP - Cadastro Projetos</title>
 <link rel="stylesheet" href="{{ asset('css/style.css') }}">
 </head>
@@ -28,25 +29,26 @@
                         <div class="col-sm-12 col-md-6">
                             <div class="card-body">
                                 <h2 class="card-title">Cadastre-se</h2>
-                                <form>
+                                <form action="/user/register/" method="POST">
+                                    @csrf <!-- {{ csrf_field() }} -->
                                     <div class="form-group">
                                         <label for="nome-completo">Nome Completo</label>
-                                        <input type="text" class="form-control" id="nome-completo" aria-describedby="nomeHelp">
+                                        <input type="text" class="form-control" id="nome-completo" name="nome" aria-describedby="nomeHelp">
                                         <small id="nomeHelp" class="form-text text-muted">Verifique novamente seu nome!</small>
                                     </div>
                                     <div class="form-group">
                                         <label for="nome-startup">Nome da Startup</label>
-                                        <input type="text" class="form-control" id="nome-startup" aria-describedby="startapHelp">
+                                        <input type="text" class="form-control" id="nome-startup" name="startup" aria-describedby="startapHelp">
                                         <small id="startapHelp" class="form-text text-muted">Verifique novamente o nome da Start-up!</small>
                                     </div>
                                     <div class="form-group">
                                       <label for="email-stup">E-mail</label>
-                                      <input type="email" class="form-control" id="email-stup" aria-describedby="emailHelp">
+                                      <input type="email" class="form-control" id="email-stup" name="email" aria-describedby="emailHelp">
                                       <small id="emailHelp" class="form-text text-muted">Verifique novamente seu e-mail '@', '.' !</small>
                                     </div>
                                     <div class="form-group">
                                       <label for="senha-stup">Senha</label>
-                                      <input type="password" class="form-control" id="senha-stup">
+                                      <input type="password" class="form-control" id="senha-stup" name="senha">
                                       <small id="senhaHelp" class="form-text text-muted">Verifique se sua senha tem no minímo 8 caracteres!</small>
                                     </div>
                                     <div class="form-group">
