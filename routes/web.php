@@ -24,10 +24,7 @@ Route::get('/cadastro', function () {
     return view('home');
 });
 
-Route::get('/inscricao', function () {
-    return view('inscricao');
-});
+Route::post('/user/register/', 'UsersController@register')->name('user.register');
+Route::post('/startup/register/', 'StartupsController@register')->name('startup.register');
 
-Route::post('/user/register/', 'UsersController@register');
-
-Route::get('/questions/list/', 'ResponsesController@questionsList');
+Route::get('/inscricao', 'ResponsesController@questionsList');
