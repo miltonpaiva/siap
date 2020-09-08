@@ -89,87 +89,87 @@
 
                                             <div id="fildgrup1" class="form-group">
                                                 <div class="custom-control custom-radio">
-                                                    <input type="radio" id="tendenciaRadios1" name="customRadio" class="custom-control-input" value="Inteligência artificial e machine learning.">
+                                                    <input type="radio" id="tendenciaRadios1" name="customRadio1" class="custom-control-input" value="Inteligência artificial e machine learning." checked>
                                                     <label class="custom-control-label" for="tendenciaRadios1">Inteligência artificial e machine learning.</label>
                                                 </div>
                                                 <div class="custom-control custom-radio">
-                                                    <input type="radio" class="custom-control-input"  name="customRadio" id="tendenciaRadios2" value="Internet das coisas (IoT) e dispositivos inteligentes.">
+                                                    <input type="radio" class="custom-control-input"  name="customRadio1" id="tendenciaRadios2" value="Internet das coisas (IoT) e dispositivos inteligentes.">
                                                     <label class="custom-control-label" for="tendenciaRadios2">Internet das coisas (IoT) e dispositivos inteligentes.</label>
                                                 </div>
                                                 <div class="custom-control custom-radio">
-                                                    <input type="radio" class="custom-control-input"  name="customRadio" id="tendenciaRadios3" value="Big data e análise aumentada.">
+                                                    <input type="radio" class="custom-control-input"  name="customRadio1" id="tendenciaRadios3" value="Big data e análise aumentada.">
                                                     <label class="custom-control-label" for="tendenciaRadios3">
                                                             Big data e análise aumentada.
                                                     </label>
                                                 </div>
                                                 <div class="custom-control custom-radio">
-                                                    <input type="radio" class="custom-control-input" name="customRadio" id="tendenciaRadios4" value="Espaços inteligentes e locais inteligentes.">
+                                                    <input type="radio" class="custom-control-input" name="customRadio1" id="tendenciaRadios4" value="Espaços inteligentes e locais inteligentes.">
                                                     <label class="custom-control-label" for="tendenciaRadios4">
                                                          Espaços inteligentes e locais inteligentes.
                                                     </label>
                                                 </div>
                                                 <div class="custom-control custom-radio">
-                                                    <input type="radio" class="custom-control-input" name="customRadio" id="tendenciaRadios5" value="Blockchains e registro distribuído.">
+                                                    <input type="radio" class="custom-control-input" name="customRadio1" id="tendenciaRadios5" value="Blockchains e registro distribuído.">
                                                     <label class="custom-control-label" for="tendenciaRadios5">
                                                            Blockchains e registro distribuído.
                                                     </label>
                                                 </div>
                                                 <div class="custom-control custom-radio">
-                                                    <input type="radio" class="custom-control-input" name="customRadio" id="tendenciaRadios6" value="Computação em nuvem e computação de borda.">
+                                                    <input type="radio" class="custom-control-input" name="customRadio1" id="tendenciaRadios6" value="Computação em nuvem e computação de borda.">
                                                     <label class="custom-control-label" for="tendenciaRadios6">
                                                             Computação em nuvem e computação de borda.
                                                     </label>
                                                 </div>
                                                 <div class="custom-control custom-radio">
-                                                    <input type="radio" class="custom-control-input" name="customRadio" id="tendenciaRadios7" value="Realidade estendida.">
+                                                    <input type="radio" class="custom-control-input" name="customRadio1" id="tendenciaRadios7" value="Realidade estendida.">
                                                     <label class="custom-control-label" for="tendenciaRadios7">
                                                             Realidade estendida.
                                                     </label>
                                                 </div>
                                                 <div class="custom-control custom-radio">
-                                                    <input type="radio" class="custom-control-input" name="customRadio" id="tendenciaRadios8" value="Gêmeos digitais.">
+                                                    <input type="radio" class="custom-control-input" name="customRadio1" id="tendenciaRadios8" value="Gêmeos digitais.">
                                                     <label class="custom-control-label" for="tendenciaRadios8">
                                                             Gêmeos digitais.
                                                     </label>
                                                 </div>
                                                 <div class="custom-control custom-radio">
-                                                    <input type="radio" class="custom-control-input" name="customRadio" id="tendenciaRadios9" value="Processamento de linguagem natural.">
+                                                    <input type="radio" class="custom-control-input" name="customRadio1" id="tendenciaRadios9" value="Processamento de linguagem natural.">
                                                     <label class="custom-control-label" for="tendenciaRadios9">
                                                             Processamento de linguagem natural.
                                                     </label>
                                                 </div>
                                                 <div class="custom-control custom-radio">
-                                                    <input type="radio" class="custom-control-input" name="customRadio" id="tendenciaRadios10" value="Interfaces de voz e chatbots.">
+                                                    <input type="radio" class="custom-control-input" name="customRadio1" id="tendenciaRadios10" value="Interfaces de voz e chatbots.">
                                                     <label class="custom-control-label" for="tendenciaRadios10">
                                                         Interfaces de voz e chatbots.
                                                     </label>
                                                 </div>
                                                 <div class="custom-control custom-radio">
-                                                    <input type="radio" class="custom-control-input" name="customRadio" id="tendenciaRadios11" value="Visão computacional e reconhecimento facial.">
+                                                    <input type="radio" class="custom-control-input" name="customRadio1" id="tendenciaRadios11" value="Visão computacional e reconhecimento facial.">
                                                     <label class="custom-control-label" for="tendenciaRadios11">
                                                         Visão computacional e reconhecimento facial.
                                                     </label>
                                                 </div>
                                                 <div class="custom-control custom-radio">
-                                                    <input type="radio" class="custom-control-input" name="customRadio" id="tendenciaRadios12" value="Cibersegurança e ciber-resiliência.">
+                                                    <input type="radio" class="custom-control-input" name="customRadio1" id="tendenciaRadios12" value="Cibersegurança e ciber-resiliência.">
                                                     <label class="custom-control-label" for="tendenciaRadios12">
                                                         Cibersegurança e ciber-resiliência.
                                                     </label>
                                                 </div>
                                                 <div class="custom-control custom-radio">
-                                                    <input type="radio" class="custom-control-input" name="customRadio" id="tendenciaRadios13" value="Automação robótica de processos.">
+                                                    <input type="radio" class="custom-control-input" name="customRadio1" id="tendenciaRadios13" value="Automação robótica de processos.">
                                                     <label class="custom-control-label" for="tendenciaRadios13">
                                                             Automação robótica de processos.
                                                     </label>
                                                 </div>
                                                 <div class="custom-control custom-radio">
-                                                    <input type="radio" class="custom-control-input" name="customRadio" id="tendenciaRadios14" value="Personalização em massa e micro-momentos.">
+                                                    <input type="radio" class="custom-control-input" name="customRadio1" id="tendenciaRadios14" value="Personalização em massa e micro-momentos.">
                                                     <label class="custom-control-label" for="tendenciaRadios14">
                                                              Personalização em massa e micro-momentos.
                                                     </label>
                                                 </div>
                                                 <div class="custom-control custom-radio">
-                                                    <input type="radio" class="custom-control-input" name="customRadio" id="tendenciaRadios15" value="Outro.">
+                                                    <input type="radio" class="custom-control-input" name="customRadio1" id="tendenciaRadios15" value="Outro.">
                                                     <label class="custom-control-label" for="tendenciaRadios15">
                                                             Outro.
                                                     </label>
@@ -180,91 +180,91 @@
                                             <label for="s_atuacao">Setor de atuação da startup</label>
 
                                                 <div class="custom-control custom-radio">
-                                                    <input class="custom-control-input" type="radio" name="customRadio" id="setoratRadios1" value="Água.">
+                                                    <input class="custom-control-input" type="radio" name="customRadio2" id="setoratRadios1" value="Água." checked>
                                                     <label class="custom-control-label" for="setoratRadios1">
                                                             Água.
                                                     </label>
                                                 </div>
                                                 <div class="custom-control custom-radio">
-                                                    <input class="custom-control-input" type="radio" name="customRadio" id="setoratRadios2" value="Biotecnologia.">
+                                                    <input class="custom-control-input" type="radio" name="customRadio2" id="setoratRadios2" value="Biotecnologia.">
                                                     <label class="custom-control-label" for="setoratRadios2">
                                                             Biotecnologia.
                                                     </label>
                                                 </div>
                                                 <div class="custom-control custom-radio">
-                                                    <input class="custom-control-input" type="radio" name="customRadio" id="setoratRadios3" value="Construção e minerais não-metálicos.">
+                                                    <input class="custom-control-input" type="radio" name="customRadio2" id="setoratRadios3" value="Construção e minerais não-metálicos.">
                                                     <label class="custom-control-label" for="setoratRadios3">
                                                             Construção e minerais não-metálicos.
                                                     </label>
                                                 </div>
                                                 <div class="custom-control custom-radio">
-                                                    <input class="custom-control-input" type="radio" name="customRadio" id="setoratRadios4" value="Economia criativa e turismo.">
+                                                    <input class="custom-control-input" type="radio" name="customRadio2" id="setoratRadios4" value="Economia criativa e turismo.">
                                                     <label class="custom-control-label" for="setoratRadios4">
                                                             Economia criativa e turismo.
                                                     </label>
                                                 </div>
                                                 <div class="custom-control custom-radio">
-                                                    <input class="custom-control-input" type="radio" name="customRadio" id="setoratRadios5" value="Economia do mar.">
+                                                    <input class="custom-control-input" type="radio" name="customRadio2" id="setoratRadios5" value="Economia do mar.">
                                                     <label class="custom-control-label" for="setoratRadios5">
                                                             Economia do mar.
                                                     </label>
                                                 </div>
                                                 <div class="custom-control custom-radio">
-                                                    <input class="custom-control-input" type="radio" name="customRadio" id="setoratRadios6" value="Eletrometalmecânico.">
+                                                    <input class="custom-control-input" type="radio" name="customRadio2" id="setoratRadios6" value="Eletrometalmecânico.">
                                                     <label class="custom-control-label" for="setoratRadios6">
                                                             Eletrometalmecânico.
                                                     </label>
                                                 </div>
                                                 <div class="custom-control custom-radio">
-                                                    <input class="custom-control-input" type="radio" name="customRadio" id="setoratRadios7" value="Energia.">
+                                                    <input class="custom-control-input" type="radio" name="customRadio2" id="setoratRadios7" value="Energia.">
                                                     <label class="custom-control-label" for="setoratRadios7">
                                                             Energia.
                                                     </label>
                                                 </div>
                                                 <div class="custom-control custom-radio">
-                                                    <input class="custom-control-input" type="radio" name="customRadio" id="setoratRadios8" value="Indústria agroalimentar.">
+                                                    <input class="custom-control-input" type="radio" name="customRadio2" id="setoratRadios8" value="Indústria agroalimentar.">
                                                     <label class="custom-control-label" for="setoratRadios8">
                                                             Indústria agroalimentar.
                                                     </label>
                                                 </div>
                                                 <div class="custom-control custom-radio">
-                                                    <input class="custom-control-input" type="radio" name="customRadio" id="setoratRadios9" value="Logística.">
+                                                    <input class="custom-control-input" type="radio" name="customRadio2" id="setoratRadios9" value="Logística.">
                                                     <label class="custom-control-label" for="setoratRadios9">
                                                             Logística.
                                                     </label>
                                                 </div>
                                                 <div class="custom-control custom-radio">
-                                                    <input class="custom-control-input" type="radio" name="customRadio" id="setoratRadios10" value="Meio ambiente.">
+                                                    <input class="custom-control-input" type="radio" name="customRadio2" id="setoratRadios10" value="Meio ambiente.">
                                                     <label class="custom-control-label" for="setoratRadios10">
                                                             Meio ambiente.
                                                     </label>
                                                 </div>
                                                 <div class="custom-control custom-radio">
-                                                    <input class="custom-control-input" type="radio" name="customRadio" id="setoratRadios11" value="Produtos de consumo (couro & calçados; confecções; madeira & móveis).">
+                                                    <input class="custom-control-input" type="radio" name="customRadio2" id="setoratRadios11" value="Produtos de consumo (couro & calçados; confecções; madeira & móveis).">
                                                     <label class="custom-control-label" for="setoratRadios11">
                                                             Produtos de consumo (couro & calçados; confecções; madeira & móveis).
                                                     </label>
                                                 </div>
                                                 <div class="custom-control custom-radio">
-                                                    <input class="custom-control-input" type="radio" name="customRadio" id="setoratRadios12" value="Saúde.">
+                                                    <input class="custom-control-input" type="radio" name="customRadio2" id="setoratRadios12" value="Saúde.">
                                                     <label class="custom-control-label" for="setoratRadios12">
                                                             Saúde.
                                                     </label>
                                                 </div>
                                                 <div class="custom-control custom-radio">
-                                                    <input class="custom-control-input" type="radio" name="customRadio" id="setoratRadios13" value="Segurança.">
+                                                    <input class="custom-control-input" type="radio" name="customRadio2" id="setoratRadios13" value="Segurança.">
                                                     <label class="custom-control-label" for="setoratRadios13">
                                                             Segurança.
                                                     </label>
                                                 </div>
                                                 <div class="custom-control custom-radio">
-                                                    <input class="custom-control-input" type="radio" name="customRadio" id="setoratRadios14" value="Tecnologia da informação & comunicação.">
+                                                    <input class="custom-control-input" type="radio" name="customRadio2" id="setoratRadios14" value="Tecnologia da informação & comunicação.">
                                                     <label class="custom-control-label" for="setoratRadios14">
                                                             Tecnologia da informação & comunicação.
                                                     </label>
                                                 </div>
                                                 <div class="custom-control custom-radio">
-                                                    <input class="custom-control-input" type="radio" name="customRadio" id="setoratRadios15" value="Outro.">
+                                                    <input class="custom-control-input" type="radio" name="customRadio2" id="setoratRadios15" value="Outro.">
                                                     <label class="custom-control-label" for="setoratRadios15">
                                                             Outro.
                                                     </label>
@@ -275,37 +275,37 @@
                                             <label for="tipo_solucao">Tipo de solução</label>
 
                                                 <div class="custom-control custom-radio">
-                                                    <input class="custom-control-input" type="radio" name="customRadio" id="tiposRadios1" value="Plataforma digital.">
+                                                    <input class="custom-control-input" type="radio" name="customRadio3" id="tiposRadios1" value="Plataforma digital." checked>
                                                     <label class="custom-control-label" for="tiposRadios1">
                                                             Plataforma digital.
                                                     </label>
                                                 </div>
                                                 <div class="custom-control custom-radio">
-                                                    <input class="custom-control-input" type="radio" name="customRadio" id="tiposRadios2" value="Aplicativo móvel.">
+                                                    <input class="custom-control-input" type="radio" name="customRadio3" id="tiposRadios2" value="Aplicativo móvel.">
                                                     <label class="custom-control-label" for="tiposRadios2">
                                                             Aplicativo móvel.
                                                     </label>
                                                 </div>
                                                 <div class="custom-control custom-radio">
-                                                    <input class="custom-control-input" type="radio" name="customRadio" id="tiposRadios3" value="Aplicação de desktop.">
+                                                    <input class="custom-control-input" type="radio" name="customRadio3" id="tiposRadios3" value="Aplicação de desktop.">
                                                     <label class="custom-control-label" for="tiposRadios3">
                                                             Aplicação de desktop.
                                                     </label>
                                                 </div>
                                                 <div class="custom-control custom-radio">
-                                                    <input class="custom-control-input" type="radio" name="customRadio" id="tiposRadios4" value="Software como serviço.">
+                                                    <input class="custom-control-input" type="radio" name="customRadio3" id="tiposRadios4" value="Software como serviço.">
                                                     <label class="custom-control-label" for="tiposRadios4">
                                                             Software como serviço.
                                                     </label>
                                                 </div>
                                                 <div class="custom-control custom-radio">
-                                                    <input class="custom-control-input" type="radio" name="customRadio" id="tiposRadios5" value="Dispositivos conectados.">
+                                                    <input class="custom-control-input" type="radio" name="customRadio3" id="tiposRadios5" value="Dispositivos conectados.">
                                                     <label class="custom-control-label" for="tiposRadios5">
                                                             Dispositivos conectados.
                                                     </label>
                                                 </div>
                                                 <div class="custom-control custom-radio">
-                                                    <input class="custom-control-input" type="radio" name="customRadio" id="tiposRadios6" value="Gera receita e gera lucro.">
+                                                    <input class="custom-control-input" type="radio" name="customRadio3" id="tiposRadios6" value="Gera receita e gera lucro.">
                                                     <label class="custom-control-label" for="tiposRadios6">
                                                              Gera receita e gera lucro.
                                                     </label>
@@ -315,37 +315,37 @@
                                             <label for="estagiotp">Estágio de desenvolvimento do produto</label>
 
                                                 <div class="custom-control custom-radio">
-                                                    <input class="custom-control-input" type="radio" name="customRadio" id="estagiodpRadios1" value="Não tenho um produto pronto nem MVP.">
+                                                    <input class="custom-control-input" type="radio" name="customRadio4" id="estagiodpRadios1" value="Não tenho um produto pronto nem MVP." checked>
                                                     <label class="custom-control-label" for="estagiodpRadios1">
                                                             Não tenho um produto pronto nem MVP.
                                                     </label>
                                                 </div>
                                                 <div class="custom-control custom-radio">
-                                                    <input class="custom-control-input" type="radio" name="customRadio" id="estagiodpRadios2" value="Tenho um MVP sem usuários.">
+                                                    <input class="custom-control-input" type="radio" name="customRadio4" id="estagiodpRadios2" value="Tenho um MVP sem usuários.">
                                                     <label class="custom-control-label" for="estagiodpRadios2">
                                                             Tenho um MVP sem usuários.
                                                     </label>
                                                 </div>
                                                 <div class="custom-control custom-radio">
-                                                    <input class="custom-control-input" type="radio" name="customRadio" id="estagiodpRadios3" value="Tenho um MVP com usuários beta.">
+                                                    <input class="custom-control-input" type="radio" name="customRadio4" id="estagiodpRadios3" value="Tenho um MVP com usuários beta.">
                                                     <label class="custom-control-label" for="estagiodpRadios3">
                                                             Tenho um MVP com usuários beta.
                                                     </label>
                                                 </div>
                                                 <div class="custom-control custom-radio">
-                                                    <input class="custom-control-input" type="radio" name="customRadio" id="estagiodpRadios4" value="Tenho um MVP com clientes pagantes.">
+                                                    <input class="custom-control-input" type="radio" name="customRadio4" id="estagiodpRadios4" value="Tenho um MVP com clientes pagantes.">
                                                     <label class="custom-control-label" for="estagiodpRadios4">
                                                             Tenho um MVP com clientes pagantes.
                                                     </label>
                                                 </div>
                                                 <div class="custom-control custom-radio">
-                                                    <input class="custom-control-input" type="radio" name="customRadio" id="estagiodpRadios5" value="Tenho um produto pronto, com clientes pagantes.">
+                                                    <input class="custom-control-input" type="radio" name="customRadio4" id="estagiodpRadios5" value="Tenho um produto pronto, com clientes pagantes.">
                                                     <label class="custom-control-label" for="estagiodpRadios5">
                                                             Tenho um produto pronto, com clientes pagantes.
                                                     </label>
                                                 </div>
                                                 <div class="custom-control custom-radio">
-                                                    <input class="custom-control-input" type="radio" name="customRadio" id="estagiodpRadios6" value="Tenho um produto avançado pronto para escalar.">
+                                                    <input class="custom-control-input" type="radio" name="customRadio4" id="estagiodpRadios6" value="Tenho um produto avançado pronto para escalar.">
                                                     <label class="custom-control-label" for="estagiodpRadios6">
                                                             Tenho um produto avançado pronto para escalar.
                                                     </label>
@@ -356,37 +356,37 @@
                                             <label for="estagiotp">Há quanto tempo o produto vem sendo desenvolvido?</label>
 
                                                 <div class="custom-control custom-radio">
-                                                    <input class="custom-control-input" type="radio" name="customRadio" id="produtosdRadios1" value="Não iniciou desenvolvimento.">
+                                                    <input class="custom-control-input" type="radio" name="customRadio5" id="produtosdRadios1" value="Não iniciou desenvolvimento." checked>
                                                     <label class="custom-control-label" for="produtosdRadios1">
                                                          Não iniciou desenvolvimento.
                                                     </label>
                                                 </div>
                                                 <div class="custom-control custom-radio">
-                                                    <input class="custom-control-input" type="radio" name="customRadio" id="produtosdRadios2" value="Até 3 meses.">
+                                                    <input class="custom-control-input" type="radio" name="customRadio5" id="produtosdRadios2" value="Até 3 meses.">
                                                     <label class="custom-control-label" for="produtosdRadios2">
                                                          Até 3 meses.
                                                     </label>
                                                 </div>
                                                 <div class="custom-control custom-radio">
-                                                    <input class="custom-control-input" type="radio" name="customRadio" id="produtosdRadios3" value="Entre 3 e 6 meses.">
+                                                    <input class="custom-control-input" type="radio" name="customRadio5" id="produtosdRadios3" value="Entre 3 e 6 meses.">
                                                     <label class="custom-control-label" for="produtosdRadios3">
                                                          Entre 3 e 6 meses.
                                                     </label>
                                                 </div>
                                                 <div class="custom-control custom-radio">
-                                                    <input class="custom-control-input" type="radio" name="customRadio" id="produtosdRadios4" value="Entre 6 e 12 meses.">
+                                                    <input class="custom-control-input" type="radio" name="customRadio5" id="produtosdRadios4" value="Entre 6 e 12 meses.">
                                                     <label class="custom-control-label" for="produtosdRadios4">
                                                          Entre 6 e 12 meses.
                                                     </label>
                                                 </div>
                                                 <div class="custom-control custom-radio">
-                                                    <input class="custom-control-input" type="radio" name="customRadio" id="produtosdRadios5" value="Entre 12 e 24 meses.">
+                                                    <input class="custom-control-input" type="radio" name="customRadio5" id="produtosdRadios5" value="Entre 12 e 24 meses.">
                                                     <label class="custom-control-label" for="produtosdRadios5">
                                                          Entre 12 e 24 meses.
                                                     </label>
                                                 </div>
                                                 <div class="custom-control custom-radio">
-                                                    <input class="custom-control-input" type="radio" name="customRadio" id="produtosdRadios6" value="Mais de 24 meses.">
+                                                    <input class="custom-control-input" type="radio" name="customRadio5" id="produtosdRadios6" value="Mais de 24 meses.">
                                                     <label class="custom-control-label" for="produtosdRadios6">
                                                          Mais de 24 meses.
                                                     </label>
@@ -397,31 +397,31 @@
                                             <label for="estagiotp">Qual a diferenciação do seu produto?</label>
 
                                                 <div class="custom-control custom-radio">
-                                                    <input class="custom-control-input" type="radio" name="customRadio" id="diferenciacaopRadios1" value="Nosso produto é igual ou inferior aos dos demais concorrentes.">
+                                                    <input class="custom-control-input" type="radio" name="customRadio6" id="diferenciacaopRadios1" value="Nosso produto é igual ou inferior aos dos demais concorrentes." checked>
                                                     <label class="custom-control-label" for="diferenciacaopRadios1">
                                                          Nosso produto é igual ou inferior aos dos demais concorrentes.
                                                     </label>
                                                 </div>
                                                 <div class="custom-control custom-radio">
-                                                    <input class="custom-control-input" type="radio" name="customRadio" id="diferenciacaopRadios2" value="Nosso produto possui diferenciais, mas não foi validado com clientes reais.">
+                                                    <input class="custom-control-input" type="radio" name="customRadio6" id="diferenciacaopRadios2" value="Nosso produto possui diferenciais, mas não foi validado com clientes reais.">
                                                     <label class="custom-control-label" for="diferenciacaopRadios2">
                                                          Nosso produto possui diferenciais, mas não foi validado com clientes reais.
                                                     </label>
                                                 </div>
                                                 <div class="custom-control custom-radio">
-                                                    <input class="custom-control-input" type="radio" name="customRadio" id="diferenciacaopRadios3" value="Nosso produto é igual aos dos demais concorrentes, mas já validei o uso com clientes reais.">
+                                                    <input class="custom-control-input" type="radio" name="customRadio6" id="diferenciacaopRadios3" value="Nosso produto é igual aos dos demais concorrentes, mas já validei o uso com clientes reais.">
                                                     <label class="custom-control-label" for="diferenciacaopRadios3">
                                                         Nosso produto é igual aos dos demais concorrentes, mas já validei o uso com clientes reais.
                                                     </label>
                                                 </div>
                                                 <div class="custom-control custom-radio">
-                                                    <input class="custom-control-input" type="radio" name="customRadio" id="diferenciacaopRadios4" value="Nosso produto possui todos os recursos fundamentais mapeados e validados com os clientes, além de outros que os diferencia.">
+                                                    <input class="custom-control-input" type="radio" name="customRadio6" id="diferenciacaopRadios4" value="Nosso produto possui todos os recursos fundamentais mapeados e validados com os clientes, além de outros que os diferencia.">
                                                     <label class="custom-control-label" for="diferenciacaopRadios4">
                                                         Nosso produto possui todos os recursos fundamentais mapeados e validados com os clientes, além de outros que os diferencia.
                                                     </label>
                                                 </div>
                                                 <div class="custom-control custom-radio">
-                                                    <input class="custom-control-input" type="radio" name="customRadio" id="diferenciacaopRadios5" value="Nosso produto possui todos os recursos fundamentais mapeados e validados com os
+                                                    <input class="custom-control-input" type="radio" name="customRadio6" id="diferenciacaopRadios5" value="Nosso produto possui todos os recursos fundamentais mapeados e validados com os
                                                     clientes, além de outros que os diferencia, e é considerado referência no mercado.">
                                                     <label class="custom-control-label" for="diferenciacaopRadios5">
                                                         Nosso produto possui todos os recursos fundamentais mapeados e validados com os clientes, além de outros que os diferencia, e é considerado referência no mercado.
@@ -433,32 +433,32 @@
                                             <label for="estagiotp">Qual a barreira de cópia que existe no produto desenvolvido?</label>
 
                                                 <div class="custom-control custom-radio">
-                                                    <input class="custom-control-input" type="radio" name="customRadio" id="barreiraCopiaRadios1" value="Nosso produto não possui nenhuma barreira contra cópia dos concorrentes.">
+                                                    <input class="custom-control-input" type="radio" name="customRadio7" id="barreiraCopiaRadios1" value="Nosso produto não possui nenhuma barreira contra cópia dos concorrentes." checked>
                                                     <label class="custom-control-label" for="barreiraCopiaRadios1">
                                                         Nosso produto não possui nenhuma barreira contra cópia dos concorrentes.
                                                     </label>
                                                 </div>
                                                 <div class="custom-control custom-radio">
-                                                    <input class="custom-control-input" type="radio" name="customRadio" id="barreiraCopiaRadios2" value="Nosso produto possui especificações e regulações, mas ainda não atendemos todas.">
+                                                    <input class="custom-control-input" type="radio" name="customRadio7" id="barreiraCopiaRadios2" value="Nosso produto possui especificações e regulações, mas ainda não atendemos todas.">
                                                     <label class="custom-control-label" for="barreiraCopiaRadios2">
                                                         Nosso produto possui especificações e regulações, mas ainda não atendemos todas.
                                                     </label>
                                                 </div>
                                                 <div class="custom-control custom-radio">
-                                                    <input class="custom-control-input" type="radio" name="customRadio" id="barreiraCopiaRadios3" value="Nosso produto possui especificações e regulações, e já atendemos todas.">
+                                                    <input class="custom-control-input" type="radio" name="customRadio7" id="barreiraCopiaRadios3" value="Nosso produto possui especificações e regulações, e já atendemos todas.">
                                                     <label class="custom-control-label" for="barreiraCopiaRadios3">
                                                         Nosso produto possui especificações e regulações, e já atendemos todas.
                                                     </label>
                                                 </div>
                                                 <div class="custom-control custom-radio">
-                                                    <input class="custom-control-input" type="radio" name="customRadio" id="barreiraCopiaRadios4" value="Já estou enquadrado em todas as regulações; meu produto é patenteável, mas ainda não
+                                                    <input class="custom-control-input" type="radio" name="customRadio7" id="barreiraCopiaRadios4" value="Já estou enquadrado em todas as regulações; meu produto é patenteável, mas ainda não
                                                     pedi o registro.">
                                                     <label class="custom-control-label" for="barreiraCopiaRadios4">
                                                         Já estou enquadrado em todas as regulações; meu produto é patenteável, mas ainda não pedi o registro.
                                                     </label>
                                                 </div>
                                                 <div class="custom-control custom-radio">
-                                                    <input class="custom-control-input" type="radio" name="customRadio" id="barreiraCopiaRadios5" value="Já estou enquadrado em todas as regulações e já tenho patente do produto.">
+                                                    <input class="custom-control-input" type="radio" name="customRadio7" id="barreiraCopiaRadios5" value="Já estou enquadrado em todas as regulações e já tenho patente do produto.">
                                                     <label class="custom-control-label" for="barreiraCopiaRadios5">
                                                         Já estou enquadrado em todas as regulações e já tenho patente do produto.
                                                     </label>
@@ -477,31 +477,31 @@
                                             <label for="estagiotp">O que você conhece sobre seus concorrentes?</label>
 
                                                 <div class="custom-control custom-radio">
-                                                    <input class="custom-control-input" type="radio" name="customRadio" id="concorrentesRadios1" value="Não pesquisei possíveis concorrentes.">
+                                                    <input class="custom-control-input" type="radio" name="customRadio8" id="concorrentesRadios1" value="Não pesquisei possíveis concorrentes." checked>
                                                     <label class="custom-control-label" for="concorrentesRadios1">
                                                         Não pesquisei possíveis concorrentes.
                                                     </label>
                                                 </div>
                                                 <div class="custom-control custom-radio">
-                                                    <input class="custom-control-input" type="radio" name="concorrentesRadios2" id="concorrentesRadios2" value="Encontrei alguns, mas não me comparei e não sei meus diferenciais.">
+                                                    <input class="custom-control-input" type="radio" name="customRadio8" id="concorrentesRadios2" value="Encontrei alguns, mas não me comparei e não sei meus diferenciais.">
                                                     <label class="custom-control-label" for="concorrentesRadios2">
                                                         Encontrei alguns, mas não me comparei e não sei meus diferenciais.
                                                     </label>
                                                 </div>
                                                 <div class="custom-control custom-radio">
-                                                    <input class="custom-control-input" type="radio" name="concorrentesRadios3" id="concorrentesRadios3" value="Encontrei alguns e me comparei, mas não sei meus diferenciais.">
+                                                    <input class="custom-control-input" type="radio" name="customRadio8" id="concorrentesRadios3" value="Encontrei alguns e me comparei, mas não sei meus diferenciais.">
                                                     <label class="custom-control-label" for="concorrentesRadios3">
                                                         Encontrei alguns e me comparei, mas não sei meus diferenciais.
                                                     </label>
                                                 </div>
                                                 <div class="custom-control custom-radio">
-                                                    <input class="custom-control-input" type="radio" name="concorrentesRadios4" id="concorrentesRadios4" value="Encontrei alguns, me comparei e tenho diferenciais relevantes.">
+                                                    <input class="custom-control-input" type="radio" name="customRadio8" id="concorrentesRadios4" value="Encontrei alguns, me comparei e tenho diferenciais relevantes.">
                                                     <label class="custom-control-label" for="concorrentesRadios4">
                                                         Encontrei alguns, me comparei e tenho diferenciais relevantes.
                                                     </label>
                                                 </div>
                                                 <div class="custom-control custom-radio">
-                                                    <input class="custom-control-input" type="radio" name="concorrentesRadios5" id="concorrentesRadios5" value="Fiz uma ampla pesquisa e não encontrei nenhum concorrente nesse mercado.">
+                                                    <input class="custom-control-input" type="radio" name="customRadio8" id="concorrentesRadios5" value="Fiz uma ampla pesquisa e não encontrei nenhum concorrente nesse mercado.">
                                                     <label class="custom-control-label" for="concorrentesRadios5">
                                                         Fiz uma ampla pesquisa e não encontrei nenhum concorrente nesse mercado.
                                                     </label>
@@ -512,31 +512,31 @@
                                             <label for="estagiotp">Qual o tamanho do seu mercado (TAM)?</label>
 
                                                 <div class="custom-control custom-radio">
-                                                    <input class="custom-control-input" type="radio" name="tamRadios1" id="tamRadios1" value="Não sei responder essa pergunta.">
+                                                    <input class="custom-control-input" type="radio" name="customRadio9" id="tamRadios1" value="Não sei responder essa pergunta." checked>
                                                     <label class="custom-control-label" for="tamRadios1">
                                                         Não sei responder essa pergunta.
                                                     </label>
                                                 </div>
                                                 <div class="custom-control custom-radio">
-                                                    <input class="custom-control-input" type="radio" name="tamRadios2" id="tamRadios2" value="Não sei o número, mas não é grande.">
+                                                    <input class="custom-control-input" type="radio" name="customRadio9" id="tamRadios2" value="Não sei o número, mas não é grande.">
                                                     <label class="custom-control-label" for="tamRadios2">
                                                         Não sei o número, mas não é grande.
                                                     </label>
                                                 </div>
                                                 <div class="custom-control custom-radio">
-                                                    <input class="custom-control-input" type="radio" name="tamRadios3" id="tamRadios3" value="Até R$500 milhões por ano.">
+                                                    <input class="custom-control-input" type="radio" name="customRadio9" id="tamRadios3" value="Até R$500 milhões por ano.">
                                                     <label class="custom-control-label" for="tamRadios3">
                                                         Até R$500 milhões por ano.
                                                     </label>
                                                 </div>
                                                 <div class="custom-control custom-radio">
-                                                    <input class="custom-control-input" type="radio" name="tamRadios4" id="tamRadios4" value="De R$500 milhões até R$1 bilhão por ano.">
+                                                    <input class="custom-control-input" type="radio" name="customRadio9" id="tamRadios4" value="De R$500 milhões até R$1 bilhão por ano.">
                                                     <label class="custom-control-label" for="tamRadios4">
                                                         De R$500 milhões até R$1 bilhão por ano.
                                                     </label>
                                                 </div>
                                                 <div class="custom-control custom-radio">
-                                                    <input class="custom-control-input" type="radio" name="tamRadios5" id="tamRadios5" value="Mais de R$1 bilhão por ano.">
+                                                    <input class="custom-control-input" type="radio" name="customRadio9" id="tamRadios5" value="Mais de R$1 bilhão por ano.">
                                                     <label class="custom-control-label" for="tamRadios5">
                                                         Mais de R$1 bilhão por ano.
                                                     </label>
@@ -547,31 +547,31 @@
                                             <label for="estagiotp">O quanto você conhece dos seus potenciais clientes?</label>
 
                                                 <div class="custom-control custom-radio">
-                                                    <input class="custom-control-input" type="radio" name="pclientesRadios1" id="pclientesRadios1" value="Não fiz nenhuma pesquisa com outros potenciais clientes.">
+                                                    <input class="custom-control-input" type="radio" name="customRadio10" id="pclientesRadios1" value="Não fiz nenhuma pesquisa com outros potenciais clientes." checked>
                                                     <label class="custom-control-label" for="pclientesRadios1">
                                                         Não fiz nenhuma pesquisa com outros potenciais clientes.
                                                     </label>
                                                 </div>
                                                 <div class="custom-control custom-radio">
-                                                    <input class="custom-control-input" type="radio" name="pclientesRadios2" id="pclientesRadios2" value="Não fiz nenhuma pesquisa com outros potenciais clientes, mas me considero um cliente do meu produto.">
+                                                    <input class="custom-control-input" type="radio" name="customRadio10" id="pclientesRadios2" value="Não fiz nenhuma pesquisa com outros potenciais clientes, mas me considero um cliente do meu produto.">
                                                     <label class="custom-control-label" for="pclientesRadios2">
                                                         Não fiz nenhuma pesquisa com outros potenciais clientes, mas me considero um cliente do meu produto.
                                                     </label>
                                                 </div>
                                                 <div class="custom-control custom-radio">
-                                                    <input class="custom-control-input" type="radio" name="pclientesRadios3" id="pclientesRadios3" value="Fiz uma pesquisa com poucos potenciais clientes (< 10 ), para entender mais sobre o comportamento deles.">
+                                                    <input class="custom-control-input" type="radio" name="customRadio10" id="pclientesRadios3" value="Fiz uma pesquisa com poucos potenciais clientes (< 10 ), para entender mais sobre o comportamento deles.">
                                                     <label class="custom-control-label" for="pclientesRadios3">
                                                         Fiz uma pesquisa com poucos potenciais clientes (< 10 ), para entender mais sobre o comportamento deles.
                                                     </label>
                                                 </div>
                                                 <div class="custom-control custom-radio">
-                                                    <input class="custom-control-input" type="radio" name="pclientesRadios4" id="pclientesRadios4" value="Fiz uma pesquisa com vários potenciais clientes, para entender mais sobre o comportamento deles.">
+                                                    <input class="custom-control-input" type="radio" name="customRadio10" id="pclientesRadios4" value="Fiz uma pesquisa com vários potenciais clientes, para entender mais sobre o comportamento deles.">
                                                     <label class="custom-control-label" for="pclientesRadios4">
                                                         Fiz uma pesquisa com vários potenciais clientes, para entender mais sobre o comportamento deles.
                                                     </label>
                                                 </div>
                                                 <div class="custom-control custom-radio">
-                                                    <input class="custom-control-input" type="radio" name="pclientesRadios5" id="pclientesRadios5" value="Fiz uma pesquisa com vários dos meus potenciais clientes, levantando os comportamentos, principais pontos críticos e dores.">
+                                                    <input class="custom-control-input" type="radio" name="customRadio10" id="pclientesRadios5" value="Fiz uma pesquisa com vários dos meus potenciais clientes, levantando os comportamentos, principais pontos críticos e dores.">
                                                     <label class="custom-control-label" for="pclientesRadios5">
                                                         Fiz uma pesquisa com vários dos meus potenciais clientes, levantando os comportamentos, principais pontos críticos e dores.
                                                     </label>
@@ -582,13 +582,13 @@
                                             <label for="estagiotp">Como é seu mercado de atuação?</label>
 
                                                 <div class="custom-control custom-radio">
-                                                    <input class="custom-control-input" type="radio" name="atuacaoRadios1" id="atuacaoRadios1" value="É um mercado já consolidado, com uma startup/empresa que domina.">
+                                                    <input class="custom-control-input" type="radio" name="customRadio11" id="atuacaoRadios1" value="É um mercado já consolidado, com uma startup/empresa que domina." checked>
                                                     <label class="custom-control-label" for="atuacaoRadios1">
                                                         É um mercado já consolidado, com uma startup/empresa que domina.
                                                     </label>
                                                 </div>
                                                 <div class="custom-control custom-radio">
-                                                    <input class="custom-control-input" type="radio" name="atuacaoRadios2" id="atuacaoRadios2" value="É um mercado já consolidado, com mais de uma startup/empresa que exploram esse
+                                                    <input class="custom-control-input" type="radio" name="customRadio11" id="atuacaoRadios2" value="É um mercado já consolidado, com mais de uma startup/empresa que exploram esse
                                                     mercado">
                                                     <label class="custom-control-label" for="atuacaoRadios2">
                                                         É um mercado já consolidado, com mais de uma startup/empresa que exploram esse
@@ -596,19 +596,19 @@
                                                     </label>
                                                 </div>
                                                 <div class="custom-control custom-radio">
-                                                    <input class="custom-control-input" type="radio" name="atuacaoRadios3" id="atuacaoRadios3" value="É um mercado em desenvolvimento, que vem se consolidando, com alguns players de referência.">
+                                                    <input class="custom-control-input" type="radio" name="customRadio11" id="atuacaoRadios3" value="É um mercado em desenvolvimento, que vem se consolidando, com alguns players de referência.">
                                                     <label class="custom-control-label" for="atuacaoRadios3">
                                                         É um mercado em desenvolvimento, que vem se consolidando, com alguns players de referência.
                                                     </label>
                                                 </div>
                                                 <div class="custom-control custom-radio">
-                                                    <input class="custom-control-input" type="radio" name="atuacaoRadios4" id="atuacaoRadios4" value="É um mercado em desenvolvimento, que vem se consolidando, sem nenhum player de referência ainda.">
+                                                    <input class="custom-control-input" type="radio" name="customRadio11" id="atuacaoRadios4" value="É um mercado em desenvolvimento, que vem se consolidando, sem nenhum player de referência ainda.">
                                                     <label class="custom-control-label" for="atuacaoRadios4">
                                                         É um mercado em desenvolvimento, que vem se consolidando, sem nenhum player de referência ainda.                                                        
                                                     </label>
                                                 </div>
                                                 <div class="custom-control custom-radio">
-                                                    <input class="custom-control-input" type="radio" name="atuacaoRadios5" id="atuacaoRadios5" value="É um mercado novo, que vem crescendo e somos pioneiros.">
+                                                    <input class="custom-control-input" type="radio" name="customRadio11" id="atuacaoRadios5" value="É um mercado novo, que vem crescendo e somos pioneiros.">
                                                     <label class="custom-control-label" for="atuacaoRadios5">
                                                         É um mercado novo, que vem crescendo e somos pioneiros.                                                        
                                                     </label>
@@ -619,32 +619,32 @@
                                             <label for="estagiotp">Como está sua aquisição e crescimento de clientes?</label>
 
                                                 <div class="custom-control custom-radio">
-                                                    <input class="custom-control-input" type="radio" name="aquisicaocliRadios1" id="aquisicaocliRadios1" value="Não temos clientes.">
+                                                    <input class="custom-control-input" type="radio" name="customRadio12" id="aquisicaocliRadios1" value="Não temos clientes." checked>
                                                     <label class="custom-control-label" for="aquisicaocliRadios1">
                                                            Não temos clientes.
                                                     </label>
                                                 </div>
                                                 <div class="custom-control custom-radio">
-                                                    <input class="custom-control-input" type="radio" name="aquisicaocliRadios2" id="aquisicaocliRadios2" value="Temos poucos clientes, mas conquistamos novos de maneira não estruturada.">
+                                                    <input class="custom-control-input" type="radio" name="customRadio12" id="aquisicaocliRadios2" value="Temos poucos clientes, mas conquistamos novos de maneira não estruturada.">
                                                     <label class="custom-control-label" for="aquisicaocliRadios2">
                                                         Temos poucos clientes, mas conquistamos novos de maneira não estruturada.
                                                     </label>
                                                 </div>
                                                 <div class="custom-control custom-radio">
-                                                    <input class="custom-control-input" type="radio" name="aquisicaocliRadios3" id="aquisicaocliRadios3" value="Temos clientes e estamos começando a estruturar nossos processos de vendas.">
+                                                    <input class="custom-control-input" type="radio" name="customRadio12" id="aquisicaocliRadios3" value="Temos clientes e estamos começando a estruturar nossos processos de vendas.">
                                                     <label class="custom-control-label" for="aquisicaocliRadios3">
                                                         Temos clientes e estamos começando a estruturar nossos processos de vendas.
                                                     </label>
                                                 </div>
                                                 <div class="custom-control custom-radio">
-                                                    <input class="custom-control-input" type="radio" name="aquisicaocliRadios4" id="aquisicaocliRadios4" value="Temos clientes, processos estruturados de vendas e estamos crescendo até 10% ao mês,
+                                                    <input class="custom-control-input" type="radio" name="customRadio12" id="aquisicaocliRadios4" value="Temos clientes, processos estruturados de vendas e estamos crescendo até 10% ao mês,
                                                     nos últimos 3 meses.">
                                                     <label class="custom-control-label" for="aquisicaocliRadios4">
                                                         Temos clientes, processos estruturados de vendas e estamos crescendo até 10% ao mês, nos últimos 3 meses.
                                                     </label>
                                                 </div>
                                                 <div class="custom-control custom-radio">
-                                                    <input class="custom-control-input" type="radio" name="aquisicaocliRadios5" id="aquisicaocliRadios5" value="Temos clientes, processos estruturados de vendas e estamos crescendo mais de 10% ao mês, nos últimos 3 meses.">
+                                                    <input class="custom-control-input" type="radio" name="customRadio12" id="aquisicaocliRadios5" value="Temos clientes, processos estruturados de vendas e estamos crescendo mais de 10% ao mês, nos últimos 3 meses.">
                                                     <label class="custom-control-label" for="aquisicaocliRadios5">
                                                         Temos clientes, processos estruturados de vendas e estamos crescendo mais de 10% ao mês, nos últimos 3 meses.
                                                     </label>
@@ -655,31 +655,31 @@
                                             <label for="estagiotp">Como a sua startup está sendo notada ou percebida?</label>
 
                                                 <div class="custom-control custom-radio">
-                                                    <input class="custom-control-input" type="radio" name="strtuppercebidaRadios1" id="strtuppercebidaRadios1" value="Não estamos expostos em nenhum lugar, nem em rede sociais.">
+                                                    <input class="custom-control-input" type="radio" name="customRadio13" id="strtuppercebidaRadios1" value="Não estamos expostos em nenhum lugar, nem em rede sociais." checked>
                                                     <label class="custom-control-label" for="strtuppercebidaRadios1">
                                                         Não estamos expostos em nenhum lugar, nem em rede sociais.
                                                     </label>
                                                 </div>
                                                 <div class="custom-control custom-radio">
-                                                    <input class="custom-control-input" type="radio" name="strtuppercebidaRadios2" id="strtuppercebidaRadios2" value="Criamos nosso site e redes, mas ainda não geramos nenhum tipo de conteúdo.">
+                                                    <input class="custom-control-input" type="radio" name="customRadio13" id="strtuppercebidaRadios2" value="Criamos nosso site e redes, mas ainda não geramos nenhum tipo de conteúdo.">
                                                     <label class="custom-control-label" for="strtuppercebidaRadios2">
                                                         Criamos nosso site e redes, mas ainda não geramos nenhum tipo de conteúdo.
                                                     </label>
                                                 </div>
                                                 <div class="custom-control custom-radio">
-                                                    <input class="custom-control-input" type="radio" name="strtuppercebidaRadios3" id="strtuppercebidaRadios3" value="Criamos nosso site e redes, geramos algum tipo de conteúdo e alguns clientes estão nos indicando.">
+                                                    <input class="custom-control-input" type="radio" name="customRadio13" id="strtuppercebidaRadios3" value="Criamos nosso site e redes, geramos algum tipo de conteúdo e alguns clientes estão nos indicando.">
                                                     <label class="custom-control-label" for="strtuppercebidaRadios3">
                                                         Criamos nosso site e redes, geramos algum tipo de conteúdo e alguns clientes estão nos indicando.
                                                     </label>
                                                 </div>
                                                 <div class="custom-control custom-radio">
-                                                    <input class="custom-control-input" type="radio" name="strtuppercebidaRadios4" id="strtuppercebidaRadios4" value="Já temos relevância e indicações de alguns clientes, estamos ativos nas redes sociais, participamos de eventos e já ganhamos destaque em algumas mídias.">
+                                                    <input class="custom-control-input" type="radio" name="customRadio13" id="strtuppercebidaRadios4" value="Já temos relevância e indicações de alguns clientes, estamos ativos nas redes sociais, participamos de eventos e já ganhamos destaque em algumas mídias.">
                                                     <label class="custom-control-label" for="strtuppercebidaRadios4">
                                                         Já temos relevância e indicações de alguns clientes, estamos ativos nas redes sociais, participamos de eventos e já ganhamos destaque em algumas mídias.
                                                     </label>
                                                 </div>
                                                 <div class="custom-control custom-radio">
-                                                    <input class="custom-control-input" type="radio" name="strtuppercebidaRadios5" id="strtuppercebidaRadios5" value="Já temos relevância e indicações de vários clientes, estamos bem ativos nas redes
+                                                    <input class="custom-control-input" type="radio" name="customRadio13" id="strtuppercebidaRadios5" value="Já temos relevância e indicações de vários clientes, estamos bem ativos nas redes
                                                     sociais, participamos de grandes eventos e já ganhamos destaque em grandes mídias.">
                                                     <label class="custom-control-label" for="strtuppercebidaRadios5">
                                                         Já temos relevância e indicações de vários clientes, estamos bem ativos nas redes sociais, participamos de grandes eventos e já ganhamos destaque em grandes mídias.
@@ -691,31 +691,31 @@
                                             <label for="estagiotp">Como está o domínio do seu funil de vendas?</label>
 
                                                 <div class="custom-control custom-radio">
-                                                    <input class="custom-control-input" type="radio" name="funilvendasRadios1" id="funilvendasRadios1" value="Não sei o que é um funil de vendas.">
+                                                    <input class="custom-control-input" type="radio" name="customRadio14" id="funilvendasRadios1" value="Não sei o que é um funil de vendas." checked>
                                                     <label class="custom-control-label" for="funilvendasRadios1">
                                                         Não sei o que é um funil de vendas.
                                                     </label>
                                                 </div>
                                                 <div class="custom-control custom-radio">
-                                                    <input class="custom-control-input" type="radio" name="funilvendasRadios2" id="funilvendasRadios2" value="Sei o que é, mas ainda não tenho um funil de vendas.">
+                                                    <input class="custom-control-input" type="radio" name="customRadio14" id="funilvendasRadios2" value="Sei o que é, mas ainda não tenho um funil de vendas.">
                                                     <label class="custom-control-label" for="funilvendasRadios2">
                                                         Sei o que é, mas ainda não tenho um funil de vendas.
                                                     </label>
                                                 </div>
                                                 <div class="custom-control custom-radio">
-                                                    <input class="custom-control-input" type="radio" name="funilvendasRadios3" id="funilvendasRadios3" value="Tenho um funil, mas ainda não domino todas as etapas.">
+                                                    <input class="custom-control-input" type="radio" name="customRadio14" id="funilvendasRadios3" value="Tenho um funil, mas ainda não domino todas as etapas.">
                                                     <label class="custom-control-label" for="funilvendasRadios3">
                                                         Tenho um funil, mas ainda não domino todas as etapas.
                                                     </label>
                                                 </div>
                                                 <div class="custom-control custom-radio">
-                                                    <input class="custom-control-input" type="radio" name="funilvendasRadios4" id="funilvendasRadios4" value="Tenho um funil, tenho todas as etapas dominadas, mas ainda não performo da forma esperada.">
+                                                    <input class="custom-control-input" type="radio" name="customRadio14" id="funilvendasRadios4" value="Tenho um funil, tenho todas as etapas dominadas, mas ainda não performo da forma esperada.">
                                                     <label class="custom-control-label" for="funilvendasRadios4">
                                                         Tenho um funil, tenho todas as etapas dominadas, mas ainda não performo da forma esperada.
                                                     </label>
                                                 </div>
                                                 <div class="custom-control custom-radio">
-                                                    <input class="custom-control-input" type="radio" name="funilvendasRadios5" id="funilvendasRadios5" value="Tenho um funil, tenho todas as etapas dominadas e performando de acordo com o esperado.">
+                                                    <input class="custom-control-input" type="radio" name="customRadio14" id="funilvendasRadios5" value="Tenho um funil, tenho todas as etapas dominadas e performando de acordo com o esperado.">
                                                     <label class="custom-control-label" for="funilvendasRadios5">
                                                         Tenho um funil, tenho todas as etapas dominadas e performando de acordo com o esperado.
                                                     </label>
@@ -735,37 +735,37 @@
                                             <label for="estagiotp">Qual o modelo inicial de receita?</label>
 
                                                 <div class="custom-control custom-radio">
-                                                    <input class="custom-control-input" type="radio" name="receitaRadios1" id="receitaRadios1" value="B2C (transação entre empresa e consumidor final).">
+                                                    <input class="custom-control-input" type="radio" name="customRadio15" id="receitaRadios1" value="B2C (transação entre empresa e consumidor final)." checked>
                                                     <label class="custom-control-label" for="receitaRadios1">
                                                         B2C (transação entre empresa e consumidor final).
                                                     </label>
                                                 </div>
                                                 <div class="custom-control custom-radio">
-                                                    <input class="custom-control-input" type="radio" name="receitaRadios2" id="receitaRadios2" value="B2B (transação entre empresas).">
+                                                    <input class="custom-control-input" type="radio" name="customRadio15" id="receitaRadios2" value="B2B (transação entre empresas).">
                                                     <label class="custom-control-label" for="receitaRadios2">
                                                         B2B (transação entre empresas).
                                                     </label>
                                                 </div>
                                                 <div class="custom-control custom-radio">
-                                                    <input class="custom-control-input" type="radio" name="receitaRadios3" id="receitaRadios3" value="B2G (transação entre empresa e governo).">
+                                                    <input class="custom-control-input" type="radio" name="customRadio15" id="receitaRadios3" value="B2G (transação entre empresa e governo).">
                                                     <label class="custom-control-label" for="receitaRadios3">
                                                         B2G (transação entre empresa e governo).
                                                     </label>
                                                 </div>
                                                 <div class="custom-control custom-radio">
-                                                    <input class="custom-control-input" type="radio" name="receitaRadios4" id="receitaRadios4" value="B2B2C (transação entre empresas visando consumidor final).">
+                                                    <input class="custom-control-input" type="radio" name="customRadio15" id="receitaRadios4" value="B2B2C (transação entre empresas visando consumidor final).">
                                                     <label class="custom-control-label" for="receitaRadios4">
                                                         B2B2C (transação entre empresas visando consumidor final).
                                                     </label>
                                                 </div>
                                                 <div class="custom-control custom-radio">
-                                                    <input class="custom-control-input" type="radio" name="receitaRadios5" id="receitaRadios5" value="Em definição.">
+                                                    <input class="custom-control-input" type="radio" name="customRadio15" id="receitaRadios5" value="Em definição.">
                                                     <label class="custom-control-label" for="receitaRadios5">
                                                           Em definição
                                                     </label>
                                                 </div>
                                                 <div class="custom-control custom-radio">
-                                                    <input class="custom-control-input" type="radio" name="receitaRadios6" id="receitaRadios6" value="Outo.">
+                                                    <input class="custom-control-input" type="radio" name="customRadio15" id="receitaRadios6" value="Outo.">
                                                     <label class="custom-control-label" for="receitaRadios6">
                                                           Outro
                                                     </label>
@@ -776,31 +776,31 @@
                                             <label for="estagiotp">Qual o estágio de receita da empresa?</label>
 
                                                 <div class="custom-control custom-radio">
-                                                    <input class="custom-control-input" type="radio" name="est_receitaRadios1" id="est_receitaRadios1" value="Não gera receita, mas não tem custos e despesas.">
+                                                    <input class="custom-control-input" type="radio" name="customRadio16" id="est_receitaRadios1" value="Não gera receita, mas não tem custos e despesas." checked>
                                                     <label class="custom-control-label" for="est_receitaRadios1">
                                                         Não gera receita, mas não tem custos e despesas.
                                                     </label>
                                                 </div>
                                                 <div class="custom-control custom-radio">
-                                                    <input class="custom-control-input" type="radio" name="est_receitaRadios2" id="est_receitaRadios2" value="Não gera receita, mas tem custos e despesas.">
+                                                    <input class="custom-control-input" type="radio" name="customRadio16" id="est_receitaRadios2" value="Não gera receita, mas tem custos e despesas.">
                                                     <label class="custom-control-label" for="est_receitaRadios2">
                                                         Não gera receita, mas tem custos e despesas.
                                                     </label>
                                                 </div>
                                                 <div class="custom-control custom-radio">
-                                                    <input class="custom-control-input" type="radio" name="est_receitaRadios3" id="est_receitaRadios3" value="Gera receita, mas ainda não cobre os custos e despesas.">
+                                                    <input class="custom-control-input" type="radio" name="customRadio16" id="est_receitaRadios3" value="Gera receita, mas ainda não cobre os custos e despesas.">
                                                     <label class="custom-control-label" for="est_receitaRadios3">
                                                         Gera receita, mas ainda não cobre os custos e despesas.
                                                     </label>
                                                 </div>
                                                 <div class="custom-control custom-radio">
-                                                    <input class="custom-control-input" type="radio" name="est_receitaRadios4" id="est_receitaRadios4" value="Gera receita, mas o suficiente para pagar as contas.">
+                                                    <input class="custom-control-input" type="radio" name="customRadio16" id="est_receitaRadios4" value="Gera receita, mas o suficiente para pagar as contas.">
                                                     <label class="custom-control-label" for="est_receitaRadios4">
                                                         Gera receita, mas o suficiente para pagar as contas.
                                                     </label>
                                                 </div>
                                                 <div class="custom-control custom-radio">
-                                                    <input class="custom-control-input" type="radio" name="est_receitaRadios5" id="est_receitaRadios5" value="Gera receita e gera lucro.">
+                                                    <input class="custom-control-input" type="radio" name="customRadio16" id="est_receitaRadios5" value="Gera receita e gera lucro.">
                                                     <label class="custom-control-label" for="est_receitaRadios5">
                                                         Gera receita e gera lucro.
                                                     </label>
@@ -811,37 +811,37 @@
                                             <label for="estagiotp">Você tem recursos financeiros para sustentar a operação por quanto tempo mais?</label>
 
                                                 <div class="custom-control custom-radio">
-                                                    <input class="custom-control-input" type="radio" name="recfinanceiroRadios1" id="recfinanceiroRadios1" value="Não iniciei a operação.">
+                                                    <input class="custom-control-input" type="radio" name="customRadio17" id="recfinanceiroRadios1" value="Não iniciei a operação." checked>
                                                     <label class="custom-control-label" for="recfinanceiroRadios1">
                                                         Não iniciei a operação.
                                                     </label>
                                                 </div>
                                                 <div class="custom-control custom-radio">
-                                                    <input class="custom-control-input" type="radio" name="recfinanceiroRadios2" id="recfinanceiroRadios2" value="Não tenho mais recursos financeiros.">
+                                                    <input class="custom-control-input" type="radio" name="customRadio17" id="recfinanceiroRadios2" value="Não tenho mais recursos financeiros.">
                                                     <label class="custom-control-label" for="recfinanceiroRadios2">
                                                         Não tenho mais recursos financeiros.
                                                     </label>
                                                 </div>
                                                 <div class="custom-control custom-radio">
-                                                    <input class="custom-control-input" type="radio" name="recfinanceiroRadios3" id="recfinanceiroRadios3" value="Tenho, para mais 1 até 6 meses.">
+                                                    <input class="custom-control-input" type="radio" name="customRadio17" id="recfinanceiroRadios3" value="Tenho, para mais 1 até 6 meses.">
                                                     <label class="custom-control-label" for="recfinanceiroRadios3">
                                                         Tenho, para mais 1 até 6 meses.
                                                     </label>
                                                 </div>
                                                 <div class="custom-control custom-radio">
-                                                    <input class="custom-control-input" type="radio" name="recfinanceiroRadios4" id="recfinanceiroRadios4" value="Tenho, para mais 6 até 12 meses.">
+                                                    <input class="custom-control-input" type="radio" name="customRadio17" id="recfinanceiroRadios4" value="Tenho, para mais 6 até 12 meses.">
                                                     <label class="custom-control-label" for="recfinanceiroRadios4">
                                                         Tenho, para mais 6 até 12 meses.
                                                     </label>
                                                 </div>
                                                 <div class="custom-control custom-radio">
-                                                    <input class="custom-control-input" type="radio" name="recfinanceiroRadios5" id="recfinanceiroRadios5" value="Tenho, para mais 12 até 18 meses.">
+                                                    <input class="custom-control-input" type="radio" name="customRadio17" id="recfinanceiroRadios5" value="Tenho, para mais 12 até 18 meses.">
                                                     <label class="custom-control-label" for="recfinanceiroRadios5">
                                                         Tenho, para mais 12 até 18 meses.
                                                     </label>
                                                 </div>
                                                 <div class="custom-control custom-radio">
-                                                    <input class="custom-control-input" type="radio" name="recfinanceiroRadios5" id="recfinanceiroRadios5" value="Tenho, para mais de 18 meses.">
+                                                    <input class="custom-control-input" type="radio" name="customRadio17" id="recfinanceiroRadios5" value="Tenho, para mais de 18 meses.">
                                                     <label class="custom-control-label" for="recfinanceiroRadios5">
                                                         Tenho, para mais de 18 meses.
                                                     </label>
@@ -861,31 +861,31 @@
                                             <label for="estagiotp">Como está sua proposta de valor?</label>
                                              
                                             <div class="custom-control custom-radio">
-                                                <input class="custom-control-input" type="radio" name="propvalorRadios1" id="propvalorRadios1" value="Não tenho uma proposta de valor clara e definida.">
+                                                <input class="custom-control-input" type="radio" name="customRadio18" id="propvalorRadios1" value="Não tenho uma proposta de valor clara e definida." checked>
                                                 <label class="custom-control-label" for="propvalorRadios1">
                                                       Não tenho uma proposta de valor clara e definida.
                                                 </label>
                                             </div>
                                             <div class="custom-control custom-radio">
-                                                <input class="custom-control-input" type="radio" name="propvalorRadios2" id="propvalorRadios2" value="Imagino ter uma proposta de valor, mas ainda não definida completamente e nem validei com clientes.">
+                                                <input class="custom-control-input" type="radio" name="customRadio18" id="propvalorRadios2" value="Imagino ter uma proposta de valor, mas ainda não definida completamente e nem validei com clientes.">
                                                 <label class="custom-control-label" for="propvalorRadios2">
                                                     Imagino ter uma proposta de valor, mas ainda não definida completamente e nem validei com clientes.                                                    
                                                 </label>
                                             </div>
                                             <div class="custom-control custom-radio">
-                                                <input class="custom-control-input" type="radio" name="propvalorRadios3" id="propvalorRadios3" value="Tenho a proposta clara e definida, mas não validada com o segmento de clientes.">
+                                                <input class="custom-control-input" type="radio" name="customRadio18" id="propvalorRadios3" value="Tenho a proposta clara e definida, mas não validada com o segmento de clientes.">
                                                 <label class="custom-control-label" for="propvalorRadios3">
                                                     Tenho a proposta clara e definida, mas não validada com o segmento de clientes.                                                    
                                                 </label>
                                             </div>
                                             <div class="custom-control custom-radio">
-                                                <input class="custom-control-input" type="radio" name="propvalorRadios4" id="propvalorRadios4" value="Tenho a proposta clara e definida, mas validei com poucos clientes (< 10).">
+                                                <input class="custom-control-input" type="radio" name="customRadio18" id="propvalorRadios4" value="Tenho a proposta clara e definida, mas validei com poucos clientes (< 10).">
                                                 <label class="custom-control-label" for="propvalorRadios4">
                                                     Tenho a proposta clara e definida, mas validei com poucos clientes (< 10).                                                    
                                                 </label>
                                             </div>
                                             <div class="custom-control custom-radio">
-                                                <input class="custom-control-input" type="radio" name="propvalorRadios5" id="propvalorRadios5" value="Tenho a proposta clara, definida e validada com o segmento de clientes.">
+                                                <input class="custom-control-input" type="radio" name="customRadio18" id="propvalorRadios5" value="Tenho a proposta clara, definida e validada com o segmento de clientes.">
                                                 <label class="custom-control-label" for="propvalorRadios5">
                                                     Tenho a proposta clara, definida e validada com o segmento de clientes.                                                    
                                                 </label>
@@ -895,31 +895,31 @@
                                         <div class="form-group">
                                             <label for="estagiotp">Com relação ao seu modelo de receita, em qual estágio você está?</label>
                                             <div class="custom-control custom-radio">
-                                                <input class="custom-control-input" type="radio" name="restagioRadios1" id="restagioRadios1" value="Ainda não sei como vender o que estou fazendo.">
+                                                <input class="custom-control-input" type="radio" name="customRadio19" id="restagioRadios1" value="Ainda não sei como vender o que estou fazendo." checked>
                                                 <label class="custom-control-label" for="restagioRadios1">
                                                     Ainda não sei como vender o que estou fazendo.                                                   
                                                 </label>
                                             </div>
                                             <div class="custom-control custom-radio">
-                                                <input class="custom-control-input" type="radio" name="restagioRadios2" id="restagioRadios2" value="Ainda não sei como vender o que estou fazendo, mas já tive clientes interessados.">
+                                                <input class="custom-control-input" type="radio" name="customRadio19" id="restagioRadios2" value="Ainda não sei como vender o que estou fazendo, mas já tive clientes interessados.">
                                                 <label class="custom-control-label" for="restagioRadios2">
                                                     Ainda não sei como vender o que estou fazendo, mas já tive clientes interessados.                                                   
                                                 </label>
                                             </div>
                                             <div class="custom-control custom-radio">
-                                                <input class="custom-control-input" type="radio" name="restagioRadios3" id="restagioRadios3" value="Já tenho o modelo de negócio, mas ainda não validei ou validei com poucos clientes potenciais.">
+                                                <input class="custom-control-input" type="radio" name="customRadio19" id="restagioRadios3" value="Já tenho o modelo de negócio, mas ainda não validei ou validei com poucos clientes potenciais.">
                                                 <label class="custom-control-label" for="restagioRadios3">
                                                     Já tenho o modelo de negócio, mas ainda não validei ou validei com poucos clientes potenciais.                                                   
                                                 </label>
                                             </div>
                                             <div class="custom-control custom-radio">
-                                                <input class="custom-control-input" type="radio" name="restagioRadios4" id="restagioRadios4" value="Já tenho o modelo de negócios definido, validado e já tenho os primeiros clientes.">
+                                                <input class="custom-control-input" type="radio" name="customRadio19" id="restagioRadios4" value="Já tenho o modelo de negócios definido, validado e já tenho os primeiros clientes.">
                                                 <label class="custom-control-label" for="restagioRadios4">
                                                     Já tenho o modelo de negócios definido, validado e já tenho os primeiros clientes.                                                   
                                                 </label>
                                             </div>
                                             <div class="custom-control custom-radio">
-                                                <input class="custom-control-input" type="radio" name="restagioRadios5" id="restagioRadios5" value="Já tenho o modelo de negócios definido, validado e vendendo.">
+                                                <input class="custom-control-input" type="radio" name="customRadio19" id="restagioRadios5" value="Já tenho o modelo de negócios definido, validado e vendendo.">
                                                 <label class="custom-control-label" for="restagioRadios5">
                                                     Já tenho o modelo de negócios definido, validado e vendendo.                                                   
                                                 </label>
@@ -931,35 +931,35 @@
                                             <label for="estagiotp">Você está preparado para escalar?</label>
                                             
                                             <div class="custom-control custom-radio">
-                                                <input class="custom-control-input" type="radio" name="pescalarRadios1" id="pescalarRadios1" value="Não, ainda não tenho meu produto definido e nem a forma de vendê-lo.">
+                                                <input class="custom-control-input" type="radio" name="customRadio20" id="pescalarRadios1" value="Não, ainda não tenho meu produto definido e nem a forma de vendê-lo." checked>
                                                 <label class="custom-control-label" for="pescalarRadios1">
                                                     Não, ainda não tenho meu produto definido e nem a forma de vendê-lo.                                                   
                                                 </label>
                                             </div>
 
                                             <div class="custom-control custom-radio">
-                                                <input class="custom-control-input" type="radio" name="pescalarRadios2" id="pescalarRadios2" value="Não, ainda trabalho no modelo concierge e não tenho modelo de negócios definido.">
+                                                <input class="custom-control-input" type="radio" name="customRadio20" id="pescalarRadios2" value="Não, ainda trabalho no modelo concierge e não tenho modelo de negócios definido.">
                                                 <label class="custom-control-label" for="pescalarRadios2">
                                                     Não, ainda trabalho no modelo concierge e não tenho modelo de negócios definido.                                                   
                                                 </label>
                                             </div>
 
                                             <div class="custom-control custom-radio">
-                                                <input class="custom-control-input" type="radio" name="pescalarRadios3" id="pescalarRadios3" value="Talvez, tenho o produto e o modelo definido, mas não ainda não definimos em qual segmento vamos escalar.">
+                                                <input class="custom-control-input" type="radio" name="customRadio20" id="pescalarRadios3" value="Talvez, tenho o produto e o modelo definido, mas não ainda não definimos em qual segmento vamos escalar.">
                                                 <label class="custom-control-label" for="pescalarRadios3">
                                                     Talvez, tenho o produto e o modelo definido, mas não ainda não definimos em qual segmento vamos escalar.                             
                                                 </label>
                                             </div>
 
                                             <div class="custom-control custom-radio">
-                                                <input class="custom-control-input" type="radio" name="pescalarRadios4" id="pescalarRadios4" value="Sim, acredito que já estamos maduros em modelo de negócios e produtos para isso, mas ainda não começamos a escalar.">
+                                                <input class="custom-control-input" type="radio" name="customRadio20" id="pescalarRadios4" value="Sim, acredito que já estamos maduros em modelo de negócios e produtos para isso, mas ainda não começamos a escalar.">
                                                 <label class="custom-control-label" for="pescalarRadios4">
                                                     Sim, acredito que já estamos maduros em modelo de negócios e produtos para isso, mas ainda não começamos a escalar.                            
                                                 </label>
                                             </div>
 
                                             <div class="custom-control custom-radio">
-                                                <input class="custom-control-input" type="radio" name="pescalarRadios5" id="pescalarRadios5" value="Sim, já estamos maduros em modelo de negócios e produtos, e já estamos escalando dessa forma.">
+                                                <input class="custom-control-input" type="radio" name="customRadio20" id="pescalarRadios5" value="Sim, já estamos maduros em modelo de negócios e produtos, e já estamos escalando dessa forma.">
                                                 <label class="custom-control-label" for="pescalarRadios5">
                                                     Sim, já estamos maduros em modelo de negócios e produtos, e já estamos escalando dessa forma.                          
                                                 </label>
