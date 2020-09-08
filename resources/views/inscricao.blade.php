@@ -982,44 +982,44 @@
                                             <div class="form-group">
                                                 <label for="nome-compl">Nome Completo</label>
                                                 <input type="text" class="form-control" id="nome-compl" aria-describedby="nomeclpHelp">
-                                                <small id="nomeclpHelp" class="form-text text-muted">Campo obrigatório!</small>
+                                                <small id="nomeclpHelp" class="form-text text-muted obrigatorio">Campo obrigatório!</small>
                                             </div>
                                             <div class="form-group">
                                                 <label for="funcaop">Função no Projeto (negócio, produto ou marketing)</label>
                                                 <input type="text" class="form-control" id="funcaop" aria-describedby="funcaopHelp">
-                                                <small id="funcaopHelp" class="form-text text-muted">Campo obrigatório!</small>
+                                                <small id="funcaopHelp" class="form-text text-muted obrigatorio">Campo obrigatório!</small>
                                             </div>
                                             <div class="form-group">
                                                 <label for="datanasc">Data de Nascimento</label>
                                                 <input type="date" class="form-control" id="datanasc" aria-describedby="datanascHelp">
-                                                <small id="datanascHelp" class="form-text text-muted">Campo obrigatório!</small>
+                                                <small id="datanascHelp" class="form-text text-muted obrigatorio">Campo obrigatório!</small>
                                             </div>
                                             <div class="form-row">
                                                 <div class="col-md-8 mb-3">
                                                   <label for="rg">RG</label>
                                                   <input type="number" class="form-control" id="rg">
-                                                  <small id="rgHelp" class="form-text text-muted">Campo obrigatório!</small>
+                                                  <small id="rgHelp" class="form-text text-muted obrigatorio">Campo obrigatório!</small>
                                                 </div>
                                                 <div class="col-md-4 mb-3">
                                                   <label for="orgemaissor">Órgão Emissor</label>
                                                   <input type="text" class="form-control" id="orgemaissor">
-                                                  <small id="orgemaissorHelp" class="form-text text-muted">Campo obrigatório!</small>
+                                                  <small id="orgemaissorHelp" class="form-text text-muted obrigatorio">Campo obrigatório!</small>
                                                 </div>
                                             </div>
                                             <div class="form-group">
                                                 <label for="cpf">CPF</label>
-                                                <input type="number" class="form-control" id="cpf" aria-describedby="cpfHelp">
-                                                <small id="cpfHelp" class="form-text text-muted">Campo obrigatório!</small>
+                                                <input type="text" class="form-control" id="cpf" aria-describedby="cpfHelp" maxlength="15">
+                                                <small id="cpfHelp" class="form-text text-muted obrigatorio">CPF inválido!</small>
                                             </div>
                                             <div class="form-group">
                                                 <label for="instensino">Instituição de Ensino</label>
                                                 <input type="text" class="form-control" id="instensino" aria-describedby="instensinoHelp">
-                                                <small id="instensinoHelp" class="form-text text-muted">Campo obrigatório!</small>
+                                                <small id="instensinoHelp" class="form-text text-muted obrigatorio">Campo obrigatório!</small>
                                             </div>
                                             <div class="form-group">
                                                 <label for="curso">Curso</label>
                                                 <input type="text" class="form-control" id="curso" aria-describedby="cursoHelp">
-                                                <small id="cursoHelp" class="form-text text-muted">Campo obrigatório!</small>
+                                                <small id="cursoHelp" class="form-text text-muted obrigatorio">Campo obrigatório!</small>
                                             </div>
                                             <div class="form-group">
                                                 <label for="categoria-projeto">Formação</label>
@@ -1034,24 +1034,24 @@
                                                     <option value="Nível Técnico Incompleto">Nível Técnico Incompleto</option>
                                                     <option value="Nível Técnico Completo">Nível Técnico Completo</option>
                                                     </select>
-                                                    <small id="formacaoHelp" class="form-text text-muted">Campo obrigatório!</small>
+                                                    <small id="formacaoHelp" class="form-text text-muted obrigatorio">Campo obrigatório!</small>
                                              </div>
 
                                              <div class="form-row">
                                                 <div class="col-md-6 mb-3">
-                                                  <label for="Logradouro">Logradouro</label>
-                                                  <input type="text" class="form-control" id="Logradouro">
-                                                  <small id="LogradouroHelp" class="form-text text-muted">Campo obrigatório!</small>
+                                                  <label for="logradouro">Logradouro</label>
+                                                  <input type="text" class="form-control" id="logradouro">
+                                                  <small id="logradouroHelp" class="form-text text-muted obrigatorio">Campo obrigatório!</small>
                                                 </div>
                                                 <div class="col-md-3 mb-3">
                                                     <label for="estadom">Estado</label>
                                                     <input type="text" class="form-control" id="estadom">
-                                                    <small id="estadomHelp" class="form-text text-muted">Campo obrigatório!</small>
+                                                    <small id="estadomHelp" class="form-text text-muted obrigatorio">Campo obrigatório!</small>
                                                   </div>
                                                 <div class="col-md-3 mb-3">
                                                   <label for="cidadem">Cidade</label>
                                                   <input type="text" class="form-control" id="cidadem">
-                                                  <small id="cidademHelp" class="form-text text-muted">Campo obrigatório!</small>
+                                                  <small id="cidademHelp" class="form-text text-muted obrigatorio">Campo obrigatório!</small>
                                                 </div>
                                             </div>
 
@@ -1059,12 +1059,12 @@
                                                 <div class="col-md-6 mb-3">
                                                   <label for="telcontato">Telefone de contato</label>
                                                   <input type="number" class="form-control" id="telcontato">
-                                                  <small id="telcontatoHelp" class="form-text text-muted">Campo obrigatório!</small>
+                                                  <small id="telcontatoHelp" class="form-text text-muted obrigatorio">Campo obrigatório!</small>
                                                 </div>
-                                                <div class="col-md-3 mb-3">
+                                                <div class="col-md-6 mb-3">
                                                     <label for="emailmenbro">E-mail</label>
                                                     <input type="text" class="form-control" id="emailmenbro">
-                                                    <small id="emailmenbroHelp" class="form-text text-muted">Verifique novamente seu e-mail '@', '.' !</small>
+                                                    <small id="emailmenbroHelp" class="form-text text-muted obrigatorio">Verifique novamente seu e-mail '@', '.' !</small>
                                                   </div>
                                             </div>
 
@@ -1072,7 +1072,7 @@
                                                 <label for="comprovacao">Anexar Comprovação de Experiência e Conhecimento*</label>
                                                 <div class="custom-file">
                                                     <input type="file" class="custom-file-input" id="comprovacao">
-                                                    <label class="custom-file-label" for="comprovacao">Comprovante</label>
+                                                    <label class="custom-file-label" for="comprovacao"></label>
                                                 </div>
                                             </div>
                                         </div>
