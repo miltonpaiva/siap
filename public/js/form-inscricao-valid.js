@@ -281,7 +281,7 @@ $(function(){
 
     });
 
-    var rv = $("input[name='tendenciaRadios']:checked").val();
+    var rv = $("input[name='customRadio1']:checked").val();
     console.log(rv);
    
     $("input:radio").on("click",function(){
