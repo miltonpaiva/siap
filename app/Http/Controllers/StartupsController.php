@@ -45,4 +45,11 @@ class StartupsController extends Controller
 
         return $result;
     }
+
+    public function register(Request $request)
+    {
+      echo "<pre>";
+      print_r($request->all());
+      exit();
+    }
 }
