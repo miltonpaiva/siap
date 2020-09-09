@@ -1,4 +1,6 @@
-@import url(https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap);:root {
+@import url(https://fonts.googleapis.com/css2?family=Roboto:wght@100;
+
+300;400;500;700;900&display=swap);:root {
   --blue: #007bff;
   --indigo: #6610f2;
   --purple: #6f42c1;
@@ -12416,14 +12418,14 @@ h3 {
 }
 
 .progresso li:before {
-  content: url("/img/foguete_inativo.png");
+  content: url("http://localhost:8080/proj-laravel/siap/public/img/foguete_inativo.png");
 }
 
 .progresso li.completo:before {
-  content: url("/img/foguete_completo.png");
+  content: url("http://localhost:8080/proj-laravel/siap/public/img/foguete_completo.png");
 }
 
 .progresso li.ativo:before {
-  content: url("/img/foguete_ativo.png");
+  content: url("http://localhost:8080/proj-laravel/siap/public/img/foguete_ativo.png");
 }
 
