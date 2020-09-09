@@ -40,7 +40,7 @@
                             </div>
 
                             <div class="card-body">
-                                <form id="formulario" action="{{ route('startup.register')}}" method="POST" class="mx-auto">
+                                <form id="formulario" action="{{ route('startup.register')}}" method="POST" enctype="multipart/form-data" class="mx-auto">
                                     @method('POST')
                                     @csrf <!-- {{ csrf_field() }} -->
                                     <fieldset>
@@ -297,11 +297,7 @@
                                             <div class="form-row">
                                                 <div class="col-md-8 mb-3">
                                                   <label for="rg">RG</label>
-<<<<<<< HEAD
-                                                  <input type="text" class="form-control" id="rg" maxlength="15">
-=======
-                                                  <input type="number" class="form-control" id="rg" name="time[1][rg]" >
->>>>>>> 7f79db14ac2e0fae9b1458be77c3ee13102ead97
+                                                  <input type="text" class="form-control" id="rg" name="time[1][rg]" maxlength="15" >
                                                   <small id="rgHelp" class="form-text text-muted obrigatorio">Campo obrigatório!</small>
                                                 </div>
                                                 <div class="col-md-4 mb-3">
@@ -362,36 +358,21 @@
                                             <div class="form-row">
                                                 <div class="col-md-6 mb-3">
                                                   <label for="telcontato">Telefone de contato</label>
-<<<<<<< HEAD
-                                                  <input type="text" class="form-control" id="telcontato" maxlength="14">
+                                                  <input type="text" class="form-control" id="telcontato" name="time[1][telcontato]" maxlength="14" >
                                                   <small id="telcontatoHelp" class="form-text text-muted">E.: 85 999990000</small>
                                                 </div>
                                                 <div class="col-md-6 mb-3">
                                                     <label for="emailmenbro">E-mail</label>
-                                                    <input type="text" class="form-control" id="emailmenbro">
-                                                    <small id="emailmenbroHelp" class="form-text text-muted">Ex.: seuemail@seuemail.com!</small>
-=======
-                                                  <input type="number" class="form-control" id="telcontato" name="time[1][telcontato]" >
-                                                  <small id="telcontatoHelp" class="form-text text-muted obrigatorio">Campo obrigatório!</small>
-                                                </div>
-                                                <div class="col-md-6 mb-3">
-                                                    <label for="emailmenbro">E-mail</label>
                                                     <input type="text" class="form-control" id="emailmenbro" name="time[1][emailmenbro]" >
-                                                    <small id="emailmenbroHelp" class="form-text text-muted obrigatorio">Verifique novamente seu e-mail '@', '.' !</small>
->>>>>>> 7f79db14ac2e0fae9b1458be77c3ee13102ead97
+                                                     <small id="emailmenbroHelp" class="form-text text-muted">Ex.: seuemail@seuemail.com!</small>
                                                   </div>
                                             </div>
 
                                             <div class="form-group">
                                                 <label for="comprovacao">Anexar Comprovação de Experiência e Conhecimento*</label>
                                                 <div class="custom-file">
-<<<<<<< HEAD
-                                                    <input type="file" class="custom-file-input" id="comprovacao">
-                                                    <label id="uploadc" class="custom-file-label" for="comprovacao"></label>
-=======
                                                     <input type="file" class="custom-file-input" id="comprovacao" name="time[1][comprovacao]" >
-                                                    <label class="custom-file-label" for="comprovacao"></label>
->>>>>>> 7f79db14ac2e0fae9b1458be77c3ee13102ead97
+                                                    <label id="uploadc" class="custom-file-label" for="comprovacao"></label>
                                                 </div>
                                             </div>
                                         </div>
