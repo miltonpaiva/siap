@@ -15,6 +15,9 @@ class ResponsesTable extends Migration
     {
         Schema::create('responses', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('question');
+            $table->unsignedBigInteger('option');
+            $table->unsignedBigInteger('startup');
             $table->foreign('question')->references('id')->on('questions');
             $table->foreign('option')->references('id')->on('options');
             $table->foreign('startup')->references('id')->on('startups');

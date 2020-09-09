@@ -17,17 +17,19 @@ class ParticipantsTable extends Migration
             $table->id();
             $table->string('name', 100);
             $table->enum('function', ['negócio', 'Produto', 'Marketing']);
-            $table->foreign('startup')->references('id')->on('startups');
+            $table->unsignedBigInteger('startup');
             $table->string('rg', 22);
             $table->bigInteger('cpf');
             $table->string('institution', 100);
             $table->string('course', 50);
-            $table->foreign('formation')->references('id')->on('formations');
+            $table->unsignedBigInteger('formation');
             $table->string('address', 100);
             $table->string('city', 50);
             $table->bigInteger('telephone');
             $table->string('email', 50);
             $table->string('linkedin', 50);
+            $table->foreign('startup')->references('id')->on('startups');
+            $table->foreign('formation')->references('id')->on('formations');
         });
     }
 

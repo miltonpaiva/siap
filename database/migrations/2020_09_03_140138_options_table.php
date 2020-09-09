@@ -16,6 +16,7 @@ class OptionsTable extends Migration
         Schema::create('options', function (Blueprint $table) {
             $table->id();
             $table->string('name', 170);
+            $table->unsignedBigInteger('question');
             $table->bigInteger('session');
             $table->foreign('question')->references('id')->on('questions');
         });
