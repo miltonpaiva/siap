@@ -24,7 +24,7 @@ class ParticipantsTable extends Migration
             $table->string('course', 50);
             $table->foreign('formation')->references('id')->on('formations');
             $table->string('address', 100);
-            $table->bigInteger('cod_city');
+            $table->string('city', 50);
             $table->bigInteger('telephone');
             $table->string('email', 50);
             $table->string('linkedin', 50);
