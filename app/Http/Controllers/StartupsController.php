@@ -63,6 +63,13 @@ class StartupsController extends Controller
 
         $custom_args['conditions'] =
             [
+                ['startup', '=', $startup_id]
+            ];
+
+        $participants = Query::queryAction('participants', $custom_args);
+
+        $custom_args['conditions'] =
+            [
                 ['id', '=', $startup_id]
             ];
 
@@ -76,10 +83,11 @@ class StartupsController extends Controller
 
         $vars =
           [
-              'questions'  => $questions,
-              'startup_id' => $startup_id,
-              'responses'  => $responses_agrouped,
-              'startup'    => $startup,
+              'questions'   => $questions,
+              'startup_id'  => $startup_id,
+              'responses'   => $responses_agrouped,
+              'startup'     => $startup,
+              'participant' => current($participants),
           ];
 
         return view('inscricao', $vars);
@@ -88,6 +96,7 @@ class StartupsController extends Controller
     public function actionRegister(Request $request)
     {
       $responses = $request->all();
+      $attachments = [];
 
       $startup_args['state']     = $responses['session'][1]['estado'];
       $startup_args['city']      = $responses['session'][1]['cidade'];
@@ -108,79 +117,112 @@ class StartupsController extends Controller
       foreach ($responses['session'] as $session => $questions) {
         if (isset($questions['questions'])) {
           foreach ($questions['questions'] as $question => $option) {
-              $list_responses[] =
-                [
-                  'question' => $question,
-                  'startup'  => $startup_id,
-                  'option'   => $option['value'],
-                ];
+              if (isset($option['response'])) {
+                $list_responses[] =
+                  [
+                    'option'   => $option['value'],
+                    'response' => $option['value'],
+                  ];
+              }else{
+                $list_responses[] =
+                  [
+                    'question' => $question,
+                    'startup'  => $startup_id,
+                    'option'   => $option['value'],
+                  ];
+              }
           }
         }
       }
 
       $responses_saved = [];
       foreach ($list_responses as $response) {
-        $responses_saved[] = Response::register($response);
+        if (isset($response['response'])) {
+          $responses_saved[] = Response::update($response['response'], $response['option']);
+        }else{
+          $responses_saved[] = Response::register($response);
+        }
+
       }
 
-      foreach ($responses['time'] as $time) {
+      if (isset($responses['time'])) {
 
-          $file_name = $time['comprovacao']->getClientOriginalName();
-          $temp_name = $time['comprovacao']->getPathName();
+        foreach ($responses['time'] as $time) {
 
-          $uploadfile = $uploaddir . basename($file_name);
+            $has_archive = (count($time['comprovacao']) > 0);
 
-          if (move_uploaded_file($temp_name, $uploadfile)) {
+            echo "<pre>";
+            var_dump($has_archive);
+            exit();
 
-              $participant =
-                [
-                  'name' => $time['nome'],
-                  'function' => 'Produto',//$time['funcao'],
-                  'startup' => $startup_id,
-                  'rg' => $time['rg'],
-                  'cpf' => $time['cpf'],
-                  'institution' => $time['instensino'],
-                  'course' => $time['curso'],
-                  'formation' => $time['formacao'],
-                  'address' => $time['logradouro'],
-                  'city' => @$time['cidade'],
-                  'telephone' => $time['telcontato'],
-                  'email' => $time['emailmenbro'],
-                  'linkedin' => 'hrrps://algo'//$time['linkedin'],
-                ];
+            if ($has_archive) {
+              $file_name = $time['comprovacao']->getClientOriginalName();
+              $temp_name = $time['comprovacao']->getPathName();
+              $uploadfile = $uploaddir . basename($file_name);
+            }
 
-              $partcipat_saved[] =
-                $id_partcipat = self::registerParticipant($participant);
 
-              $attachments[] =
-                [
-                  'archive' => $file_name,
-                  'type' => 'experiencia',
-                  'startup' => $startup_id,
-                  'participant' => $id_partcipat,
-                ];
-          }
+            if ($has_archive && move_uploaded_file($temp_name, $uploadfile)) {
+
+                $participant =
+                  [
+                    'name' => $time['nome'],
+                    'function' => 'Produto',//$time['funcao'],
+                    'startup' => $startup_id,
+                    'rg' => $time['rg'],
+                    'cpf' => $time['cpf'],
+                    'institution' => $time['instensino'],
+                    'course' => $time['curso'],
+                    'formation' => $time['formacao'],
+                    'address' => $time['logradouro'],
+                    'city' => @$time['cidade'],
+                    'telephone' => $time['telcontato'],
+                    'email' => $time['emailmenbro'],
+                    'linkedin' => 'hrrps://algo'//$time['linkedin'],
+                  ];
+
+                $partcipat_saved[] =
+                  $id_partcipat = self::registerParticipant($participant);
+
+                $attachments[] =
+                  [
+                    'archive' => $file_name,
+                    'type' => 'experiencia',
+                    'startup' => $startup_id,
+                    'participant' => $id_partcipat,
+                  ];
+            }
+        }
+
       }
 
-      $anexos = $responses['session'][7]['anexos'];
+      if (isset($responses['session'][7])) {
 
-      foreach ($anexos as $type => $anexo) {
+        $anexos = $responses['session'][7]['anexos'];
 
-          $file_name = $anexo->getClientOriginalName();
-          $temp_name = $anexo->getPathName();
+        foreach ($anexos as $type => $anexo) {
 
-          $uploadfile = $uploaddir . basename($file_name);
+            $has_archive = (count($anexo) > 0);
 
-          if (move_uploaded_file($temp_name, $uploadfile)) {
+            if ($has_archive) {
+              $file_name = $anexo->getClientOriginalName();
+              $temp_name = $anexo->getPathName();
 
-              $attachments[] =
-                [
-                  'archive' => $file_name,
-                  'type' => $type,
-                  'startup' => $startup_id,
-                ];
+              $uploadfile = $uploaddir . basename($file_name);
+            }
 
-          }
+            if ($has_archive && move_uploaded_file($temp_name, $uploadfile)) {
+
+                $attachments[] =
+                  [
+                    'archive' => $file_name,
+                    'type' => $type,
+                    'startup' => $startup_id,
+                  ];
+
+            }
+        }
+
       }
 
       $attachments_saved = [];

@@ -47,6 +47,16 @@ class ResponsesController extends Controller
         return $new_response_id;
     }
 
+    public static function update($id, $option)
+    {
+        $result =
+            DB::table('responses')
+                      ->where('id', $id)
+                      ->update(['option' => $option]);
+
+        return $result;
+    }
+
     public static function responseList()
     {
         $responses = Query::queryAction('responses');
