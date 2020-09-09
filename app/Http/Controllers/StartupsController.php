@@ -72,6 +72,14 @@ class StartupsController extends Controller
       $startup_args['category']  = $responses['session'][1]['categoria'];
       $startup_id = $responses['session'][1]['startup_id'];
 
+      $path_root = str_replace('\public', '', $_SERVER["DOCUMENT_ROOT"]);
+      $uploaddir = "{$path_root}\\files\\" . $startup_id . '\\';
+
+      $dir_exist = is_dir($uploaddir);
+      if (!$dir_exist) {
+        $dir_exist = mkdir($uploaddir, 0777, true);
+      }
+
       self::update($startup_args, $startup_id);
 
       $list_responses = [];
@@ -94,25 +102,68 @@ class StartupsController extends Controller
       }
 
       foreach ($responses['time'] as $time) {
-          $participant =
-            [
-              'name' => $time['nome'],
-              'function' => $time['funcao'],
-              'startup' => $startup_id,
-              'rg' => $time['rg'],
-              'cpf' => $time['cpf'],
-              'institution' => $time['instensino'],
-              'course' => $time['curso'],
-              'formation' => $time['formacao'],
-              'address' => $time['logradouro'],
-              'city' => @$time['cidade'],
-              'telephone' => $time['telcontato'],
-              'email' => $time['emailmenbro'],
-              'linkedin' => 'https://algo'///$time['linkedin'],
-            ];
 
-        $partcipat_saved[] = self::registerParticipant($participant);
+          $file_name = $time['comprovacao']->getClientOriginalName();
+          $temp_name = $time['comprovacao']->getPathName();
 
+          $uploadfile = $uploaddir . basename($file_name);
+
+          if (move_uploaded_file($temp_name, $uploadfile)) {
+
+              $participant =
+                [
+                  'name' => $time['nome'],
+                  'function' => 'Produto',//$time['funcao'],
+                  'startup' => $startup_id,
+                  'rg' => $time['rg'],
+                  'cpf' => $time['cpf'],
+                  'institution' => $time['instensino'],
+                  'course' => $time['curso'],
+                  'formation' => $time['formacao'],
+                  'address' => $time['logradouro'],
+                  'city' => @$time['cidade'],
+                  'telephone' => $time['telcontato'],
+                  'email' => $time['emailmenbro'],
+                  'linkedin' => 'hrrps://algo'//$time['linkedin'],
+                ];
+
+              $partcipat_saved[] =
+                $id_partcipat = self::registerParticipant($participant);
+
+              $attachments[] =
+                [
+                  'archive' => $file_name,
+                  'type' => 'experiencia',
+                  'startup' => $startup_id,
+                  'participant' => $id_partcipat,
+                ];
+          }
+      }
+
+      $anexos = $responses['session'][7]['anexos'];
+
+      foreach ($anexos as $type => $anexo) {
+
+          $file_name = $anexo->getClientOriginalName();
+          $temp_name = $anexo->getPathName();
+
+          $uploadfile = $uploaddir . basename($file_name);
+
+          if (move_uploaded_file($temp_name, $uploadfile)) {
+
+              $attachments[] =
+                [
+                  'archive' => $file_name,
+                  'type' => $type,
+                  'startup' => $startup_id,
+                ];
+
+          }
+      }
+
+      $attachments_saved = [];
+      foreach ($attachments as $attachment) {
+        $attachments_saved[] = self::registerAttachment($attachment);
       }
 
       return redirect()->route('concluido');
@@ -125,6 +176,15 @@ class StartupsController extends Controller
             DB::table('participants')->insertGetId($participant);
 
         return $new_participant_id;
+
+    }
+
+    public static function registerAttachment($attachment)
+    {
+        $new_attachment_id =
+            DB::table('attachments')->insertGetId($attachment);
+
+        return $new_attachment_id;
 
     }
 }
