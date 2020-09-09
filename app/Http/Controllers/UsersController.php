@@ -21,7 +21,7 @@ class UsersController extends Controller
         //
     }
 
-    public function register(Request $request)
+    public function actionRegister(Request $request)
     {
         $data = $request->all();
 
@@ -38,9 +38,7 @@ class UsersController extends Controller
                 ]
             );
 
-        echo "<pre>";
-        print_r($startup_id);
-        print_r($new_user_id);
-        exit();
+        return redirect()->route('startup.register.view', ['startup_id' => $startup_id]);
+
     }
 }
