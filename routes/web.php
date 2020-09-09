@@ -14,17 +14,19 @@ use Illuminate\Support\Facades\Route;
 */
 
 
-Route::get('/', function () {
-    return view('home');
-});
-Route::get('/home', function () {
-    return view('home');
-});
+
+Route::redirect('/', '/cadastro');
 Route::get('/cadastro', function () {
     return view('home');
 });
 
-Route::post('/user/register/', 'UsersController@register')->name('user.register');
-Route::post('/startup/register/', 'StartupsController@register')->name('startup.register');
+Route::get('/concluido', function () {
+    return view('concluido');
+})->name('concluido');
 
-Route::get('/inscricao', 'ResponsesController@questionsList');
+
+Route::post('/user/register/', 'UsersController@actionRegister')->name('user.register');
+Route::post('/startup/register/', 'StartupsController@actionRegister')->name('startup.register');
+
+Route::get('/startup/{startup_id}/registro/', 'StartupsController@viewRegister')->name('startup.register.view');
+
