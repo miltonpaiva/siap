@@ -44,20 +44,21 @@
                                     @method('POST')
                                     @csrf <!-- {{ csrf_field() }} -->
                                     <fieldset>
+                                        <input type="hidden" name="session[1][startup_id]" value="{{$startup_id}}">
                                         <h3 class="card-title mt-3">Identificação do Projeto</h3>
                                         <div class="form-group">
                                                 <label for="estado">Estado sede da startup</label>
-                                                <select class="form-control" id="estado"></select>
+                                                <select class="form-control" id="estado" name="session[1][estado]" ></select>
                                             <small id="estadoHelp" class="form-text text-muted obrigatorio">Campo obrigatório!</small>
                                         </div>
                                         <div class="form-group">
                                             <label for="cidade">Município sede da startup</label>
-                                                <select class="form-control" id="cidade"><option disabled selected> Escolher o município sede da equipe </option></select>
+                                                <select class="form-control" id="cidade" name="session[1][cidade]" ><option disabled selected> Escolher o município sede da equipe </option></select>
                                                 <small id="cidadeHelp" class="form-text text-muted obrigatorio">Campo obrigatório!</small>
                                          </div>
                                          <div class="form-group">
                                             <label for="categoria-projeto">Categoria de projeto</label>
-                                                <select class="form-control" id="categoria-projeto">
+                                                <select class="form-control" id="categoria-projeto" name="session[1][categoria]" >
                                                 <option value="" disabled selected>Escolher uma das respostas abaixo</option>
                                                 <option value="Criação">Criação de Negócio</option>
                                                 <option value="Tração">Tração de Negócio</option>
@@ -278,7 +279,7 @@
 
                                             @endforeach
 
-<!--                                             <div class="form-group">
+                                            <div class="form-group">
                                                 <label for="nome-compl">Nome Completo</label>
                                                 <input type="text" class="form-control" id="nome-compl" name="time[1][nome]" aria-describedby="nomeclpHelp">
                                                 <small id="nomeclpHelp" class="form-text text-muted obrigatorio">Campo obrigatório!</small>
@@ -374,7 +375,7 @@
                                                     <label class="custom-file-label" for="comprovacao"></label>
                                                 </div>
                                             </div>
- -->                                        </div>
+                                        </div>
 
                                         <button id="inclua_mais" class="btn btn-outline-secondary btn-lg btn-block mt-5 mb-5">Inclua + 1</button>
 
@@ -415,7 +416,7 @@
 
 
                                         <button id="btnPreveight" class="btn btn-lg btn-green acao"> Voltar </button>
-                                        <button id="btnNexteight" class="btn btn-lg btn-green acao"> Enviar </button>
+                                        <button id="btnNexteight" class="btn btn-lg btn-green acao" onclick="document.getElementById('formulario').submit();" > Enviar </button>
                                     </fieldset>
 
                                 </form>
@@ -490,6 +491,9 @@
     });
     */
     
+
+    var btn_enviar = document.getElementById('btnNexteight');
+    var form       = document.getElementById('formulario');
 </script>
 </body>
 </html>
