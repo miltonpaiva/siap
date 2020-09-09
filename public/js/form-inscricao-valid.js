@@ -108,7 +108,15 @@ $(function(){
         prev_fs.show(800);
 
     });
-    
+
+    //Upload arquivo
+    $("#comprovacao").change(function(){
+        var nomeArquivo = $(this).val();
+        $("#uploadc").append("<span>" + nomeArquivo + "</span>");
+    });
+
+   
+
     //Formulario 3
     $('#btnNextthree').click(function(){
         
@@ -281,7 +289,7 @@ $(function(){
                                         }else{
                                             $("#formacao").removeClass("invalido");
                                             $("#formacao").addClass("valido");
-                                            if(logradouro == null){
+                                            if(logradouro == ""){
                                                 $("#logradouro").removeClass("valido");
                                                 $("#logradouro").addClass("invalido");
                                                 return false;
@@ -317,8 +325,8 @@ $(function(){
                                                                 $("#emailmenbro").removeClass("invalido");
                                                                 $("#emailmenbro").addClass("valido");
                                                                 if(comprovacao == ""){
-                                                                    $("#comprovacao").removeClass("valido");
-                                                                    $("#comprovacao").addClass("invalido");
+                                                                    $("#comprovacao").removeClass("validotwo");
+                                                                    $("#comprovacao").addClass("invalidotwo");
                                                                     return false;
                                                                 }else{
                                                                     console.log(comprovacao);
@@ -348,6 +356,7 @@ $(function(){
         next_fs.show(800);
 
     });
+
 
     $('#btnPrevsix').click(function(){
 

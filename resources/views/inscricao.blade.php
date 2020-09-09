@@ -997,7 +997,7 @@
                                             <div class="form-row">
                                                 <div class="col-md-8 mb-3">
                                                   <label for="rg">RG</label>
-                                                  <input type="number" class="form-control" id="rg">
+                                                  <input type="text" class="form-control" id="rg" maxlength="15">
                                                   <small id="rgHelp" class="form-text text-muted obrigatorio">Campo obrigatório!</small>
                                                 </div>
                                                 <div class="col-md-4 mb-3">
@@ -1058,13 +1058,13 @@
                                             <div class="form-row">
                                                 <div class="col-md-6 mb-3">
                                                   <label for="telcontato">Telefone de contato</label>
-                                                  <input type="number" class="form-control" id="telcontato">
-                                                  <small id="telcontatoHelp" class="form-text text-muted obrigatorio">Campo obrigatório!</small>
+                                                  <input type="text" class="form-control" id="telcontato" maxlength="14">
+                                                  <small id="telcontatoHelp" class="form-text text-muted">E.: 85 999990000</small>
                                                 </div>
                                                 <div class="col-md-6 mb-3">
                                                     <label for="emailmenbro">E-mail</label>
                                                     <input type="text" class="form-control" id="emailmenbro">
-                                                    <small id="emailmenbroHelp" class="form-text text-muted obrigatorio">Verifique novamente seu e-mail '@', '.' !</small>
+                                                    <small id="emailmenbroHelp" class="form-text text-muted">Ex.: seuemail@seuemail.com!</small>
                                                   </div>
                                             </div>
 
@@ -1072,7 +1072,7 @@
                                                 <label for="comprovacao">Anexar Comprovação de Experiência e Conhecimento*</label>
                                                 <div class="custom-file">
                                                     <input type="file" class="custom-file-input" id="comprovacao">
-                                                    <label class="custom-file-label" for="comprovacao"></label>
+                                                    <label id="uploadc" class="custom-file-label" for="comprovacao"></label>
                                                 </div>
                                             </div>
                                         </div>
