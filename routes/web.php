@@ -24,9 +24,14 @@ Route::get('/concluido', function () {
     return view('concluido');
 })->name('concluido');
 
+Route::get('/login', function () {
+    return view('login');
+})->name('user.login.view');
+
 
 Route::post('/user/register/', 'UsersController@actionRegister')->name('user.register');
-Route::post('/startup/register/', 'StartupsController@actionRegister')->name('startup.register');
+Route::post('/user/login/', 'UsersController@actionLogin')->name('user.login');
 
+Route::post('/startup/register/', 'StartupsController@actionRegister')->name('startup.register');
 Route::get('/startup/{startup_id}/registro/', 'StartupsController@viewRegister')->name('startup.register.view');
 
