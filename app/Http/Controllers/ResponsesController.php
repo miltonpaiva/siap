@@ -5,22 +5,23 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\View;
 
+use DB;
+
 use App\Http\Controllers\QueryActionController as Query;
 
 class ResponsesController extends Controller
 {
-    public function questionsList($return_mode = 'json')
+    public static function questionsList($return_mode = 'json')
     {
         $options   = Query::queryAction('options');
         $questions = Query::queryAction('questions');
 
-        $questions = $this->agroupData($options, $questions);
+        $questions = self::agroupData($options, $questions);
 
-        return view('inscricao', ['questions' => $questions]);
-        // return $agrouped;
+        return $questions;
     }
 
-    public function agroupData($options, $questions)
+    public static function agroupData($options, $questions)
     {
         $agrouped_options = [];
         $result           = [];
@@ -37,4 +38,13 @@ class ResponsesController extends Controller
         }
         return $result;
     }
+
+    public static function register($response)
+    {
+        $new_response_id =
+            DB::table('responses')->insertGetId($response);
+
+        return $new_response_id;
+    }
+
 }

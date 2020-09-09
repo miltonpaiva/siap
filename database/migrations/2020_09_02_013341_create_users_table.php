@@ -18,7 +18,7 @@ class CreateUsersTable extends Migration
             $table->string('name', 100);
             $table->string('email', 50);
             $table->string('password', 35);
-            $table->foreign('startup')->references('id')->on('startups');
+            $table->bigInteger('startup')->nullable();
             $table->enum('profile', ['Gestor', 'Técnico', 'Empreendedor', 'Avaliador']);
         });
     }

@@ -12416,14 +12416,14 @@ h3 {
 }
 
 .progresso li:before {
-  content: url("http://localhost:8080/proj-laravel/siap/public/img/foguete_inativo.png");
+  content: url("/img/foguete_inativo.png");
 }
 
 .progresso li.completo:before {
-  content: url("http://localhost:8080/proj-laravel/siap/public/img/foguete_completo.png");
+  content: url("/img/foguete_completo.png");
 }
 
 .progresso li.ativo:before {
-  content: url("http://localhost:8080/proj-laravel/siap/public/img/foguete_ativo.png");
+  content: url("/img/foguete_ativo.png");
 }
 

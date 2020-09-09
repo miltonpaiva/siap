@@ -16,8 +16,8 @@ class CreateStartupsTable extends Migration
         Schema::create('startups', function (Blueprint $table) {
             $table->id();
             $table->string('name', 100);
-            $table->bigInteger('cod_state');
-            $table->bigInteger('cod_city');
+            $table->string('state');
+            $table->string('city');
             $table->enum('category', ['criação', 'tração']);
         });
     }
