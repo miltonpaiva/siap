@@ -216,126 +216,126 @@ $(function(){
         var comprovacao = $("#comprovacao").val();
         
 
-            if(nomecompl == "" || nomecompl.length < 10) {
-                $("#nome-compl").removeClass("valido");
-                $("#nome-compl").addClass("invalido");
-                return false;
-            }else{
-                    $("#nome-compl").removeClass("invalido");
-                    $("#nome-compl").addClass("valido");
-                if(funcaopi == ""){
-                    $("#funcaop").removeClass("valido");
-                    $("#funcaop").addClass("invalido");
-                    return false;
-                }else{
-                    $("#funcaop").removeClass("invalido");
-                    $("#funcaop").addClass("valido");
-                    if(datanasci == ""){
-                        $("#datanasc").removeClass("validotwo");
-                        $("#datanasc").addClass("invalidotwo");
-                        return false;
-                    }else{
-                        $("#datanasc").removeClass("invalidotwo");
-                        $("#datanasc").addClass("validotwo");
-                    }if(rgs == "" || rgs.length <= 12){
-                        $("#rg").removeClass("valido");
-                        $("#rg").addClass("invalido");
-                        return false;
-                    }else{
-                        $("#rg").removeClass("invalido");
-                        $("#rg").addClass("valido");
-                        if(orgemaisso == ""){
-                            $("#orgemaissor").removeClass("valido");
-                            $("#orgemaissor").addClass("invalido");
-                            return false;
-                        }else{
-                            $("#orgemaissor").removeClass("invalido");
-                            $("#orgemaissor").addClass("valido");
-                            if(cpf == "" || !regex.test(cpf)){
-                                $('.obrigatorio').show();
-                                $("#cpf").removeClass("valido");
-                                $("#cpf").addClass("invalido");
-                                return false;
-                            }else{
-                                $('.obrigatorio').hide();
-                                $("#cpf").removeClass("invalido");
-                                $("#cpf").addClass("valido");
-                                if(instensino == ""){
-                                    $("#instensino").removeClass("valido");
-                                    $("#instensino").addClass("invalido");
-                                    return false;
-                                }else{
-                                    $("#instensino").removeClass("invalido");
-                                    $("#instensino").addClass("valido");
-                                    if(curso == ""){
-                                        $("#curso").removeClass("valido");
-                                        $("#curso").addClass("invalido");
-                                        return false;
-                                    }else{
-                                        $("#curso").removeClass("invalido");
-                                        $("#curso").addClass("valido");
-                                        if(formacao == null){
-                                            $("#formacao").removeClass("valido");
-                                            $("#formacao").addClass("invalido");
-                                            return false;
-                                        }else{
-                                            $("#formacao").removeClass("invalido");
-                                            $("#formacao").addClass("valido");
-                                            if(logradouro == null){
-                                                $("#logradouro").removeClass("valido");
-                                                $("#logradouro").addClass("invalido");
-                                                return false;
-                                            }else{
-                                                $("#logradouro").removeClass("invalido");
-                                                $("#logradouro").addClass("valido");
-                                                if(estad == ""){
-                                                    $("#estadom").removeClass("valido");
-                                                    $("#estadom").addClass("invalido");
-                                                    return false;
-                                                }else{
-                                                    $("#estadom").removeClass("invalido");
-                                                    $("#estadom").addClass("valido");
-                                                    if(cidad == ""){
-                                                        $("#cidadem").removeClass("valido");
-                                                        $("#cidadem").addClass("invalido");
-                                                        return false;
-                                                    }else{
-                                                        $("#cidadem").removeClass("invalido");
-                                                        $("#cidadem").addClass("valido");
-                                                        if(tel == ""){
-                                                            $("#telcontato").removeClass("valido");
-                                                            $("#telcontato").addClass("invalido");
-                                                            return false;
-                                                        }else{
-                                                            $("#telcontato").removeClass("invalido");
-                                                            $("#telcontato").addClass("valido");
-                                                            if(emailmenbro == "" || !exprEmeio.test(emailmenbro)){
-                                                                $("#emailmenbro").removeClass("valido");
-                                                                $("#emailmenbro").addClass("invalido");
-                                                                return false;
-                                                            }else{
-                                                                $("#emailmenbro").removeClass("invalido");
-                                                                $("#emailmenbro").addClass("valido");
-                                                                if(comprovacao == ""){
-                                                                    $("#comprovacao").removeClass("valido");
-                                                                    $("#comprovacao").addClass("invalido");
-                                                                    return false;
-                                                                }else{
-                                                                    console.log(comprovacao);
-                                                                }
-                                                            }
-                                                        }
-                                                    }
-                                                }
-                                            }
-                                        }
-                                    }
-                                }
-                            }
-                        }
-                    }
-                }
-            }
+            // if(nomecompl == "" || nomecompl.length < 10) {
+            //     $("#nome-compl").removeClass("valido");
+            //     $("#nome-compl").addClass("invalido");
+            //     return false;
+            // }else{
+            //         $("#nome-compl").removeClass("invalido");
+            //         $("#nome-compl").addClass("valido");
+            //     if(funcaopi == ""){
+            //         $("#funcaop").removeClass("valido");
+            //         $("#funcaop").addClass("invalido");
+            //         return false;
+            //     }else{
+            //         $("#funcaop").removeClass("invalido");
+            //         $("#funcaop").addClass("valido");
+            //         if(datanasci == ""){
+            //             $("#datanasc").removeClass("validotwo");
+            //             $("#datanasc").addClass("invalidotwo");
+            //             return false;
+            //         }else{
+            //             $("#datanasc").removeClass("invalidotwo");
+            //             $("#datanasc").addClass("validotwo");
+            //         }if(rgs == "" || rgs.length <= 12){
+            //             $("#rg").removeClass("valido");
+            //             $("#rg").addClass("invalido");
+            //             return false;
+            //         }else{
+            //             $("#rg").removeClass("invalido");
+            //             $("#rg").addClass("valido");
+            //             if(orgemaisso == ""){
+            //                 $("#orgemaissor").removeClass("valido");
+            //                 $("#orgemaissor").addClass("invalido");
+            //                 return false;
+            //             }else{
+            //                 $("#orgemaissor").removeClass("invalido");
+            //                 $("#orgemaissor").addClass("valido");
+            //                 if(cpf == "" || !regex.test(cpf)){
+            //                     $('.obrigatorio').show();
+            //                     $("#cpf").removeClass("valido");
+            //                     $("#cpf").addClass("invalido");
+            //                     return false;
+            //                 }else{
+            //                     $('.obrigatorio').hide();
+            //                     $("#cpf").removeClass("invalido");
+            //                     $("#cpf").addClass("valido");
+            //                     if(instensino == ""){
+            //                         $("#instensino").removeClass("valido");
+            //                         $("#instensino").addClass("invalido");
+            //                         return false;
+            //                     }else{
+            //                         $("#instensino").removeClass("invalido");
+            //                         $("#instensino").addClass("valido");
+            //                         if(curso == ""){
+            //                             $("#curso").removeClass("valido");
+            //                             $("#curso").addClass("invalido");
+            //                             return false;
+            //                         }else{
+            //                             $("#curso").removeClass("invalido");
+            //                             $("#curso").addClass("valido");
+            //                             if(formacao == null){
+            //                                 $("#formacao").removeClass("valido");
+            //                                 $("#formacao").addClass("invalido");
+            //                                 return false;
+            //                             }else{
+            //                                 $("#formacao").removeClass("invalido");
+            //                                 $("#formacao").addClass("valido");
+            //                                 if(logradouro == null){
+            //                                     $("#logradouro").removeClass("valido");
+            //                                     $("#logradouro").addClass("invalido");
+            //                                     return false;
+            //                                 }else{
+            //                                     $("#logradouro").removeClass("invalido");
+            //                                     $("#logradouro").addClass("valido");
+            //                                     if(estad == ""){
+            //                                         $("#estadom").removeClass("valido");
+            //                                         $("#estadom").addClass("invalido");
+            //                                         return false;
+            //                                     }else{
+            //                                         $("#estadom").removeClass("invalido");
+            //                                         $("#estadom").addClass("valido");
+            //                                         if(cidad == ""){
+            //                                             $("#cidadem").removeClass("valido");
+            //                                             $("#cidadem").addClass("invalido");
+            //                                             return false;
+            //                                         }else{
+            //                                             $("#cidadem").removeClass("invalido");
+            //                                             $("#cidadem").addClass("valido");
+            //                                             if(tel == ""){
+            //                                                 $("#telcontato").removeClass("valido");
+            //                                                 $("#telcontato").addClass("invalido");
+            //                                                 return false;
+            //                                             }else{
+            //                                                 $("#telcontato").removeClass("invalido");
+            //                                                 $("#telcontato").addClass("valido");
+            //                                                 if(emailmenbro == "" || !exprEmeio.test(emailmenbro)){
+            //                                                     $("#emailmenbro").removeClass("valido");
+            //                                                     $("#emailmenbro").addClass("invalido");
+            //                                                     return false;
+            //                                                 }else{
+            //                                                     $("#emailmenbro").removeClass("invalido");
+            //                                                     $("#emailmenbro").addClass("valido");
+            //                                                     if(comprovacao == ""){
+            //                                                         $("#comprovacao").removeClass("valido");
+            //                                                         $("#comprovacao").addClass("invalido");
+            //                                                         return false;
+            //                                                     }else{
+            //                                                         console.log(comprovacao);
+            //                                                     }
+            //                                                 }
+            //                                             }
+            //                                         }
+            //                                     }
+            //                                 }
+            //                             }
+            //                         }
+            //                     }
+            //                 }
+            //             }
+            //         }
+            //     }
+            // }
         
         atual_fs = $(this).parent();
         next_fs = $(this).parent().next();
