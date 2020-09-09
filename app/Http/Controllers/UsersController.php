@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use DB;
 
 use App\Http\Controllers\StartupsController as Startup;
+use App\Http\Controllers\QueryActionController as Query;
 
 class UsersController extends Controller
 {
@@ -40,5 +41,38 @@ class UsersController extends Controller
 
         return redirect()->route('startup.register.view', ['startup_id' => $startup_id]);
 
+    }
+
+    public function actionLogin(Request $request)
+    {
+        $data = $request->all();
+
+        $custom_args['columns'] =
+            [
+                'id',
+                'email',
+                'startup',
+                'password'
+            ];
+
+        $custom_args['conditions'] =
+            [
+                ['email', '=', $data['login']]
+            ];
+
+        $data_user = Query::queryAction('users', $custom_args);
+
+        if (count($data_user) > 0) {
+            if(current($data_user)['password'] == md5($data['senhalogin'])){
+                $user = current($data_user);
+                return redirect()->route('startup.register.view', ['startup_id' => $user['startup']]);
+            }else{
+                // SENHA INCORRETA
+                return redirect()->route('user.login');
+            }
+        }else{
+            // USUARIO NÃO ENCONTRADO
+            return redirect()->route('user.login');
+        }
     }
 }

@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use DB;
 
 use App\Http\Controllers\ResponsesController as Response;
+use App\Http\Controllers\QueryActionController as Query;
 
 class StartupsController extends Controller
 {
@@ -53,14 +54,35 @@ class StartupsController extends Controller
 
         $questions = Response::questionsList('array');
 
+        $custom_args['conditions'] =
+            [
+                ['startup', '=', $startup_id]
+            ];
+
+        $responses = Query::queryAction('responses', $custom_args);
+
+        $custom_args['conditions'] =
+            [
+                ['id', '=', $startup_id]
+            ];
+
+        $startup = current(Query::queryAction('startups', $custom_args));
+
+        $responses_agrouped = [];
+        foreach ($responses as $resp) {
+           $responses_agrouped[$resp['question']]['option']   = $resp['option'];
+           $responses_agrouped[$resp['question']]['response'] = $resp['id'];
+        }
+
         $vars =
           [
               'questions'  => $questions,
               'startup_id' => $startup_id,
+              'responses'  => $responses_agrouped,
+              'startup'    => $startup,
           ];
 
         return view('inscricao', $vars);
-
     }
 
     public function actionRegister(Request $request)
@@ -68,7 +90,7 @@ class StartupsController extends Controller
       $responses = $request->all();
 
       $startup_args['state']     = $responses['session'][1]['estado'];
-      $startup_args['city']     = $responses['session'][1]['cidade'];
+      $startup_args['city']      = $responses['session'][1]['cidade'];
       $startup_args['category']  = $responses['session'][1]['categoria'];
       $startup_id = $responses['session'][1]['startup_id'];
 
@@ -176,7 +198,6 @@ class StartupsController extends Controller
             DB::table('participants')->insertGetId($participant);
 
         return $new_participant_id;
-
     }
 
     public static function registerAttachment($attachment)
@@ -185,6 +206,5 @@ class StartupsController extends Controller
             DB::table('attachments')->insertGetId($attachment);
 
         return $new_attachment_id;
-
     }
 }

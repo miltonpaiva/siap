@@ -47,4 +47,9 @@ class ResponsesController extends Controller
         return $new_response_id;
     }
 
+    public static function responseList()
+    {
+        $responses = Query::queryAction('responses');
+        return $responses;
+    }
 }

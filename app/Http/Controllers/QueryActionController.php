@@ -43,6 +43,10 @@ class QueryActionController extends Controller
 				////////// ////////// ////////// ////////// ////////// //////////
 				'questions' => $default_args,
 				////////// ////////// ////////// ////////// ////////// //////////
+				'responses' => $default_args,
+				////////// ////////// ////////// ////////// ////////// //////////
+				'startups'  => $default_args,
+				////////// ////////// ////////// ////////// ////////// //////////
 			];
 
 		// DEFINIÇÃO DE ARGUMENTOS CUSTOMIZADOS
@@ -83,10 +87,12 @@ class QueryActionController extends Controller
 				->where($conditions)
 				->get($columns);
 
-		$array_data = self::toArray($data);
+		if (count($data) > 0) {
+			$array_data = self::toArray($data);
 
-		foreach ($array_data as $key_data => $data){
-			$result[$data['id']] = $data;
+			foreach ($array_data as $key_data => $data){
+				$result[$data['id']] = $data;
+			}
 		}
 
 		return $result;
