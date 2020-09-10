@@ -109,14 +109,6 @@ $(function(){
 
     });
 
-    //Upload arquivo
-    $("#comprovacao").change(function(){
-        var nomeArquivo = $(this).val();
-        $("#uploadc").append("<span>" + nomeArquivo + "</span>");
-    });
-
-   
-
     //Formulario 3
     $('#btnNextthree').click(function(){
         
@@ -204,6 +196,12 @@ $(function(){
 
     });
 
+    //Upload arquivo comprovacao
+    $("#comprovacao").change(function(){
+        var nomeArquivo = $(this).val();
+        $("#uploadc").append("<span>" + nomeArquivo + "</span>");
+    });
+
     //Formulario 6
     $('#btnNextsix').click(function(){
 
@@ -223,7 +221,7 @@ $(function(){
         var emailmenbro = $("#emailmenbro").val();
         var comprovacao = $("#comprovacao").val();
         
-            if(nomecompl == "" || nomecompl.length < 10) {
+            if(nomecompl == "") {
                 $("#nome-compl").removeClass("valido");
                 $("#nome-compl").addClass("invalido");
                 return false;
@@ -371,8 +369,38 @@ $(function(){
 
     });
 
+    //Upload video e PDF
+    $("#customFilev").change(function(){
+        var nomeVideo = $(this).val();
+        $("#upvideo").append("<span>" + nomeVideo + "</span>");
+    });
+
+    $("#customFilep").change(function(){
+        var nomepdf = $(this).val();
+        $("#uppdf").append("<span>" + nomepdf + "</span>");
+    });
+
     //Formulario 7
     $('#btnNextseven').click(function(){
+
+
+        var videoUpload = $("#customFilev").val();
+        var pdfUpload = $("#customFilep").val();
+
+        if(videoUpload == ""){
+            $("#customFilev").removeClass("validotwo");
+            $("#customFilev").addClass("invalidotwo");
+            return false;
+        }else{
+            console.log(videoUpload);
+            if(pdfUpload == ""){
+                $("#customFilep").removeClass("validotwo");
+                $("#customFilep").addClass("invalidotwo");
+                return false;
+            }else{
+                console.log(pdfUpload);
+            }
+        }
 
         atual_fs = $(this).parent();
         next_fs = $(this).parent().next();

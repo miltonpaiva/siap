@@ -1,6 +1,17 @@
 @import url(https://fonts.googleapis.com/css2?family=Roboto:wght@100;
 
-300;400;500;700;900&display=swap);:root {
+300;400;500;700;900&display=swap);.custom-file-label::after {
+  content: "Upload" !important;
+}
+
+/*!
+ * Bootstrap v4.5.2 (https://getbootstrap.com/)
+ * Copyright 2011-2020 The Bootstrap Authors
+ * Copyright 2011-2020 Twitter, Inc.
+ * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
+ */
+
+:root {
   --blue: #007bff;
   --indigo: #6610f2;
   --purple: #6f42c1;
@@ -12418,14 +12429,22 @@ h3 {
 }
 
 .progresso li:before {
+  width: 100%;
   content: url("http://localhost:8080/proj-laravel/siap/public/img/foguete_inativo.png");
 }
 
 .progresso li.completo:before {
+  width: 100%;
   content: url("http://localhost:8080/proj-laravel/siap/public/img/foguete_completo.png");
 }
 
 .progresso li.ativo:before {
+  width: 100%;
   content: url("http://localhost:8080/proj-laravel/siap/public/img/foguete_ativo.png");
+}
+
+.pergunta {
+  font-weight: bold;
+  padding: 1px 0 10px 0;
 }
 

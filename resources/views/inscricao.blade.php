@@ -20,15 +20,12 @@
     <section style="overflow: hidden">
         <div class="container">
             <div class="mt-4 mb-3">
-                <div class="card w-90 p-1 mx-auto">
-                    <div class="row">
-                        
-                        <div class="col-sm-12 col-md-12">
-                            
-                            <div class="card-body">
+                <div class="row">
+                    <div class="col-sm-12 col-md-11 mx-auto">
+                        <div class="card p-1">
+                            <div class="card-body mx-auto">
                                 <div class="row">
-                                    <div class="col-sm-12 col-md-4"></div>
-                                    <div class="col-sm-12 col-md-4">
+                                    <div class="col-sm-12 col-md-12">
                                         <ul class="progresso">
                                             <li class="ativo completo one" rel="tooltip" title="Identificação do Projeto"></li>
                                             <li></li>
@@ -40,7 +37,6 @@
                                             <li></li>                    
                                         </ul>
                                     </div>
-                                    <div class="col-sm-12 col-md-4"></div>
                                 </div>
                             </div>
 
@@ -52,7 +48,7 @@
                                         <input type="hidden" name="session[1][startup_id]" value="{{$startup_id}}">
                                         <h3 class="card-title mt-3">Identificação do Projeto</h3>
                                         <div class="form-group">
-                                                <label for="estado">Estado sede da startup</label>
+                                                <label class="pergunta" for="estado">Estado sede da startup</label>
                                                 <select class="form-control" id="estado" name="session[1][estado]" >
                                                     <option
 
@@ -76,7 +72,7 @@
                                             <small id="estadoHelp" class="form-text text-muted obrigatorio">Campo obrigatório!</small>
                                         </div>
                                         <div class="form-group">
-                                            <label for="cidade">Município sede da startup</label>
+                                            <label class="pergunta" for="cidade">Município sede da startup</label>
                                                 <select class="form-control" id="cidade" name="session[1][cidade]" >
                                                     <option
 
@@ -100,7 +96,7 @@
                                                 <small id="cidadeHelp" class="form-text text-muted obrigatorio">Campo obrigatório!</small>
                                          </div>
                                          <div class="form-group">
-                                            <label for="categoria-projeto">Categoria de projeto</label>
+                                            <label class="pergunta" for="categoria-projeto">Categoria de projeto</label>
                                                 <select class="form-control" id="categoria-projeto" name="session[1][categoria]" >
                                                 <option value="" disabled selected>Escolher uma das respostas abaixo</option>
                                                 <option 
@@ -135,7 +131,7 @@
                                                 >
                                             @endif
 
-                                            <label for="tomou-conhecimento">{{$question['name']}}</label>
+                                            <label class="pergunta" for="tomou-conhecimento">{{$question['name']}}</label>
                                             <select
                                                 class="form-control" 
                                                 id="tomou-conhecimento" 
@@ -181,7 +177,7 @@
                                                 >
                                             @endif
 
-                                        <label for="question_{{$question['id']}}">{{$question['name']}}</label>
+                                        <label class="pergunta" for="question_{{$question['id']}}">{{$question['name']}}</label>
                                             <div class="form-group">
 
                                             @foreach($question['options'] as $option)
@@ -234,7 +230,7 @@
                                                 >
                                             @endif
 
-                                        <label for="question_{{$question['id']}}">{{$question['name']}}</label>
+                                        <label class="pergunta" for="question_{{$question['id']}}">{{$question['name']}}</label>
                                             <div class="form-group">
 
                                             @foreach($question['options'] as $option)
@@ -287,7 +283,7 @@
                                                 >
                                             @endif
 
-                                        <label for="question_{{$question['id']}}">{{$question['name']}}</label>
+                                        <label class="pergunta" for="question_{{$question['id']}}">{{$question['name']}}</label>
                                             <div class="form-group">
 
                                             @foreach($question['options'] as $option)
@@ -341,7 +337,7 @@
                                                 >
                                             @endif
 
-                                        <label for="question_{{$question['id']}}">{{$question['name']}}</label>
+                                        <label class="pergunta" for="question_{{$question['id']}}">{{$question['name']}}</label>
                                             <div class="form-group">
 
                                             @foreach($question['options'] as $option)
@@ -387,7 +383,7 @@
 
                                         <div class="form-group dados_membros">
 
-                                            <label for="estagiotp">Dados dos membros:</label>
+                                            <label class="pergunta" for="estagiotp">Dados dos membros:</label>
 
                                             @foreach($questions[6] as $question)
 
@@ -399,7 +395,7 @@
                                                 >
                                             @endif
 
-                                            <label for="question_{{$question['id']}}">{{$question['name']}}</label>
+                                            <label class="pergunta" for="question_{{$question['id']}}">{{$question['name']}}</label>
                                                 <div class="form-group">
 
                                                 @foreach($question['options'] as $option)
@@ -435,76 +431,80 @@
                                             @endforeach
 
                                             <div class="form-group">
-                                                <label for="nome-compl">Nome Completo</label>
+                                                <label class="pergunta" for="nome-compl">Nome Completo</label>
                                                 <input type="text" class="form-control" id="nome-compl" name="time[1][nome]" aria-describedby="nomeclpHelp">
                                                 <small id="nomeclpHelp" class="form-text text-muted obrigatorio">Campo obrigatório!</small>
                                             </div>
-                                            <div class="form-group">
-                                                <label for="funcaop">Função no Projeto (negócio, produto ou marketing)</label>
-                                                <input type="text" class="form-control" id="funcaop" name="time[1][funcao]" aria-describedby="funcaopHelp">
-                                                <small id="funcaopHelp" class="form-text text-muted obrigatorio">Campo obrigatório!</small>
-                                            </div>
-                                            <div class="form-group">
-                                                <label for="datanasc">Data de Nascimento</label>
-                                                <input type="date" class="form-control" id="datanasc" name="time[1][datanasc]" aria-describedby="datanascHelp">
-                                                <small id="datanascHelp" class="form-text text-muted obrigatorio">Campo obrigatório!</small>
+                                            <div class="form-row">
+                                                <div class="col-md-7 mb-3">
+                                                    <label class="pergunta" for="funcaop">Função no Projeto (negócio, produto ou marketing)</label>
+                                                    <input type="text" class="form-control" id="funcaop" name="time[1][funcao]" aria-describedby="funcaopHelp">
+                                                    <small id="funcaopHelp" class="form-text text-muted obrigatorio">Campo obrigatório!</small>
+                                                </div>
+                                                <div class="col-md-5 mb-3">
+                                                    <label class="pergunta" for="datanasc">Data de Nascimento</label>
+                                                    <input type="date" class="form-control" id="datanasc" name="time[1][datanasc]" aria-describedby="datanascHelp">
+                                                    <small id="datanascHelp" class="form-text text-muted obrigatorio">Campo obrigatório!</small>
+                                                </div>
                                             </div>
                                             <div class="form-row">
-                                                <div class="col-md-8 mb-3">
-                                                  <label for="rg">RG</label>
+                                                <div class="col-md-5 mb-3">
+                                                  <label class="pergunta" for="rg">RG</label>
                                                   <input type="text" class="form-control" id="rg" name="time[1][rg]" maxlength="15" >
                                                   <small id="rgHelp" class="form-text text-muted obrigatorio">Campo obrigatório!</small>
                                                 </div>
-                                                <div class="col-md-4 mb-3">
-                                                  <label for="orgemaissor">Órgão Emissor</label>
+                                                <div class="col-md-2 mb-3">
+                                                  <label class="pergunta" for="orgemaissor">Órgão Emissor</label>
                                                   <input type="text" class="form-control" id="orgemaissor" name="time[1][orgemaissor]" >
                                                   <small id="orgemaissorHelp" class="form-text text-muted obrigatorio">Campo obrigatório!</small>
                                                 </div>
+                                                <div class="col-md-5 mb-3">
+                                                    <label class="pergunta" for="cpf">CPF</label>
+                                                    <input type="text" class="form-control" id="cpf" name="time[1][cpf]" aria-describedby="cpfHelp" maxlength="15">
+                                                    <small id="cpfHelp" class="form-text text-muted obrigatorio">CPF inválido!</small>
+                                                </div>
                                             </div>
-                                            <div class="form-group">
-                                                <label for="cpf">CPF</label>
-                                                <input type="text" class="form-control" id="cpf" name="time[1][cpf]" aria-describedby="cpfHelp" maxlength="15">
-                                                <small id="cpfHelp" class="form-text text-muted obrigatorio">CPF inválido!</small>
+                                            <div class="form-row">
+                                                <div class="col-md-4 mb-3">
+                                                    <label class="pergunta" for="instensino">Instituição de Ensino</label>
+                                                    <input type="text" class="form-control" id="instensino" name="time[1][instensino]" aria-describedby="instensinoHelp">
+                                                    <small id="instensinoHelp" class="form-text text-muted obrigatorio">Campo obrigatório!</small>
+                                                </div>
+                                                <div class="col-md-4 mb-3">
+                                                    <label class="pergunta" for="curso">Curso</label>
+                                                    <input type="text" class="form-control" id="curso" name="time[1][curso]" aria-describedby="cursoHelp">
+                                                    <small id="cursoHelp" class="form-text text-muted obrigatorio">Campo obrigatório!</small>
+                                                </div>
+                                                <div class="col-md-4 mb-3">
+                                                    <label class="pergunta" for="categoria-projeto">Formação</label>
+                                                        <select class="form-control" id="formacao" name="time[1][formacao]" >
+                                                        <option value="" disabled selected>Escolher uma das respostas abaixo</option>
+                                                        <option value="1">Nível Médio Regular Incompleto</option>
+                                                        <option value="2">Nível Médio Regular Completo</option>
+                                                        <option value="3">Nível Médio Profissionalizante Incompleto</option>
+                                                        <option value="4">Nível Médio Profissionalizante Completo</option>
+                                                        <option value="5">Superior Completo</option>
+                                                        <option value="6">Superior Incompleto</option>
+                                                        <option value="7">Nível Técnico Incompleto</option>
+                                                        <option value="8">Nível Técnico Completo</option>
+                                                        </select>
+                                                        <small id="formacaoHelp" class="form-text text-muted obrigatorio">Campo obrigatório!</small>
+                                                </div>
                                             </div>
-                                            <div class="form-group">
-                                                <label for="instensino">Instituição de Ensino</label>
-                                                <input type="text" class="form-control" id="instensino" name="time[1][instensino]" aria-describedby="instensinoHelp">
-                                                <small id="instensinoHelp" class="form-text text-muted obrigatorio">Campo obrigatório!</small>
-                                            </div>
-                                            <div class="form-group">
-                                                <label for="curso">Curso</label>
-                                                <input type="text" class="form-control" id="curso" name="time[1][curso]" aria-describedby="cursoHelp">
-                                                <small id="cursoHelp" class="form-text text-muted obrigatorio">Campo obrigatório!</small>
-                                            </div>
-                                            <div class="form-group">
-                                                <label for="categoria-projeto">Formação</label>
-                                                    <select class="form-control" id="formacao" name="time[1][formacao]" >
-                                                    <option value="" disabled selected>Escolher uma das respostas abaixo</option>
-                                                    <option value="1">Nível Médio Regular Incompleto</option>
-                                                    <option value="2">Nível Médio Regular Completo</option>
-                                                    <option value="3">Nível Médio Profissionalizante Incompleto</option>
-                                                    <option value="4">Nível Médio Profissionalizante Completo</option>
-                                                    <option value="5">Superior Completo</option>
-                                                    <option value="6">Superior Incompleto</option>
-                                                    <option value="7">Nível Técnico Incompleto</option>
-                                                    <option value="8">Nível Técnico Completo</option>
-                                                    </select>
-                                                    <small id="formacaoHelp" class="form-text text-muted obrigatorio">Campo obrigatório!</small>
-                                             </div>
 
                                              <div class="form-row">
                                                 <div class="col-md-6 mb-3">
-                                                  <label for="logradouro">Logradouro</label>
+                                                  <label class="pergunta" for="logradouro">Logradouro</label>
                                                   <input type="text" class="form-control" id="logradouro" name="time[1][logradouro]">
                                                   <small id="logradouroHelp" class="form-text text-muted obrigatorio">Campo obrigatório!</small>
                                                 </div>
                                                 <div class="col-md-3 mb-3">
-                                                    <label for="estadom">Estado</label>
+                                                    <label class="pergunta" for="estadom">Estado</label>
                                                     <input type="text" class="form-control" id="estadom" name="time[1][estado]" >
                                                     <small id="estadomHelp" class="form-text text-muted obrigatorio">Campo obrigatório!</small>
                                                   </div>
                                                 <div class="col-md-3 mb-3">
-                                                  <label for="cidadem">Cidade</label>
+                                                  <label class="pergunta" for="cidadem">Cidade</label>
                                                   <input type="text" class="form-control" id="cidadem" name="time[1][cidade]" >
                                                   <small id="cidademHelp" class="form-text text-muted obrigatorio">Campo obrigatório!</small>
                                                 </div>
@@ -512,19 +512,19 @@
 
                                             <div class="form-row">
                                                 <div class="col-md-6 mb-3">
-                                                  <label for="telcontato">Telefone de contato</label>
+                                                  <label class="pergunta" for="telcontato">Telefone de contato</label>
                                                   <input type="text" class="form-control" id="telcontato" name="time[1][telcontato]" maxlength="14" >
                                                   <small id="telcontatoHelp" class="form-text text-muted">E.: 85 999990000</small>
                                                 </div>
                                                 <div class="col-md-6 mb-3">
-                                                    <label for="emailmenbro">E-mail</label>
+                                                    <label class="pergunta" for="emailmenbro">E-mail</label>
                                                     <input type="text" class="form-control" id="emailmenbro" name="time[1][emailmenbro]" >
                                                      <small id="emailmenbroHelp" class="form-text text-muted">Ex.: seuemail@seuemail.com!</small>
                                                   </div>
                                             </div>
 
-                                            <div class="form-group">
-                                                <label for="comprovacao">Anexar Comprovação de Experiência e Conhecimento*</label>
+                                            <div class="form-group mb-5">
+                                                <label class="pergunta" for="comprovacao">Anexar Comprovação de Experiência e Conhecimento*</label>
                                                 <div class="custom-file">
                                                     <input type="file" class="custom-file-input" id="comprovacao" name="time[1][comprovacao]" >
                                                     <label id="uploadc" class="custom-file-label" for="comprovacao"></label>
@@ -545,17 +545,17 @@
                                             <h3 class="card-title mt-3">Inclusão de anexos do projeto</h3>
 
                                             <div class="form-group">
-                                                <label for="estagiotp">Vídeo:</label>
+                                                <label class="pergunta" for="estagiotp">Vídeo:</label>
                                                 <div class="custom-file">
-                                                    <input type="file" class="custom-file-input" id="customFile" name="session[7][anexos][video]" >
-                                                    <label class="custom-file-label" for="customFile">Vídeo</label>
+                                                    <input type="file" class="custom-file-input" id="customFilev" name="session[7][anexos][video]" >
+                                                    <label id="upvideo" class="custom-file-label" for="customFile">Vídeo</label>
                                                 </div>
                                             </div>
                                             <div class="form-group">
-                                                <label for="estagiotp">PDF:</label>
+                                                <label class="pergunta" for="estagiotp">PDF:</label>
                                                 <div class="custom-file">
-                                                    <input type="file" class="custom-file-input" id="customFile" name="session[7][anexos][pdf]" >
-                                                    <label class="custom-file-label" for="customFile">PDF</label>
+                                                    <input type="file" class="custom-file-input" id="customFilep" name="session[7][anexos][pdf]" >
+                                                    <label id="uppdf" class="custom-file-label" for="customFile">PDF</label>
                                                 </div>
                                             </div>
 
@@ -568,6 +568,23 @@
 
                                     <fieldset>
                                         <h3 class="card-title mt-3">Confirmação do termo de compromisso</h3>
+
+                                        <div class="form-group">
+                                            <label class="pergunta" for="termoTextarea">Leia o termo</label>
+                                            <textarea class="form-control mt-3" id="termoTextarea" rows="6">
+                                                O preenchimento da Seção 8 do formulário eletrônico será obrigatório. Os candidatos
+                                                atestarão que leram e compreenderam o regulamento do Corredores Digitais, aceitando-o
+                                                integralmente. Além disso, os candidatos declararão para os devidos fins de direito, sob as
+                                                penas da lei, que as informações prestadas para a inscrição na edição 2020 do Programa
+                                                Corredores Digitais são verdadeiras e autênticas. E, finalmente, os candidatos permitirão
+                                                que a SECITECE compartilhe os dados referentes aos seus projetos com parceiros e
+                                                avaliadores.
+                                            </textarea>
+                                            <div class="custom-control custom-checkbox mt-3">
+                                                <input type="checkbox" class="custom-control-input" id="customCheck1" value="Eu li, aceito e concordo com os termos.">
+                                                <label class="custom-control-label" for="customCheck1">Eu li, aceito e concordo com os termos.</label>
+                                              </div>
+                                            </div>
 
 
                                         <button id="btnPreveight" class="btn btn-lg btn-green acao"> Voltar </button>
