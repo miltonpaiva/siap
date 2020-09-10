@@ -5,8 +5,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    <!-- PERMITIR CONTEUDO MISTO TEMPORAREAMENTE -->
-    <!-- <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests"> -->
+    <?php
+        $url = $_SERVER['HTTP_HOST'] . $_SERVER['SCRIPT_NAME'];
+        if (strpos($url, 'herokuapp.com')):
+    ?>
+            <!-- PERMITIR CONTEUDO MISTO TEMPORAREAMENTE -->
+            <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+    <?php endif; ?>
+
     <title>SIAP - Cadastro Projetos</title>
 <link rel="stylesheet" href="{{ asset('css/style.css') }}">
 </head>
