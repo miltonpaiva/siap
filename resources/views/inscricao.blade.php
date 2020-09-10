@@ -118,10 +118,13 @@
                                                 </select>
                                                 <small id="categoriaHelp" class="form-text text-muted obrigatorio">Campo obrigatório!</small>
                                          </div>
-                                         <div class="form-group">
 
                                             <!-- LOOP DE MONTEGEM DAS OPÇÕES -->
                                             @foreach($questions[1] as $question)
+
+                                            @if ($loop->iteration == 1)
+
+                                             <div class="form-group">
 
                                             @if (@$responses[$question['id']])
                                                 <input 
@@ -160,13 +163,68 @@
                                                 @endforeach
 
                                             </select>
+                                            <small id="tconhecimentoHelp" class="form-text text-muted">Campo obrigatório!</small>
+                                         </div>
+
+                                            @endif
 
                                             @endforeach
 
-                                            <small id="tconhecimentoHelp" class="form-text text-muted">Campo obrigatório!</small>
+                                        @foreach($questions[1] as $question)
 
-                                         </div>
-<button onclick="prepareSession1()" id="btnNextone" class="btn btn-lg btn-green acao"> Próxima Etapa </button>
+                                            @if ($loop->iteration > 1)
+
+                                            @if (@$responses[$question['id']])
+                                                <input 
+                                                    type="hidden" 
+                                                    name="session[{{$question['session']}}][questions][{{$question['id']}}][response]"
+                                                    value="{{$responses[$question['id']]['response']}}" 
+                                                >
+                                            @endif
+
+                                        <label class="pergunta" for="question_{{$question['id']}}">{{$question['name']}}</label>
+                                            <div class="form-group">
+
+                                            @foreach($question['options'] as $option)
+
+                                                <div class="custom-control custom-radio">
+                                                    <input 
+                                                        type="radio" 
+                                                        id="{{$option['id']}}" 
+                                                        name="session[{{$question['session']}}][questions][{{$question['id']}}][value]" 
+                                                        question="{{$question['id']}}" 
+                                                        startup="{{$startup_id}}" 
+                                                        class="custom-control-input session_{{$question['session']}}"
+                                                        value="{{$option['id']}}" 
+
+                                                        @if ($loop->iteration == 1 && @$responses[$question['id']]['option'] == $option['id'])
+                                                          checked
+                                                          response="{{$responses[$question['id']]['response']}}"
+                                                        @endif
+
+                                                        @if ($loop->iteration != 1 && @$responses[$question['id']]['option'] == $option['id'])
+                                                          checked
+                                                          response="{{$responses[$question['id']]['response']}}"
+                                                        @endif
+
+                                                        @if ($loop->iteration == 1 && @$responses[$question['id']]['option'] != $option['id'])
+                                                          checked
+                                                        @endif
+                                                    >
+                                                    <label class="custom-control-label" for="{{$option['id']}}">{{$option['name']}}</label>
+                                                </div>
+
+                                            @endforeach
+
+                                            </div>
+
+                                        @endif
+
+
+                                        @endforeach
+
+
+                                    <button onclick="prepareSession1()" id="btnNextone" class="btn btn-lg btn-green acao"> Próxima Etapa </button>
                                     </fieldset>
 
                                     <!-- Forme 2 - Informações sobre o produto -->
@@ -604,24 +662,16 @@
 
                                         <div class="form-group">
                                             <label class="pergunta" for="termoTextarea">Leia o termo</label>
-                                            <textarea class="form-control mt-3" id="termoTextarea" rows="6">
-                                                O preenchimento da Seção 8 do formulário eletrônico será obrigatório. Os candidatos
-                                                atestarão que leram e compreenderam o regulamento do Corredores Digitais, aceitando-o
-                                                integralmente. Além disso, os candidatos declararão para os devidos fins de direito, sob as
-                                                penas da lei, que as informações prestadas para a inscrição na edição 2020 do Programa
-                                                Corredores Digitais são verdadeiras e autênticas. E, finalmente, os candidatos permitirão
-                                                que a SECITECE compartilhe os dados referentes aos seus projetos com parceiros e
-                                                avaliadores.
-                                            </textarea>
+                                            <textarea class="form-control mt-3" id="termoTextarea" rows="6" disabled="">Declaro para os devidos da lei, que as informações prestadas para a análise de atratividade na edição 2020do Programa Corredores Digitais são verdadeiras e autênticas. E permitirá que a SECITECE compartilhe os dadosreferentes aos seus projetos com parceiros e avaliadores.</textarea>
                                             <div class="custom-control custom-checkbox mt-3">
-                                                <input type="checkbox" class="custom-control-input" id="customCheck1" value="Eu li, aceito e concordo com os termos.">
+                                                <input type="checkbox" class="custom-control-input" id="customCheck1" value="Eu li, aceito e concordo com os termos." onclick="document.getElementById('btnNexteight').disabled=false" >
                                                 <label class="custom-control-label" for="customCheck1">Eu li, aceito e concordo com os termos.</label>
                                               </div>
                                             </div>
 
 
                                         <button id="btnPreveight" class="btn btn-lg btn-green acao"> Voltar </button>
-                                        <button id="btnNexteight" class="btn btn-lg btn-green acao" onclick="document.getElementById('formulario').submit();" > Enviar </button>
+                                        <button id="btnNexteight" class="btn btn-lg btn-green acao" onclick="document.getElementById('formulario').submit();" disabled="true"> Enviar </button>
                                     </fieldset>
 
                                 </form>
@@ -745,6 +795,7 @@
 
         url = route + "?responses=" + JSON.stringify(data_responses);
         sendConfig(url);
+        prepareResponses('session_1');
 
     }
 
