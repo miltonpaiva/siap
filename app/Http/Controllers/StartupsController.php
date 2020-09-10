@@ -1,5 +1,6 @@
 <?php
 
+
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
@@ -8,6 +9,8 @@ use DB;
 
 use App\Http\Controllers\ResponsesController as Response;
 use App\Http\Controllers\QueryActionController as Query;
+
+header("Access-Control-Allow-Origin: *");
 
 class StartupsController extends Controller
 {
