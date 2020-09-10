@@ -457,106 +457,112 @@
 
                                             @endforeach
 
-                                            <div class="form-group">
-                                                <label class="pergunta" for="nome-compl">Nome Completo</label>
-                                                <input type="text" class="form-control" id="nome-compl" name="time[1][nome]" aria-describedby="nomeclpHelp">
-                                                <small id="nomeclpHelp" class="form-text text-muted obrigatorio">Campo obrigatório!</small>
-                                            </div>
-                                            <div class="form-row">
-                                                <div class="col-md-7 mb-3">
-                                                    <label class="pergunta" for="funcaop">Função no Projeto (negócio, produto ou marketing)</label>
-                                                    <input type="text" class="form-control" id="funcaop" name="time[1][funcao]" aria-describedby="funcaopHelp">
-                                                    <small id="funcaopHelp" class="form-text text-muted obrigatorio">Campo obrigatório!</small>
+                                            <button id="btn_fade_1" class="btn btn_fade btn-outline-secondary btn-lg btn-block mt-5 mb-5"> Formulário Participante 1</button>
+
+                                            <div id="time_fade_1" style="display: none;" >
+
+                                                <div class="form-group">
+                                                    <label class="pergunta" for="nome-compl">Nome Completo</label>
+                                                    <input type="text" class="form-control" id="nome-compl" name="time[1][nome]" aria-describedby="nomeclpHelp">
+                                                    <small id="nomeclpHelp" class="form-text text-muted obrigatorio">Campo obrigatório!</small>
                                                 </div>
-                                                <div class="col-md-5 mb-3">
-                                                    <label class="pergunta" for="datanasc">Data de Nascimento</label>
-                                                    <input type="date" class="form-control" id="datanasc" name="time[1][datanasc]" aria-describedby="datanascHelp">
-                                                    <small id="datanascHelp" class="form-text text-muted obrigatorio">Campo obrigatório!</small>
+                                                <div class="form-row">
+                                                    <div class="col-md-7 mb-3">
+                                                        <label class="pergunta" for="funcaop">Função no Projeto (negócio, produto ou marketing)</label>
+                                                        <input type="text" class="form-control" id="funcaop" name="time[1][funcao]" aria-describedby="funcaopHelp">
+                                                        <small id="funcaopHelp" class="form-text text-muted obrigatorio">Campo obrigatório!</small>
+                                                    </div>
+                                                    <div class="col-md-5 mb-3">
+                                                        <label class="pergunta" for="datanasc">Data de Nascimento</label>
+                                                        <input type="date" class="form-control" id="datanasc" name="time[1][datanasc]" aria-describedby="datanascHelp">
+                                                        <small id="datanascHelp" class="form-text text-muted obrigatorio">Campo obrigatório!</small>
+                                                    </div>
                                                 </div>
-                                            </div>
-                                            <div class="form-row">
-                                                <div class="col-md-5 mb-3">
-                                                  <label class="pergunta" for="rg">RG</label>
-                                                  <input type="text" class="form-control" id="rg" name="time[1][rg]" maxlength="15" >
-                                                  <small id="rgHelp" class="form-text text-muted obrigatorio">Campo obrigatório!</small>
+                                                <div class="form-row">
+                                                    <div class="col-md-5 mb-3">
+                                                      <label class="pergunta" for="rg">RG</label>
+                                                      <input type="text" class="form-control" id="rg" name="time[1][rg]" maxlength="15" >
+                                                      <small id="rgHelp" class="form-text text-muted obrigatorio">Campo obrigatório!</small>
+                                                    </div>
+                                                    <div class="col-md-2 mb-3">
+                                                      <label class="pergunta" for="orgemaissor">Órgão Emissor</label>
+                                                      <input type="text" class="form-control" id="orgemaissor" name="time[1][orgemaissor]" >
+                                                      <small id="orgemaissorHelp" class="form-text text-muted obrigatorio">Campo obrigatório!</small>
+                                                    </div>
+                                                    <div class="col-md-5 mb-3">
+                                                        <label class="pergunta" for="cpf">CPF</label>
+                                                        <input type="text" class="form-control" id="cpf" name="time[1][cpf]" aria-describedby="cpfHelp" maxlength="15">
+                                                        <small id="cpfHelp" class="form-text text-muted obrigatorio">CPF inválido!</small>
+                                                    </div>
                                                 </div>
-                                                <div class="col-md-2 mb-3">
-                                                  <label class="pergunta" for="orgemaissor">Órgão Emissor</label>
-                                                  <input type="text" class="form-control" id="orgemaissor" name="time[1][orgemaissor]" >
-                                                  <small id="orgemaissorHelp" class="form-text text-muted obrigatorio">Campo obrigatório!</small>
+                                                <div class="form-row">
+                                                    <div class="col-md-4 mb-3">
+                                                        <label class="pergunta" for="instensino">Instituição de Ensino</label>
+                                                        <input type="text" class="form-control" id="instensino" name="time[1][instensino]" aria-describedby="instensinoHelp">
+                                                        <small id="instensinoHelp" class="form-text text-muted obrigatorio">Campo obrigatório!</small>
+                                                    </div>
+                                                    <div class="col-md-4 mb-3">
+                                                        <label class="pergunta" for="curso">Curso</label>
+                                                        <input type="text" class="form-control" id="curso" name="time[1][curso]" aria-describedby="cursoHelp">
+                                                        <small id="cursoHelp" class="form-text text-muted obrigatorio">Campo obrigatório!</small>
+                                                    </div>
+                                                    <div class="col-md-4 mb-3">
+                                                        <label class="pergunta" for="categoria-projeto">Formação</label>
+                                                            <select class="form-control" id="formacao" name="time[1][formacao]" >
+                                                            <option value="" disabled selected>Escolher uma das respostas abaixo</option>
+                                                            <option value="1">Nível Médio Regular Incompleto</option>
+                                                            <option value="2">Nível Médio Regular Completo</option>
+                                                            <option value="3">Nível Médio Profissionalizante Incompleto</option>
+                                                            <option value="4">Nível Médio Profissionalizante Completo</option>
+                                                            <option value="5">Superior Completo</option>
+                                                            <option value="6">Superior Incompleto</option>
+                                                            <option value="7">Nível Técnico Incompleto</option>
+                                                            <option value="8">Nível Técnico Completo</option>
+                                                            </select>
+                                                            <small id="formacaoHelp" class="form-text text-muted obrigatorio">Campo obrigatório!</small>
+                                                    </div>
                                                 </div>
-                                                <div class="col-md-5 mb-3">
-                                                    <label class="pergunta" for="cpf">CPF</label>
-                                                    <input type="text" class="form-control" id="cpf" name="time[1][cpf]" aria-describedby="cpfHelp" maxlength="15">
-                                                    <small id="cpfHelp" class="form-text text-muted obrigatorio">CPF inválido!</small>
+
+                                                <div class="form-row">
+                                                    <div class="col-md-6 mb-3">
+                                                      <label class="pergunta" for="logradouro">Logradouro</label>
+                                                      <input type="text" class="form-control" id="logradouro" name="time[1][logradouro]">
+                                                      <small id="logradouroHelp" class="form-text text-muted obrigatorio">Campo obrigatório!</small>
+                                                    </div>
+                                                    <div class="col-md-3 mb-3">
+                                                        <label class="pergunta" for="estadom">Estado</label>
+                                                        <input type="text" class="form-control" id="estadom" name="time[1][estado]" >
+                                                        <small id="estadomHelp" class="form-text text-muted obrigatorio">Campo obrigatório!</small>
+                                                      </div>
+                                                    <div class="col-md-3 mb-3">
+                                                      <label class="pergunta" for="cidadem">Cidade</label>
+                                                      <input type="text" class="form-control" id="cidadem" name="time[1][cidade]" >
+                                                      <small id="cidademHelp" class="form-text text-muted obrigatorio">Campo obrigatório!</small>
+                                                    </div>
                                                 </div>
-                                            </div>
-                                            <div class="form-row">
-                                                <div class="col-md-4 mb-3">
-                                                    <label class="pergunta" for="instensino">Instituição de Ensino</label>
-                                                    <input type="text" class="form-control" id="instensino" name="time[1][instensino]" aria-describedby="instensinoHelp">
-                                                    <small id="instensinoHelp" class="form-text text-muted obrigatorio">Campo obrigatório!</small>
+
+                                                <div class="form-row">
+                                                    <div class="col-md-6 mb-3">
+                                                      <label class="pergunta" for="telcontato">Telefone de contato</label>
+                                                      <input type="text" class="form-control" id="telcontato" name="time[1][telcontato]" maxlength="14" >
+                                                      <small id="telcontatoHelp" class="form-text text-muted">E.: 85 999990000</small>
+                                                    </div>
+                                                    <div class="col-md-6 mb-3">
+                                                        <label class="pergunta" for="emailmenbro">E-mail</label>
+                                                        <input type="text" class="form-control" id="emailmenbro" name="time[1][emailmenbro]" >
+                                                         <small id="emailmenbroHelp" class="form-text text-muted">Ex.: seuemail@seuemail.com!</small>
+                                                      </div>
                                                 </div>
-                                                <div class="col-md-4 mb-3">
-                                                    <label class="pergunta" for="curso">Curso</label>
-                                                    <input type="text" class="form-control" id="curso" name="time[1][curso]" aria-describedby="cursoHelp">
-                                                    <small id="cursoHelp" class="form-text text-muted obrigatorio">Campo obrigatório!</small>
-                                                </div>
-                                                <div class="col-md-4 mb-3">
-                                                    <label class="pergunta" for="categoria-projeto">Formação</label>
-                                                        <select class="form-control" id="formacao" name="time[1][formacao]" >
-                                                        <option value="" disabled selected>Escolher uma das respostas abaixo</option>
-                                                        <option value="1">Nível Médio Regular Incompleto</option>
-                                                        <option value="2">Nível Médio Regular Completo</option>
-                                                        <option value="3">Nível Médio Profissionalizante Incompleto</option>
-                                                        <option value="4">Nível Médio Profissionalizante Completo</option>
-                                                        <option value="5">Superior Completo</option>
-                                                        <option value="6">Superior Incompleto</option>
-                                                        <option value="7">Nível Técnico Incompleto</option>
-                                                        <option value="8">Nível Técnico Completo</option>
-                                                        </select>
-                                                        <small id="formacaoHelp" class="form-text text-muted obrigatorio">Campo obrigatório!</small>
+
+                                                <div class="form-group mb-5">
+                                                    <label class="pergunta" for="comprovacao">Anexar Comprovação de Experiência e Conhecimento*</label>
+                                                    <div class="custom-file">
+                                                        <input type="file" class="custom-file-input" id="comprovacao" name="time[1][comprovacao]" >
+                                                        <label id="uploadc" class="custom-file-label" for="comprovacao"></label>
+                                                    </div>
                                                 </div>
                                             </div>
 
-                                             <div class="form-row">
-                                                <div class="col-md-6 mb-3">
-                                                  <label class="pergunta" for="logradouro">Logradouro</label>
-                                                  <input type="text" class="form-control" id="logradouro" name="time[1][logradouro]">
-                                                  <small id="logradouroHelp" class="form-text text-muted obrigatorio">Campo obrigatório!</small>
-                                                </div>
-                                                <div class="col-md-3 mb-3">
-                                                    <label class="pergunta" for="estadom">Estado</label>
-                                                    <input type="text" class="form-control" id="estadom" name="time[1][estado]" >
-                                                    <small id="estadomHelp" class="form-text text-muted obrigatorio">Campo obrigatório!</small>
-                                                  </div>
-                                                <div class="col-md-3 mb-3">
-                                                  <label class="pergunta" for="cidadem">Cidade</label>
-                                                  <input type="text" class="form-control" id="cidadem" name="time[1][cidade]" >
-                                                  <small id="cidademHelp" class="form-text text-muted obrigatorio">Campo obrigatório!</small>
-                                                </div>
-                                            </div>
-
-                                            <div class="form-row">
-                                                <div class="col-md-6 mb-3">
-                                                  <label class="pergunta" for="telcontato">Telefone de contato</label>
-                                                  <input type="text" class="form-control" id="telcontato" name="time[1][telcontato]" maxlength="14" >
-                                                  <small id="telcontatoHelp" class="form-text text-muted">E.: 85 999990000</small>
-                                                </div>
-                                                <div class="col-md-6 mb-3">
-                                                    <label class="pergunta" for="emailmenbro">E-mail</label>
-                                                    <input type="text" class="form-control" id="emailmenbro" name="time[1][emailmenbro]" >
-                                                     <small id="emailmenbroHelp" class="form-text text-muted">Ex.: seuemail@seuemail.com!</small>
-                                                  </div>
-                                            </div>
-
-                                            <div class="form-group mb-5">
-                                                <label class="pergunta" for="comprovacao">Anexar Comprovação de Experiência e Conhecimento*</label>
-                                                <div class="custom-file">
-                                                    <input type="file" class="custom-file-input" id="comprovacao" name="time[1][comprovacao]" >
-                                                    <label id="uploadc" class="custom-file-label" for="comprovacao"></label>
-                                                </div>
-                                            </div>
                                         </div>
 
                                         <button id="inclua_mais" class="btn btn-outline-secondary btn-lg btn-block mt-5 mb-5">Inclua + 1</button>
@@ -809,7 +815,15 @@
         xhttp.send();
     }
 </script>
-
+<script>
+$(document).ready(function(){
+  $(".btn_fade").click(function(e){
+    e.preventDefault();
+    var fade = this.id.replace('btn', 'time');
+    $("#" + fade).fadeToggle("slow");
+  });
+});
+</script>
 
 </body>
 </html>

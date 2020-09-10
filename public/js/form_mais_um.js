@@ -5,8 +5,10 @@ $('#inclua_mais').click(function(){
     count++;
 
 var html = '';
+html += '<button id="btn_fade_' + count + '" class="btn btn_fade btn-outline-secondary btn-lg btn-block mt-5 mb-5"> Formulário Participante ' + count + '</button>';
 
-html += '<div id="grupo' + count + '" class="form-group dados_membros">';
+html += '<div id="time_fade_' + count + '" style="display: none;" >';
+
 html += '<label for="estagiotp'+ count +'">Dados dos membros:</label>';
 html += '<div class="form-group">';
 html += '<label for="nome-compl">Nome Completo</label>';
@@ -104,6 +106,17 @@ html += '</div> <button type="button" id="' + count + '" class="btn btn-outline-
 
 
     $('.dados_membros').append(html);
+
+  $('#btn_fade_' + count).click(function(e){
+  	e.preventDefault();
+    $('#time_fade_' + count).fadeToggle("slow");
+  });
+
+$('.btn_fade').click(function(e){
+  	e.preventDefault();
+});
+
+
 });
 
 $('form').on('click', '.remover', function(){
