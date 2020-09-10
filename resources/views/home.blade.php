@@ -37,17 +37,17 @@
                                     <div class="form-group">
                                         <label for="nome-completo">Nome Completo</label>
                                         <input type="text" class="form-control" id="nome-completo" name="nome" aria-describedby="nomeHelp">
-                                        <small id="nomeHelp" class="form-text text-muted">Verifique novamente seu nome!</small>
+                                        <small id="nomeHelp" class="form-text text-muted">Campo obrigatório!</small>
                                     </div>
                                     <div class="form-group">
                                         <label for="nome-startup">Nome da Startup</label>
                                         <input type="text" class="form-control" id="nome-startup" name="startup" aria-describedby="startapHelp">
-                                        <small id="startapHelp" class="form-text text-muted">Verifique novamente o nome da Start-up!</small>
+                                        <small id="startapHelp" class="form-text text-muted">Campo obrigatório!</small>
                                     </div>
                                     <div class="form-group">
                                       <label for="email-stup">E-mail</label>
                                       <input type="email" class="form-control" id="email-stup" name="email" aria-describedby="emailHelp">
-                                      <small id="emailHelp" class="form-text text-muted">Verifique novamente seu e-mail '@', '.' !</small>
+                                      <small id="emailHelp" class="form-text text-muted">Campo obrigatório!</small>
                                     </div>
                                     <div class="form-group">
                                       <label for="senha-stup">Senha</label>

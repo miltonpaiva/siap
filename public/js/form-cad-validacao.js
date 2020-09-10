@@ -4,7 +4,6 @@ var expr = /^[a-zA-Z0-9_\.\-]+@[a-zA-Z0-9\-]+\.[a-zA-Z0-9\-\.]+$/;
 $(document).ready(function(){
 
     $("#nome-completo").focus();
-
     $("#nomeHelp").css('display', 'none');
     $("#startapHelp").css('display', 'none');
     $("#emailHelp").css('display', 'none');
@@ -19,8 +18,7 @@ $(document).ready(function(){
         var senha = $("#senha-stup").val();
         var conf_senha = $("#senha-stup-conf").val();
 
-
-        if (nome == "" || nome.length < 10) {
+        if (nome == "") {
             $("#nomeHelp").css('display', 'inline');
             $('#nome-completo').removeClass("valido");
             $('#nome-completo').addClass("invalido");   
@@ -30,7 +28,7 @@ $(document).ready(function(){
                 $('#nome-completo').removeClass("invalido");
                 $('#nome-completo').addClass("valido");
 
-                if(nome_startup == "" || nome_startup.length < 10){
+                if(nome_startup == ""){
                     $("#startapHelp").css('display', 'inline');
                     $('#nome-startup').removeClass("valido");
                     $('#nome-startup').addClass("invalido");   
@@ -49,7 +47,6 @@ $(document).ready(function(){
                         $("#emailHelp").css('display', 'none');
                         $('#email-stup').removeClass("invalido");
                         $('#email-stup').addClass("valido");
-
                         if (senha == "" || senha.length < 8){
                             $("#senhaHelp").css('display', 'inline');
                             $('#senha-stup').removeClass("valido");
@@ -59,7 +56,6 @@ $(document).ready(function(){
                             $("#senhaHelp").css('display', 'none');
                             $('#senha-stup').removeClass("invalido");
                             $('#senha-stup').addClass("valido");
-
                             if(conf_senha == "" || conf_senha != senha){
                                 $("#csenhaHelp").css('display', 'inline');
                                 $('#senha-stup-conf').removeClass("valido");
@@ -70,30 +66,14 @@ $(document).ready(function(){
                                 $('#senha-stup-conf').removeClass("invalido");
                                 $('#senha-stup-conf').addClass("valido");
 
-                                setTimeout(function(){ alert("Hello"); }, 3000);
+                                setTimeout(function(){ console.log(email); }, 3000);
                             }
                         }
                     }
-
                 }
-        }
-
-        
-    });
+            }  
+        });
 });
-  
-/*  
-$("input").blur(function(){
-        if($(this).val() == "")
-            {   
-                $(this).removeClass("valido");
-                $(this).addClass("invalido");
-            }else{
-                $(this).removeClass("invalido");
-                $(this).addClass("valido");
-            }
-
-});*/
 
 
 
