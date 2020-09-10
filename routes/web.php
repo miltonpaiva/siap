@@ -32,6 +32,9 @@ Route::get('/login', function () {
 Route::post('/user/register/', 'UsersController@actionRegister')->name('user.register');
 Route::post('/user/login/', 'UsersController@actionLogin')->name('user.login');
 
+Route::get('/response/register/', 'ResponsesController@actionRegister')->name('response.register');
+
 Route::post('/startup/register/', 'StartupsController@actionRegister')->name('startup.register');
+Route::get('/startup/update/{startup_id?}/{state?}/{city?}/{category?}/', 'StartupsController@actionUpdate')->name('startup.update');
 Route::get('/startup/{startup_id}/registro/', 'StartupsController@viewRegister')->name('startup.register.view');
 

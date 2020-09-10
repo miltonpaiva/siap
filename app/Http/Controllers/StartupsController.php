@@ -61,11 +61,6 @@ class StartupsController extends Controller
 
         $responses = Query::queryAction('responses', $custom_args);
 
-        $custom_args['conditions'] =
-            [
-                ['startup', '=', $startup_id]
-            ];
-
         $participants = Query::queryAction('participants', $custom_args);
 
         $custom_args['conditions'] =
@@ -93,14 +88,24 @@ class StartupsController extends Controller
         return view('inscricao', $vars);
     }
 
+    public function actionUpdate($startup_id, $state, $city, $category)
+    {
+        $startup_args['state']     = $state;
+        $startup_args['city']      = $city;
+        $startup_args['category']  = $category;
+
+        $result = self::update($startup_args, $startup_id);
+
+        echo json_encode(['status' => 200, 'message' => $result]);
+        exit();
+
+    }
+
     public function actionRegister(Request $request)
     {
       $responses = $request->all();
       $attachments = [];
 
-      $startup_args['state']     = $responses['session'][1]['estado'];
-      $startup_args['city']      = $responses['session'][1]['cidade'];
-      $startup_args['category']  = $responses['session'][1]['categoria'];
       $startup_id = $responses['session'][1]['startup_id'];
 
       $path_root = str_replace('\public', '', $_SERVER["DOCUMENT_ROOT"]);
@@ -111,56 +116,19 @@ class StartupsController extends Controller
         $dir_exist = mkdir($uploaddir, 0777, true);
       }
 
-      self::update($startup_args, $startup_id);
-
       $list_responses = [];
-      foreach ($responses['session'] as $session => $questions) {
-        if (isset($questions['questions'])) {
-          foreach ($questions['questions'] as $question => $option) {
-              if (isset($option['response'])) {
-                $list_responses[] =
-                  [
-                    'option'   => $option['value'],
-                    'response' => $option['value'],
-                  ];
-              }else{
-                $list_responses[] =
-                  [
-                    'question' => $question,
-                    'startup'  => $startup_id,
-                    'option'   => $option['value'],
-                  ];
-              }
-          }
-        }
-      }
-
-      $responses_saved = [];
-      foreach ($list_responses as $response) {
-        if (isset($response['response'])) {
-          $responses_saved[] = Response::update($response['response'], $response['option']);
-        }else{
-          $responses_saved[] = Response::register($response);
-        }
-
-      }
 
       if (isset($responses['time'])) {
 
         foreach ($responses['time'] as $time) {
 
-            $has_archive = (count($time['comprovacao']) > 0);
-
-            echo "<pre>";
-            var_dump($has_archive);
-            exit();
+            $has_archive = is_object($time['comprovacao']);
 
             if ($has_archive) {
               $file_name = $time['comprovacao']->getClientOriginalName();
               $temp_name = $time['comprovacao']->getPathName();
               $uploadfile = $uploaddir . basename($file_name);
             }
-
 
             if ($has_archive && move_uploaded_file($temp_name, $uploadfile)) {
 
@@ -202,7 +170,7 @@ class StartupsController extends Controller
 
         foreach ($anexos as $type => $anexo) {
 
-            $has_archive = (count($anexo) > 0);
+            $has_archive = is_object($anexo);
 
             if ($has_archive) {
               $file_name = $anexo->getClientOriginalName();

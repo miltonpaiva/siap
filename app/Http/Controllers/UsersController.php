@@ -68,11 +68,11 @@ class UsersController extends Controller
                 return redirect()->route('startup.register.view', ['startup_id' => $user['startup']]);
             }else{
                 // SENHA INCORRETA
-                return redirect()->route('user.login');
+                return redirect()->route('user.login.view');
             }
         }else{
             // USUARIO NÃO ENCONTRADO
-            return redirect()->route('user.login');
+            return redirect()->route('user.login.view');
         }
     }
 }

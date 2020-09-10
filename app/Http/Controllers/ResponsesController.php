@@ -62,4 +62,38 @@ class ResponsesController extends Controller
         $responses = Query::queryAction('responses');
         return $responses;
     }
+
+    public function actionRegister(Request $request)
+    {
+        $responses = $request->all();
+
+        $data = json_decode($responses['responses'], true);
+        foreach ($data as $response) {
+              if (isset($response['response'])) {
+                $list_responses[] =
+                  [
+                    'option'   => $response['option'],
+                    'response' => $response['response'],
+                  ];
+              }else{
+                $list_responses[] =
+                  [
+                    'question' => $response['question'],
+                    'startup'  => $response['startup'],
+                    'option'   => $response['option'],
+                  ];
+              }
+        }
+
+          $responses_saved = [];
+          foreach ($list_responses as $response) {
+            if (isset($response['response'])) {
+              $responses_saved[] = self::update($response['response'], $response['option']);
+            }else{
+              $responses_saved[] = self::register($response);
+            }
+          }
+        echo json_encode(['status' => 200, 'message' => $responses_saved]);
+        exit();
+    }
 }

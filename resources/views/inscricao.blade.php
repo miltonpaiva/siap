@@ -136,6 +136,13 @@
                                                 class="form-control" 
                                                 id="tomou-conhecimento" 
                                                 name="session[{{$question['session']}}][questions][{{$question['id']}}][value]"
+                                                question="{{$question['id']}}" 
+                                                startup="{{$startup_id}}" 
+
+                                                @if (@$responses[$question['id']])
+                                                    response="{{$responses[$question['id']]['response']}}"
+                                                @endif
+
                                             >
                                                 <option value="" disabled selected>Escolher uma das respostas abaixo</option>
 
@@ -159,7 +166,7 @@
                                             <small id="tconhecimentoHelp" class="form-text text-muted">Campo obrigatório!</small>
 
                                          </div>
-                                        <button id="btnNextone" class="btn btn-lg btn-green acao"> Próxima Etapa </button>
+<button onclick="prepareSession1()" id="btnNextone" class="btn btn-lg btn-green acao"> Próxima Etapa </button>
                                     </fieldset>
 
                                     <!-- Forme 2 - Informações sobre o produto -->
@@ -187,15 +194,19 @@
                                                         type="radio" 
                                                         id="{{$option['id']}}" 
                                                         name="session[{{$question['session']}}][questions][{{$question['id']}}][value]" 
-                                                        class="custom-control-input" 
+                                                        question="{{$question['id']}}" 
+                                                        startup="{{$startup_id}}" 
+                                                        class="custom-control-input session_{{$question['session']}}"
                                                         value="{{$option['id']}}" 
 
                                                         @if ($loop->iteration == 1 && @$responses[$question['id']]['option'] == $option['id'])
                                                           checked
+                                                          response="{{$responses[$question['id']]['response']}}"
                                                         @endif
 
                                                         @if ($loop->iteration != 1 && @$responses[$question['id']]['option'] == $option['id'])
                                                           checked
+                                                          response="{{$responses[$question['id']]['response']}}"
                                                         @endif
 
                                                         @if ($loop->iteration == 1 && @$responses[$question['id']]['option'] != $option['id'])
@@ -212,7 +223,7 @@
                                         @endforeach
 
                                         <button id="btnPrevtwo" class="btn btn-lg btn-green acao"> Voltar </button>
-                                        <button id="btnNexttwo" class="btn btn-lg btn-green acao"> Próxima Etapa </button>
+                                        <button onclick="prepareResponses('session_2')" id="btnNexttwo" class="btn btn-lg btn-green acao"> Próxima Etapa </button>
                                     </fieldset>
 
                                      <!-- Forme 3 - Informações sobre o mercado -->
@@ -240,15 +251,19 @@
                                                         type="radio" 
                                                         id="{{$option['id']}}" 
                                                         name="session[{{$question['session']}}][questions][{{$question['id']}}][value]" 
-                                                        class="custom-control-input" 
+                                                        question="{{$question['id']}}" 
+                                                        startup="{{$startup_id}}" 
+                                                        class="custom-control-input session_{{$question['session']}}"
                                                         value="{{$option['id']}}" 
 
                                                         @if ($loop->iteration == 1 && @$responses[$question['id']]['option'] == $option['id'])
                                                           checked
+                                                          response="{{$responses[$question['id']]['response']}}"
                                                         @endif
 
                                                         @if ($loop->iteration != 1 && @$responses[$question['id']]['option'] == $option['id'])
                                                           checked
+                                                          response="{{$responses[$question['id']]['response']}}"
                                                         @endif
 
                                                         @if ($loop->iteration == 1 && @$responses[$question['id']]['option'] != $option['id'])
@@ -265,7 +280,7 @@
                                         @endforeach
 
                                         <button id="btnPrevthree" class="btn btn-lg btn-green acao"> Voltar </button>
-                                        <button id="btnNextthree" class="btn btn-lg btn-green acao"> Próxima Etapa </button>
+                                        <button onclick="prepareResponses('session_3')" id="btnNextthree" class="btn btn-lg btn-green acao"> Próxima Etapa </button>
                                     </fieldset>
 
                                     <!-- Form 4 - Informações sobre Finanças -->
@@ -293,16 +308,20 @@
                                                         type="radio" 
                                                         id="{{$option['id']}}" 
                                                         name="session[{{$question['session']}}][questions][{{$question['id']}}][value]" 
-                                                        class="custom-control-input" 
+                                                        question="{{$question['id']}}" 
+                                                        startup="{{$startup_id}}" 
+                                                        class="custom-control-input session_{{$question['session']}}"
                                                         value="{{$option['id']}}" 
 
 
                                                         @if ($loop->iteration == 1 && @$responses[$question['id']]['option'] == $option['id'])
                                                           checked
+                                                          response="{{$responses[$question['id']]['response']}}"
                                                         @endif
 
                                                         @if ($loop->iteration != 1 && @$responses[$question['id']]['option'] == $option['id'])
                                                           checked
+                                                          response="{{$responses[$question['id']]['response']}}"
                                                         @endif
 
                                                         @if ($loop->iteration == 1 && @$responses[$question['id']]['option'] != $option['id'])
@@ -319,7 +338,7 @@
                                         @endforeach
 
                                         <button id="btnPrevfour"  class="btn btn-lg btn-green acao"> Voltar </button>
-                                        <button id="btnNextfour" class="btn btn-lg btn-green acao"> Próxima Etapa </button>
+                                        <button onclick="prepareResponses('session_4')" id="btnNextfour" class="btn btn-lg btn-green acao"> Próxima Etapa </button>
                                     </fieldset>
 
                                     <!-- Form 5 - Informações sobre modelo de negócio -->
@@ -347,16 +366,20 @@
                                                         type="radio" 
                                                         id="{{$option['id']}}" 
                                                         name="session[{{$question['session']}}][questions][{{$question['id']}}][value]" 
-                                                        class="custom-control-input" 
+                                                        question="{{$question['id']}}" 
+                                                        startup="{{$startup_id}}" 
+                                                        class="custom-control-input session_{{$question['session']}}"
                                                         value="{{$option['id']}}" 
 
 
                                                         @if ($loop->iteration == 1 && @$responses[$question['id']]['option'] == $option['id'])
                                                           checked
+                                                          response="{{$responses[$question['id']]['response']}}"
                                                         @endif
 
                                                         @if ($loop->iteration != 1 && @$responses[$question['id']]['option'] == $option['id'])
                                                           checked
+                                                          response="{{$responses[$question['id']]['response']}}"
                                                         @endif
 
                                                         @if ($loop->iteration == 1 && @$responses[$question['id']]['option'] != $option['id'])
@@ -373,7 +396,7 @@
                                         @endforeach
 
                                         <button id="btnPrevfive" class="btn btn-lg btn-green acao"> Voltar </button>
-                                        <button id="btnNextfive" class="btn btn-lg btn-green acao"> Próxima Etapa </button>
+                                        <button onclick="prepareResponses('session_5')" id="btnNextfive" class="btn btn-lg btn-green acao"> Próxima Etapa </button>
                                     </fieldset>
 
                                     <!-- Form 6 - Identificação do time do projeto -->
@@ -405,16 +428,20 @@
                                                             type="radio" 
                                                             id="{{$option['id']}}" 
                                                             name="session[{{$question['session']}}][questions][{{$question['id']}}][value]" 
-                                                            class="custom-control-input" 
+                                                            question="{{$question['id']}}" 
+                                                            startup="{{$startup_id}}" 
+                                                            class="custom-control-input session_{{$question['session']}}"
                                                             value="{{$option['id']}}" 
 
 
                                                         @if ($loop->iteration == 1 && @$responses[$question['id']]['option'] == $option['id'])
                                                           checked
+                                                          response="{{$responses[$question['id']]['response']}}"
                                                         @endif
 
                                                         @if ($loop->iteration != 1 && @$responses[$question['id']]['option'] == $option['id'])
                                                           checked
+                                                          response="{{$responses[$question['id']]['response']}}"
                                                         @endif
 
                                                         @if ($loop->iteration == 1 && @$responses[$question['id']]['option'] != $option['id'])
@@ -535,7 +562,7 @@
                                         <button id="inclua_mais" class="btn btn-outline-secondary btn-lg btn-block mt-5 mb-5">Inclua + 1</button>
 
                                         <button id="btnPrevsix" class="btn btn-lg btn-green acao"> Voltar </button>
-                                        <button id="btnNextsix" class="btn btn-lg btn-green acao"> Próxima Etapa </button>
+                                        <button onclick="prepareResponses('session_6')" id="btnNextsix" class="btn btn-lg btn-green acao"> Próxima Etapa </button>
                                     </fieldset>
 
                                     <!-- Form 7 - Inclusão de anexos do projeto -->
@@ -672,5 +699,117 @@
     var btn_enviar = document.getElementById('btnNexteight');
     var form       = document.getElementById('formulario');
 </script>
+
+<script>
+
+
+    function prepareSession1() {
+        var route = '{{ route('startup.update')}}';
+        var startup_id = '{{$startup_id}}';
+
+        var estado = document.getElementById('estado').value;
+        var cidade = document.getElementById("cidade").value;
+        var categoria = document.getElementById("categoria-projeto").value;
+
+        var url = route + '/' + startup_id + '/' + estado + '/' + cidade + '/' + categoria
+
+        sendConfig(url);
+
+        route = '{{ route('response.register')}}';
+        var tomou = document.getElementById("tomou-conhecimento");
+        var data_responses = [];
+
+        var question = tomou.getAttribute('question');
+        var startup  = tomou.getAttribute('startup');
+        var id_option = tomou.value;
+
+        var data_response = 
+        {
+            "question": question,
+            "option": id_option,
+            "startup": startup
+        };
+
+        if (tomou.getAttribute('response')) {
+            var response = tomou.getAttribute('response');
+            data_response.response = response;
+        }
+
+        data_responses.push(data_response);
+
+        url = route + "?responses=" + JSON.stringify(data_responses);
+        sendConfig(url);
+
+    }
+
+
+</script>
+<script>
+    function prepareResponses(session) {
+        var imputs = document.getElementsByClassName(session);
+        var route = '{{ route('response.register')}}';
+        var data_responses = [];
+        for(key in imputs){
+
+            if(imputs[key].checked){
+                var option = imputs[key]
+
+                var question = option.getAttribute('question');
+                var startup  = option.getAttribute('startup');
+                var id_option  = option.value;
+
+                var data_response = 
+                {
+                    "question": question,
+                    "option": id_option,
+                    "startup": startup
+                };
+
+                if (option.getAttribute('response')) {
+                    var response = option.getAttribute('response');
+                    data_response.response = response;
+                }
+
+                data_responses.push(data_response);
+            }
+        }
+
+        var url = route + "?responses=" + JSON.stringify(data_responses);
+        sendConfig(url);
+    }
+</script>
+<script>
+    function sendConfig(url) {
+
+        console.log('url');
+        console.log(url);
+
+        var xhttp = new XMLHttpRequest();
+        xhttp.open("GET", url, true);
+
+        xhttp.onreadystatechange = function(){
+            if ( xhttp.readyState == 4 && xhttp.status == 200 ) {
+
+                var request_response = xhttp.responseText;
+                console.log(xhttp.responseText);
+                if (request_response) {
+                    var json_config = JSON.parse(request_response);
+                    if (json_config.status == 400) {
+                        console.log('Não foi possivel salvar :(');
+                    }else{
+                        console.log('Salvo com sucesso ! :)');
+                    }
+                }else{
+                    console.log('Não foi possivel salvar :(');
+                }
+
+            }
+        }
+
+        xhttp.send();
+    }
+</script>
+
+
 </body>
 </html>
