@@ -251,7 +251,7 @@
                                         @endforeach
 
 
-                                    <button onmouseover="prepareSession1()" id="btnNextone" class="btn btn-lg btn-green acao"> Próxima Etapa </button>
+                                    <button onclick="prepareSession1()" id="btnNextone" class="btn btn-lg btn-green acao"> Próxima Etapa </button>
                                     </fieldset>
 
                                     <!-- Forme 2 - Informações sobre o produto -->
