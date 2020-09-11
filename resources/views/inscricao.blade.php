@@ -853,7 +853,7 @@
             };
 
             url = route + "?option=" + JSON.stringify(data_option);
-            console.log(url)
+            sendConfig(url);
         }
     }
 
