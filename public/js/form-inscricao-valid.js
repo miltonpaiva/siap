@@ -202,6 +202,8 @@ $(function(){
         $("#uploadc").append("<span>" + nomeArquivo + "</span>");
     });
 
+    var validado = false;
+
     //Formulario 6
     $('#btnNextsix').click(function(){
 
@@ -326,6 +328,31 @@ $(function(){
                                                                     $("#comprovacao").addClass("invalidotwo");
                                                                     return false;
                                                                 }else{
+                                                                   var categoria = document.getElementById('categoria-projeto');
+                                                                   if (categoria.value = 'criação') {
+
+                                                                            $('#btnNextsix').click(function(){
+                                                                                setTimeout(function(){ 
+                                                                                    document.getElementById('btnNextseven').click();
+                                                                                 }, 1000);
+
+                                                                            });
+
+                                                                            $('#btnNextseven').click(function(){
+
+                                                                                atual_fs = $(this).parent();
+                                                                                next_fs = $(this).parent().next();
+
+                                                                                $('.progresso li').eq($('fieldset').index(atual_fs)).removeClass('ativo');
+                                                                                $('.progresso li').eq($('fieldset').index(atual_fs)).addClass('completo');
+                                                                                $('.progresso li').eq($('fieldset').index(next_fs)).addClass('ativo');
+
+                                                                                atual_fs.hide(800);
+                                                                                next_fs.show(800);
+
+                                                                            });
+
+                                                                   }
                                                                     console.log(comprovacao);
                                                                 }
                                                             }
@@ -378,40 +405,6 @@ $(function(){
     $("#customFilep").change(function(){
         var nomepdf = $(this).val();
         $("#uppdf").append("<span>" + nomepdf + "</span>");
-    });
-
-    //Formulario 7
-    $('#btnNextseven').click(function(){
-
-
-        var videoUpload = $("#customFilev").val();
-        var pdfUpload = $("#customFilep").val();
-
-        if(videoUpload == ""){
-            $("#customFilev").removeClass("validotwo");
-            $("#customFilev").addClass("invalidotwo");
-            return false;
-        }else{
-            console.log(videoUpload);
-            if(pdfUpload == ""){
-                $("#customFilep").removeClass("validotwo");
-                $("#customFilep").addClass("invalidotwo");
-                return false;
-            }else{
-                console.log(pdfUpload);
-            }
-        }
-
-        atual_fs = $(this).parent();
-        next_fs = $(this).parent().next();
-        
-        $('.progresso li').eq($('fieldset').index(atual_fs)).removeClass('ativo');
-        $('.progresso li').eq($('fieldset').index(atual_fs)).addClass('completo');
-        $('.progresso li').eq($('fieldset').index(next_fs)).addClass('ativo');
-        
-        atual_fs.hide(800);
-        next_fs.show(800);
-
     });
 
     $('#btnPrevseven').click(function(){
@@ -480,13 +473,73 @@ $(function(){
         return false;
    });
 
+
     $("#categoria-projeto").change(function() {
         var tracaov = $(this).val();
         console.log(tracaov);
         if(tracaov == 'Tração'){
             $('#seven').show();
 
-            /*$('#fieldgerarseven').append('<fieldset> <br> <h3 class="card-title mt-3">Inclusão de anexos do projeto</h3><div class="form-group"> <br> <label for="estagiotp">Vídeo:</label> <div class="custom-file"> <input type="file" class="custom-file-input" id="customFile"> <label class="custom-file-label" for="customFile">Vídeo</label> </div> </div> <div class="form-group"> <label for="estagiotp">PDF:</label> <div class="custom-file"> <input type="file" class="custom-file-input" id="customFile"> <label class="custom-file-label" for="customFile">PDF</label> </div> </div> <br> <button class="btn btn-lg btn-green prev acao"> Voltar </button>  <button class="btn btn-lg btn-green next acao"> Próxima Etapa </button> <br> </fieldset>');*/
+            //Formulario 7
+            $('#btnNextseven').click(function(){
+
+
+                var videoUpload = $("#customFilev").val();
+                var pdfUpload = $("#customFilep").val();
+
+                if(videoUpload == ""){
+                    $("#customFilev").removeClass("validotwo");
+                    $("#customFilev").addClass("invalidotwo");
+                    return false;
+                }else{
+                    console.log(videoUpload);
+                    if(pdfUpload == ""){
+                        $("#customFilep").removeClass("validotwo");
+                        $("#customFilep").addClass("invalidotwo");
+                        return false;
+                    }else{
+                        console.log(pdfUpload);
+                    }
+                }
+
+                atual_fs = $(this).parent();
+                next_fs = $(this).parent().next();
+                
+                $('.progresso li').eq($('fieldset').index(atual_fs)).removeClass('ativo');
+                $('.progresso li').eq($('fieldset').index(atual_fs)).addClass('completo');
+                $('.progresso li').eq($('fieldset').index(next_fs)).addClass('ativo');
+                
+                atual_fs.hide(800);
+                next_fs.show(800);
+
+            });
+
+
+        }else{
+
+            $('#btnNextsix').click(function(){
+                setTimeout(function(){ 
+                    document.getElementById('btnNextseven').click();
+                 }, 1000);
+
+            });
+
+            //Formulario 7
+            $('#btnNextseven').click(function(){
+
+                atual_fs = $(this).parent();
+                next_fs = $(this).parent().next();
+                
+                $('.progresso li').eq($('fieldset').index(atual_fs)).removeClass('ativo');
+                $('.progresso li').eq($('fieldset').index(atual_fs)).addClass('completo');
+                $('.progresso li').eq($('fieldset').index(next_fs)).addClass('ativo');
+                
+                atual_fs.hide(800);
+                next_fs.show(800);
+
+            });
+
+
         }
      }); 
      

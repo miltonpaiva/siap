@@ -123,17 +123,24 @@ class StartupsController extends Controller
 
       if (isset($responses['time'])) {
 
+        echo "<pre>";
+        print_r($responses['time']);
+        exit();
+
         foreach ($responses['time'] as $time) {
 
-            $has_archive = is_object($time['comprovacao']);
+            if (isset($time['comprovacao'])) {
+              $has_archive = is_object($time['comprovacao']);
 
-            if ($has_archive) {
-              $file_name = $time['comprovacao']->getClientOriginalName();
-              $temp_name = $time['comprovacao']->getPathName();
-              $uploadfile = $uploaddir . basename($file_name);
+              if ($has_archive) {
+                $file_name = $time['comprovacao']->getClientOriginalName();
+                $temp_name = $time['comprovacao']->getPathName();
+                $uploadfile = $uploaddir . basename($file_name);
+                move_uploaded_file($temp_name, $uploadfile);
+              }
             }
 
-            if ($has_archive && move_uploaded_file($temp_name, $uploadfile)) {
+            if (true) {
 
                 $participant =
                   [

@@ -102,7 +102,7 @@
                                                 <option 
                                                     value="criação"
 
-                                                    @if ($startup['category'] == 'criação')
+                                                    @if ($startup['category'] == 'criação' && $startup['city'] != '000000')
                                                         selected="true" 
                                                     @endif
 
@@ -564,7 +564,12 @@
                                                 <div class="form-row">
                                                     <div class="col-md-7 mb-3">
                                                         <label class="pergunta" for="funcaop">Função no Projeto (negócio, produto ou marketing)</label>
-                                                        <input type="text" class="form-control" id="funcaop" name="time[1][funcao]" aria-describedby="funcaopHelp">
+                                                        <select class="form-control" id="funcaop" name="time[1][funcao]" aria-describedby="funcaopHelp">
+                                                            <option value="" disabled selected>Escolher uma das respostas abaixo</option>
+                                                            <option value="negócio">Negócio</option>
+                                                            <option value="Produto">Produto</option>
+                                                            <option value="Marketing">Marketing</option>
+                                                        </select>
                                                         <small id="funcaopHelp" class="form-text text-muted obrigatorio">Campo obrigatório!</small>
                                                     </div>
                                                     <div class="col-md-5 mb-3">
@@ -667,8 +672,8 @@
 
                                         <button id="inclua_mais" class="btn btn-outline-secondary btn-lg btn-block mt-5 mb-5">Inclua + 1</button>
 
-                                        <button id="btnPrevsix" class="btn btn-lg btn-green acao"> Voltar </button>
-                                        <button onclick="prepareResponses('session_6')" id="btnNextsix" class="btn btn-lg btn-green acao"> Próxima Etapa </button>
+                                        <button id="btnPrevsix"  class="btn btn-lg btn-green acao"> Voltar </button>
+                                        <button onclick="prepareResponses('session_6')" id="btnNextsix" class="btn btn-lg btn-green acao" > Próxima Etapa </button>
                                     </fieldset>
 
                                     <!-- Form 7 - Inclusão de anexos do projeto -->
