@@ -123,10 +123,6 @@ class StartupsController extends Controller
 
       if (isset($responses['time'])) {
 
-        echo "<pre>";
-        print_r($responses['time']);
-        exit();
-
         foreach ($responses['time'] as $time) {
 
             if (isset($time['comprovacao'])) {
