@@ -17,11 +17,14 @@
 <link rel="stylesheet" href="{{ asset('css/style.css') }}">
 </head>
 <body class="body-bg">
-
     <section style="overflow: hidden">
         <div class="container">
             <div class="mt-4 mb-3">
                 <div class="card">
+                <nav class="navbar navbar-dark bg-dark ">
+                  .<a class="navbar-brand" href="{{ route('user.login.view')}}">Logue-se</a>
+                </nav>
+
                     <div class="row">
                         <div class="col-sm-12 col-md-6">
                             <div class="card-body">
