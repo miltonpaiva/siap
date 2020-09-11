@@ -85,16 +85,23 @@ html += '<small id="cidademHelp'+ count +'" class="form-text text-muted">Campo o
 html += '</div>';
 html += '</div>';
 html += '<div class="form-row">';
+
 html += '<div class="col-md-6 mb-3">';
+html += '<label for="emailmenbro'+ count +'">E-mail</label>';
+html += '<input type="text" class="form-control" id="emailmenbro'+ count +'" name="time[' + count + '][emailmenbro]" >';
+html += '<small id="emailmenbroHelp'+ count +'" class="form-text text-muted">Verifique novamente seu e-mail @, . !</small>';
+html += '</div>';
+html += '<div class="col-md-3 mb-3">';
 html += '<label for="telcontato'+ count +'">Telefone de contato</label>';
 html += '<input type="number" class="form-control" id="telcontato'+ count +'" name="time[' + count + '][telcontato]" >';
 html += '<small id="telcontatoHelp'+ count +'" class="form-text text-muted">Campo obrigatório!</small>';
 html += '</div>';
 html += '<div class="col-md-3 mb-3">';
-html += '<label for="emailmenbro">E-mail</label>';
-html += '<input type="text" class="form-control" id="emailmenbro'+ count +'" name="time[' + count + '][emailmenbro]" >';
-html += '<small id="emailmenbroHelp'+ count +'" class="form-text text-muted">Verifique novamente seu e-mail @, . !</small>';
+html += '<label class="pergunta" for="linkedin'+ count +'">Linked In</label>';
+html += '<input type="text" class="form-control" id="linkedin'+ count +'" name="time['+ count +'][linkedin]" >';
+html += '<small id="emailmenbroHelp'+ count +'" class="form-text text-muted">Ex.: https://www.linkedin.com/in/example/</small>';
 html += '</div>';
+
 html += '</div>';
 html += '<div class="form-group">';
 html += '<label for="comprovacao">Anexar Comprovação de Experiência e Conhecimento*</label>';

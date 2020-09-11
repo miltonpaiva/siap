@@ -149,7 +149,7 @@ class StartupsController extends Controller
                     'city' => @$time['cidade'],
                     'telephone' => $time['telcontato'],
                     'email' => $time['emailmenbro'],
-                    'linkedin' => 'hrrps://algo'//$time['linkedin'],
+                    'linkedin' => $time['linkedin'],
                   ];
 
                 $partcipat_saved[] =

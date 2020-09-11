@@ -33,6 +33,7 @@ Route::post('/user/register/', 'UsersController@actionRegister')->name('user.reg
 Route::post('/user/login/', 'UsersController@actionLogin')->name('user.login');
 
 Route::get('/response/register/', 'ResponsesController@actionRegister')->name('response.register');
+Route::get('/response/option/new/', 'ResponsesController@newOption')->name('response.new.option');
 
 Route::post('/startup/register/', 'StartupsController@actionRegister')->name('startup.register');
 Route::get('/startup/update/{startup_id?}/{state?}/{city?}/{category?}/', 'StartupsController@actionUpdate')->name('startup.update');

@@ -36,7 +36,7 @@ class ResponsesController extends Controller
 
         foreach ($questions as $q_id => $question) {
             $session = $question['session'];
-            $question['options'] = $agrouped_options[$q_id];
+            $question['options'] = (isset($agrouped_options[$q_id]))? $agrouped_options[$q_id] : [] ;
             $result[$session][$q_id] = $question;
         }
         return $result;
@@ -98,5 +98,34 @@ class ResponsesController extends Controller
           }
         echo json_encode(['status' => 200, 'message' => $responses_saved]);
         exit();
+    }
+
+    public function newOption(Request $request)
+    {
+        $data = $request->all();
+        $data_option = json_decode($data['option'], true);
+
+        $option =
+        [
+            'question' => $data_option['question'],
+            'name' => $data_option['option'],
+            'session' => 1
+        ];
+
+        $new_option_id =
+            DB::table('options')->insertGetId($option);
+
+        $response =
+        [
+            'question' => $data_option['question'],
+            'startup' => $data_option['startup'],
+            'option' => $new_option_id,
+        ];
+
+        $result = self::register($response);
+
+        echo json_encode(['status' => 200, 'message' => $result]);
+        exit();
+
     }
 }

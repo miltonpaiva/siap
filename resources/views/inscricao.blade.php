@@ -182,8 +182,33 @@
                                                 >
                                             @endif
 
-                                        <label class="pergunta" for="question_{{$question['id']}}">{{$question['name']}}</label>
+                                        <label class="pergunta"  for="question_{{$question['id']}}">{{$question['name']}}</label>
                                             <div class="form-group">
+
+                                            @if ($question['id'] == 29 && !@$responses[$question['id']])
+                                                <div class="custom-control custom-radio">
+                                                    <input 
+                                                        type="radio" 
+                                                        id="nao_presente" 
+                                                        question="{{$question['id']}}" 
+                                                        startup="{{$startup_id}}" 
+                                                        class="custom-control-input session_{{$question['session']}}"
+                                                        value="" 
+                                                        @if (!@$responses[$question['id']])
+                                                          checked
+                                                        @endif
+                                                   >
+                                                    <label class="custom-control-label" for="nao_presente">Articulador não presente</label>
+                                                </div>
+                                                <div class="form-row">
+                                                    <div class="col-md-6 mb-3">
+                                                        <label class="pergunta" for=""></label>
+
+                                                        <input type="text" class="form-control" id="new_articualdor" name="time[1][new_articualdor]" >
+                                                        <small id="new_articualdor_help" class="form-text text-muted">Informe o articulador de apoio no caso do mesmo não estar presente na lista abaixo:</small>
+                                                      </div>
+                                                </div>
+                                            @endif
 
                                             @foreach($question['options'] as $option)
 
@@ -199,15 +224,17 @@
 
                                                         @if ($loop->iteration == 1 && @$responses[$question['id']]['option'] == $option['id'])
                                                           checked
-                                                          response="{{$responses[$question['id']]['response']}}"
+                                                        @endif
+
+                                                        @if (@$responses[$question['id']])
+                                                            response="{{$responses[$question['id']]['response']}}"
                                                         @endif
 
                                                         @if ($loop->iteration != 1 && @$responses[$question['id']]['option'] == $option['id'])
                                                           checked
-                                                          response="{{$responses[$question['id']]['response']}}"
                                                         @endif
 
-                                                        @if ($loop->iteration == 1 && @$responses[$question['id']]['option'] != $option['id'])
+                                                        @if ($loop->iteration == 1 && @$responses[$question['id']]['option'] != $option['id'] && $question['id'] != 29)
                                                           checked
                                                         @endif
                                                     >
@@ -224,7 +251,7 @@
                                         @endforeach
 
 
-                                    <button onclick="prepareSession1()" id="btnNextone" class="btn btn-lg btn-green acao"> Próxima Etapa </button>
+                                    <button onmouseover="prepareSession1()" id="btnNextone" class="btn btn-lg btn-green acao"> Próxima Etapa </button>
                                     </fieldset>
 
                                     <!-- Forme 2 - Informações sobre o produto -->
@@ -259,12 +286,14 @@
 
                                                         @if ($loop->iteration == 1 && @$responses[$question['id']]['option'] == $option['id'])
                                                           checked
-                                                          response="{{$responses[$question['id']]['response']}}"
+                                                        @endif
+
+                                                        @if (@$responses[$question['id']])
+                                                            response="{{$responses[$question['id']]['response']}}"
                                                         @endif
 
                                                         @if ($loop->iteration != 1 && @$responses[$question['id']]['option'] == $option['id'])
                                                           checked
-                                                          response="{{$responses[$question['id']]['response']}}"
                                                         @endif
 
                                                         @if ($loop->iteration == 1 && @$responses[$question['id']]['option'] != $option['id'])
@@ -316,12 +345,14 @@
 
                                                         @if ($loop->iteration == 1 && @$responses[$question['id']]['option'] == $option['id'])
                                                           checked
-                                                          response="{{$responses[$question['id']]['response']}}"
+                                                        @endif
+
+                                                        @if (@$responses[$question['id']])
+                                                            response="{{$responses[$question['id']]['response']}}"
                                                         @endif
 
                                                         @if ($loop->iteration != 1 && @$responses[$question['id']]['option'] == $option['id'])
                                                           checked
-                                                          response="{{$responses[$question['id']]['response']}}"
                                                         @endif
 
                                                         @if ($loop->iteration == 1 && @$responses[$question['id']]['option'] != $option['id'])
@@ -374,12 +405,14 @@
 
                                                         @if ($loop->iteration == 1 && @$responses[$question['id']]['option'] == $option['id'])
                                                           checked
-                                                          response="{{$responses[$question['id']]['response']}}"
+                                                        @endif
+
+                                                        @if (@$responses[$question['id']])
+                                                            response="{{$responses[$question['id']]['response']}}"
                                                         @endif
 
                                                         @if ($loop->iteration != 1 && @$responses[$question['id']]['option'] == $option['id'])
                                                           checked
-                                                          response="{{$responses[$question['id']]['response']}}"
                                                         @endif
 
                                                         @if ($loop->iteration == 1 && @$responses[$question['id']]['option'] != $option['id'])
@@ -432,12 +465,14 @@
 
                                                         @if ($loop->iteration == 1 && @$responses[$question['id']]['option'] == $option['id'])
                                                           checked
-                                                          response="{{$responses[$question['id']]['response']}}"
+                                                        @endif
+
+                                                        @if (@$responses[$question['id']])
+                                                            response="{{$responses[$question['id']]['response']}}"
                                                         @endif
 
                                                         @if ($loop->iteration != 1 && @$responses[$question['id']]['option'] == $option['id'])
                                                           checked
-                                                          response="{{$responses[$question['id']]['response']}}"
                                                         @endif
 
                                                         @if ($loop->iteration == 1 && @$responses[$question['id']]['option'] != $option['id'])
@@ -494,12 +529,14 @@
 
                                                         @if ($loop->iteration == 1 && @$responses[$question['id']]['option'] == $option['id'])
                                                           checked
-                                                          response="{{$responses[$question['id']]['response']}}"
+                                                        @endif
+
+                                                        @if (@$responses[$question['id']])
+                                                            response="{{$responses[$question['id']]['response']}}"
                                                         @endif
 
                                                         @if ($loop->iteration != 1 && @$responses[$question['id']]['option'] == $option['id'])
                                                           checked
-                                                          response="{{$responses[$question['id']]['response']}}"
                                                         @endif
 
                                                         @if ($loop->iteration == 1 && @$responses[$question['id']]['option'] != $option['id'])
@@ -601,14 +638,19 @@
 
                                                 <div class="form-row">
                                                     <div class="col-md-6 mb-3">
-                                                      <label class="pergunta" for="telcontato">Telefone de contato</label>
-                                                      <input type="text" class="form-control" id="telcontato" name="time[1][telcontato]" maxlength="14" >
-                                                      <small id="telcontatoHelp" class="form-text text-muted">E.: 85 999990000</small>
-                                                    </div>
-                                                    <div class="col-md-6 mb-3">
                                                         <label class="pergunta" for="emailmenbro">E-mail</label>
                                                         <input type="text" class="form-control" id="emailmenbro" name="time[1][emailmenbro]" >
                                                          <small id="emailmenbroHelp" class="form-text text-muted">Ex.: seuemail@seuemail.com!</small>
+                                                    </div>
+                                                    <div class="col-md-3 mb-3">
+                                                          <label class="pergunta" for="telcontato">Telefone de contato</label>
+                                                          <input type="text" class="form-control" id="telcontato" name="time[1][telcontato]" maxlength="14" >
+                                                          <small id="telcontatoHelp" class="form-text text-muted">E.: 85 999990000</small>
+                                                      </div>
+                                                    <div class="col-md-3 mb-3">
+                                                        <label class="pergunta" for="linkedin">Linked In</label>
+                                                        <input type="text" class="form-control" id="linkedin" name="time[1][linkedin]" >
+                                                         <small id="emailmenbroHelp" class="form-text text-muted">Ex.: https://www.linkedin.com/in/example/</small>
                                                       </div>
                                                 </div>
 
@@ -797,6 +839,22 @@
         sendConfig(url);
         prepareResponses('session_1');
 
+        route = '{{ route('response.new.option')}}';
+
+
+        var articulador = document.getElementById("new_articualdor").value;
+
+        if (articulador != '') {
+            var data_option = 
+            {
+                "question": '29',
+                "option": articulador,
+                "startup": startup
+            };
+
+            url = route + "?option=" + JSON.stringify(data_option);
+            console.log(url)
+        }
     }
 
 
@@ -827,10 +885,11 @@
                     data_response.response = response;
                 }
 
-                data_responses.push(data_response);
+                if (id_option != '') {
+                    data_responses.push(data_response);
+                }
             }
         }
-
         var url = route + "?responses=" + JSON.stringify(data_responses);
         sendConfig(url);
     }
@@ -875,6 +934,26 @@ $(document).ready(function(){
   });
 });
 </script>
+<script>
+    var imputs = document.getElementsByClassName('session_1');
+    for(key in imputs){
+        if (imputs[key].id) {
+            var checkbox = imputs[key];
+            checkbox.addEventListener("click", function(event) {
+                if (event.target.id != 'nao_presente') {
+                    document.getElementById('nao_presente').checked = false;
+                }
+              togleArticulador()
+            });
+        }
+    }
+    togleArticulador()
 
+    function togleArticulador() {
+        var nao_presente = document.getElementById('nao_presente');
+        console.log(nao_presente)
+        document.getElementById('new_articualdor').disabled = !nao_presente.checked;
+    }
+</script>
 </body>
 </html>
