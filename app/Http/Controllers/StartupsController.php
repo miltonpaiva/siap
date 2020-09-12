@@ -88,9 +88,9 @@ class StartupsController extends Controller
               'participant' => current($participants),
           ];
 
-        // if ($startup['stage'] == 'complete') {
-        //     return redirect()->route('concluido');
-        // }
+        if ($startup['stage'] == 'complete') {
+            return redirect()->route('concluido');
+        }
 
         return view('inscricao', $vars);
     }
@@ -210,10 +210,6 @@ class StartupsController extends Controller
 
 
       $result = self::update(['stage' => 'complete'], $startup_id);
-
-      echo "<pre>";
-      print_r($result);
-      exit();
 
       return redirect()->route('concluido');
 
