@@ -124,47 +124,47 @@
 
                                             @if ($loop->iteration == 1)
 
-                                             <div class="form-group">
-
-                                            @if (@$responses[$question['id']])
-                                                <input 
-                                                    type="hidden" 
-                                                    name="session[{{$question['session']}}][questions][{{$question['id']}}][response]"
-                                                    value="{{$responses[$question['id']]['response']}}" 
-                                                >
-                                            @endif
-
-                                            <label class="pergunta" for="tomou-conhecimento">{{$question['name']}}</label>
-                                            <select
-                                                class="form-control" 
-                                                id="tomou-conhecimento" 
-                                                name="session[{{$question['session']}}][questions][{{$question['id']}}][value]"
-                                                question="{{$question['id']}}" 
-                                                startup="{{$startup_id}}" 
+                                            <div class="form-group">
 
                                                 @if (@$responses[$question['id']])
-                                                    response="{{$responses[$question['id']]['response']}}"
+                                                    <input 
+                                                        type="hidden" 
+                                                        name="session[{{$question['session']}}][questions][{{$question['id']}}][response]"
+                                                        value="{{$responses[$question['id']]['response']}}" 
+                                                    >
                                                 @endif
 
-                                            >
-                                                <option value="" disabled selected>Escolher uma das respostas abaixo</option>
+                                                <label class="pergunta" for="tomou-conhecimento">{{$question['name']}}</label>
+                                                <select
+                                                    class="form-control" 
+                                                    id="tomou-conhecimento" 
+                                                    name="session[{{$question['session']}}][questions][{{$question['id']}}][value]"
+                                                    question="{{$question['id']}}" 
+                                                    startup="{{$startup_id}}" 
 
-                                                @foreach($question['options'] as $option)
+                                                    @if (@$responses[$question['id']])
+                                                        response="{{$responses[$question['id']]['response']}}"
+                                                    @endif
 
-                                                    <option 
-                                                        value="{{$option['id']}}"
+                                                >
+                                                    <option value="" disabled selected>Escolher uma das respostas abaixo</option>
 
-                                                        @if (@$responses[$question['id']]['option'] == $option['id'])
-                                                          selected="true" 
-                                                        @endif
+                                                    @foreach($question['options'] as $option)
 
-                                                    >{{$option['name']}}</option>
+                                                        <option 
+                                                            value="{{$option['id']}}"
 
-                                                @endforeach
+                                                            @if (@$responses[$question['id']]['option'] == $option['id'])
+                                                              selected="true" 
+                                                            @endif
 
-                                            </select>
-                                            <small id="tconhecimentoHelp" class="form-text text-muted">Campo obrigatório!</small>
-                                         </div>
+                                                        >{{$option['name']}}</option>
+
+                                                    @endforeach
+
+                                                </select>
+                                                <small id="tconhecimentoHelp" class="form-text text-muted">Campo obrigatório!</small>
+                                            </div>
 
                                             @endif
 
@@ -172,7 +172,7 @@
 
                                         @foreach($questions[1] as $question)
 
-                                            @if ($loop->iteration > 1)
+                                            @if ($loop->iteration > 1 && $question['id'] != 29)
 
                                             @if (@$responses[$question['id']])
                                                 <input 
@@ -184,31 +184,6 @@
 
                                         <label class="pergunta"  for="question_{{$question['id']}}">{{$question['name']}}</label>
                                             <div class="form-group">
-
-                                            @if ($question['id'] == 29 && !@$responses[$question['id']])
-                                                <div class="custom-control custom-radio">
-                                                    <input 
-                                                        type="radio" 
-                                                        id="nao_presente" 
-                                                        question="{{$question['id']}}" 
-                                                        startup="{{$startup_id}}" 
-                                                        class="custom-control-input session_{{$question['session']}}"
-                                                        value="" 
-                                                        @if (!@$responses[$question['id']])
-                                                          checked
-                                                        @endif
-                                                   >
-                                                    <label class="custom-control-label" for="nao_presente">Articulador não presente</label>
-                                                </div>
-                                                <div class="form-row">
-                                                    <div class="col-md-6 mb-3">
-                                                        <label class="pergunta" for=""></label>
-
-                                                        <input type="text" class="form-control" id="new_articualdor" name="time[1][new_articualdor]" >
-                                                        <small id="new_articualdor_help" class="form-text text-muted">Informe o articulador de apoio no caso do mesmo não estar presente na lista abaixo:</small>
-                                                      </div>
-                                                </div>
-                                            @endif
 
                                             @foreach($question['options'] as $option)
 
@@ -246,6 +221,78 @@
                                             </div>
 
                                         @endif
+
+
+                                                @if ($question['id'] == 29)
+
+                                                <div class="form-group">
+
+
+                                                        @if (@$responses[$question['id']])
+                                                            <input 
+                                                                type="hidden" 
+                                                                name="session[{{$question['session']}}][questions][{{$question['id']}}][response]"
+                                                                value="{{$responses[$question['id']]['response']}}" 
+                                                            >
+                                                        @endif
+
+                                                        <label class="pergunta" for="articuladores">{{$question['name']}}</label>
+                                                        <select
+                                                            class="form-control" 
+                                                            id="articuladores" 
+                                                            name="session[{{$question['session']}}][questions][{{$question['id']}}][value]"
+                                                            question="{{$question['id']}}" 
+                                                            startup="{{$startup_id}}" 
+
+                                                            @if (@$responses[$question['id']])
+                                                                response="{{$responses[$question['id']]['response']}}"
+                                                            @endif
+
+                                                        >
+                                                            <option value="" selected>Não houve articulador</option>
+
+                                                            @foreach($question['options'] as $option)
+
+                                                                <option 
+                                                                    value="{{$option['id']}}"
+
+                                                                    @if (@$responses[$question['id']]['option'] == $option['id'])
+                                                                      selected="true" 
+                                                                    @endif
+
+                                                                >{{$option['name']}}</option>
+
+                                                            @endforeach
+
+                                                        </select>
+                                                        <small id="articuladoresHelp" class="form-text text-muted">Campo obrigatório!</small>
+
+                                                </div>
+
+                                                @if (!@$responses[$question['id']])
+
+                                                    <div class="custom-control custom-radio">
+                                                        <input 
+                                                            type="radio" 
+                                                            id="nao_presente" 
+                                                            question="{{$question['id']}}" 
+                                                            startup="{{$startup_id}}" 
+                                                            class="custom-control-input"
+                                                            value="" 
+
+                                                            onclick="togleArticulador()"
+                                                       >
+                                                        <label class="custom-control-label" for="nao_presente">Articulador não presente ?</label>
+                                                    </div>
+                                                    <div class="form-group">
+
+                                                        <input type="text" class="form-control" id="new_articualdor" name="time[1][new_articualdor]" disabled="true" >
+                                                        <small id="new_articualdor_help" class="form-text text-muted"> Caso o nome do Articulador não esteja cadastro adicione aqui:</small>
+                                                    </div>
+
+                                                @endif
+
+                                                @endif
 
 
                                         @endforeach
@@ -821,7 +868,10 @@
 
         sendConfig(url);
 
+        // ================ TOMOU CONHECIMENTO ==================
+
         route = '{{ route('response.register')}}';
+
         var tomou = document.getElementById("tomou-conhecimento");
         var data_responses = [];
 
@@ -847,20 +897,55 @@
         sendConfig(url);
         prepareResponses('session_1');
 
+        // ==================== ARTICULADORES ==================
+
+        var art = document.getElementById("articuladores");
+        var data_responses = [];
+
+        var question = art.getAttribute('question');
+        var startup  = art.getAttribute('startup');
+        var id_option = art.value;
+
+        var data_response = 
+        {
+            "question": question,
+            "option": id_option,
+            "startup": startup
+        };
+
+        if (art.getAttribute('response')) {
+            var response = art.getAttribute('response');
+            data_response.response = response;
+        }
+
+        if (id_option != '') {
+            data_responses.push(data_response);
+        }
+
+        url = route + "?responses=" + JSON.stringify(data_responses);
+        sendConfig(url);
+
+        // ==================== NOVO ARTICULADOR ==================
+
+        var art = document.getElementById("nao_presente");
+        var new_art = document.getElementById("new_articualdor");
+        var data_responses = [];
+
+        var question = art.getAttribute('question');
+        var startup  = art.getAttribute('startup');
+        var option = new_art.value;
+
+        var data_response = 
+        {
+            "question": question,
+            "option": option,
+            "startup": startup
+        };
+
         route = '{{ route('response.new.option')}}';
 
-
-        var articulador = document.getElementById("new_articualdor").value;
-
-        if (articulador != '') {
-            var data_option = 
-            {
-                "question": '29',
-                "option": articulador,
-                "startup": startup
-            };
-
-            url = route + "?option=" + JSON.stringify(data_option);
+        if (option != '') {
+            url = route + "?option=" + JSON.stringify(data_response);
             sendConfig(url);
         }
     }
@@ -943,25 +1028,18 @@ $(document).ready(function(){
 });
 </script>
 <script>
-    var imputs = document.getElementsByClassName('session_1');
-    for(key in imputs){
-        if (imputs[key].id) {
-            var checkbox = imputs[key];
-            checkbox.addEventListener("click", function(event) {
-                if (event.target.id != 'nao_presente') {
-                    document.getElementById('nao_presente').checked = false;
-                }
-              togleArticulador()
-            });
+    function togleArticulador() {
+        var select_art = document.getElementById('articuladores');
+        var check_art = document.getElementById('nao_presente');
+        var new_art   = document.getElementById('new_articualdor');
+
+        if (check_art.checked) {
+            new_art.disabled = false;
+            select_art.value = '';
+            select_art.disabled = true;
         }
     }
-    togleArticulador()
-
-    function togleArticulador() {
-        var nao_presente = document.getElementById('nao_presente');
-        console.log(nao_presente)
-        document.getElementById('new_articualdor').disabled = !nao_presente.checked;
-    }
 </script>
+
 </body>
 </html>
