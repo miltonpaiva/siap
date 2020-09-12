@@ -159,4 +159,18 @@ class QueryActionController extends Controller
 			break;
 		}
 	}
+
+	public static function getSampleData ($table, $column, $args = '')
+	{
+		$all_data = self::queryAction($table, $args);
+
+		$sample_arr_data = [];
+
+		foreach($all_data as $data_id => $data){
+			$sample_arr_data[$data_id] = $data[$column];
+		}
+
+		return $sample_arr_data;
+	}
+
 }

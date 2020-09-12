@@ -72,6 +72,7 @@ class ResponsesController extends Controller
 
         $data = json_decode($responses['responses'], true);
         foreach ($data as $response) {
+
               if (isset($response['response'])) {
                 $list_responses[] =
                   [
@@ -79,12 +80,34 @@ class ResponsesController extends Controller
                     'response' => $response['response'],
                   ];
               }else{
-                $list_responses[] =
-                  [
-                    'question' => $response['question'],
-                    'startup'  => $response['startup'],
-                    'option'   => $response['option'],
-                  ];
+                $custom_args['columns'] =
+                    [
+                        'id',
+                    ];
+
+                $custom_args['conditions'] =
+                    [
+                        ['startup', '=', $response['startup']],
+                        ['question', '=', $response['question']],
+                    ];
+
+                $has_response = @max(Query::getSampleData('responses', 'id', $custom_args));
+
+                if ($has_response) {
+                    $list_responses[] =
+                      [
+                        'option'   => $response['option'],
+                        'response' => $has_response,
+                      ];
+                }else{
+                    $list_responses[] =
+                      [
+                        'question' => $response['question'],
+                        'startup'  => $response['startup'],
+                        'option'   => $response['option'],
+                      ];
+                }
+
               }
         }
 

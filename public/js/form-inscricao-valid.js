@@ -2,6 +2,7 @@ $(function(){
     var atual_fs, next_fs, prev_fs;
     var exprEmeio = /^[a-zA-Z0-9_\.\-]+@[a-zA-Z0-9\-]+\.[a-zA-Z0-9\-\.]+$/;
     var regex = /^\d{3}\.\d{3}\.\d{3}\-\d{2}$/;
+    $("#cpf").mask("999.999.999-99");
 
     $("#estado").focus();
     
@@ -224,135 +225,141 @@ $(function(){
         var comprovacao = $("#comprovacao").val();
         
             if(nomecompl == "") {
+                alert('ainda ha campos que estão invalidos, por gentileza verificar os formularios dos particpantes');
+                document.getElementById('all_ok').value = 'nao'
                 $("#nome-compl").removeClass("valido");
                 $("#nome-compl").addClass("invalido");
                 return false;
             }else{
+                document.getElementById('all_ok').value = 'nao'
                     $("#nome-compl").removeClass("invalido");
                     $("#nome-compl").addClass("valido");
                 if(funcaopi == ""){
+                    document.getElementById('all_ok').value = 'nao'
                     $("#funcaop").removeClass("valido");
                     $("#funcaop").addClass("invalido");
                     return false;
                 }else{
+                    document.getElementById('all_ok').value = 'nao'
                     $("#funcaop").removeClass("invalido");
                     $("#funcaop").addClass("valido");
                     if(datanasci == ""){
+                        document.getElementById('all_ok').value = 'nao'
                         $("#datanasc").removeClass("validotwo");
                         $("#datanasc").addClass("invalidotwo");
                         return false;
                     }else{
+                        document.getElementById('all_ok').value = 'nao'
                         $("#datanasc").removeClass("invalidotwo");
                         $("#datanasc").addClass("validotwo");
                     }if(rgs == "" || rgs.length <= 12){
+                        document.getElementById('all_ok').value = 'nao'
                         $("#rg").removeClass("valido");
                         $("#rg").addClass("invalido");
                         return false;
                     }else{
+                        document.getElementById('all_ok').value = 'nao'
                         $("#rg").removeClass("invalido");
                         $("#rg").addClass("valido");
                         if(orgemaisso == ""){
+                            document.getElementById('all_ok').value = 'nao'
                             $("#orgemaissor").removeClass("valido");
                             $("#orgemaissor").addClass("invalido");
                             return false;
                         }else{
+                            document.getElementById('all_ok').value = 'nao'
                             $("#orgemaissor").removeClass("invalido");
                             $("#orgemaissor").addClass("valido");
                             if(cpf == "" || !regex.test(cpf)){
                                 $('.obrigatorio').show();
+                                document.getElementById('all_ok').value = 'nao'
                                 $("#cpf").removeClass("valido");
                                 $("#cpf").addClass("invalido");
                                 return false;
                             }else{
                                 $('.obrigatorio').hide();
+                                document.getElementById('all_ok').value = 'nao'
                                 $("#cpf").removeClass("invalido");
                                 $("#cpf").addClass("valido");
                                 if(instensino == ""){
+                                    document.getElementById('all_ok').value = 'nao'
                                     $("#instensino").removeClass("valido");
                                     $("#instensino").addClass("invalido");
                                     return false;
                                 }else{
+                                    document.getElementById('all_ok').value = 'nao'
                                     $("#instensino").removeClass("invalido");
                                     $("#instensino").addClass("valido");
                                     if(curso == ""){
+                                        document.getElementById('all_ok').value = 'nao'
                                         $("#curso").removeClass("valido");
                                         $("#curso").addClass("invalido");
                                         return false;
                                     }else{
+                                        document.getElementById('all_ok').value = 'nao'
                                         $("#curso").removeClass("invalido");
                                         $("#curso").addClass("valido");
                                         if(formacao == null){
+                                            document.getElementById('all_ok').value = 'nao'
                                             $("#formacao").removeClass("valido");
                                             $("#formacao").addClass("invalido");
                                             return false;
                                         }else{
+                                            document.getElementById('all_ok').value = 'nao'
                                             $("#formacao").removeClass("invalido");
                                             $("#formacao").addClass("valido");
                                             if(logradouro == ""){
+                                                document.getElementById('all_ok').value = 'nao'
                                                 $("#logradouro").removeClass("valido");
                                                 $("#logradouro").addClass("invalido");
                                                 return false;
                                             }else{
+                                                document.getElementById('all_ok').value = 'nao'
                                                 $("#logradouro").removeClass("invalido");
                                                 $("#logradouro").addClass("valido");
                                                 if(estad == ""){
+                                                    document.getElementById('all_ok').value = 'nao'
                                                     $("#estadom").removeClass("valido");
                                                     $("#estadom").addClass("invalido");
                                                     return false;
                                                 }else{
+                                                    document.getElementById('all_ok').value = 'nao'
                                                     $("#estadom").removeClass("invalido");
                                                     $("#estadom").addClass("valido");
                                                     if(cidad == ""){
+                                                        document.getElementById('all_ok').value = 'nao'
                                                         $("#cidadem").removeClass("valido");
                                                         $("#cidadem").addClass("invalido");
                                                         return false;
                                                     }else{
+                                                        document.getElementById('all_ok').value = 'nao'
                                                         $("#cidadem").removeClass("invalido");
                                                         $("#cidadem").addClass("valido");
                                                         if(tel == ""){
+                                                            document.getElementById('all_ok').value = 'nao'
                                                             $("#telcontato").removeClass("valido");
                                                             $("#telcontato").addClass("invalido");
                                                             return false;
                                                         }else{
+                                                            document.getElementById('all_ok').value = 'nao'
                                                             $("#telcontato").removeClass("invalido");
                                                             $("#telcontato").addClass("valido");
                                                             if(emailmenbro == "" || !exprEmeio.test(emailmenbro)){
+                                                                document.getElementById('all_ok').value = 'nao'
                                                                 $("#emailmenbro").removeClass("valido");
                                                                 $("#emailmenbro").addClass("invalido");
                                                                 return false;
                                                             }else{
+                                                                document.getElementById('all_ok').value = 'nao'
                                                                 $("#emailmenbro").removeClass("invalido");
                                                                 $("#emailmenbro").addClass("valido");
                                                                 if(comprovacao == ""){
+                                                                    document.getElementById('all_ok').value = 'nao'
                                                                     $("#comprovacao").removeClass("validotwo");
                                                                     $("#comprovacao").addClass("invalidotwo");
                                                                     return false;
                                                                 }else{
-                                                                   var categoria = document.getElementById('categoria-projeto');
-                                                                   if (categoria.value = 'criação') {
-
-                                                                            $('#btnNextsix').click(function(){
-                                                                                setTimeout(function(){ 
-                                                                                    document.getElementById('btnNextseven').click();
-                                                                                 }, 1000);
-
-                                                                            });
-
-                                                                            $('#btnNextseven').click(function(){
-
-                                                                                atual_fs = $(this).parent();
-                                                                                next_fs = $(this).parent().next();
-
-                                                                                $('.progresso li').eq($('fieldset').index(atual_fs)).removeClass('ativo');
-                                                                                $('.progresso li').eq($('fieldset').index(atual_fs)).addClass('completo');
-                                                                                $('.progresso li').eq($('fieldset').index(next_fs)).addClass('ativo');
-
-                                                                                atual_fs.hide(800);
-                                                                                next_fs.show(800);
-
-                                                                            });
-
-                                                                   }
+                                                                    document.getElementById('all_ok').value = 'ok';
                                                                     console.log(comprovacao);
                                                                 }
                                                             }
@@ -368,19 +375,100 @@ $(function(){
                     }
                 }
             }
-        
-        atual_fs = $(this).parent();
-        next_fs = $(this).parent().next();
-        
-        $('.progresso li').eq($('fieldset').index(atual_fs)).removeClass('ativo');
-        $('.progresso li').eq($('fieldset').index(atual_fs)).addClass('completo');
-        $('.progresso li').eq($('fieldset').index(next_fs)).addClass('ativo');
-        
-        atual_fs.hide(800);
-        next_fs.show(800);
+
+        setTimeout(function(){ 
+            var all_ok = document.getElementById('all_ok').value;
+
+            console.log(all_ok)
+
+            if (all_ok == 'ok') {
+
+                atual_fs = $('#btnNextsix').parent();
+                next_fs = $('#btnNextsix').parent().next();
+
+                $('.progresso li').eq($('fieldset').index(atual_fs)).removeClass('ativo');
+                $('.progresso li').eq($('fieldset').index(atual_fs)).addClass('completo');
+                $('.progresso li').eq($('fieldset').index(next_fs)).addClass('ativo');
+
+                atual_fs.hide(800);
+                next_fs.show(800);
+
+                actionArquivos();
+            }else{
+                alert('ainda ha campos que estão invalidos, por gentileza verificar os formularios dos particpantes');
+            }
+         }, 1000);
 
     });
 
+
+
+function actionArquivos() {
+
+           var categoria = document.getElementById('categoria-projeto');
+           console.log(categoria.value)
+           if (categoria.value == 'criação') {
+
+                    setTimeout(function(){ 
+                        document.getElementById('btnNextseven').click();
+                     }, 1000);
+
+                    $('#btnNextseven').click(function(){
+
+                        atual_fs = $(this).parent();
+                        next_fs = $(this).parent().next();
+
+                        $('.progresso li').eq($('fieldset').index(atual_fs)).removeClass('ativo');
+                        $('.progresso li').eq($('fieldset').index(atual_fs)).addClass('completo');
+                        $('.progresso li').eq($('fieldset').index(next_fs)).addClass('ativo');
+
+                        atual_fs.hide(800);
+                        next_fs.show(800);
+
+                    });
+
+           }else{
+
+
+                //Formulario 7
+                $('#btnNextseven').click(function(){
+
+                    var videoUpload = $("#customFilev").val();
+                    var pdfUpload = $("#customFilep").val();
+
+                    if(videoUpload == ""){
+                        $("#customFilev").removeClass("validotwo");
+                        $("#customFilev").addClass("invalidotwo");
+                        return false;
+                    }else{
+                        console.log(videoUpload);
+                        if(pdfUpload == ""){
+                            $("#customFilep").removeClass("validotwo");
+                            $("#customFilep").addClass("invalidotwo");
+                            return false;
+                        }else{
+                            console.log(pdfUpload);
+                        }
+                    }
+
+                    atual_fs = $(this).parent();
+                    next_fs = $(this).parent().next();
+
+                    $('.progresso li').eq($('fieldset').index(atual_fs)).removeClass('ativo');
+                    $('.progresso li').eq($('fieldset').index(atual_fs)).addClass('completo');
+                    $('.progresso li').eq($('fieldset').index(next_fs)).addClass('ativo');
+
+                    atual_fs.hide(800);
+                    next_fs.show(800);
+
+                });
+
+
+
+           }
+
+
+}
 
     $('#btnPrevsix').click(function(){
 
@@ -477,12 +565,11 @@ $(function(){
     $("#categoria-projeto").change(function() {
         var tracaov = $(this).val();
         console.log(tracaov);
-        if(tracaov == 'Tração'){
+        if(tracaov == 'tração'){
             $('#seven').show();
 
             //Formulario 7
             $('#btnNextseven').click(function(){
-
 
                 var videoUpload = $("#customFilev").val();
                 var pdfUpload = $("#customFilep").val();
@@ -501,31 +588,6 @@ $(function(){
                         console.log(pdfUpload);
                     }
                 }
-
-                atual_fs = $(this).parent();
-                next_fs = $(this).parent().next();
-                
-                $('.progresso li').eq($('fieldset').index(atual_fs)).removeClass('ativo');
-                $('.progresso li').eq($('fieldset').index(atual_fs)).addClass('completo');
-                $('.progresso li').eq($('fieldset').index(next_fs)).addClass('ativo');
-                
-                atual_fs.hide(800);
-                next_fs.show(800);
-
-            });
-
-
-        }else{
-
-            $('#btnNextsix').click(function(){
-                setTimeout(function(){ 
-                    document.getElementById('btnNextseven').click();
-                 }, 1000);
-
-            });
-
-            //Formulario 7
-            $('#btnNextseven').click(function(){
 
                 atual_fs = $(this).parent();
                 next_fs = $(this).parent().next();

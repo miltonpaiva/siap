@@ -88,6 +88,10 @@ class StartupsController extends Controller
               'participant' => current($participants),
           ];
 
+        // if ($startup['stage'] == 'complete') {
+        //     return redirect()->route('concluido');
+        // }
+
         return view('inscricao', $vars);
     }
 
@@ -141,7 +145,7 @@ class StartupsController extends Controller
                 $participant =
                   [
                     'name' => $time['nome'],
-                    'function' => 'Produto',//$time['funcao'],
+                    'function' => $time['funcao'],
                     'startup' => $startup_id,
                     'rg' => $time['rg'],
                     'cpf' => $time['cpf'],
@@ -203,6 +207,13 @@ class StartupsController extends Controller
       foreach ($attachments as $attachment) {
         $attachments_saved[] = self::registerAttachment($attachment);
       }
+
+
+      $result = self::update(['stage' => 'complete'], $startup_id);
+
+      echo "<pre>";
+      print_r($result);
+      exit();
 
       return redirect()->route('concluido');
 

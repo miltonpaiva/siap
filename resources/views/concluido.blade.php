@@ -22,11 +22,6 @@
         <div class="container">
             <div class="mt-4 mb-3">
                 <div class="card">
-                <nav class="navbar navbar-dark bg-dark ">
-                  .<a class="navbar-brand" href="{{ route('user.login.view')}}">Logue-se</a>
-                </nav>
-
-                    
                     <div class="row">
                         <div class="col-sm-12 col-md-6">
                             <div class="card-body">
@@ -41,8 +36,8 @@
                         </div>
                         <div class="col-sm-12 col-md-6">
                             <div class="card-body">
-                                <h2 class="card-title">Cadastro concluido com Sucesso !</h2>
-                                <h4 class="card-title">Aguarde as proximas etapas</h2>
+                                <h2 class="card-title">Seu projeto foi enviado com sucesso!</h2>
+                                <h4 class="card-title">Fique atento ao resultado parcial dos pré-aprovados que sairá no dia 10/11/2020. </h2>
 
                             </div>
                         </div>

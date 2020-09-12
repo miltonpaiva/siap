@@ -65,9 +65,26 @@ class UsersController extends Controller
 
         $data_user = Query::queryAction('users', $custom_args);
 
+
         if (count($data_user) > 0) {
             if(current($data_user)['password'] == md5($data['senhalogin'])){
                 $user = current($data_user);
+
+                $custom_args['columns'] =
+                    [
+                        'id',
+                        'stage',
+                    ];
+
+                $custom_args['conditions'] =
+                    [
+                        ['id', '=', $user['startup']]
+                    ];
+                $data_startup = current(Query::queryAction('startups', $custom_args));
+
+                if ($data_startup['stage'] == 'complete') {
+                    return redirect()->route('concluido');
+                }
                 return redirect()->route('startup.register.view', ['startup_id' => $user['startup']]);
             }else{
                 // SENHA INCORRETA
