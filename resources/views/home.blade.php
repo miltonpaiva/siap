@@ -21,10 +21,6 @@
         <div class="container">
             <div class="mt-4 mb-3">
                 <div class="card">
-                <!--<nav class="navbar navbar-dark bg-dark ">
-                  .<a class="navbar-brand" href="{{ /*route('user.login.view' */)}}">Logue-se</a>
-                </nav>-->
-
                     <div class="row">
                         <div class="col-sm-12 col-md-6">
                             <div class="card-body">
@@ -77,7 +73,7 @@
                                     <button id="btn-cadastro" class="btn btn-lg btn-green"> Cadastrar </button>
                                     <div class="float-right">
                                         <span>Já tem cadastro?</span>
-                                        <a href="https:\\1111conteudos.com.br" class="btn btn-lg btn-info" href="{{ route('user.login.view')}}"> Faça Login </a>
+                                        <a class="btn btn-lg btn-info" href="{{ route('user.login.view')}}"> Faça Login </a>
                                     </div>
                                 </form>
 
