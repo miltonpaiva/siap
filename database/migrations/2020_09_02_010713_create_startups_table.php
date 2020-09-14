@@ -18,6 +18,7 @@ class CreateStartupsTable extends Migration
             $table->string('name', 100);
             $table->string('state');
             $table->string('city');
+            $table->string('stage')->default('in_progress');
             $table->enum('category', ['criação', 'tração']);
         });
     }

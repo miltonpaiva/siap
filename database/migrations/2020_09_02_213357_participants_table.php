@@ -25,7 +25,7 @@ class ParticipantsTable extends Migration
             $table->unsignedBigInteger('formation');
             $table->string('address', 100);
             $table->string('city', 50);
-            $table->bigInteger('telephone');
+            $table->string('telephone', 15);
             $table->string('email', 50);
             $table->string('linkedin', 50);
             $table->foreign('startup')->references('id')->on('startups');
