@@ -2,118 +2,7 @@
 
 
 
-
-# ===== ===== ===== ===== ===== ===== ===== ===== ===== ===== =====
-#	IMPORTANTE QUE O INCREMENT COMECE DO ID 2, DEVIDO A UM ERRO
-# ===== ===== ===== ===== ===== ===== ===== ===== ===== ===== =====
-
-#SESSION 1
-INSERT INTO public.questions
-("name", "session")
-VALUES(
-	'QUESTÃO TEMPORARIA', '1'
-),(
-	'De que forma seu time tomou conhecimento do Programa Corredores Digitais?', '1'
-),(
-	'Setor de atuação da startup', '1'
-),(
-	'Tendência tecnológica', '1'
-);
-
-
-DELETE FROM public.questions wHERE id= 1;
-
-
-#SESSION 2
-INSERT INTO public.questions
-("name", "session")
-VALUES
-(
-	'Tipo de solução', '2'
-),(
-	'Estágio de desenvolvimento do produto', '2'
-),(
-	'Há quanto tempo o produto vem sendo desenvolvido?', '2'
-),(
-	'Qual a diferenciação do seu produto?', '2'
-),(
-	'Qual a barreira de cópia que existe no produto desenvolvido?', '2'
-);
-
-
-#SESSION 3
-INSERT INTO public.questions
-("name", "session")
-VALUES
-(
-'O que você conhece sobre seus concorrentes?', 3
-),(
-'Qual o tamanho do seu mercado (TAM)?', 3
-),(
-'O quanto você conhece dos seus potenciais clientes?', 3
-),(
-'Como é seu mercado de atuação?', 3
-),(
-'Como está sua aquisição e crescimento de clientes?', 3
-),(
-'Como a sua startup está sendo notada ou percebida?', 3
-),(
-'Como está o domínio do seu funil de vendas?', 3
-);
-
-
-#SESSION 4
-INSERT INTO public.questions
-("name", "session")
-VALUES
-(
-'Qual o modelo inicial de receita?', 4
-),(
-'Qual o estágio de receita da empresa?', 4
-),(
-'Você tem recursos financeiros para sustentar a operação por quanto tempo mais?', 4
-);
-
-
-#SESSION 5
-INSERT INTO public.questions
-("name", "session")
-VALUES
-(
-'Como está sua proposta de valor?', 5
-),(
-'Com relação ao seu modelo de receita, em qual estágio você está?', 5
-),(
-'Você está preparado para escalar?', 5
-);
-
-
-#SESSION 6
-INSERT INTO public.questions
-("name", "session")
-VALUES
-(
-'Qual a experiência do time no mercado da startup?', 6
-),(
-'Como está a composição/dedicação do time?', 6
-),(
-'Faixa etária dos integrantes do time', 6
-),(
-'Nível de conhecimento formal do setor da startup', 6
-),(
-'Vocês possuem desenvolvedor (CTO - Chief Technology Officer)?', 6
-),(
-'Como está a divisão societária da startup?', 6
-);
-
-
-
-
-
-
-
-
-#1.5. 2	De que forma seu time tomou conhecimento do Programa Corredores Digitais?
+--1.5. 2	De que forma seu time tomou conhecimento do Programa Corredores Digitais?
 INSERT INTO public."options"
 ("name", "session", question)
 VALUES(
@@ -143,11 +32,11 @@ VALUES(
 
 
 
-#SEÇÃO 2. INFORMAÇÕES SOBRE PRODUTO
+--SEÇÃO 2. INFORMAÇÕES SOBRE PRODUTO
 
-#O preenchimento da Seção 2 do formulário eletrônico será obrigatório. Deverão ser fornecidas as seguintes informações:
+--O preenchimento da Seção 2 do formulário eletrônico será obrigatório. Deverão ser fornecidas as seguintes informações:
 
-#2.1  3	Tendência tecnológica
+--2.1  3	Tendência tecnológica
 INSERT INTO public."options"
 ("name", "session", question)
 VALUES(
@@ -184,7 +73,7 @@ VALUES(
 
 
 
-#2.2  4	Setor de atuação da startup
+--2.2  4	Setor de atuação da startup
 INSERT INTO public."options"
 ("name", "session", question)
 VALUES(
@@ -221,7 +110,7 @@ VALUES(
 
 
 
-#2.3  5	Tipo de solução
+--2.3  5	Tipo de solução
 INSERT INTO public."options"
 ("name", "session", question)
 VALUES(
@@ -242,7 +131,7 @@ VALUES(
 
 
 
-#2.4. 6	Estágio de desenvolvimento do produto
+--2.4. 6	Estágio de desenvolvimento do produto
 INSERT INTO public."options"
 ("name", "session", question)
 VALUES(
@@ -261,7 +150,7 @@ VALUES(
 
 
 
-#2.5. 7	Há quanto tempo o produto vem sendo desenvolvido?
+--2.5. 7	Há quanto tempo o produto vem sendo desenvolvido?
 INSERT INTO public."options"
 ("name", "session", question)
 VALUES(
@@ -281,7 +170,7 @@ VALUES(
 
 
 
-#2.6. 8	Qual a diferenciação do seu produto?
+--2.6. 8	Qual a diferenciação do seu produto?
 INSERT INTO public."options"
 ("name", "session", question)
 VALUES(
@@ -300,7 +189,7 @@ VALUES(
 
  
 
-#2.7. 9	Qual a barreira de cópia que existe no produto desenvolvido?
+--2.7. 9	Qual a barreira de cópia que existe no produto desenvolvido?
 INSERT INTO public."options"
 ("name", "session", question)
 VALUES(
@@ -317,11 +206,11 @@ VALUES(
 
 
 
-#SEÇÃO 3. INFORMAÇÕES SOBRE MERCADO
+--SEÇÃO 3. INFORMAÇÕES SOBRE MERCADO
 
-#O preenchimento da Seção 3 do formulário eletrônico será obrigatório. Deverão ser fornecidas as seguintes informações:
+--O preenchimento da Seção 3 do formulário eletrônico será obrigatório. Deverão ser fornecidas as seguintes informações:
 
-#3.1. 10	O que você conhece sobre seus concorrentes?
+--3.1. 10	O que você conhece sobre seus concorrentes?
 INSERT INTO public."options"
 ("name", "session", question)
 VALUES(
@@ -338,7 +227,7 @@ VALUES(
 
 
 
-#3.2. 11	Qual o tamanho do seu mercado (TAM)?
+--3.2. 11	Qual o tamanho do seu mercado (TAM)?
 INSERT INTO public."options"
 ("name", "session", question)
 VALUES(
@@ -355,7 +244,7 @@ VALUES(
 
 
 
-#3.3. 12	O quanto você conhece dos seus potenciais clientes?
+--3.3. 12	O quanto você conhece dos seus potenciais clientes?
 INSERT INTO public."options"
 ("name", "session", question)
 VALUES(
@@ -372,7 +261,7 @@ VALUES(
 
 
 
-#3.4. 13	Como é seu mercado de atuação?
+--3.4. 13	Como é seu mercado de atuação?
 INSERT INTO public."options"
 ("name", "session", question)
 VALUES(
@@ -389,7 +278,7 @@ VALUES(
 
 
 
-#3.5. 14	Como está sua aquisição e crescimento de clientes?
+--3.5. 14	Como está sua aquisição e crescimento de clientes?
 INSERT INTO public."options"
 ("name", "session", question)
 VALUES(
@@ -407,7 +296,7 @@ VALUES(
 
 
 
-#3.6. 15	Como a sua startup está sendo notada ou percebida?
+--3.6. 15	Como a sua startup está sendo notada ou percebida?
 INSERT INTO public."options"
 ("name", "session", question)
 VALUES(
@@ -425,7 +314,7 @@ VALUES(
 
 
 
-#3.7. 16	Como está o domínio do seu funil de vendas?
+--3.7. 16	Como está o domínio do seu funil de vendas?
 INSERT INTO public."options"
 ("name", "session", question)
 VALUES(
@@ -442,11 +331,11 @@ VALUES(
 
 
 
-#SEÇÃO 4. INFORMAÇÕES SOBRE FINANÇAS
+--SEÇÃO 4. INFORMAÇÕES SOBRE FINANÇAS
 
-#O preenchimento da Seção 4 do formulário eletrônico será obrigatório. Deverão ser fornecidas as seguintes informações:
+--O preenchimento da Seção 4 do formulário eletrônico será obrigatório. Deverão ser fornecidas as seguintes informações:
 
-#4.1. 17	Qual o modelo inicial de receita?
+--4.1. 17	Qual o modelo inicial de receita?
 INSERT INTO public."options"
 ("name", "session", question)
 VALUES(
@@ -465,7 +354,7 @@ VALUES(
  
 
 
-#4.2. 18	Qual o estágio de receita da empresa?
+--4.2. 18	Qual o estágio de receita da empresa?
 INSERT INTO public."options"
 ("name", "session", question)
 VALUES(
@@ -482,7 +371,7 @@ VALUES(
  
 
 
-#4.3. 19	Você tem recursos financeiros para sustentar a operação por quanto tempo mais?mais?
+--4.3. 19	Você tem recursos financeiros para sustentar a operação por quanto tempo mais?mais?
 INSERT INTO public."options"
 ("name", "session", question)
 VALUES(
@@ -501,11 +390,11 @@ VALUES(
 
 
 
-#SEÇÃO 5. INFORMAÇÕES SOBRE MODELO DE NEGÓCIO
+--SEÇÃO 5. INFORMAÇÕES SOBRE MODELO DE NEGÓCIO
 
-#O preenchimento da Seção 5 do formulário eletrônico será obrigatório. Deverão ser fornecidas as seguintes informações:
+--O preenchimento da Seção 5 do formulário eletrônico será obrigatório. Deverão ser fornecidas as seguintes informações:
 
-#5.1. 20	Como está sua proposta de valor?
+--5.1. 20	Como está sua proposta de valor?
 INSERT INTO public."options"
 ("name", "session", question)
 VALUES(
@@ -522,7 +411,7 @@ VALUES(
  
 
 
-#5.2. 21	Com relação ao seu modelo de receita, em qual estágio você está?
+--5.2. 21	Com relação ao seu modelo de receita, em qual estágio você está?
 INSERT INTO public."options"
 ("name", "session", question)
 VALUES(
@@ -539,7 +428,7 @@ VALUES(
  
 
 
-#5.3. 22	Você está preparado para escalar?
+--5.3. 22	Você está preparado para escalar?
 INSERT INTO public."options"
 ("name", "session", question)
 VALUES(
@@ -556,11 +445,11 @@ VALUES(
 
 
 
-#SEÇÃO 6.  IDENTIFICAÇÃO DO TIME DO PROJETO
+--SEÇÃO 6.  IDENTIFICAÇÃO DO TIME DO PROJETO
 
-#O preenchimento da Seção 6 do formulário eletrônico será obrigatório. Deverão ser fornecidas as seguintes informações:
+--O preenchimento da Seção 6 do formulário eletrônico será obrigatório. Deverão ser fornecidas as seguintes informações:
 
-#6.1. 23	Qual a experiência do time no mercado da startup?
+--6.1. 23	Qual a experiência do time no mercado da startup?
 INSERT INTO public."options"
 ("name", "session", question)
 VALUES(
@@ -577,7 +466,7 @@ VALUES(
 
 
 
-#6.2. 24	Como está a composição/dedicação do time?
+--6.2. 24	Como está a composição/dedicação do time?
 INSERT INTO public."options"
 ("name", "session", question)
 VALUES(
@@ -594,7 +483,7 @@ VALUES(
  
 
 
-#6.3. 25	Faixa etária dos integrantes do time
+--6.3. 25	Faixa etária dos integrantes do time
 INSERT INTO public."options"
 ("name", "session", question)
 VALUES(
@@ -611,7 +500,7 @@ VALUES(
  
 
 
-#6.4. 26	Nível de conhecimento formal do setor da startup
+--6.4. 26	Nível de conhecimento formal do setor da startup
 INSERT INTO public."options"
 ("name", "session", question)
 VALUES(
@@ -628,7 +517,7 @@ VALUES(
  
 
 
-#6.5. 27	Vocês possuem desenvolvedor (CTO 'Chief Technology Officer)?', 6, 
+--6.5. 27	Vocês possuem desenvolvedor (CTO 'Chief Technology Officer)?', 6, 
 INSERT INTO public."options"
 ("name", "session", question)
 VALUES(
@@ -645,7 +534,7 @@ VALUES(
  
 
 
-#6.6. 28	Como está a divisão societária da startup?
+--6.6. 28	Como está a divisão societária da startup?
 INSERT INTO public."options"
 ("name", "session", question)
 VALUES(
@@ -663,7 +552,7 @@ VALUES(
 );
 
 
-#SESSION 1
+--SESSION 1
 INSERT INTO public.questions
 ("name", "session")
 VALUES(
@@ -671,7 +560,7 @@ VALUES(
 );
 
 
-#Quem foi o Articulador que apoiou a Startup?
+--Quem foi o Articulador que apoiou a Startup?
 INSERT INTO public."options"
 ("name", "session", question)
 VALUES(
