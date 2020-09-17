@@ -252,7 +252,7 @@ $(function(){
                         document.getElementById('all_ok').value = 'nao'
                         $("#datanasc").removeClass("invalidotwo");
                         $("#datanasc").addClass("validotwo");
-                    }if(rgs == "" || rgs.length <= 12){
+                    }if(rgs == ""){
                         document.getElementById('all_ok').value = 'nao'
                         $("#rg").removeClass("valido");
                         $("#rg").addClass("invalido");
