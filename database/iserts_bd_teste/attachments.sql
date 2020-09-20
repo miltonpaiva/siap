@@ -1,3 +1,4 @@
+
 INSERT INTO public.attachments
 (archive, "type", startup, participant)
 VALUES 
@@ -18,4 +19,7 @@ VALUES
 ('CertiProf-Badge-Lifelong-Learning.png','pdf',12,NULL)
 ,('Contrato de trabalho.pdf','experiencia',50,29)
 ,('Iana.pdf','experiencia',50,30)
+,('LucasRodrigues.pdf','experiencia',64,31)
+,('certificado_Sabrina febrace 2019.pdf','experiencia',64,32)
+,('Novo Documento 2019-01-30 06.25.19.pdf','experiencia',68,33)
 ;
