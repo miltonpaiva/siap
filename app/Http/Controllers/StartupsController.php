@@ -115,7 +115,7 @@ class StartupsController extends Controller
 
       $startup_id = $responses['session'][1]['startup_id'];
 
-      $path_root = str_replace('\public', '', $_SERVER["DOCUMENT_ROOT"]);
+      $path_root = $_SERVER["DOCUMENT_ROOT"] . '\\';
       $uploaddir = "{$path_root}\\files\\" . $startup_id . '\\';
 
       $dir_exist = is_dir($uploaddir);
