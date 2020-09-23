@@ -180,7 +180,7 @@ html += '</div> <button type="button" id="' + count + '" class="btn btn-outline-
                         document.getElementById('all_ok').value = 'nao'
                         $("#datanasc" + count).removeClass("invalidotwo");
                         $("#datanasc" + count).addClass("validotwo");
-                    }if(rgs == "" || rgs.length <= 12){
+                    }if(rgs == ""){
                         document.getElementById('all_ok').value = 'nao'
                         $("#rg" + count).removeClass("valido");
                         $("#rg" + count).addClass("invalido");
