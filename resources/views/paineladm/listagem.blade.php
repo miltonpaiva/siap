@@ -8,6 +8,14 @@
   <meta name="description" content="">
   <meta name="author" content="">
 
+    <?php
+        $url = $_SERVER['HTTP_HOST'] . $_SERVER['SCRIPT_NAME'];
+        if (strpos($url, 'herokuapp.com')):
+    ?>
+            <!-- PERMITIR CONTEUDO MISTO TEMPORAREAMENTE -->
+            <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+    <?php endif; ?>
+
   <title>SIAP - Listagem</title>
 
   <!-- Custom fonts for this template -->
