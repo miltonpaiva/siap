@@ -24,9 +24,14 @@ Route::get('/concluido', function () {
     return view('concluido');
 })->name('concluido');
 
+Route::get('/projetos', function () {
+    return view('paineladm/listagem');
+});
+
 Route::get('/login', function () {
     return view('login');
 })->name('user.login.view');
+
 
 
 Route::post('/user/register/', 'UsersController@actionRegister')->name('user.register');
@@ -38,4 +43,5 @@ Route::get('/response/option/new/', 'ResponsesController@newOption')->name('resp
 Route::post('/startup/register/', 'StartupsController@actionRegister')->name('startup.register');
 Route::get('/startup/update/{startup_id?}/{state?}/{city?}/{category?}/', 'StartupsController@actionUpdate')->name('startup.update');
 Route::get('/startup/{startup_id}/registro/', 'StartupsController@viewRegister')->name('startup.register.view');
+Route::get('/painel', 'StartupsController@viewPainel')->name('painel');
 
