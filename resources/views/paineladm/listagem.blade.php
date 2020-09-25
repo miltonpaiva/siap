@@ -350,48 +350,42 @@
                   <thead>
                     <tr>
                       <th>Startup</th>
-                      <th>Data</th>
+                      <th>Usuário</th>
                       <th>Categoria</th>
-                      <th>Comprovação</th>
-                      <th>Vídeo</th>
-                      <th>PDF</th>
+                      <th>Estado</th>
+                      <th>Visualizar</th>
+                      <th>Avaliar</th>
                     </tr>
                   </thead>
                   <tfoot>
                     <tr>
                       <th>Startup</th>
-                      <th>Data</th>
+                      <th>Usuário</th>
                       <th>Categoria</th>
-                      <th>Comprovação</th>
-                      <th>Vídeo</th>
-                      <th>PDF</th>
+                      <th>Estado</th>
+                      <th>Visualizar</th>
+                      <th>Avaliar</th>
                     </tr>
                   </tfoot>
                   <tbody>
-                    <tr>
-                      <td>Tiger Nixon</td>
-                      <td>System Architect</td>
-                      <td>Edinburgh</td>
-                      <td>61</td>
-                      <td>2011/04/25</td>
-                      <td>$320,800</td>
-                    </tr>
-                    <tr>
-                      <td>Garrett Winters</td>
-                      <td>Accountant</td>
-                      <td>Tokyo</td>
-                      <td>63</td>
-                      <td>2011/07/25</td>
-                      <td>$170,750</td>
-                    </tr>
-                    <tr>
-                      <td>Ashton Cox</td>
-                      <td>Junior Technical Author</td>
-                      <td>San Francisco</td>
-                      <td>66</td>
-                      <td>2009/01/12</td>
-                      <td>$86,000</td>
-                    </tr>
+
+                    @foreach($startups as $startup)
+
+                      <tr>
+                        <td>{{$startup['name']}}</td>
+                        <td>{{$startup['user']}}</td>
+                        <td>{{$startup['category']}}</td>
+                        <td>{{$startup['stage']}}</td>
+                        <td>
+                          <a href="#">Visualizar</a>.
+                        </td>
+                        <td>
+                          <a href="#">Avaliar</a>.
+                        </td>
+                      </tr>
+
+                    @endforeach
+
                   </tbody>
                 </table>
               </div>
