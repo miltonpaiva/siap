@@ -123,4 +123,12 @@ class UsersController extends Controller
             return redirect()->route('home');
         }
     }
+
+    public function actionLogout()
+    {
+        session_start();
+
+        session_destroy();
+        return redirect()->route('user.login.view');
+    }
 }

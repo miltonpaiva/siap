@@ -272,12 +272,7 @@ class StartupsController extends Controller
             return $user_logged;
         }
 
-        $custom_args['conditions'] =
-            [
-                ['state', '<>', '000000']
-            ];
-
-        $startups = Query::queryAction('startups', $custom_args);
+        $startups = Query::queryAction('startups');
 
         foreach ($startups as $id => $startup) {
             $arr_ids[] = $id;
