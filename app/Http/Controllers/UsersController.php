@@ -48,12 +48,16 @@ class UsersController extends Controller
 
     public function actionLogin(Request $request)
     {
+        session_start();
+
         $data = $request->all();
 
         $custom_args['columns'] =
             [
                 'id',
                 'email',
+                'name',
+                'profile',
                 'startup',
                 'password'
             ];
@@ -70,22 +74,36 @@ class UsersController extends Controller
             if(current($data_user)['password'] == md5($data['senhalogin'])){
                 $user = current($data_user);
 
-                $custom_args['columns'] =
-                    [
-                        'id',
-                        'stage',
-                    ];
+                if ($user['profile'] == 'Empreendedor') {
+                    $custom_args['columns'] =
+                        [
+                            'id',
+                            'stage',
+                        ];
 
-                $custom_args['conditions'] =
-                    [
-                        ['id', '=', $user['startup']]
-                    ];
-                $data_startup = current(Query::queryAction('startups', $custom_args));
+                    $custom_args['conditions'] =
+                        [
+                            ['id', '=', $user['startup']]
+                        ];
 
-                if ($data_startup['stage'] == 'complete') {
-                    return redirect()->route('concluido');
+                    $data_startup = current(Query::queryAction('startups', $custom_args));
+
+                    if ($data_startup['stage'] == 'complete') {
+                        return redirect()->route('concluido');
+                    }
+                    return redirect()->route('startup.register.view', ['startup_id' => $user['startup']]);
                 }
-                return redirect()->route('startup.register.view', ['startup_id' => $user['startup']]);
+
+                if ($user['profile'] == 'Gestor') {
+                    $_SESSION['login'] =
+                        [
+                            'user_id'      => $user['id'],
+                            'user_name'    => $user['name'],
+                            'startup_id'   => $user['startup'],
+                            'user_profile' => $user['profile'],
+                        ];
+                    return redirect()->route('painel');
+                }
             }else{
                 // SENHA INCORRETA
                 return redirect()->route('user.login.view');
@@ -93,6 +111,16 @@ class UsersController extends Controller
         }else{
             // USUARIO NÃO ENCONTRADO
             return redirect()->route('user.login.view');
+        }
+    }
+
+    public static function checkLogin()
+    {
+        session_start();
+
+        if (!isset($_SESSION['login'])) {
+            // NÃO LOGADO
+            return redirect()->route('home');
         }
     }
 }

@@ -22,7 +22,7 @@ class QueryActionController extends Controller
 		self::defineArgs();
 	}
 
-	private static function defineArgs ($table = '', $columns = '', $conditions = '', $values = '') 
+	private static function defineArgs ($table = '', $columns = '', $conditions = '', $column_in = '', $values = '')
 	{
 		$default_args =
 			[
@@ -50,6 +50,8 @@ class QueryActionController extends Controller
 				////////// ////////// ////////// ////////// ////////// //////////
 				'startups'  => $default_args,
 				////////// ////////// ////////// ////////// ////////// //////////
+				'users'     => $default_args,
+				////////// ////////// ////////// ////////// ////////// //////////
 				'participants' => $default_args,
 				////////// ////////// ////////// ////////// ////////// //////////
 			];
@@ -65,6 +67,10 @@ class QueryActionController extends Controller
 
 		if($values != ''){
 			self::$args_query[$table]['conditions_in']['values'] = $values;
+		}
+
+		if($column_in != ''){
+			self::$args_query[$table]['conditions_in']['column'] = $column_in;
 		}
 	}
 
@@ -108,16 +114,18 @@ class QueryActionController extends Controller
 		$conditions = '';
 		$columns 	= '';
 		$values 	= '';
+		$column_in 	= '';
 
 		// VERIFICAÇÃO DE ARGUMENTOS CUSTOMIZADOS
 		if($custom_args != ''){
 			$columns 	= ( isset($custom_args['columns']) ) ? $custom_args['columns'] : '' ;
 			$conditions = ( isset($custom_args['conditions']) ) ? $custom_args['conditions'] : '' ;
 			$values 	= ( isset($custom_args['values']) ) ? $custom_args['values'] : '' ;
+			$column_in 	= ( isset($custom_args['column']) ) ? $custom_args['column'] : '' ;
 		}
 
 		// ATUALIZAR OS ARGUMENTOS
-		self::defineArgs($table, $columns, $conditions, $values);
+		self::defineArgs($table, $columns, $conditions, $column_in, $values);
 
 		$result = [];
 

@@ -9,6 +9,7 @@ use DB;
 
 use App\Http\Controllers\ResponsesController as Response;
 use App\Http\Controllers\QueryActionController as Query;
+use App\Http\Controllers\UsersController as User;
 
 header("Access-Control-Allow-Origin: *");
 
@@ -222,41 +223,76 @@ class StartupsController extends Controller
 
     public function viewPainel()
     {
+        $user_logged = User::checkLogin();
+        if (is_object($user_logged)) {
+            return $user_logged;
+        }
 
         $custom_args['conditions'] =
             [
                 ['state', '<>', '000000']
             ];
 
-      $startups = Query::queryAction('startups', $custom_args);
+        $startups = Query::queryAction('startups', $custom_args);
 
-      $total_sttps = count($startups);
-      $graph['startups'] = $total_sttps;
+        $total_sttps = count($startups);
+        $graph['startups'] = $total_sttps;
 
-      $states = json_decode('{"GO":{"id":5,"sigla":"CO","nome":"Centro-Oeste"},"MG":{"id":3,"sigla":"SE","nome":"Sudeste"},"PA":{"id":1,"sigla":"N","nome":"Norte"},"CE":{"id":2,"sigla":"NE","nome":"Nordeste"},"BA":{"id":2,"sigla":"NE","nome":"Nordeste"},"PR":{"id":4,"sigla":"S","nome":"Sul"},"SC":{"id":4,"sigla":"S","nome":"Sul"},"PE":{"id":2,"sigla":"NE","nome":"Nordeste"},"TO":{"id":1,"sigla":"N","nome":"Norte"},"MA":{"id":2,"sigla":"NE","nome":"Nordeste"},"RN":{"id":2,"sigla":"NE","nome":"Nordeste"},"PI":{"id":2,"sigla":"NE","nome":"Nordeste"},"RS":{"id":4,"sigla":"S","nome":"Sul"},"MT":{"id":5,"sigla":"CO","nome":"Centro-Oeste"},"AC":{"id":1,"sigla":"N","nome":"Norte"},"SP":{"id":3,"sigla":"SE","nome":"Sudeste"},"ES":{"id":3,"sigla":"SE","nome":"Sudeste"},"AL":{"id":2,"sigla":"NE","nome":"Nordeste"},"PB":{"id":2,"sigla":"NE","nome":"Nordeste"},"MS":{"id":5,"sigla":"CO","nome":"Centro-Oeste"},"RO":{"id":1,"sigla":"N","nome":"Norte"},"RR":{"id":1,"sigla":"N","nome":"Norte"},"AM":{"id":1,"sigla":"N","nome":"Norte"},"AP":{"id":1,"sigla":"N","nome":"Norte"},"SE":{"id":2,"sigla":"NE","nome":"Nordeste"},"RJ":{"id":3,"sigla":"SE","nome":"Sudeste"},"DF":{"id":5,"sigla":"CO","nome":"Centro-Oeste"}}', true);
+        $states = json_decode('{"GO":{"id":5,"sigla":"CO","nome":"Centro-Oeste"},"MG":{"id":3,"sigla":"SE","nome":"Sudeste"},"PA":{"id":1,"sigla":"N","nome":"Norte"},"CE":{"id":2,"sigla":"NE","nome":"Nordeste"},"BA":{"id":2,"sigla":"NE","nome":"Nordeste"},"PR":{"id":4,"sigla":"S","nome":"Sul"},"SC":{"id":4,"sigla":"S","nome":"Sul"},"PE":{"id":2,"sigla":"NE","nome":"Nordeste"},"TO":{"id":1,"sigla":"N","nome":"Norte"},"MA":{"id":2,"sigla":"NE","nome":"Nordeste"},"RN":{"id":2,"sigla":"NE","nome":"Nordeste"},"PI":{"id":2,"sigla":"NE","nome":"Nordeste"},"RS":{"id":4,"sigla":"S","nome":"Sul"},"MT":{"id":5,"sigla":"CO","nome":"Centro-Oeste"},"AC":{"id":1,"sigla":"N","nome":"Norte"},"SP":{"id":3,"sigla":"SE","nome":"Sudeste"},"ES":{"id":3,"sigla":"SE","nome":"Sudeste"},"AL":{"id":2,"sigla":"NE","nome":"Nordeste"},"PB":{"id":2,"sigla":"NE","nome":"Nordeste"},"MS":{"id":5,"sigla":"CO","nome":"Centro-Oeste"},"RO":{"id":1,"sigla":"N","nome":"Norte"},"RR":{"id":1,"sigla":"N","nome":"Norte"},"AM":{"id":1,"sigla":"N","nome":"Norte"},"AP":{"id":1,"sigla":"N","nome":"Norte"},"SE":{"id":2,"sigla":"NE","nome":"Nordeste"},"RJ":{"id":3,"sigla":"SE","nome":"Sudeste"},"DF":{"id":5,"sigla":"CO","nome":"Centro-Oeste"}}', true);
 
-      $graph['regions']['N']['value'] = 0;
-      $graph['regions']['NE']['value'] = 0;
-      $graph['regions']['CO']['value'] = 0;
-      $graph['regions']['SE']['value'] = 0;
-      $graph['regions']['S']['value'] = 0;
+        $graph['regions']['N']['value'] = 0;
+        $graph['regions']['NE']['value'] = 0;
+        $graph['regions']['CO']['value'] = 0;
+        $graph['regions']['SE']['value'] = 0;
+        $graph['regions']['S']['value'] = 0;
 
-      foreach ($startups as $id => $startup) {
-        $startup['region'] = $states[$startup['state']];
-        $sttp_p_region[$startup['region']['sigla']][] = $startup['id'];
-        $sttp_p_category[$startup['category']][] = $startup['id'];
-      }
+        foreach ($startups as $id => $startup) {
+          $startup['region'] = $states[$startup['state']];
+          $sttp_p_region[$startup['region']['sigla']][] = $startup['id'];
+          $sttp_p_category[$startup['category']][] = $startup['id'];
+        }
 
-      foreach ($sttp_p_region as $region => $data) {
-        $graph['regions'][$region]['value']   = count($data);
-        $graph['regions'][$region]['percent'] = round(((count($data) / $total_sttps) * 100), 0);
-      }
+        foreach ($sttp_p_region as $region => $data) {
+          $graph['regions'][$region]['value']   = count($data);
+          $graph['regions'][$region]['percent'] = round(((count($data) / $total_sttps) * 100), 0);
+        }
 
-      foreach ($sttp_p_category as $category => $data) {
-        $graph['category'][$category]['value']   = count($data);
-        $graph['category'][$category]['percent'] = round(((count($data) / $total_sttps) * 100), 0);
-      }
+        foreach ($sttp_p_category as $category => $data) {
+          $graph['category'][$category]['value']   = count($data);
+          $graph['category'][$category]['percent'] = round(((count($data) / $total_sttps) * 100), 0);
+        }
 
-      return view('paineladm/index', ['graph' => $graph]);
+        return view('paineladm/index', ['graph' => $graph]);
+    }
+
+    public function viewStartups()
+    {
+        $user_logged = User::checkLogin();
+        if (is_object($user_logged)) {
+            return $user_logged;
+        }
+
+        $custom_args['conditions'] =
+            [
+                ['state', '<>', '000000']
+            ];
+
+        $startups = Query::queryAction('startups', $custom_args);
+
+        foreach ($startups as $id => $startup) {
+            $arr_ids[] = $id;
+        }
+
+        $custom_args_users['columns'] = ['id', 'name', 'startup'];
+        $custom_args_users['column'] = 'startup';
+        $custom_args_users['values'] = $arr_ids;
+
+        $users = Query::queryActionIn('users', $custom_args_users);
+
+        foreach ($users as $id => $user) {
+            $startups[$user['startup']]['user'] = $user['name'];
+        }
+
+        return view('paineladm/listagem', ['startups' => $startups]);
     }
 }
