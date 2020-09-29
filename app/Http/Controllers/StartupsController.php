@@ -83,6 +83,8 @@ class StartupsController extends Controller
             return redirect()->route('concluido');
         }
 
+        return view('inscricao', $vars);
+
     }
 
     public function actionUpdate($startup_id, $state, $city, $category)
