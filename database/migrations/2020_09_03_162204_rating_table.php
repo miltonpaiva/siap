@@ -17,9 +17,11 @@ class RatingTable extends Migration
             $table->id();
             $table->unsignedBigInteger('evaluator');
             $table->unsignedBigInteger('startup');
+            $table->unsignedBigInteger('criterea');
             $table->float('note', 2, 1);
             $table->foreign('evaluator')->references('id')->on('users');
             $table->foreign('startup')->references('id')->on('startups');
+            $table->foreign('criterea')->references('id')->on('criterea');
         });
     }
 
