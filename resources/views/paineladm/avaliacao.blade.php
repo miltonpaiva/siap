@@ -8,14 +8,6 @@
   <meta name="description" content="">
   <meta name="author" content="">
 
-    <?php
-        $url = $_SERVER['HTTP_HOST'] . $_SERVER['SCRIPT_NAME'];
-        if (strpos($url, 'herokuapp.com')):
-    ?>
-            <!-- PERMITIR CONTEUDO MISTO TEMPORAREAMENTE -->
-            <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
-    <?php endif; ?>
-
   <title>SIAP - Listagem</title>
 
   <!-- Custom fonts for this template -->
@@ -39,7 +31,7 @@
     <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
       <!-- Sidebar - Brand -->
-      <a class="sidebar-brand d-flex align-items-center justify-content-center" href="{{ route('painel') }}">
+      <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
         <div class="sidebar-brand-icon rotate-n-15">
           <i class="fas fa-rocket"></i>
         </div>
@@ -51,7 +43,7 @@
 
       <!-- Nav Item - Dashboard -->
       <li class="nav-item">
-        <a class="nav-link" href="{{ route('painel') }}">
+        <a class="nav-link" href="index.html">
           <i class="fas fa-fw fa-tachometer-alt"></i>
           <span>Painel principal</span></a>
       </li>
@@ -132,13 +124,13 @@
       </li> -->
 
       <!-- Nav Item - Tables -->
-      <li class="nav-item active">
-        <a class="nav-link" href="{{ route('startup.list') }}">
+      <li class="nav-item">
+        <a class="nav-link" href="tables.html">
           <i class="fas fa-fw fa-table"></i>
-          <span>Projetos</span></a>
+          <span>Listagem</span></a>
       </li>
 
-      <li class="nav-item">
+      <li class="nav-item active">
         <a class="nav-link" href="tables.html">
           <i class="fas fa-clipboard-check"></i>
           <span>Critérios de Habilitação</span></a>
@@ -170,19 +162,6 @@
               <i class="fa fa-bars"></i>
             </button>
           </form>
-
-          <!-- Topbar Search 
-          <form class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
-            <div class="input-group">
-              <input type="text" class="form-control bg-light border-0 small" placeholder="Search for..." aria-label="Search" aria-describedby="basic-addon2">
-              <div class="input-group-append">
-                <button class="btn btn-info" type="button">
-                  <i class="fas fa-search fa-sm"></i>
-                </button>
-              </div>
-            </div>
-          </form>
-          -->
 
           <!-- Topbar Navbar -->
           <ul class="navbar-nav ml-auto">
@@ -317,17 +296,17 @@
             <!-- Nav Item - User Information -->
             <li class="nav-item dropdown no-arrow">
               <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <span class="mr-2 d-none d-lg-inline text-gray-600 small"><?= $_SESSION['login']['user_name'] ; ?></span>
+                <span class="mr-2 d-none d-lg-inline text-gray-600 small">Francisco Clemilson</span>
                 <!--<img class="img-profile rounded-circle" src="https://source.unsplash.com/QAB-WJcbgJk/60x60">-->
               </a>
               <!-- Dropdown - User Information -->
               <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
-              <!--   <a class="dropdown-item" href="#">
+                <a class="dropdown-item" href="#">
                   <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
                   Perfil
-                </a> -->
+                </a>
                 <div class="dropdown-divider"></div>
-                <a class="dropdown-item" href="{{ route('user.logout') }}" data-toggle="modal" data-target="#logoutModal">
+                <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
                   <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
                   Logout
                 </a>
@@ -343,58 +322,182 @@
         <div class="container-fluid">
 
           <!-- Page Heading -->
-          <h1 class="h3 mb-2 text-gray-800">Listagem</h1>
+          <h1 class="h3 mb-2 text-gray-800">Critérios de Habilitação</h1>
          
           <!-- DataTales Example -->
           <div class="card shadow mb-4">
             <div class="card-header py-3">
-              <h6 class="m-0 font-weight-bold text-primary">Projetos</h6>
+              <h5 class="m-0 font-weight-bold ">Análise de Prontidão da Jornada de Criação de Negócio</h5>
+
+               <!-- Topbar Search  
+            <form class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search float-right">
+                <div class="input-group">
+                <input type="text" class="form-control bg-white border-1 small" placeholder="Buscar..." aria-label="Search" aria-describedby="basic-addon2">
+                <div class="input-group-append">
+                    <button class="btn btn-info" type="button">
+                    <i class="fas fa-search fa-sm"></i>
+                    </button>
+                </div>
+                </div>
+            </form>-->
+
             </div>
+            
+            
             <div class="card-body">
-              <div class="table-responsive">
-                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-                  <thead>
-                    <tr>
-                      <th>Startup</th>
-                      <th>Usuário</th>
-                      <th>Categoria</th>
-                      <th>Estado</th>
-                      <th>Visualizar</th>
-                      <th>Avaliar</th>
-                    </tr>
-                  </thead>
-                  <tfoot>
-                    <tr>
-                      <th>Startup</th>
-                      <th>Usuário</th>
-                      <th>Categoria</th>
-                      <th>Estado</th>
-                      <th>Visualizar</th>
-                      <th>Avaliar</th>
-                    </tr>
-                  </tfoot>
-                  <tbody>
 
-                    @foreach($startups as $startup)
+              <form>
+                <fieldset class="field_set" style="padding: 10px">
+                  <legend style="width:auto; margin-left: 10px; padding: 5px; font-size: 18px">Resumo do projeto: </legend>
+                  <div class="row">
+                    <div class="col-sm-12 col-md-4">
+                      <h6 c><b>Categoria: </b> <span> Criação</span></h6>
+                    </div>
+                    <div class="col-sm-12 col-md-4">
+                      <h6 c><b>Startup: </b> <span> Nome da startup</span></h6>
+                    </div>
+                    <div class="col-sm-12 col-md-4">
+                      <h6 c><b>Data: </b> <span> Nome da startup</span></h6>
+                    </div>
+                  </div>
 
-                      <tr>
-                        <td>{{$startup['name']}}</td>
-                        <td>{{$startup['user']}}</td>
-                        <td>{{$startup['category']}}</td>
-                        <td>{{$startup['stage']}}</td>
-                        <td>
-                          <a href="#">Visualizar</a>.
-                        </td>
-                        <td>
-                          <a href="#">Avaliar</a>.
-                        </td>
-                      </tr>
+                  <div class="row">
+                    <div class="col-sm-12 col-md-4 mt-3">
+                      <h6 c><b>Responsável: </b> <span> Francisco Clemilson Sousa</span></h6>
+                    </div>
+                    <div class="col-sm-12 col-md-4 mt-3">
+                      <h6 c><b>Cidade: </b> <span> Sobral</span></h6>
+                    </div>
+                    <div class="col-sm-12 col-md-4 mt-3">
+                      <h6 c><b>Nº de Membros: </b> <span> 3</span></h6>
+                    </div>
+                  </div>
 
-                    @endforeach
+                  <div class="row">
+                    <div class="col-sm-12 col-md-4 mt-3 mb-3 mx-auto">
+                      <button class="btn btn-info ">Confira Projeto na Íntegra</button>
+                    </div>
+                  </div>
 
-                  </tbody>
+                </fieldset>
+              </form>
+                <br>
+                <p>Os projetos aceitos para o processo de seleção da Fase 1 serão avaliados em sete critérios:</p>
+                <table class="table">
+                    <thead>
+                        <tr>
+                        <th scope="col">Nº</th>
+                        <th scope="col">Citério</th>
+                        <th scope="col">Evidência</th>
+                        <th scope="col">Nota</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <th scope="row">1</th>
+                            <td>Experiência do time na tecnologia do produto do projeto.</td>
+                            <td>A comprovação de experiência se dará por meio de currículo vitae demonstrado por atestado de capacidade técnica, certificado ou declaração.</td>
+                            <td>
+                                <select class="custom-select">
+                                    <option selected>Nota</option>
+                                    <option value="0,0 – Sem membros">0,0 – Sem membros</option>
+                                    <option value="1,5 – Um membro">1,5 – Um membro</option>
+                                    <option value="3,0 – Duas membros">3,0 – Duas membros</option>
+                                    <option value="4,5 – Três membros"> 4,5 – Três membros</option>
+                                </select>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th scope="row">2</th>
+                            <td>Experiência do time no setor econômico de atuação do projeto.</td>
+                            <td>A comprovação de experiência se dará por meio de currículo vitae demonstrado por atestado
+                                de capacidade técnica, certificado ou declaração.</td>
+                            <td>
+                                <select class="custom-select">
+                                    <option selected>Nota</option>
+                                    <option value="0,0 – Sem membros">0,0 – Sem membros</option>
+                                    <option value="1,5 – Um membro">1,5 – Um membro</option>
+                                    <option value="3,0 – Duas membros">3,0 – Duas membros</option>
+                                    <option value="4,5 – Três membros"> 4,5 – Três membros</option>
+                                </select>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th scope="row">3</th>
+                            <td>Apresentar no time competências multidisciplinares e complementares.</td>
+                            <td>A comprovação de experiência se dará por meio de currículo vitae demonstrado por atestado
+                                de capacidade técnica, certificado ou declaração.</td>
+                            <td>
+                                <select class="custom-select">
+                                    <option selected>Nota</option>
+                                    <option value="0,0 – Sem membros">0,0 – Sem membros</option>
+                                    <option value="3,0 – Dois membros">3,0 – Dois membros</option>
+                                    <option value="4,5 – Três membros"> 4,5 – Três membros</option>
+                                </select>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th scope="row">4</th>
+                            <td>Participação de mulheres na composição do time.</td>
+                            <td>A comprovação se dará por meio dos dados pessoais fornecidos no formulário de inscrição.</td>
+                            <td>
+                                <select class="custom-select">
+                                    <option selected>Nota</option>
+                                    <option value="0,0 – Sem mulheres">0,0 – Sem mulheres</option>
+                                    <option value="1,5 – Uma mulheres">1,5 – Uma mulher</option>
+                                    <option value="3,0 – Duas mulheres">3,0 – Duas mulheres</option>
+                                    <option value="4,5 – Três mulheres"> 4,5 – Três mulheres</option>
+                                </select>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th scope="row">5</th>
+                            <td>Alinhamento com os produtos prioritários do programa.</td>
+                            <td>A comprovação se dará por meio dos dados fornecidos no formulário de inscrição.</td>
+                            <td>
+                                <select class="custom-select">
+                                    <option selected>Nota</option>
+                                    <option value="0,0 – Inexistente"> 0,0 – Inexistente</option>
+                                    <option value="1,0 – Muito baixo"> 1,0 – Muito baixo</option>
+                                    <option value="2,0 – Baixo"> 2,0 – Baixo</option>
+                                    <option value="3,0 – Médio"> 3,0 – Médio</option>
+                                    <option value="4,0 – Alto"> 4,0 – Alto</option>
+                                </select>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th scope="row">6</th>
+                            <td>Alinhamento com as tendências tecnológicas prioritárias do programa.</td>
+                            <td>A comprovação se dará por meio dos dados fornecidos no formulário de inscrição.</td>
+                            <td>
+                                <select class="custom-select">
+                                    <option selected>Nota</option>
+                                    <option value="0,0 – Inexistente"> 0,0 – Inexistente</option>
+                                    <option value="1,0 – Muito baixo"> 1,0 – Muito baixo</option>
+                                    <option value="2,0 – Baixo"> 2,0 – Baixo</option>
+                                    <option value="3,0 – Médio"> 3,0 – Médio</option>
+                                    <option value="4,0 – Alto"> 4,0 – Alto</option>
+                                </select>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th scope="row">7</th>
+                            <td>Alinhamento com os setores econômicos prioritários do programa.</td>
+                            <td>A comprovação se dará por meio dos dados fornecidos no formulário de inscrição.</td>
+                            <td>
+                                <select class="custom-select">
+                                    <option selected>Nota</option>
+                                    <option value="0,0 – Inexistente"> 0,0 – Inexistente</option>
+                                    <option value="1,0 – Muito baixo"> 1,0 – Muito baixo</option>
+                                    <option value="2,0 – Baixo"> 2,0 – Baixo</option>
+                                    <option value="3,0 – Médio"> 3,0 – Médio</option>
+                                    <option value="4,0 – Alto"> 4,0 – Alto</option>
+                                </select>
+                            </td>
+                        </tr>
+                    </tbody>
                 </table>
-              </div>
+           
             </div>
           </div>
 
@@ -430,15 +533,15 @@
     <div class="modal-dialog" role="document">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">Fim da sessão:</h5>
+          <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
           <button class="close" type="button" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">×</span>
           </button>
         </div>
-        <div class="modal-body">Tem certeza que deseja encerrar a sessão ?</div>
+        <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
         <div class="modal-footer">
-          <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancelar</button>
-          <a class="btn btn-primary" href="{{ route('user.logout') }}">Prosseguir</a>
+          <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+          <a class="btn btn-primary" href="login.html">Logout</a>
         </div>
       </div>
     </div>

@@ -139,6 +139,12 @@
           <span>Projetos</span></a>
       </li>
 
+      <li class="nav-item">
+        <a class="nav-link" href="tables.html">
+          <i class="fas fa-clipboard-check"></i>
+          <span>Critérios de Habilitação</span></a>
+      </li>
+
       <!-- Divider -->
       <hr class="sidebar-divider d-none d-md-block">
 
