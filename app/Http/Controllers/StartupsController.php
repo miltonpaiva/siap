@@ -292,4 +292,67 @@ class StartupsController extends Controller
 
         return view('paineladm/listagem', ['startups' => $startups]);
     }
+
+    public function viewRating($startup_id)
+    {
+        $custom_args['conditions'] =
+            [
+                ['id', '=', $startup_id]
+            ];
+        $startup = current(Query::queryAction('startups', $custom_args));
+
+        $custom_args['conditions'] =
+            [
+                ['startup', '=', $startup_id]
+            ];
+        $user = current(Query::queryAction('users', $custom_args));
+
+        $participants = Query::queryAction('participants', $custom_args);
+
+        $vars =
+          [
+              'startup' => $startup,
+              'user' => $user,
+              'qtd_particpants' => count($participants)
+          ];
+
+        return view('paineladm/avaliacao', $vars);
+    }
+
+    public function actionRating(Request $request)
+    {
+      session_start();
+      $evaluator = $_SESSION['login']['user_id'];
+      $data = $request->all();
+
+      $criterios  = $data['avalicacao']['criterio'];
+
+      $startup_id = $data['startup'];
+
+      foreach ($criterios as $c_id => $value) {
+        $rating =
+          [
+            'evaluator' => $evaluator,
+            'startup' => $startup_id,
+            'criterea' => $c_id,
+            'note' => $value['nota'],
+          ];
+
+        $result = self::registerRating($rating);
+      }
+
+      $result = self::update(['stage' => 'rated'], $startup_id);
+
+      return redirect()->route('startup.list');
+    }
+
+    public static function registerRating($rating)
+    {
+        $new_rating_id =
+            DB::table('rating')->insertGetId($rating);
+
+        return $new_rating_id;
+    }
+
+
 }

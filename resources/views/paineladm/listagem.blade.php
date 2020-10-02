@@ -386,7 +386,7 @@
                           <a href="#">Visualizar</a>.
                         </td>
                         <td>
-                          <a href="#">Avaliar</a>.
+                          <a href="{{ route('startup.rating.view', $startup['id']) }}">Avaliar</a>.
                         </td>
                       </tr>
 
