@@ -295,6 +295,11 @@ class StartupsController extends Controller
 
     public function viewRating($startup_id)
     {
+        $user_logged = User::checkLogin();
+        if (is_object($user_logged)) {
+            return $user_logged;
+        }
+
         $custom_args['conditions'] =
             [
                 ['id', '=', $startup_id]
