@@ -12,7 +12,7 @@
       <hr class="sidebar-divider my-0">
 
       <!-- Nav Item - Dashboard -->
-      <?php if (strrpos($_SERVER['PATH_INFO'], 'painel')){ $painel = 'active'; } ?>
+      <?php //if (strrpos(@$_SERVER['PATH_INFO'], 'painel')){ $painel = 'active'; } ?>
       <li class="nav-item <?= @$painel; ?> ">
         <a class="nav-link" href="{{ route('painel') }}">
           <i class="fas fa-fw fa-tachometer-alt"></i>
@@ -24,13 +24,13 @@
 
       <!-- Nav Item - Tables -->
       <?php
-        $is_startup =
-        (
-          strrpos($_SERVER['PATH_INFO'], 'startup') ||
-          strrpos($_SERVER['PATH_INFO'], 'projetos')
-        );
-        if ($is_startup)
-          { $projetos = 'active'; }
+        // $is_startup =
+        // (
+        //   strrpos(@$_SERVER['PATH_INFO'], 'startup') ||
+        //   strrpos(@$_SERVER['PATH_INFO'], 'projetos')
+        // );
+        // if ($is_startup)
+        //   { $projetos = 'active'; }
         ?>
       <li class="nav-item <?= @$projetos; ?>">
         <a class="nav-link" href="{{ route('startup.list') }}">
