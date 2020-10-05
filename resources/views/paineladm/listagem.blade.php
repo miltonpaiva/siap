@@ -70,9 +70,10 @@
                   <thead>
                     <tr>
                       <th>Startup</th>
-                      <th>Usuário</th>
+                      <th>Responsável</th>
+                      <th>Resp. E-mail</th>
                       <th>Categoria</th>
-                      <th>Estado</th>
+                      <th>Status</th>
                       <th>Visualizar</th>
                       <th>Avaliar</th>
                     </tr>
@@ -80,9 +81,10 @@
                   <tfoot>
                     <tr>
                       <th>Startup</th>
-                      <th>Usuário</th>
+                      <th>Responsável</th>
+                      <th>Resp. E-mail</th>
                       <th>Categoria</th>
-                      <th>Estado</th>
+                      <th>Status</th>
                       <th>Visualizar</th>
                       <th>Avaliar</th>
                     </tr>
@@ -94,6 +96,7 @@
                       <tr>
                         <td>{{$startup['name']}}</td>
                         <td>{{$startup['user']}}</td>
+                        <td>{{$startup['email']}}</td>
                         <td>{{$startup['category']}}</td>
                         <td>{{$startup['stage']}}</td>
                         <td>

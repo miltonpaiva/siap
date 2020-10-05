@@ -230,15 +230,9 @@ class StartupsController extends Controller
             return $user_logged;
         }
 
-        $custom_args['conditions'] =
-            [
-                ['state', '<>', '000000']
-            ];
-
-        $startups = Query::queryAction('startups', $custom_args);
-
+        $startups = Query::queryAction('startups');
         $total_sttps = count($startups);
-        $graph['startups'] = $total_sttps;
+        $valid_startups = [];
 
         $states = json_decode('{"GO":{"id":5,"sigla":"CO","nome":"Centro-Oeste"},"MG":{"id":3,"sigla":"SE","nome":"Sudeste"},"PA":{"id":1,"sigla":"N","nome":"Norte"},"CE":{"id":2,"sigla":"NE","nome":"Nordeste"},"BA":{"id":2,"sigla":"NE","nome":"Nordeste"},"PR":{"id":4,"sigla":"S","nome":"Sul"},"SC":{"id":4,"sigla":"S","nome":"Sul"},"PE":{"id":2,"sigla":"NE","nome":"Nordeste"},"TO":{"id":1,"sigla":"N","nome":"Norte"},"MA":{"id":2,"sigla":"NE","nome":"Nordeste"},"RN":{"id":2,"sigla":"NE","nome":"Nordeste"},"PI":{"id":2,"sigla":"NE","nome":"Nordeste"},"RS":{"id":4,"sigla":"S","nome":"Sul"},"MT":{"id":5,"sigla":"CO","nome":"Centro-Oeste"},"AC":{"id":1,"sigla":"N","nome":"Norte"},"SP":{"id":3,"sigla":"SE","nome":"Sudeste"},"ES":{"id":3,"sigla":"SE","nome":"Sudeste"},"AL":{"id":2,"sigla":"NE","nome":"Nordeste"},"PB":{"id":2,"sigla":"NE","nome":"Nordeste"},"MS":{"id":5,"sigla":"CO","nome":"Centro-Oeste"},"RO":{"id":1,"sigla":"N","nome":"Norte"},"RR":{"id":1,"sigla":"N","nome":"Norte"},"AM":{"id":1,"sigla":"N","nome":"Norte"},"AP":{"id":1,"sigla":"N","nome":"Norte"},"SE":{"id":2,"sigla":"NE","nome":"Nordeste"},"RJ":{"id":3,"sigla":"SE","nome":"Sudeste"},"DF":{"id":5,"sigla":"CO","nome":"Centro-Oeste"}}', true);
 
@@ -249,10 +243,15 @@ class StartupsController extends Controller
         $graph['regions']['S']['value'] = 0;
 
         foreach ($startups as $id => $startup) {
-          $startup['region'] = $states[$startup['state']];
-          $sttp_p_region[$startup['region']['sigla']][] = $startup['id'];
-          $sttp_p_category[$startup['category']][] = $startup['id'];
+          if ($startup['state'] != '000000') {
+            $startup['region'] = $states[$startup['state']];
+            $sttp_p_region[$startup['region']['sigla']][] = $startup['id'];
+            $sttp_p_category[$startup['category']][] = $startup['id'];
+            $valid_startups[] = $startup;
+          }
         }
+
+        $total_sttps_cat = count($valid_startups);
 
         foreach ($sttp_p_region as $region => $data) {
           $graph['regions'][$region]['value']   = count($data);
@@ -263,6 +262,9 @@ class StartupsController extends Controller
           $graph['category'][$category]['value']   = count($data);
           $graph['category'][$category]['percent'] = round(((count($data) / $total_sttps) * 100), 0);
         }
+
+        $graph['startups'] = $total_sttps;
+        $graph['startups_categorized'] = $total_sttps_cat;
 
         return view('paineladm/index', ['graph' => $graph]);
     }
@@ -280,7 +282,7 @@ class StartupsController extends Controller
             $arr_ids[] = $id;
         }
 
-        $custom_args_users['columns'] = ['id', 'name', 'startup'];
+        $custom_args_users['columns'] = ['id', 'name', 'email', 'startup'];
         $custom_args_users['column'] = 'startup';
         $custom_args_users['values'] = $arr_ids;
 
@@ -288,6 +290,7 @@ class StartupsController extends Controller
 
         foreach ($users as $id => $user) {
             $startups[$user['startup']]['user'] = $user['name'];
+            $startups[$user['startup']]['email'] = $user['email'];
         }
 
         return view('paineladm/listagem', ['startups' => $startups]);
