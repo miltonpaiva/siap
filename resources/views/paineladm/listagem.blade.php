@@ -56,10 +56,76 @@
         <!-- Begin Page Content -->
         <div class="container-fluid">
 
+          @if(@$message['message'] != '')
+          <div class="alert alert-{{@$message['type']}}" role="alert" style="">
+              {{@$message['message']}}
+          </div>
+          @endif
+
           <!-- Page Heading -->
           <h1 class="h3 mb-2 text-gray-800">Listagem</h1>
-         
+
           <!-- DataTales Example -->
+          <div class="card shadow mb-4">
+            <div class="card-header py-3">
+              <h6 class="m-0 font-weight-bold text-primary">Filtros</h6>
+            </div>
+            <div class="card-body">
+
+              <form class="form-inline">
+                <div class="form-group mb-2">
+                  <select class="form-control filter" id="regiao">
+                    <option disabled="true" selected >Selecione a Região do Projeto</option>
+
+                      @foreach ($all_regions as $region_v => $region)
+                          <option value="{{ $region_v }}" >{{ $region }}</option>
+                      @endforeach
+
+                  </select>
+                </div>
+                <div class="form-group mx-sm-3 mb-2">
+<!--                   <select class="form-control" id="">
+                    <option></option>
+                  </select> -->
+                </div>
+                <button type="submit" id="btn_filter" class="btn btn-success mb-2">Filtrar</button>
+              </form>
+              <script>
+                function sendFilter() {
+                    var selects = document.getElementsByClassName('filter');
+                    var dominio_atual = window.location.href.split('?')[0];
+                    for(key in selects){
+                      if (selects[key].id) {
+                        var valid_slct = selects[key];
+                        var valor = valid_slct.value;
+                        var filtro = valid_slct.id;
+                        window.location.href = dominio_atual + '?' + filtro + '=' + valor;
+                      }
+                    }
+                }
+                document.getElementById('btn_filter').addEventListener("click", function(event) {
+                    event.preventDefault();
+                    sendFilter();
+                });
+
+                var query = location.search.slice(1);
+                var partes = query.split('&');
+                var _get = {};
+                partes.forEach(function (parte) {
+                    var chaveValor = parte.split('=');
+                    var chave = chaveValor[0];
+                    var valor = chaveValor[1];
+                    _get[chave] = valor;
+                });
+
+                for(key_g in _get){
+                  document.getElementById(key_g).value = _get[key_g];
+                }
+
+              </script>
+            </div>
+          </div>
+
           <div class="card shadow mb-4">
             <div class="card-header py-3">
               <h6 class="m-0 font-weight-bold text-primary">Projetos</h6>

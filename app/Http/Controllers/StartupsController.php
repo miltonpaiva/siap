@@ -15,6 +15,7 @@ header("Access-Control-Allow-Origin: *");
 
 class StartupsController extends Controller
 {
+    public $message;
 
     public static function semiRegister($name)
     {
@@ -264,7 +265,7 @@ class StartupsController extends Controller
         }
 
         $graph['startups'] = $total_sttps;
-        $graph['startups_categorized'] = $total_sttps_cat;
+        $graph['startups_categorized'] = $total_sttps_cat; 
 
         return view('paineladm/index', ['graph' => $graph]);
     }
@@ -277,6 +278,10 @@ class StartupsController extends Controller
         }
 
         $startups = Query::queryAction('startups');
+
+        if (isset($_GET['regiao'])) {
+          $startups = $this->getFilterRegion($startups);
+        }
 
         foreach ($startups as $id => $startup) {
             $arr_ids[] = $id;
@@ -293,7 +298,14 @@ class StartupsController extends Controller
             $startups[$user['startup']]['email'] = $user['email'];
         }
 
-        return view('paineladm/listagem', ['startups' => $startups]);
+        $vars =
+          [
+            'all_regions' => $this->getDataRegions()['all_regions'],
+            'startups' => $startups,
+            'message'  => $this->message,
+          ];
+
+        return view('paineladm/listagem', $vars);
     }
 
     public function viewRating($startup_id)
@@ -362,5 +374,335 @@ class StartupsController extends Controller
         return $new_rating_id;
     }
 
+    public function getFilterRegion($startups)
+    {
+          $cities = $this->getDataRegions()['cities'];
 
+          foreach ($startups as $s_id => $sttp) {
+
+                if ($sttp['state'] == 'CE') {
+                  $is_city =
+                    isset(
+                      $cities[self::clearString($sttp['city'])]
+                    );
+
+                  if ($is_city) {
+                      $region_c = $cities[self::clearString($sttp['city'])];
+                      $data[$region_c][$s_id] = $sttp;
+                  }else{
+                     $not_ached[] = $sttp;
+                  }
+                }
+          }
+
+          if (isset($data[$_GET['regiao']])) {
+            return $data[$_GET['regiao']];
+          }else{
+            $this->message = ['type' => 'danger', 'message' => 'Um dos filtros não retornou dados, tente outro'];
+            return $startups;
+          }
+
+    }
+
+    public function getDataRegions()
+    {
+          $cities_region =
+          [
+              'cariri' =>
+                  [
+                      'name' => 'Cariri',
+                      'cities' =>
+                      [
+                        'abaiara',
+                        'altaneira',
+                        'antoninadonorte',
+                        'antonina',
+                        'araripe',
+                        'assare',
+                        'aurora',
+                        'barbalha',
+                        'barro',
+                        'brejosanto',
+                        'campossales',
+                        'campos',
+                        'caririacu',
+                        'crato',
+                        'fariasbrito',
+                        'granjeiro',
+                        'jardim',
+                        'jati',
+                        'juazeirodonorte',
+                        'juazeiro',
+                        'mauriti',
+                        'milagres',
+                        'missaovelha',
+                        'novaolinda',
+                        'penaforte',
+                        'porteiras',
+                        'potengi',
+                        'salitre',
+                        'santanadocariri',
+                        'tarrafas',
+                      ],
+                  ],
+              'centro_sul' =>
+                  [
+                      'name' => 'Centro-Sul',
+                      'cities' =>
+                      [
+                        'acopiara',
+                        'baixio',
+                        'carius',
+                        'catarina',
+                        'cedro',
+                        'ico',
+                        'iguatu',
+                        'ipaumirim',
+                        'jucas',
+                        'lavrasdamangabeira',
+                        'oros',
+                        'quixelo',
+                        'saboeiro',
+                        'umari',
+                        'varzeaalegre',
+                      ],
+                  ],
+              'grande_fortaleza' =>
+                  [
+                      'name' => 'Grande Fortaleza',
+                      'cities' =>
+                      [
+                        'aquiraz',
+                        'caucaia',
+                        'chorozinho',
+                        'eusebio',
+                        'fortaleza',
+                        'guaiuba',
+                        'horizonte',
+                        'itaitinga',
+                        'maracanau',
+                        'maranguape',
+                        'pacajus',
+                        'pacatuba',
+                        'saogoncalodoamarante',
+                      ],
+                  ],
+              'litoral_leste' =>
+                  [
+                      'name' => 'Litoral Leste',
+                      'cities' =>
+                      [
+                        'aracati',
+                        'beberibe',
+                        'cascavel',
+                        'fortim',
+                        'icapui',
+                        'itaicaba',
+                        'jaguaruana',
+                        'pindoretama',
+                      ],
+                  ],
+              'litoralnorte' =>
+                  [
+                      'name' => 'Litoral Norte',
+                      'cities' =>
+                      [
+                      'acarau',
+                      'barroquinha',
+                      'belacruz',
+                      'camocim',
+                      'chaval',
+                      'cruz',
+                      'granja',
+                      'itarema',
+                      'jijocadejericoacoara',
+                      'marco',
+                      'martinopole',
+                      'morrinhos',
+                      'uruoca',
+                      ],
+                  ],
+              'litoral_oeste' =>
+                  [
+                      'name' => 'Litoral Oeste',
+                      'cities' =>
+                      [
+                        'amontada',
+                        'apuiares',
+                        'generalsampaio',
+                        'iraucuba',
+                        'itapaje',
+                        'itapipoca',
+                        'miraima',
+                        'paracuru',
+                        'paraipaba',
+                        'pentecoste',
+                        'saoluisdocuru',
+                        'tejucuoca',
+                        'trairi',
+                        'tururu',
+                        'umirim',
+                        'uruburetama',
+                      ],
+                  ],
+              'macico_do_baturite' =>
+                  [
+                      'name' => 'Maciço de Baturité',
+                      'cities' =>
+                      [
+                        'acarape',
+                        'aracoiaba',
+                        'aratuba',
+                        'barreira',
+                        'baturite',
+                        'capistrano',
+                        'guaramiranga',
+                        'itapiuna',
+                        'mulungu',
+                        'ocara',
+                        'pacoti',
+                        'palmacia',
+                        'redencao',
+                      ],
+                  ],
+              'serra_da_ibiapaba' =>
+                  [
+                      'name' => 'Serra da Ibiapaba',
+                      'cities' =>
+                      [
+                        'carnaubal',
+                        'croata',
+                        'guaraciabadonorte',
+                        'ibiapina',
+                        'ipu',
+                        'saobenedito',
+                        'tiangua',
+                        'ubajara',
+                        'vicosadoceara',
+                      ],
+                  ],
+              'sertao_central' =>
+                  [
+                      'name' => 'Sertão Central',
+                      'cities' =>
+                      [
+                        'banabuiu',
+                        'choro',
+                        'depirapuanpinheiro',
+                        'ibaretama',
+                        'ibicuitinga',
+                        'milha',
+                        'mombaca',
+                        'pedrabranca',
+                        'pedra',
+                        'piquetcarneiro',
+                        'quixada',
+                        'quixeramobim',
+                        'senadorpompeu',
+                        'solonopole',
+                      ],
+                  ],
+              'sertao_de_caninde' =>
+                  [
+                      'name' => 'Sertão de Canindé',
+                      'cities' =>
+                      [
+                        'boaviagem',
+                        'caninde',
+                        'caridade',
+                        'itatira',
+                        'madalena',
+                        'paramoti',
+                      ],
+                  ],
+              'sertao_de_sobral' =>
+                  [
+                      'name' => 'Sertão de Sobral',
+                      'cities' =>
+                      [
+                        'alcantaras',
+                        'carire',
+                        'coreau',
+                        'forquilha',
+                        'frecheirinha',
+                        'graca',
+                        'groairas',
+                        'massape',
+                        'meruoca',
+                        'moraujo',
+                        'mucambo',
+                        'pacuja',
+                        'piresferreira',
+                        'reriutaba',
+                        'santanadoacarau',
+                        'senadorsa',
+                        'sobral',
+                        'varjota',
+                      ],
+                  ],
+              'sertao_dos_crateus' =>
+                  [
+                      'name' => 'Sertão dos Crateus',
+                      'cities' =>
+                      [
+                        'ararenda',
+                        'catunda',
+                        'crateus',
+                        'hidrolandia',
+                        'independencia',
+                        'ipaporanga',
+                        'ipueiras',
+                        'monsenhortabosa',
+                        'novarussas',
+                        'novooriente',
+                        'poranga',
+                        'santaquiteria',
+                        'tamboril',
+                      ],
+                  ],
+              'sertao_dos_inhamuns' =>
+                  [
+                      'name' => 'Sertão dos Inhamuns',
+                      'cities' =>
+                      [
+                        'aiuaba',
+                        'arneiroz',
+                        'parambu',
+                        'quiterianopolis',
+                        'taua',
+                      ],
+                  ],
+              'vale_do_jaguaribe' =>
+                  [
+                      'name' => 'Vale do Jaguaribe',
+                      'cities' =>
+                      [
+                        'altosanto',
+                        'erere',
+                        'iracema',
+                        'jaguaretama',
+                        'jaguaribara',
+                        'jaguaribe',
+                        'limoeirodonorte',
+                        'moradanova',
+                        'palhano',
+                        'pereiro',
+                        'potiretama',
+                        'quixere',
+                        'russas',
+                        'saojoaodojaguaribe',
+                        'tabuleirodonorte',
+                      ],
+                  ],
+          ];
+
+          foreach ($cities_region as $region => $value) {
+              $all_regions[$region] = $value['name'];
+              foreach ($value['cities'] as $city) {
+                  $cities[$city] = $region;
+              }
+          }
+
+          return ['cities' => $cities, 'all_regions' => $all_regions, 'cities_region' => $cities_region];
+    }
 }

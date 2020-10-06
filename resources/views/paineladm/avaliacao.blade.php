@@ -293,7 +293,7 @@
 
                     </tbody>
                 </table>
-                <input type="submit" value="Concluir Avaliação">
+                <input type="submit" class="btn btn-success mb-2" value="Concluir Avaliação">
               </form>
 
             </div>
