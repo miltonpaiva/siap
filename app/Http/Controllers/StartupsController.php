@@ -284,15 +284,24 @@ class StartupsController extends Controller
           $startups = $this->getFilterRegion($startups);
         }
 
+        if (isset($_GET['cidade'])) {
+          $startups = $this->getFilterCity($startups);
+        }
+
+        if (isset($_GET['articulador'])) {
+          $startups = $this->getFilterArticulador($startups);
+        }
+
+        if (isset($_GET['tecnologia'])) {
+          $startups = $this->getFilterTecnologia($startups);
+        }
+
         foreach ($startups as $s_id => $sttp) {
           if ($sttp['city'] != '000000') {
             $this->cities[self::clearString($sttp['city'])] = $sttp['city'];
           }
         }
 
-        if (isset($_GET['cidade'])) {
-          $startups = $this->getFilterCity($startups);
-        }
 
         foreach ($startups as $id => $startup) {
             $arr_ids[] = $id;
@@ -313,6 +322,8 @@ class StartupsController extends Controller
           [
             'all_regions' => $this->getDataRegions()['all_regions'],
             'cities'  => $this->cities,
+            'articuladores'  => $this->getOptions(29),
+            'tecnologias'  => $this->getOptions(4),
             'startups' => $startups,
             'message'  => $this->message,
           ];
@@ -386,21 +397,84 @@ class StartupsController extends Controller
         return $new_rating_id;
     }
 
+    public function getOptions($question)
+    {
+        $custom_args['conditions'] =
+            [
+                ['question', '=', $question],
+            ];
+
+        $options = Query::queryAction('options', $custom_args);
+
+        foreach ($options as $o_id => $option) {
+            $data[$o_id] = $option['name'];
+        }
+
+        return $data;
+    }
+
+    public function getFilterArticulador($startups)
+    {
+        $data = [];
+        $custom_args['conditions'] =
+            [
+                ['question', '=', 29],
+                ['option', '=', $_GET['articulador']],
+            ];
+
+        $responses = Query::queryAction('responses', $custom_args);
+
+        foreach ($responses as $resp) {
+            $data[$resp['startup']] = $startups[$resp['startup']];
+        }
+
+        if (count($data) > 0) {
+          return $data;
+        }else{
+          $this->message = ['type' => 'danger', 'message' => 'O filtro de ARTICULADOR não retornou dados !'];
+          return $startups;
+        }
+    }
+
+    public function getFilterTecnologia($startups)
+    {
+        $data = [];
+        $custom_args['conditions'] =
+            [
+                ['question', '=', 4],
+                ['option', '=', $_GET['tecnologia']],
+            ];
+
+        $responses = Query::queryAction('responses', $custom_args);
+
+        foreach ($responses as $resp) {
+            $data[$resp['startup']] = $startups[$resp['startup']];
+        }
+
+        if (count($data) > 0) {
+          return $data;
+        }else{
+          $this->message = ['type' => 'danger', 'message' => 'O filtro de TECNOLOGIA não retornou dados !'];
+          return $startups;
+        }
+    }
+
     public function getFilterCity($startups)
     {
-      foreach ($startups as $s_id => $sttp) {
-        if ($_GET['cidade'] == self::clearString($sttp['city'])) {
-          $data[$s_id] = $sttp;
+        $data = [];
+
+        foreach ($startups as $s_id => $sttp) {
+          if ($_GET['cidade'] == self::clearString($sttp['city'])) {
+            $data[$s_id] = $sttp;
+          }
         }
-      }
 
-      if (count($data) > 0) {
-        return $data;
-      }else{
-        $this->message = ['type' => 'danger', 'message' => 'O filtro de CIDADE não retornou dados !'];
-        return $startups;
-      }
-
+        if (count($data) > 0) {
+          return $data;
+        }else{
+          $this->message = ['type' => 'danger', 'message' => 'O filtro de CIDADE não retornou dados !'];
+          return $startups;
+        }
     }
 
     public function getFilterRegion($startups)
@@ -430,7 +504,6 @@ class StartupsController extends Controller
             $this->message = ['type' => 'danger', 'message' => 'O filtro de REGIÃO não retornou dados !'];
             return $startups;
           }
-
     }
 
     public function getDataRegions()
