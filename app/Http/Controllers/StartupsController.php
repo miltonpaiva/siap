@@ -58,8 +58,6 @@ class StartupsController extends Controller
 
         $responses = Query::queryAction('responses', $custom_args);
 
-        $participants = Query::queryAction('participants', $custom_args);
-
         $custom_args['conditions'] =
             [
                 ['id', '=', $startup_id]
@@ -79,7 +77,7 @@ class StartupsController extends Controller
               'startup_id'  => $startup_id,
               'responses'   => $responses_agrouped,
               'startup'     => $startup,
-              'participant' => current($participants),
+              'participant' => [],
           ];
 
         if ($startup['stage'] == 'complete') {
@@ -87,6 +85,53 @@ class StartupsController extends Controller
         }
 
         return view('inscricao', $vars);
+    }
+
+    public function viewStartup($startup_id)
+    {
+
+        $user_logged = User::checkLogin();
+        if (is_object($user_logged)) {
+            return $user_logged;
+        }
+
+        $questions = Response::questionsList('array');
+
+        $custom_args['conditions'] =
+            [
+                ['startup', '=', $startup_id]
+            ];
+
+        $responses = Query::queryAction('responses', $custom_args);
+
+        $user = current(Query::queryAction('users', $custom_args));
+
+        $participants = Query::queryAction('participants', $custom_args);
+
+        $custom_args['conditions'] =
+            [
+                ['id', '=', $startup_id]
+            ];
+
+        $startup = current(Query::queryAction('startups', $custom_args));
+
+        $startup['user'] = $user;
+
+        $responses_agrouped = [];
+        foreach ($responses as $resp) {
+           $responses_agrouped[$resp['question']] = $resp['option'];
+        }
+
+        $vars =
+          [
+              'startup_id'  => $startup_id,
+              'startup'     => $startup,
+              'responses'   => $responses_agrouped,
+              'participants' => $participants,
+              'questions'   => $questions,
+          ];
+
+        return view('paineladm/projeto', $vars);
     }
 
     public function actionUpdate($startup_id, $state, $city, $category)
@@ -269,7 +314,7 @@ class StartupsController extends Controller
         return view('paineladm/index', ['graph' => $graph]);
     }
 
-    public function viewStartups()
+    public function listStartups()
     {
         $user_logged = User::checkLogin();
         if (is_object($user_logged)) {

@@ -28,7 +28,6 @@ Route::get('/login', function () {
     return view('login');
 })->name('user.login.view');
 
-
 Route::post('/user/register/', 'UsersController@actionRegister')->name('user.register');
 Route::post('/user/login/', 'UsersController@actionLogin')->name('user.login');
 Route::get('/user/logout/', 'UsersController@actionLogout')->name('user.logout');
@@ -38,12 +37,13 @@ Route::get('/response/option/new/', 'ResponsesController@newOption')->name('resp
 
 Route::post('/startup/register/', 'StartupsController@actionRegister')->name('startup.register');
 Route::get('/startup/update/{startup_id?}/{state?}/{city?}/{category?}/', 'StartupsController@actionUpdate')->name('startup.update');
-Route::get('/startup/{startup_id}/registro/', 'StartupsController@viewRegister')->name('startup.register.view');
+Route::get('/projeto/{startup_id}/registro/', 'StartupsController@viewRegister')->name('startup.register.view');
+Route::get('/projeto/{startup_id}/', 'StartupsController@viewStartup')->name('startup.view');
 
 Route::get('/painel', 'StartupsController@viewPainel')->name('painel');
-Route::get('/projetos', 'StartupsController@viewStartups')->name('startup.list');
+Route::get('/projetos', 'StartupsController@listStartups')->name('startup.list');
 
-Route::get('/startup/{startup_id}/avaliacao/', 'RatingController@viewRating')->name('startup.rating.view');
+Route::get('/projeto/{startup_id}/avaliacao/', 'RatingController@viewRating')->name('startup.rating.view');
 Route::post('/startup/rating/', 'RatingController@actionRating')->name('startup.rating');
 Route::get('/avaliacoes', 'RatingController@listRating')->name('rating.list');
 

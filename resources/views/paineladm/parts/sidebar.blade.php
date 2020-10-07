@@ -27,7 +27,7 @@
         $is_startup =
         (
           strrpos(@$_SERVER['REQUEST_URI'], 'startup') ||
-          strrpos(@$_SERVER['REQUEST_URI'], 'projetos')
+          strrpos(@$_SERVER['REQUEST_URI'], 'projeto')
         );
         if ($is_startup)
           { $projetos = 'active'; }
