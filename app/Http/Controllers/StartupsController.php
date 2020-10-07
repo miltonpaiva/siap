@@ -284,6 +284,12 @@ class StartupsController extends Controller
           $startups = $this->getFilterRegion($startups);
         }
 
+        foreach ($startups as $s_id => $sttp) {
+          if ($sttp['city'] != '000000') {
+            $this->cities[self::clearString($sttp['city'])] = $sttp['city'];
+          }
+        }
+
         if (isset($_GET['cidade'])) {
           $startups = $this->getFilterCity($startups);
         }
@@ -383,10 +389,6 @@ class StartupsController extends Controller
     public function getFilterCity($startups)
     {
       foreach ($startups as $s_id => $sttp) {
-        if ($sttp['city'] != '000000') {
-          $this->cities[self::clearString($sttp['city'])] = $sttp['city'];
-        }
-
         if ($_GET['cidade'] == self::clearString($sttp['city'])) {
           $data[$s_id] = $sttp;
         }
