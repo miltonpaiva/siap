@@ -119,7 +119,9 @@
                 });
 
                 for(key_g in _get){
-                  document.getElementById(key_g).value = _get[key_g];
+                  if (document.getElementById(key_g)) {
+                    document.getElementById(key_g).value = _get[key_g];
+                  }
                 }
 
               </script>
@@ -135,24 +137,24 @@
                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                   <thead>
                     <tr>
+                      <th>Ação</th>
+                      <th>#</th>
                       <th>Startup</th>
                       <th>Responsável</th>
                       <th>Resp. E-mail</th>
                       <th>Categoria</th>
                       <th>Status</th>
-                      <th>Visualizar</th>
-                      <th>Avaliar</th>
                     </tr>
                   </thead>
                   <tfoot>
                     <tr>
+                      <th>Ação</th>
+                      <th>#</th>
                       <th>Startup</th>
                       <th>Responsável</th>
                       <th>Resp. E-mail</th>
                       <th>Categoria</th>
                       <th>Status</th>
-                      <th>Visualizar</th>
-                      <th>Avaliar</th>
                     </tr>
                   </tfoot>
                   <tbody>
@@ -160,23 +162,31 @@
                     @foreach($startups as $startup)
 
                       <tr>
+                        <td>
+                          <select onchange="redirectAction(this)" >
+                            <option disabled="true" selected="true" >---</option>
+                            <option value="{{ route('startup.rating.view', $startup['id']) }}" >
+                                Avaliar
+                            </option>
+                          </select>
+                        </td>
+                        <td>{{$startup['id']}}</td>
                         <td>{{$startup['name']}}</td>
                         <td>{{$startup['user']}}</td>
                         <td>{{$startup['email']}}</td>
                         <td>{{$startup['category']}}</td>
                         <td>{{$startup['stage']}}</td>
-                        <td>
-                          <a href="#">Visualizar</a>.
-                        </td>
-                        <td>
-                          <a href="{{ route('startup.rating.view', $startup['id']) }}">Avaliar</a>.
-                        </td>
                       </tr>
 
                     @endforeach
 
                   </tbody>
                 </table>
+                <script>
+                    function redirectAction(select) {
+                      window.location.href = select.value;
+                    }
+                </script>
               </div>
             </div>
           </div>
