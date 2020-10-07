@@ -9,13 +9,14 @@ use DB;
 
 use App\Http\Controllers\ResponsesController as Response;
 use App\Http\Controllers\QueryActionController as Query;
+use App\Http\Controllers\FiltersController as Filters;
 use App\Http\Controllers\UsersController as User;
 
 header("Access-Control-Allow-Origin: *");
 
 class StartupsController extends Controller
 {
-    public $message;
+    public static $message;
     public $cities;
 
     public static function semiRegister($name)
@@ -86,7 +87,6 @@ class StartupsController extends Controller
         }
 
         return view('inscricao', $vars);
-
     }
 
     public function actionUpdate($startup_id, $state, $city, $category)
@@ -99,7 +99,6 @@ class StartupsController extends Controller
 
         echo json_encode(['status' => 200, 'message' => $result]);
         exit();
-
     }
 
     public function actionRegister(Request $request)
@@ -206,7 +205,6 @@ class StartupsController extends Controller
       $result = self::update(['stage' => 'complete'], $startup_id);
 
       return redirect()->route('concluido');
-
     }
 
     public static function registerParticipant($participant)
@@ -281,19 +279,19 @@ class StartupsController extends Controller
         $startups = Query::queryAction('startups');
 
         if (isset($_GET['regiao'])) {
-          $startups = $this->getFilterRegion($startups);
+          $startups = Filters::getFilterRegion($startups);
         }
 
         if (isset($_GET['cidade'])) {
-          $startups = $this->getFilterCity($startups);
+          $startups = Filters::getFilterCity($startups);
         }
 
         if (isset($_GET['articulador'])) {
-          $startups = $this->getFilterArticulador($startups);
+          $startups = Filters::getFilterArticulador($startups);
         }
 
         if (isset($_GET['tecnologia'])) {
-          $startups = $this->getFilterTecnologia($startups);
+          $startups = Filters::getFilterTecnologia($startups);
         }
 
         foreach ($startups as $s_id => $sttp) {
@@ -325,486 +323,9 @@ class StartupsController extends Controller
             'articuladores'  => $this->getOptions(29),
             'tecnologias'  => $this->getOptions(4),
             'startups' => $startups,
-            'message'  => $this->message,
+            'message'  => self::$message,
           ];
 
         return view('paineladm/listagem', $vars);
-    }
-
-    public function viewRating($startup_id)
-    {
-        $user_logged = User::checkLogin();
-        if (is_object($user_logged)) {
-            return $user_logged;
-        }
-
-        $custom_args['conditions'] =
-            [
-                ['id', '=', $startup_id]
-            ];
-        $startup = current(Query::queryAction('startups', $custom_args));
-
-        $custom_args['conditions'] =
-            [
-                ['startup', '=', $startup_id]
-            ];
-        $user = current(Query::queryAction('users', $custom_args));
-
-        $participants = Query::queryAction('participants', $custom_args);
-
-        $vars =
-          [
-              'startup' => $startup,
-              'user' => $user,
-              'qtd_particpants' => count($participants)
-          ];
-
-        return view('paineladm/avaliacao', $vars);
-    }
-
-    public function actionRating(Request $request)
-    {
-      session_start();
-      $evaluator = $_SESSION['login']['user_id'];
-      $data = $request->all();
-
-      $criterios  = $data['avalicacao']['criterio'];
-
-      $startup_id = $data['startup'];
-
-      foreach ($criterios as $c_id => $value) {
-        $rating =
-          [
-            'evaluator' => $evaluator,
-            'startup' => $startup_id,
-            'criterea' => $c_id,
-            'note' => $value['nota'],
-          ];
-
-        $result = self::registerRating($rating);
-      }
-
-      $result = self::update(['stage' => 'rated'], $startup_id);
-
-      return redirect()->route('startup.list');
-    }
-
-    public static function registerRating($rating)
-    {
-        $new_rating_id =
-            DB::table('rating')->insertGetId($rating);
-
-        return $new_rating_id;
-    }
-
-    public function getOptions($question)
-    {
-        $custom_args['conditions'] =
-            [
-                ['question', '=', $question],
-            ];
-
-        $options = Query::queryAction('options', $custom_args);
-
-        foreach ($options as $o_id => $option) {
-            $data[$o_id] = $option['name'];
-        }
-
-        return $data;
-    }
-
-    public function getFilterArticulador($startups)
-    {
-        $data = [];
-        $custom_args['conditions'] =
-            [
-                ['question', '=', 29],
-                ['option', '=', $_GET['articulador']],
-            ];
-
-        $responses = Query::queryAction('responses', $custom_args);
-
-        foreach ($responses as $resp) {
-            $data[$resp['startup']] = $startups[$resp['startup']];
-        }
-
-        if (count($data) > 0) {
-          return $data;
-        }else{
-          $this->message = ['type' => 'danger', 'message' => 'O filtro de ARTICULADOR não retornou dados !'];
-          return $startups;
-        }
-    }
-
-    public function getFilterTecnologia($startups)
-    {
-        $data = [];
-        $custom_args['conditions'] =
-            [
-                ['question', '=', 4],
-                ['option', '=', $_GET['tecnologia']],
-            ];
-
-        $responses = Query::queryAction('responses', $custom_args);
-
-        foreach ($responses as $resp) {
-            $data[$resp['startup']] = $startups[$resp['startup']];
-        }
-
-        if (count($data) > 0) {
-          return $data;
-        }else{
-          $this->message = ['type' => 'danger', 'message' => 'O filtro de TECNOLOGIA não retornou dados !'];
-          return $startups;
-        }
-    }
-
-    public function getFilterCity($startups)
-    {
-        $data = [];
-
-        foreach ($startups as $s_id => $sttp) {
-          if ($_GET['cidade'] == self::clearString($sttp['city'])) {
-            $data[$s_id] = $sttp;
-          }
-        }
-
-        if (count($data) > 0) {
-          return $data;
-        }else{
-          $this->message = ['type' => 'danger', 'message' => 'O filtro de CIDADE não retornou dados !'];
-          return $startups;
-        }
-    }
-
-    public function getFilterRegion($startups)
-    {
-          $cities = $this->getDataRegions()['cities'];
-
-          foreach ($startups as $s_id => $sttp) {
-
-                if ($sttp['state'] == 'CE') {
-                  $is_city =
-                    isset(
-                      $cities[self::clearString($sttp['city'])]
-                    );
-
-                  if ($is_city) {
-                      $region_c = $cities[self::clearString($sttp['city'])];
-                      $data[$region_c][$s_id] = $sttp;
-                  }else{
-                     $not_ached[] = $sttp;
-                  }
-                }
-          }
-
-          if (isset($data[$_GET['regiao']])) {
-            return $data[$_GET['regiao']];
-          }else{
-            $this->message = ['type' => 'danger', 'message' => 'O filtro de REGIÃO não retornou dados !'];
-            return $startups;
-          }
-    }
-
-    public function getDataRegions()
-    {
-          $cities_region =
-          [
-              'cariri' =>
-                  [
-                      'name' => 'Cariri',
-                      'cities' =>
-                      [
-                        'abaiara',
-                        'altaneira',
-                        'antoninadonorte',
-                        'antonina',
-                        'araripe',
-                        'assare',
-                        'aurora',
-                        'barbalha',
-                        'barro',
-                        'brejosanto',
-                        'campossales',
-                        'campos',
-                        'caririacu',
-                        'crato',
-                        'fariasbrito',
-                        'granjeiro',
-                        'jardim',
-                        'jati',
-                        'juazeirodonorte',
-                        'juazeiro',
-                        'mauriti',
-                        'milagres',
-                        'missaovelha',
-                        'novaolinda',
-                        'penaforte',
-                        'porteiras',
-                        'potengi',
-                        'salitre',
-                        'santanadocariri',
-                        'tarrafas',
-                      ],
-                  ],
-              'centro_sul' =>
-                  [
-                      'name' => 'Centro-Sul',
-                      'cities' =>
-                      [
-                        'acopiara',
-                        'baixio',
-                        'carius',
-                        'catarina',
-                        'cedro',
-                        'ico',
-                        'iguatu',
-                        'ipaumirim',
-                        'jucas',
-                        'lavrasdamangabeira',
-                        'oros',
-                        'quixelo',
-                        'saboeiro',
-                        'umari',
-                        'varzeaalegre',
-                      ],
-                  ],
-              'grande_fortaleza' =>
-                  [
-                      'name' => 'Grande Fortaleza',
-                      'cities' =>
-                      [
-                        'aquiraz',
-                        'caucaia',
-                        'chorozinho',
-                        'eusebio',
-                        'fortaleza',
-                        'guaiuba',
-                        'horizonte',
-                        'itaitinga',
-                        'maracanau',
-                        'maranguape',
-                        'pacajus',
-                        'pacatuba',
-                        'saogoncalodoamarante',
-                      ],
-                  ],
-              'litoral_leste' =>
-                  [
-                      'name' => 'Litoral Leste',
-                      'cities' =>
-                      [
-                        'aracati',
-                        'beberibe',
-                        'cascavel',
-                        'fortim',
-                        'icapui',
-                        'itaicaba',
-                        'jaguaruana',
-                        'pindoretama',
-                      ],
-                  ],
-              'litoralnorte' =>
-                  [
-                      'name' => 'Litoral Norte',
-                      'cities' =>
-                      [
-                      'acarau',
-                      'barroquinha',
-                      'belacruz',
-                      'camocim',
-                      'chaval',
-                      'cruz',
-                      'granja',
-                      'itarema',
-                      'jijocadejericoacoara',
-                      'marco',
-                      'martinopole',
-                      'morrinhos',
-                      'uruoca',
-                      ],
-                  ],
-              'litoral_oeste' =>
-                  [
-                      'name' => 'Litoral Oeste',
-                      'cities' =>
-                      [
-                        'amontada',
-                        'apuiares',
-                        'generalsampaio',
-                        'iraucuba',
-                        'itapaje',
-                        'itapipoca',
-                        'miraima',
-                        'paracuru',
-                        'paraipaba',
-                        'pentecoste',
-                        'saoluisdocuru',
-                        'tejucuoca',
-                        'trairi',
-                        'tururu',
-                        'umirim',
-                        'uruburetama',
-                      ],
-                  ],
-              'macico_do_baturite' =>
-                  [
-                      'name' => 'Maciço de Baturité',
-                      'cities' =>
-                      [
-                        'acarape',
-                        'aracoiaba',
-                        'aratuba',
-                        'barreira',
-                        'baturite',
-                        'capistrano',
-                        'guaramiranga',
-                        'itapiuna',
-                        'mulungu',
-                        'ocara',
-                        'pacoti',
-                        'palmacia',
-                        'redencao',
-                      ],
-                  ],
-              'serra_da_ibiapaba' =>
-                  [
-                      'name' => 'Serra da Ibiapaba',
-                      'cities' =>
-                      [
-                        'carnaubal',
-                        'croata',
-                        'guaraciabadonorte',
-                        'ibiapina',
-                        'ipu',
-                        'saobenedito',
-                        'tiangua',
-                        'ubajara',
-                        'vicosadoceara',
-                      ],
-                  ],
-              'sertao_central' =>
-                  [
-                      'name' => 'Sertão Central',
-                      'cities' =>
-                      [
-                        'banabuiu',
-                        'choro',
-                        'depirapuanpinheiro',
-                        'ibaretama',
-                        'ibicuitinga',
-                        'milha',
-                        'mombaca',
-                        'pedrabranca',
-                        'pedra',
-                        'piquetcarneiro',
-                        'quixada',
-                        'quixeramobim',
-                        'senadorpompeu',
-                        'solonopole',
-                      ],
-                  ],
-              'sertao_de_caninde' =>
-                  [
-                      'name' => 'Sertão de Canindé',
-                      'cities' =>
-                      [
-                        'boaviagem',
-                        'caninde',
-                        'caridade',
-                        'itatira',
-                        'madalena',
-                        'paramoti',
-                      ],
-                  ],
-              'sertao_de_sobral' =>
-                  [
-                      'name' => 'Sertão de Sobral',
-                      'cities' =>
-                      [
-                        'alcantaras',
-                        'carire',
-                        'coreau',
-                        'forquilha',
-                        'frecheirinha',
-                        'graca',
-                        'groairas',
-                        'massape',
-                        'meruoca',
-                        'moraujo',
-                        'mucambo',
-                        'pacuja',
-                        'piresferreira',
-                        'reriutaba',
-                        'santanadoacarau',
-                        'senadorsa',
-                        'sobral',
-                        'varjota',
-                      ],
-                  ],
-              'sertao_dos_crateus' =>
-                  [
-                      'name' => 'Sertão dos Crateus',
-                      'cities' =>
-                      [
-                        'ararenda',
-                        'catunda',
-                        'crateus',
-                        'hidrolandia',
-                        'independencia',
-                        'ipaporanga',
-                        'ipueiras',
-                        'monsenhortabosa',
-                        'novarussas',
-                        'novooriente',
-                        'poranga',
-                        'santaquiteria',
-                        'tamboril',
-                      ],
-                  ],
-              'sertao_dos_inhamuns' =>
-                  [
-                      'name' => 'Sertão dos Inhamuns',
-                      'cities' =>
-                      [
-                        'aiuaba',
-                        'arneiroz',
-                        'parambu',
-                        'quiterianopolis',
-                        'taua',
-                      ],
-                  ],
-              'vale_do_jaguaribe' =>
-                  [
-                      'name' => 'Vale do Jaguaribe',
-                      'cities' =>
-                      [
-                        'altosanto',
-                        'erere',
-                        'iracema',
-                        'jaguaretama',
-                        'jaguaribara',
-                        'jaguaribe',
-                        'limoeirodonorte',
-                        'moradanova',
-                        'palhano',
-                        'pereiro',
-                        'potiretama',
-                        'quixere',
-                        'russas',
-                        'saojoaodojaguaribe',
-                        'tabuleirodonorte',
-                      ],
-                  ],
-          ];
-
-          foreach ($cities_region as $region => $value) {
-              $all_regions[$region] = $value['name'];
-              foreach ($value['cities'] as $city) {
-                  $cities[$city] = $region;
-              }
-          }
-
-          return ['cities' => $cities, 'all_regions' => $all_regions, 'cities_region' => $cities_region];
     }
 }
