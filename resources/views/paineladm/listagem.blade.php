@@ -74,8 +74,8 @@
 
               <form class="form-inline">
                 <div class="form-group mb-2">
-                  <select class="form-control filter" id="regiao">
-                    <option disabled="true" selected >Selecione a Região do Projeto</option>
+                  <select class="form-control filter" id="regiao" onclick="clearOters(this)" >
+                    <option disabled="true" value="" selected >Região do Projeto</option>
 
                       @foreach ($all_regions as $region_v => $region)
                           <option value="{{ $region_v }}" >{{ $region }}</option>
@@ -85,18 +85,46 @@
                 </div>
                 <div class="form-group mx-sm-3 mb-2">
 
-                  <select class="form-control filter" id="cidade">
-                    <option disabled="true" selected >Selecione a Cidade do Projeto</option>
+                  <select class="form-control filter" id="cidade" onclick="clearOters(this)" >
+                    <option disabled="true" value="" selected >Cidade do Projeto</option>
 
                       @foreach ($cities as $city_v => $city)
                           <option value="{{ $city_v }}" >{{ $city }}</option>
                       @endforeach
 
                   </select>
-
                 </div>
-                <button type="submit" id="btn_filter" class="btn btn-success mb-2">Filtrar</button>
+                <div class="form-group mb-2">
+
+                  <select class="form-control filter" id="articulador" onclick="clearOters(this)" >
+                    <option disabled="true" value="" selected >Articulador do Projeto</option>
+
+                      @foreach ($articuladores as $art_v => $art)
+                          <option value="{{ $art_v }}" >{{ $art }}</option>
+                      @endforeach
+
+                  </select>
+                </div>
+
               </form>
+
+              <form class="form-inline">
+                <div class="form-group mx-sm-3 mb-2">
+
+                  <select class="form-control filter" id="tecnologia" onclick="clearOters(this)" >
+                    <option disabled="true" value="" selected >Tecnologia do Projeto</option>
+
+                      @foreach ($tecnologias as $tec_v => $tec)
+                          <option value="{{ $tec_v }}" >{{ $tec }}</option>
+                      @endforeach
+
+                  </select>
+                </div>
+
+                <button type="submit" id="btn_filter" class="btn btn-success mb-2">Filtrar</button>
+
+              </form>
+
               <script>
                 function sendFilter() {
                     var selects = document.getElementsByClassName('filter');
@@ -104,9 +132,11 @@
                     for(key in selects){
                       if (selects[key].id) {
                         var valid_slct = selects[key];
-                        var valor = valid_slct.value;
-                        var filtro = valid_slct.id;
-                        window.location.href = dominio_atual + '?' + filtro + '=' + valor;
+                        if (valid_slct.value != '') {
+                          var valor = valid_slct.value;
+                          var filtro = valid_slct.id;
+                          window.location.href = dominio_atual + '?' + filtro + '=' + valor;
+                        }
                       }
                     }
                 }
@@ -129,6 +159,18 @@
                   if (document.getElementById(key_g)) {
                     document.getElementById(key_g).value = _get[key_g];
                   }
+                }
+
+                function clearOters(current_select) {
+                    var selects = document.getElementsByClassName('filter');
+                    for(key in selects){
+                      if (selects[key].id) {
+                        var valid_slct = selects[key];
+                        if (valid_slct.id != current_select.id) {
+                          valid_slct.value = '';
+                        }
+                      }
+                    }
                 }
 
               </script>
@@ -171,7 +213,7 @@
                       <tr>
                         <td>
                           <select onchange="redirectAction(this)" >
-                            <option disabled="true" selected="true" >---</option>
+                            <option disabled="true" value="" selected="true" >---</option>
                             <option value="{{ route('startup.rating.view', $startup['id']) }}" >
                                 Avaliar
                             </option>
