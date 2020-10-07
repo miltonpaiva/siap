@@ -49,6 +49,7 @@ class RatingController extends Controller
 
     public function listRating()
     {
+        $data = [];
         $user_logged = User::checkLogin();
         if (is_object($user_logged)) {
             return $user_logged;
