@@ -16,6 +16,7 @@ header("Access-Control-Allow-Origin: *");
 class StartupsController extends Controller
 {
     public $message;
+    public $cities;
 
     public static function semiRegister($name)
     {
@@ -283,6 +284,10 @@ class StartupsController extends Controller
           $startups = $this->getFilterRegion($startups);
         }
 
+        if (isset($_GET['cidade'])) {
+          $startups = $this->getFilterCity($startups);
+        }
+
         foreach ($startups as $id => $startup) {
             $arr_ids[] = $id;
         }
@@ -301,6 +306,7 @@ class StartupsController extends Controller
         $vars =
           [
             'all_regions' => $this->getDataRegions()['all_regions'],
+            'cities'  => $this->cities,
             'startups' => $startups,
             'message'  => $this->message,
           ];
@@ -374,6 +380,27 @@ class StartupsController extends Controller
         return $new_rating_id;
     }
 
+    public function getFilterCity($startups)
+    {
+      foreach ($startups as $s_id => $sttp) {
+        if ($sttp['city'] != '000000') {
+          $this->cities[self::clearString($sttp['city'])] = $sttp['city'];
+        }
+
+        if ($_GET['cidade'] == self::clearString($sttp['city'])) {
+          $data[$s_id] = $sttp;
+        }
+      }
+
+      if (count($data) > 0) {
+        return $data;
+      }else{
+        $this->message = ['type' => 'danger', 'message' => 'O filtro de CIDADE não retornou dados !'];
+        return $startups;
+      }
+
+    }
+
     public function getFilterRegion($startups)
     {
           $cities = $this->getDataRegions()['cities'];
@@ -398,7 +425,7 @@ class StartupsController extends Controller
           if (isset($data[$_GET['regiao']])) {
             return $data[$_GET['regiao']];
           }else{
-            $this->message = ['type' => 'danger', 'message' => 'Um dos filtros não retornou dados, tente outro'];
+            $this->message = ['type' => 'danger', 'message' => 'O filtro de REGIÃO não retornou dados !'];
             return $startups;
           }
 

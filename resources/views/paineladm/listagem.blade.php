@@ -84,9 +84,16 @@
                   </select>
                 </div>
                 <div class="form-group mx-sm-3 mb-2">
-<!--                   <select class="form-control" id="">
-                    <option></option>
-                  </select> -->
+
+                  <select class="form-control filter" id="cidade">
+                    <option disabled="true" selected >Selecione a Cidade do Projeto</option>
+
+                      @foreach ($cities as $city_v => $city)
+                          <option value="{{ $city_v }}" >{{ $city }}</option>
+                      @endforeach
+
+                  </select>
+
                 </div>
                 <button type="submit" id="btn_filter" class="btn btn-success mb-2">Filtrar</button>
               </form>
