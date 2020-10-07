@@ -99,7 +99,9 @@
 
                   <div class="row">
                     <div class="col-sm-12 col-md-4 mt-3 mb-3 mx-auto">
-                      <button class="btn btn-info ">Confira Projeto na Íntegra</button>
+                      <a href="{{ route('startup.view', $startup['id']) }}" target="_blank" >
+                        <input type="button" class="btn btn-info" value="Confira Projeto na Íntegra" >
+                      </a>
                     </div>
                   </div>
 

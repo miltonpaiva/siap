@@ -217,6 +217,9 @@
                             <option value="{{ route('startup.rating.view', $startup['id']) }}" >
                                 Avaliar
                             </option>
+                            <option value="{{ route('startup.view', $startup['id']) }}" >
+                                Visualizar
+                            </option>
                           </select>
                         </td>
                         <td>{{$startup['id']}}</td>
