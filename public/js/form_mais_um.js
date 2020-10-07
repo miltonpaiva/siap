@@ -115,7 +115,7 @@ html += '<div class="form-group">';
 html += '<label for="comprovacao">Anexar Comprovação de Experiência e Conhecimento*</label>';
 html += '<div class="custom-file">';
 html += '<input type="file" class="custom-file-input" id="comprovacao'+ count +'" name="time[' + count + '][comprovacao]" >';
-html += '<label class="custom-file-label" for="comprovacao'+ count +'">Comprovante</label>';
+html += '<label class="custom-file-label" id="uploadc'+ count +'" for="comprovacao'+ count +'">Comprovante</label>';
 html += '</div>';
 html += '</div> <button type="button" id="' + count + '" class="btn btn-outline-secondary btn-lg btn-block mt-5 mb-5 remover">Remover</button> </div>';
 
@@ -131,6 +131,13 @@ html += '</div> <button type="button" id="' + count + '" class="btn btn-outline-
 	$('.btn_fade').click(function(e){
 	  	e.preventDefault();
 	});
+
+
+    //Upload arquivo comprovacao
+    $("#comprovacao" + count).change(function(){
+        var nomeArquivo = $(this).val();
+        $("#uploadc" + count).append("<span>" + nomeArquivo + "</span>");
+    });
 
 
     $("#cpf" + count).mask("999.999.999-99");
@@ -157,6 +164,7 @@ html += '</div> <button type="button" id="' + count + '" class="btn btn-outline-
                 document.getElementById('all_ok').value = 'nao'
                 $("#nome-compl" + count).removeClass("valido");
                 $("#nome-compl" + count).addClass("invalido");
+                $("#nome-compl" + count).focus();
                 return false;
             }else{
                 document.getElementById('all_ok').value = 'nao'
@@ -166,6 +174,7 @@ html += '</div> <button type="button" id="' + count + '" class="btn btn-outline-
                     document.getElementById('all_ok').value = 'nao'
                     $("#funcaop" + count).removeClass("valido");
                     $("#funcaop" + count).addClass("invalido");
+                    $("#funcaop" + count).focus();
                     return false;
                 }else{
                     document.getElementById('all_ok').value = 'nao'
@@ -184,6 +193,7 @@ html += '</div> <button type="button" id="' + count + '" class="btn btn-outline-
                         document.getElementById('all_ok').value = 'nao'
                         $("#rg" + count).removeClass("valido");
                         $("#rg" + count).addClass("invalido");
+                        $("#rg" + count).focus();
                         return false;
                     }else{
                         document.getElementById('all_ok').value = 'nao'
@@ -193,6 +203,7 @@ html += '</div> <button type="button" id="' + count + '" class="btn btn-outline-
                             document.getElementById('all_ok').value = 'nao'
                             $("#orgemaissor" + count).removeClass("valido");
                             $("#orgemaissor" + count).addClass("invalido");
+                            $("#orgemaissor" + count).focus();
                             return false;
                         }else{
                             document.getElementById('all_ok').value = 'nao'
@@ -203,6 +214,7 @@ html += '</div> <button type="button" id="' + count + '" class="btn btn-outline-
                                 document.getElementById('all_ok').value = 'nao'
                                 $("#cpf" + count).removeClass("valido");
                                 $("#cpf" + count).addClass("invalido");
+                                $("#cpf" + count).focus();
                                 return false;
                             }else{
                                 $('.obrigatorio').hide();
@@ -213,6 +225,7 @@ html += '</div> <button type="button" id="' + count + '" class="btn btn-outline-
                                     document.getElementById('all_ok').value = 'nao'
                                     $("#instensino" + count).removeClass("valido");
                                     $("#instensino" + count).addClass("invalido");
+                                    $("#instensino" + count).focus();
                                     return false;
                                 }else{
                                     document.getElementById('all_ok').value = 'nao'
@@ -222,6 +235,7 @@ html += '</div> <button type="button" id="' + count + '" class="btn btn-outline-
                                         document.getElementById('all_ok').value = 'nao'
                                         $("#curso" + count).removeClass("valido");
                                         $("#curso" + count).addClass("invalido");
+                                        $("#curso" + count).focus();
                                         return false;
                                     }else{
                                         document.getElementById('all_ok').value = 'nao'
@@ -231,6 +245,7 @@ html += '</div> <button type="button" id="' + count + '" class="btn btn-outline-
                                             document.getElementById('all_ok').value = 'nao'
                                             $("#formacao" + count).removeClass("valido");
                                             $("#formacao" + count).addClass("invalido");
+                                            $("#formacao" + count).focus();
                                             return false;
                                         }else{
                                             document.getElementById('all_ok').value = 'nao'
@@ -240,6 +255,7 @@ html += '</div> <button type="button" id="' + count + '" class="btn btn-outline-
                                                 document.getElementById('all_ok').value = 'nao'
                                                 $("#logradouro" + count).removeClass("valido");
                                                 $("#logradouro" + count).addClass("invalido");
+                                                $("#logradouro" + count).focus();
                                                 return false;
                                             }else{
                                                 document.getElementById('all_ok').value = 'nao'
@@ -249,6 +265,7 @@ html += '</div> <button type="button" id="' + count + '" class="btn btn-outline-
                                                     document.getElementById('all_ok').value = 'nao'
                                                     $("#estadom" + count).removeClass("valido");
                                                     $("#estadom" + count).addClass("invalido");
+                                                    $("#estadom" + count).focus();
                                                     return false;
                                                 }else{
                                                     document.getElementById('all_ok').value = 'nao'
@@ -258,6 +275,7 @@ html += '</div> <button type="button" id="' + count + '" class="btn btn-outline-
                                                         document.getElementById('all_ok').value = 'nao'
                                                         $("#cidadem" + count).removeClass("valido");
                                                         $("#cidadem" + count).addClass("invalido");
+                                                        $("#cidadem" + count).focus();
                                                         return false;
                                                     }else{
                                                         document.getElementById('all_ok').value = 'nao'
@@ -267,6 +285,7 @@ html += '</div> <button type="button" id="' + count + '" class="btn btn-outline-
                                                             document.getElementById('all_ok').value = 'nao'
                                                             $("#telcontato" + count).removeClass("valido");
                                                             $("#telcontato" + count).addClass("invalido");
+                                                            $("#telcontato" + count).focus();
                                                             return false;
                                                         }else{
                                                             document.getElementById('all_ok').value = 'nao'
@@ -276,6 +295,7 @@ html += '</div> <button type="button" id="' + count + '" class="btn btn-outline-
                                                                 document.getElementById('all_ok').value = 'nao'
                                                                 $("#emailmenbro" + count).removeClass("valido");
                                                                 $("#emailmenbro" + count).addClass("invalido");
+                                                                $("#emailmenbro" + count).focus();
                                                                 return false;
                                                             }else{
                                                                 document.getElementById('all_ok').value = 'nao'
@@ -285,6 +305,8 @@ html += '</div> <button type="button" id="' + count + '" class="btn btn-outline-
                                                                     document.getElementById('all_ok').value = 'nao'
                                                                     $("#comprovacao" + count).removeClass("validotwo");
                                                                     $("#comprovacao" + count).addClass("invalidotwo");
+                                                                    $("#comprovacao" + count).focus();
+                                                                    alert('Comprovação Ausente !');
                                                                     return false;
                                                                 }else{
 

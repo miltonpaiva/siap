@@ -18,6 +18,7 @@ $(function(){
             if(estado == null){
                 $("#estado").removeClass("valido");
                 $("#estado").addClass("invalido");
+                $("#estado").focus();
                 return false;
             }else{
                 $("#estado").removeClass("invalido");
@@ -25,6 +26,7 @@ $(function(){
                if(cidade == null){
                     $("#cidade").removeClass("valido");
                     $("#cidade").addClass("invalido");
+                    $("#cidade").focus();
                     return false;
                 }else{
                     $("#cidade").removeClass("invalido");
@@ -32,6 +34,7 @@ $(function(){
                     if(categoriaprojeto == null){
                         $("#categoria-projeto").removeClass("valido");
                         $("#categoria-projeto").addClass("invalido");
+                        $("#categoria-projeto").focus();
                         return false;
                     }else{
                         $("#categoria-projeto").removeClass("invalido");
@@ -39,6 +42,7 @@ $(function(){
                         if(tomouconhecimento == null){
                             $("#tomou-conhecimento").removeClass("valido");
                             $("#tomou-conhecimento").addClass("invalido");
+                            $("#tomou-conhecimento").focus();
                             return false;
                         }else{
                             $("#tomou-conhecimento").removeClass("invalido");
@@ -229,6 +233,7 @@ $(function(){
                 document.getElementById('all_ok').value = 'nao'
                 $("#nome-compl").removeClass("valido");
                 $("#nome-compl").addClass("invalido");
+                $("#nome-compl").focus();
                 return false;
             }else{
                 document.getElementById('all_ok').value = 'nao'
@@ -238,6 +243,7 @@ $(function(){
                     document.getElementById('all_ok').value = 'nao'
                     $("#funcaop").removeClass("valido");
                     $("#funcaop").addClass("invalido");
+                    $("#funcaop").focus();
                     return false;
                 }else{
                     document.getElementById('all_ok').value = 'nao'
@@ -256,6 +262,7 @@ $(function(){
                         document.getElementById('all_ok').value = 'nao'
                         $("#rg").removeClass("valido");
                         $("#rg").addClass("invalido");
+                        $("#rg").focus();
                         return false;
                     }else{
                         document.getElementById('all_ok').value = 'nao'
@@ -265,6 +272,7 @@ $(function(){
                             document.getElementById('all_ok').value = 'nao'
                             $("#orgemaissor").removeClass("valido");
                             $("#orgemaissor").addClass("invalido");
+                            $("#orgemaissor").focus();
                             return false;
                         }else{
                             document.getElementById('all_ok').value = 'nao'
@@ -275,6 +283,7 @@ $(function(){
                                 document.getElementById('all_ok').value = 'nao'
                                 $("#cpf").removeClass("valido");
                                 $("#cpf").addClass("invalido");
+                                $("#cpf").focus();
                                 return false;
                             }else{
                                 $('.obrigatorio').hide();
@@ -285,6 +294,7 @@ $(function(){
                                     document.getElementById('all_ok').value = 'nao'
                                     $("#instensino").removeClass("valido");
                                     $("#instensino").addClass("invalido");
+                                    $("#instensino").focus();
                                     return false;
                                 }else{
                                     document.getElementById('all_ok').value = 'nao'
@@ -294,6 +304,7 @@ $(function(){
                                         document.getElementById('all_ok').value = 'nao'
                                         $("#curso").removeClass("valido");
                                         $("#curso").addClass("invalido");
+                                        $("#curso").focus();
                                         return false;
                                     }else{
                                         document.getElementById('all_ok').value = 'nao'
@@ -303,6 +314,7 @@ $(function(){
                                             document.getElementById('all_ok').value = 'nao'
                                             $("#formacao").removeClass("valido");
                                             $("#formacao").addClass("invalido");
+                                            $("#formacao").focus();
                                             return false;
                                         }else{
                                             document.getElementById('all_ok').value = 'nao'
@@ -312,6 +324,7 @@ $(function(){
                                                 document.getElementById('all_ok').value = 'nao'
                                                 $("#logradouro").removeClass("valido");
                                                 $("#logradouro").addClass("invalido");
+                                                $("#logradouro").focus();
                                                 return false;
                                             }else{
                                                 document.getElementById('all_ok').value = 'nao'
@@ -321,6 +334,7 @@ $(function(){
                                                     document.getElementById('all_ok').value = 'nao'
                                                     $("#estadom").removeClass("valido");
                                                     $("#estadom").addClass("invalido");
+                                                    $("#estadom").focus();
                                                     return false;
                                                 }else{
                                                     document.getElementById('all_ok').value = 'nao'
@@ -330,6 +344,7 @@ $(function(){
                                                         document.getElementById('all_ok').value = 'nao'
                                                         $("#cidadem").removeClass("valido");
                                                         $("#cidadem").addClass("invalido");
+                                                        $("#cidadem").focus();
                                                         return false;
                                                     }else{
                                                         document.getElementById('all_ok').value = 'nao'
@@ -339,6 +354,7 @@ $(function(){
                                                             document.getElementById('all_ok').value = 'nao'
                                                             $("#telcontato").removeClass("valido");
                                                             $("#telcontato").addClass("invalido");
+                                                            $("#telcontato").focus();
                                                             return false;
                                                         }else{
                                                             document.getElementById('all_ok').value = 'nao'
@@ -348,6 +364,7 @@ $(function(){
                                                                 document.getElementById('all_ok').value = 'nao'
                                                                 $("#emailmenbro").removeClass("valido");
                                                                 $("#emailmenbro").addClass("invalido");
+                                                                $("#emailmenbro").focus();
                                                                 return false;
                                                             }else{
                                                                 document.getElementById('all_ok').value = 'nao'
@@ -357,6 +374,8 @@ $(function(){
                                                                     document.getElementById('all_ok').value = 'nao'
                                                                     $("#comprovacao").removeClass("validotwo");
                                                                     $("#comprovacao").addClass("invalidotwo");
+                                                                    $("#comprovacao").focus();
+                                                                    alert('Comprovação Ausente !');
                                                                     return false;
                                                                 }else{
                                                                     document.getElementById('all_ok').value = 'ok';
