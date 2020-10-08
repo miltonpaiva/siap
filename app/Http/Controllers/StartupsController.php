@@ -4,7 +4,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
+Use Redirect;
 use DB;
 
 use App\Http\Controllers\ResponsesController as Response;
@@ -179,18 +179,24 @@ class StartupsController extends Controller
 
         foreach ($responses['time'] as $time) {
 
+            $uploaded = false;
+
             if (isset($time['comprovacao'])) {
               $has_archive = is_object($time['comprovacao']);
 
               if ($has_archive) {
-                $file_name = $time['comprovacao']->getClientOriginalName();
-                $temp_name = $time['comprovacao']->getPathName();
-                $uploadfile = $uploaddir . basename($file_name);
-                move_uploaded_file($temp_name, $uploadfile);
+                try {
+                  $file_name = $time['comprovacao']->getClientOriginalName();
+                  $temp_name = $time['comprovacao']->getPathName();
+                  $uploadfile = $uploaddir . basename($file_name);
+                  $uploaded = move_uploaded_file($temp_name, $uploadfile);
+                } catch (\Exception $e) {
+                    return Redirect::back()->withErrors(['Não foi fazer upload da comprovacao.']);
+                }
               }
             }
 
-            if (true) {
+            if ($uploaded) {
 
                 $participant =
                   [
@@ -213,6 +219,10 @@ class StartupsController extends Controller
                 $partcipat_saved[] =
                   $id_partcipat = self::registerParticipant($participant);
 
+                  if (!$id_partcipat) {
+                    return Redirect::back()->withErrors(['Não foi possivel criar o participante.']);
+                  }
+
                 $attachments[] =
                   [
                     'archive' => $file_name,
@@ -220,6 +230,8 @@ class StartupsController extends Controller
                     'startup' => $startup_id,
                     'participant' => $id_partcipat,
                   ];
+            }else{
+              return Redirect::back()->withErrors(['Não foi possivel criar o participante, sem comprovação']);
             }
         }
 
@@ -249,6 +261,8 @@ class StartupsController extends Controller
                     'startup' => $startup_id,
                   ];
 
+            }else{
+              return Redirect::back()->withErrors(['Não foi fazer upload do video ou pdf.']);
             }
         }
 
@@ -256,7 +270,11 @@ class StartupsController extends Controller
 
       $attachments_saved = [];
       foreach ($attachments as $attachment) {
-        $attachments_saved[] = self::registerAttachment($attachment);
+        $result = self::registerAttachment($attachment);
+        if (!$result) {
+          return Redirect::back()->withErrors(['Não foi fazer guardar um dos arquivos, verificar nome ou tamanho']);
+        }
+        $attachments_saved[] = $result;
       }
 
 
@@ -267,18 +285,26 @@ class StartupsController extends Controller
 
     public static function registerParticipant($participant)
     {
+      try {
         $new_participant_id =
             DB::table('participants')->insertGetId($participant);
 
         return $new_participant_id;
+      } catch (\Exception $e) {
+        return false;
+      }
     }
 
     public static function registerAttachment($attachment)
     {
+      try {
         $new_attachment_id =
             DB::table('attachments')->insertGetId($attachment);
 
         return $new_attachment_id;
+      } catch (\Exception $e) {
+        return false;
+      }
     }
 
     public function viewPainel()

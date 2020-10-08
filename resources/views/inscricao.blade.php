@@ -41,6 +41,13 @@
                             </div>
 
                             <div class="card-body">
+
+                              @if($errors->any())
+                              <div class="alert alert-danger" role="alert" style="">
+                                  {{$errors->first()}}
+                              </div>
+                              @endif
+
                                 <form id="formulario" action="{{ route('startup.register')}}" method="POST" enctype="multipart/form-data" class="mx-auto">
                                     @method('POST')
                                     @csrf <!-- {{ csrf_field() }} -->
