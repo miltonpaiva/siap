@@ -108,6 +108,16 @@ class StartupsController extends Controller
 
         $participants = Query::queryAction('participants', $custom_args);
 
+        $attachments = Query::queryAction('attachments', $custom_args);
+
+        foreach ($attachments as $att) {
+          if ($att['participant'] != '') {
+            $arquivos[$att['participant']] = $att['archive'];
+          }else{
+            $arquivos[$att['type']] = $att['archive'];
+          }
+        }
+
         $custom_args['conditions'] =
             [
                 ['id', '=', $startup_id]
@@ -127,6 +137,7 @@ class StartupsController extends Controller
               'startup_id'  => $startup_id,
               'startup'     => $startup,
               'responses'   => $responses_agrouped,
+              'arquivos'    => $arquivos,
               'participants' => $participants,
               'questions'   => $questions,
           ];
@@ -192,6 +203,7 @@ class StartupsController extends Controller
                     'formation' => $time['formacao'],
                     'address' => $time['logradouro'],
                     'city' => @$time['cidade'],
+                    'data_nasc' => @$time['datanasc'],
                     'telephone' => $time['telcontato'],
                     'email' => $time['emailmenbro'],
                     'linkedin' => $time['linkedin'],

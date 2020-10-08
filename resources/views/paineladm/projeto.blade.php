@@ -252,16 +252,19 @@
                     <!-- Listagen dos membros --> 
 
                     <div class="accordion mt-3 mb-3" id="accordionExample">
-<!--                         <div class="card">
+
+                        @foreach($participants as $part)
+
+                        <div class="card">
                           <div class="card-header" id="headingOne">
                             <h5 class="mb-0">
-                              <button class="btn btn-info" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                                Membro 01
+                              <button class="btn btn-info" type="button" data-toggle="collapse" data-target="#collapse_{{$part['id']}}" aria-expanded="true" aria-controls="collapse_{{$part['id']}}" style="width: 100%;">
+                                Membro - {{$part['name']}}:
                               </button>
                             </h5>
                           </div>
 
-                          <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
+                          <div id="collapse_{{$part['id']}}" class="collapse hide" aria-labelledby="headingOne" data-parent="#accordionExample">
                             <div class="card-body">
 
                                 <fieldset class="field_set" style="padding: 10px">
@@ -270,69 +273,108 @@
                                     <div class="row">
                                       <div class="col-sm-12 col-md-6 mb-3">
                                           <h6><b class="text-dark text-uppercase">Nome Completo: </b> <br> 
-                                            <span class="ml-2"> Francisco Clemilsk Sousa Nascimento</span></h6>
+                                            <span class="ml-2"> 
+                                            {{$part['name']}}
+                                          </span></h6>
                                       </div>
                                       <div class="col-sm-12 col-md-6 mb-3">
                                           <h6><b class="text-dark text-uppercase">Função no Projeto: </b> <br> 
-                                            <span class="ml-2"> Produto</span></h6>
+                                            <span class="ml-2"> 
+                                            {{$part['function']}}
+                                          </span></h6>
                                       </div>
+                                      @if($part['data_nasc'] != '')
                                       <div class="col-sm-12 col-md-4 mb-3">
                                           <h6><b class="text-dark text-uppercase">Data de Nascimento: </b> <br> 
-                                            <span class="ml-2"> 16/01/1984</span></h6>
+                                            <span class="ml-2"> 
+                                            {{$part['data_nasc']}}
+                                          </span></h6>
                                       </div>
+                                      @endif
                                       <div class="col-sm-12 col-md-4 mb-3">
                                         <h6><b class="text-dark text-uppercase">RG: </b> <br> 
-                                          <span class="ml-2"> 2000008213211 </span></h6>
+                                          <span class="ml-2"> 
+                                          {{$part['rg']}}
+                                        </span></h6>
                                       </div>
                                       <div class="col-sm-12 col-md-3 mb-3">
                                         <h6><b class="text-dark text-uppercase">Órgão Emissor: </b> <br> 
-                                          <span class="ml-2"> SSP/CE </span></h6>
+                                          <span class="ml-2"> 
+                                            SSP - {{$startup['state']}}
+                                        </span></h6>
                                       </div>
                                       <div class="col-sm-12 col-md-3 mb-3">
                                         <h6><b class="text-dark text-uppercase">CPF: </b> <br> 
-                                          <span class="ml-2"> 000.000.000-00 </span></h6>
+                                          <span class="ml-2"> 
+                                          {{$part['cpf']}}
+                                        </span></h6>
                                       </div>
                                       <div class="col-sm-12 col-md-9 mb-3">
                                         <h6><b class="text-dark text-uppercase">Instituição de Ensino: </b> <br> 
-                                          <span class="ml-2"> FATENE - Faculdade de tecnologia do Nordeste </span></h6>
+                                          <span class="ml-2"> 
+                                          {{$part['institution']}}
+                                        </span></h6>
                                       </div>
                                       <div class="col-sm-12 col-md-6 mb-3">
                                         <h6><b class="text-dark text-uppercase">Curso: </b> <br> 
-                                          <span class="ml-2"> Engenharia de Software </span></h6>
+                                          <span class="ml-2"> 
+                                          {{$part['course']}}
+                                        </span></h6>
                                       </div>
                                       <div class="col-sm-12 col-md-6 mb-3">
                                         <h6><b class="text-dark text-uppercase">Formação: </b> <br> 
-                                          <span class="ml-2"> Superior Completo </span></h6>
+                                          <span class="ml-2"> 
+                                          {{$part['formation']}}
+                                        </span></h6>
                                       </div>
                                       <div class="col-sm-12 col-md-6 mb-3">
                                         <h6><b class="text-dark text-uppercase">Logradouro: </b> <br> 
-                                          <span class="ml-2"> Rua Londrina, 401 </span></h6>
+                                          <span class="ml-2"> 
+                                          {{$part['address']}}
+                                        </span></h6>
                                       </div>
                                       <div class="col-sm-12 col-md-2 mb-3">
                                         <h6><b class="text-dark text-uppercase">Estado: </b> <br> 
-                                          <span class="ml-2"> Ceará </span></h6>
+                                          <span class="ml-2"> 
+                                          {{$startup['state']}}
+                                        </span></h6>
                                       </div>
                                       <div class="col-sm-12 col-md-3 mb-3">
                                         <h6><b class="text-dark text-uppercase">Cidade: </b> <br> 
-                                          <span class="ml-2"> Caucaia </span></h6>
+                                          <span class="ml-2"> 
+                                          {{$part['city']}}
+                                        </span></h6>
                                       </div>
                                       <div class="col-sm-12 col-md-6 mb-3">
                                         <h6><b class="text-dark text-uppercase">E-mail: </b> <br> 
-                                          <span class="ml-2"> clemilsk@gmail.com </span></h6>
+                                          <span class="ml-2"> 
+                                          {{$part['email']}}
+                                        </span></h6>
                                       </div>
                                       <div class="col-sm-12 col-md-6 mb-3">
                                         <h6><b class="text-dark text-uppercase">Telefone de contato: </b> <br> 
-                                          <span class="ml-2"> (85) 98709.0910 </span></h6>
+                                          <span class="ml-2"> 
+                                          {{$part['telephone']}}
+                                        </span></h6>
                                       </div>
                                       <div class="col-sm-12 col-md-6 mb-3">
                                         <h6><b class="text-dark text-uppercase">Linked In: </b> <br> 
-                                          <span class="ml-2"> https:\\linkedin.com.br/clemilsk </span></h6>
+                                          <span class="ml-2"> 
+                                          {{$part['linkedin']}}
+                                        </span></h6>
                                       </div>
                                       <div class="col-sm-12 col-md-6 mb-3">
                                         <h6><b class="text-dark text-uppercase">Comprovação de Experiência: </b> <br> 
-                                          <span class="ml-2"> <button class="btn btn-info" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                                            BAIXAR
-                                          </button> </span></h6>
+                                          <span class="ml-2"> 
+                                            {{$arquivos[$part['id']]}}
+                                          </span>
+                                          <br>
+                                          <a href="/files/{{$startup['id']}}/{{$arquivos[$part['id']]}}" target="_blank">
+                                            <button class="btn btn-info" type="button" >
+                                              BAIXAR
+                                            </button> 
+                                          </a>
+                                      </h6>
                                       </div>
                                     </div>
                                 </fieldset>
@@ -341,206 +383,52 @@
                           </div>
                         </div>
 
-                        <div class="card">
-                          <div class="card-header" id="headingTwo">
-                            <h5 class="mb-0">
-                              <button class="btn btn-info collapsed" type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                                Membro 02
-                              </button>
-                            </h5>
-                          </div>
-                          <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
-                            <div class="card-body">
-                              
-                                <fieldset class="field_set" style="padding: 10px">
-                                    <legend style="width:auto; margin-left: 10px; padding: 5px; font-size: 18px"><strong class="text-info">Membro: </strong></legend>
-                  
-                                    <div class="row">
-                                      <div class="col-sm-12 col-md-6 mb-3">
-                                          <h6><b class="text-dark text-uppercase">Nome Completo: </b> <br> 
-                                            <span class="ml-2"> Milton Paiva Galvão</span></h6>
-                                      </div>
-                                      <div class="col-sm-12 col-md-6 mb-3">
-                                          <h6><b class="text-dark text-uppercase">Função no Projeto: </b> <br> 
-                                            <span class="ml-2"> Produto</span></h6>
-                                      </div>
-                                      <div class="col-sm-12 col-md-4 mb-3">
-                                          <h6><b class="text-dark text-uppercase">Data de Nascimento: </b> <br> 
-                                            <span class="ml-2"> 16/01/1984</span></h6>
-                                      </div>
-                                      <div class="col-sm-12 col-md-4 mb-3">
-                                        <h6><b class="text-dark text-uppercase">RG: </b> <br> 
-                                          <span class="ml-2"> 2000008213211 </span></h6>
-                                      </div>
-                                      <div class="col-sm-12 col-md-3 mb-3">
-                                        <h6><b class="text-dark text-uppercase">Órgão Emissor: </b> <br> 
-                                          <span class="ml-2"> SSP/CE </span></h6>
-                                      </div>
-                                      <div class="col-sm-12 col-md-3 mb-3">
-                                        <h6><b class="text-dark text-uppercase">CPF: </b> <br> 
-                                          <span class="ml-2"> 000.000.000-00 </span></h6>
-                                      </div>
-                                      <div class="col-sm-12 col-md-9 mb-3">
-                                        <h6><b class="text-dark text-uppercase">Instituição de Ensino: </b> <br> 
-                                          <span class="ml-2"> FATENE - Faculdade de tecnologia do Nordeste </span></h6>
-                                      </div>
-                                      <div class="col-sm-12 col-md-6 mb-3">
-                                        <h6><b class="text-dark text-uppercase">Curso: </b> <br> 
-                                          <span class="ml-2"> Engenharia de Software </span></h6>
-                                      </div>
-                                      <div class="col-sm-12 col-md-6 mb-3">
-                                        <h6><b class="text-dark text-uppercase">Formação: </b> <br> 
-                                          <span class="ml-2"> Superior Completo </span></h6>
-                                      </div>
-                                      <div class="col-sm-12 col-md-6 mb-3">
-                                        <h6><b class="text-dark text-uppercase">Logradouro: </b> <br> 
-                                          <span class="ml-2"> Rua Londrina, 401 </span></h6>
-                                      </div>
-                                      <div class="col-sm-12 col-md-2 mb-3">
-                                        <h6><b class="text-dark text-uppercase">Estado: </b> <br> 
-                                          <span class="ml-2"> Ceará </span></h6>
-                                      </div>
-                                      <div class="col-sm-12 col-md-3 mb-3">
-                                        <h6><b class="text-dark text-uppercase">Cidade: </b> <br> 
-                                          <span class="ml-2"> Caucaia </span></h6>
-                                      </div>
-                                      <div class="col-sm-12 col-md-6 mb-3">
-                                        <h6><b class="text-dark text-uppercase">E-mail: </b> <br> 
-                                          <span class="ml-2"> clemilsk@gmail.com </span></h6>
-                                      </div>
-                                      <div class="col-sm-12 col-md-6 mb-3">
-                                        <h6><b class="text-dark text-uppercase">Telefone de contato: </b> <br> 
-                                          <span class="ml-2"> (85) 98709.0910 </span></h6>
-                                      </div>
-                                      <div class="col-sm-12 col-md-6 mb-3">
-                                        <h6><b class="text-dark text-uppercase">Linked In: </b> <br> 
-                                          <span class="ml-2"> https:\\linkedin.com.br/clemilsk </span></h6>
-                                      </div>
-                                      <div class="col-sm-12 col-md-6 mb-3">
-                                        <h6><b class="text-dark text-uppercase">Comprovação de Experiência: </b> <br> 
-                                          <span class="ml-2"> <button class="btn btn-info" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                                            BAIXAR
-                                          </button> </span></h6>
-                                      </div>
-                                    </div>
-                                </fieldset>
+                        @endforeach
 
-                            </div>
-                          </div>
-                        </div>
-
-                        <div class="card">
-                          <div class="card-header" id="headingThree">
-                            <h5 class="mb-0">
-                              <button class="btn btn-info collapsed" type="button" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-                                Membro 03
-                              </button>
-                            </h5>
-                          </div>
-                          <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordionExample">
-                            <div class="card-body">
-                             
-                                <fieldset class="field_set" style="padding: 10px">
-                                    <legend style="width:auto; margin-left: 10px; padding: 5px; font-size: 18px"><strong class="text-info">Membro: </strong></legend>
-                  
-                                    <div class="row">
-                                      <div class="col-sm-12 col-md-6 mb-3">
-                                          <h6><b class="text-dark text-uppercase">Nome Completo: </b> <br> 
-                                            <span class="ml-2"> Jeisa Fernandes Maria</span></h6>
-                                      </div>
-                                      <div class="col-sm-12 col-md-6 mb-3">
-                                          <h6><b class="text-dark text-uppercase">Função no Projeto: </b> <br> 
-                                            <span class="ml-2"> Produto</span></h6>
-                                      </div>
-                                      <div class="col-sm-12 col-md-4 mb-3">
-                                          <h6><b class="text-dark text-uppercase">Data de Nascimento: </b> <br> 
-                                            <span class="ml-2"> 16/01/1984</span></h6>
-                                      </div>
-                                      <div class="col-sm-12 col-md-4 mb-3">
-                                        <h6><b class="text-dark text-uppercase">RG: </b> <br> 
-                                          <span class="ml-2"> 2000008213211 </span></h6>
-                                      </div>
-                                      <div class="col-sm-12 col-md-3 mb-3">
-                                        <h6><b class="text-dark text-uppercase">Órgão Emissor: </b> <br> 
-                                          <span class="ml-2"> SSP/CE </span></h6>
-                                      </div>
-                                      <div class="col-sm-12 col-md-3 mb-3">
-                                        <h6><b class="text-dark text-uppercase">CPF: </b> <br> 
-                                          <span class="ml-2"> 000.000.000-00 </span></h6>
-                                      </div>
-                                      <div class="col-sm-12 col-md-9 mb-3">
-                                        <h6><b class="text-dark text-uppercase">Instituição de Ensino: </b> <br> 
-                                          <span class="ml-2"> FATENE - Faculdade de tecnologia do Nordeste </span></h6>
-                                      </div>
-                                      <div class="col-sm-12 col-md-6 mb-3">
-                                        <h6><b class="text-dark text-uppercase">Curso: </b> <br> 
-                                          <span class="ml-2"> Engenharia de Software </span></h6>
-                                      </div>
-                                      <div class="col-sm-12 col-md-6 mb-3">
-                                        <h6><b class="text-dark text-uppercase">Formação: </b> <br> 
-                                          <span class="ml-2"> Superior Completo </span></h6>
-                                      </div>
-                                      <div class="col-sm-12 col-md-6 mb-3">
-                                        <h6><b class="text-dark text-uppercase">Logradouro: </b> <br> 
-                                          <span class="ml-2"> Rua Londrina, 401 </span></h6>
-                                      </div>
-                                      <div class="col-sm-12 col-md-2 mb-3">
-                                        <h6><b class="text-dark text-uppercase">Estado: </b> <br> 
-                                          <span class="ml-2"> Ceará </span></h6>
-                                      </div>
-                                      <div class="col-sm-12 col-md-3 mb-3">
-                                        <h6><b class="text-dark text-uppercase">Cidade: </b> <br> 
-                                          <span class="ml-2"> Caucaia </span></h6>
-                                      </div>
-                                      <div class="col-sm-12 col-md-6 mb-3">
-                                        <h6><b class="text-dark text-uppercase">E-mail: </b> <br> 
-                                          <span class="ml-2"> clemilsk@gmail.com </span></h6>
-                                      </div>
-                                      <div class="col-sm-12 col-md-6 mb-3">
-                                        <h6><b class="text-dark text-uppercase">Telefone de contato: </b> <br> 
-                                          <span class="ml-2"> (85) 98709.0910 </span></h6>
-                                      </div>
-                                      <div class="col-sm-12 col-md-6 mb-3">
-                                        <h6><b class="text-dark text-uppercase">Linked In: </b> <br> 
-                                          <span class="ml-2"> https:\\linkedin.com.br/clemilsk </span></h6>
-                                      </div>
-                                      <div class="col-sm-12 col-md-6 mb-3">
-                                        <h6><b class="text-dark text-uppercase">Comprovação de Experiência: </b> <br> 
-                                          <span class="ml-2"> <button class="btn btn-info" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                                            BAIXAR
-                                          </button> </span></h6>
-                                      </div>
-                                    </div>
-                                </fieldset>
-
-                            </div>
-                          </div>
-                        </div> -->
                       </div>
 
                 </fieldset>
 
                 <!-- Somente listar para projetos de categoria Tração (Anexos Vídeo e PDF) -->
-<!-- 
+
+                @if($startup['category']  == 'tração')
+
                 <fieldset class="field_set mt-3" style="padding: 10px">
                     <legend style="width:auto; margin-left: 10px; padding: 5px; font-size: 18px"> <strong class="text-info">Inclusão de anexos do projeto</strong> </legend>
-  
+
                     <div class="row">
                         <div class="col-sm-12 col-md-6 mb-3">
                             <h6><b class="text-dark text-uppercase">Anexo de Vídeo: </b> <br> 
-                              <span class="ml-2"> <button class="btn btn-info" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                                BAIXAR
-                              </button> </span></h6>
+                              <span class="ml-2">
+                                {{$arquivos['video']}}
+                              </span>
+                              <a href="/files/{{$startup['id']}}/{{$arquivos['video']}}">
+                                <button class="btn btn-info" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                  BAIXAR
+                                </button>
+                              </a>
+                            </h6>
+
+                            </h6>
                         </div>
                         <div class="col-sm-12 col-md-6 mb-3">
                             <h6><b class="text-dark text-uppercase">Anexo de pdf: </b> <br> 
-                              <span class="ml-2"> <button class="btn btn-info" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                                BAIXAR
-                              </button> </span></h6>
+                              <span class="ml-2">
+                                {{$arquivos['pdf']}}
+                              </span>
+                              <a href="/files/{{$startup['id']}}/{{$arquivos['pdf']}}">
+                                <button class="btn btn-info" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                  BAIXAR
+                                </button>
+                              </a>
+                            </h6>
                         </div>
                     </div>
 
                 </fieldset>
+
+
+                @endif
 
                 <fieldset class="field_set mt-3" style="padding: 10px">
                     <legend style="width:auto; margin-left: 10px; padding: 5px; font-size: 18px"> <strong class="text-info">Confirmação do termo de compromisso</strong> </legend>
@@ -555,7 +443,7 @@
                         </div>
                     </div>
 
-                </fieldset> -->
+                </fieldset>
 
             </div>
           </div>
