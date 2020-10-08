@@ -66,9 +66,12 @@
                                     </div>
 
                                     <!-- Div alert de checagem de usuário já cadastrado por e-mail e nome startup -->
-                                    <div class="alert alert-danger" role="alert" style="display: none">
-                                        Usuário já cadastrado com este Nome de StartUp e E-mail!
-                                    </div>
+
+                                      @if($errors->any())
+                                      <div class="alert alert-danger" role="alert" style="">
+                                          {{$errors->first()}}
+                                      </div>
+                                      @endif
 
                                     <button id="btn-cadastro" class="btn btn-lg btn-green"> Cadastrar </button>
                                     <div class="float-right">

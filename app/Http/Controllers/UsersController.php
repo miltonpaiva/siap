@@ -4,7 +4,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
+use Redirect;
 use DB;
 
 use App\Http\Controllers\StartupsController as Startup;
@@ -28,6 +28,17 @@ class UsersController extends Controller
     public function actionRegister(Request $request)
     {
         $data = $request->all();
+
+        $custom_args['conditions'] =
+            [
+                ['email', '=', $data['email']]
+            ];
+
+        $user_exist = count(Query::queryAction('users', $custom_args));
+
+        if ($user_exist > 0) {
+            return Redirect::back()->withErrors(['Esse email ja esta regsitrado, tente fazer login ou use outro']);
+        }
 
         $startup_id = Startup::semiRegister($data['startup']);
 
@@ -106,11 +117,11 @@ class UsersController extends Controller
                 }
             }else{
                 // SENHA INCORRETA
-                return redirect()->route('user.login.view');
+                return Redirect::back()->withErrors(['Senha incorreta !']);
             }
         }else{
             // USUARIO NÃO ENCONTRADO
-            return redirect()->route('user.login.view');
+            return Redirect::back()->withErrors(['esse usuario não foi encontrado, tente novamente ou faça um cadstro.']);
         }
     }
 
