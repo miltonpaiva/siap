@@ -110,6 +110,7 @@ class StartupsController extends Controller
 
         $attachments = Query::queryAction('attachments', $custom_args);
 
+        $arquivos = [];
         foreach ($attachments as $att) {
           if ($att['participant'] != '') {
             $arquivos[$att['participant']] = $att['archive'];
