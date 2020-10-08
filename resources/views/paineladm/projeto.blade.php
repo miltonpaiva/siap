@@ -400,9 +400,9 @@
                         <div class="col-sm-12 col-md-6 mb-3">
                             <h6><b class="text-dark text-uppercase">Anexo de Vídeo: </b> <br> 
                               <span class="ml-2">
-                                {{$arquivos['video']}}
+                                {{@$arquivos['video']}}
                               </span>
-                              <a href="/files/{{$startup['id']}}/{{$arquivos['video']}}">
+                              <a href="/files/{{$startup['id']}}/{{@$arquivos['video']}}">
                                 <button class="btn btn-info" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
                                   BAIXAR
                                 </button>
@@ -414,9 +414,9 @@
                         <div class="col-sm-12 col-md-6 mb-3">
                             <h6><b class="text-dark text-uppercase">Anexo de pdf: </b> <br> 
                               <span class="ml-2">
-                                {{$arquivos['pdf']}}
+                                {{@$arquivos['pdf']}}
                               </span>
-                              <a href="/files/{{$startup['id']}}/{{$arquivos['pdf']}}">
+                              <a href="/files/{{$startup['id']}}/{{@$arquivos['pdf']}}">
                                 <button class="btn btn-info" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
                                   BAIXAR
                                 </button>
