@@ -59,7 +59,7 @@
           { $usuarios = 'active'; }
         ?>
       <li class="nav-item <?= @$usuarios; ?>">
-        <a class="nav-link" href="{{ route('rating.list') }}">
+        <a class="nav-link" href="{{ route('user.list') }}">
           <i class="fas fa-fw fa-table"></i>
           <span>Usuarios</span></a>
       </li>
