@@ -7,6 +7,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta name="description" content="">
   <meta name="author" content="">
+  <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <?php
         $url = $_SERVER['HTTP_HOST'] . $_SERVER['SCRIPT_NAME'];
@@ -15,6 +16,7 @@
             <!-- PERMITIR CONTEUDO MISTO TEMPORAREAMENTE -->
             <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
     <?php endif; ?>
+
 
   <title>SIAP - Listagem</title>
 
@@ -56,68 +58,84 @@
         <!-- Begin Page Content -->
         <div class="container-fluid">
 
-          @if(@$message['message'] != '')
-          <div class="alert alert-{{@$message['type']}}" role="alert" style="">
-              {{@$message['message']}}
-          </div>
-          @endif
-
           <!-- Page Heading -->
-          <h1 class="h3 mb-2 text-gray-800">Listagem</h1>
+          <h1 class="h3 mb-2 text-gray-800">Visualização de Avaliação</h1>
 
           <!-- DataTales Example -->
-
           <div class="card shadow mb-4">
             <div class="card-header py-3">
-              <h6 class="m-0 font-weight-bold text-primary">Avaliações</h6>
+              <h5 class="m-0 font-weight-bold ">Análise de Prontidão da Jornada de {{$startup['category']}} de Negócio</h5>
+
             </div>
+
             <div class="card-body">
-              <div class="table-responsive">
-                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-                  <thead>
-                    <tr>
-                      <th>Ação</th>
-                      <th>#</th>
-                      <th>Startup</th>
-                      <th>Avaliador</th>
-                    </tr>
-                  </thead>
-                  <tfoot>
-                    <tr>
-                      <th>Ação</th>
-                      <th>#</th>
-                      <th>Startup</th>
-                      <th>Avaliador</th>
-                    </tr>
-                  </tfoot>
-                  <tbody>
 
-                    @foreach($ratings as $rating)
+              <form>
+                <fieldset class="field_set" style="padding: 10px">
+                  <legend style="width:auto; margin-left: 10px; padding: 5px; font-size: 18px">Resumo do projeto: </legend>
+                  <div class="row">
+                    <div class="col-sm-12 col-md-4">
+                      <h6 c><b>Categoria: </b> <span> {{$startup['category']}}</span></h6>
+                    </div>
+                    <div class="col-sm-12 col-md-4">
+                      <h6 c><b>Startup: </b> <span> {{$startup['name']}}</span></h6>
+                    </div>
+                    <div class="col-sm-12 col-md-4">
+                      <h6 c><b>Estado da startup: </b> <span> {{$startup['stage']}}</span></h6>
+                    </div>
+                  </div>
 
-                      <tr>
-                        <td>
-                          <select onchange="redirectAction(this)" >
-                            <option disabled="true" value="" selected="true" >---</option>
-                            <option value="{{ route('startup.rating.view', [$rating['startup']['id'], $rating['user']['id']]) }}" >
-                                Visualizar
-                            </option>
-                          </select>
-                        </td>
-                        <td>{{$rating['id']}}</td>
-                        <td>{{$rating['startup']['name']}}</td>
-                        <td>{{$rating['user']['name']}}</td>
-                      </tr>
+                  <div class="row">
+                    <div class="col-sm-12 col-md-4 mt-3">
+                      <h6 c><b>Responsável: </b> <span> {{$user['name']}}</span></h6>
+                    </div>
+                    <div class="col-sm-12 col-md-4 mt-3">
+                      <h6 c><b>Cidade: </b> <span> {{$startup['city']}}</span></h6>
+                    </div>
+                    <div class="col-sm-12 col-md-4 mt-3">
+                      <h6 c><b>Nº de Membros: </b> <span> {{$qtd_particpants}}</span></h6>
+                    </div>
+                  </div>
 
-                    @endforeach
+                  <div class="row">
+                    <div class="col-sm-12 col-md-4 mt-3 mb-3 mx-auto">
+                      <a href="{{ route('startup.view', $startup['id']) }}" target="_blank" >
+                        <input type="button" class="btn btn-info" value="Confira Projeto na Íntegra" >
+                      </a>
+                    </div>
+                  </div>
 
-                  </tbody>
-                </table>
-                <script>
-                    function redirectAction(select) {
-                      window.location.href = select.value;
-                    }
-                </script>
-              </div>
+                </fieldset>
+              </form>
+                <br>
+                <p>Os projetos aceitos para o processo de seleção da Fase 1 forão avaliados nos seguintes critérios:</p>
+
+                <form>
+                  <fieldset class="field_set" style="padding: 10px">
+                    <legend style="width:auto; margin-left: 10px; padding: 5px; font-size: 18px">Avaliado Por: {{$evaluator['name']}} </legend>
+                    <div class="row">
+
+                      @foreach($ratings as $rating)
+
+                      <div class="col-sm-12 col-md-12">
+                        <h6 c><b>{{$rating['criterio']['name']}} : </b> <span> {{$rating['note']}}</span></h6>
+                      </div>
+
+                      @endforeach
+
+                    </div>
+
+                    <div class="row">
+                      <div class="col-sm-12 col-md-4 mt-3 mb-3 mx-auto">
+                        <a href="{{ route('startup.rating.view.action', $startup['id']) }}">
+                          <input type="button" class="btn btn-info" value="Reavaliar" >
+                        </a>
+                      </div>
+                    </div>
+
+                  </fieldset>
+                </form>
+
             </div>
           </div>
 
@@ -147,6 +165,7 @@
   <a class="scroll-to-top rounded" href="#page-top">
     <i class="fas fa-angle-up"></i>
   </a>
+
 
   <!-- Bootstrap core JavaScript-->
   <script src="{{ asset('vendor/jquery/jquery.js') }}"></script>

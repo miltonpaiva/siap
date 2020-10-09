@@ -16,7 +16,7 @@ header("Access-Control-Allow-Origin: *");
 class RatingController extends Controller
 {
 
-    public function viewRating($startup_id)
+    public function viewRatingAction($startup_id)
     {
         $user_logged = User::checkLogin();
         if (is_object($user_logged)) {
@@ -45,6 +45,61 @@ class RatingController extends Controller
           ];
 
         return view('paineladm/avaliacao', $vars);
+    }
+
+    public function viewRating($startup_id, $user_id)
+    {
+        $user_logged = User::checkLogin();
+        if (is_object($user_logged)) {
+            return $user_logged;
+        }
+
+        $custom_args['conditions'] =
+            [
+                ['id', '=', $startup_id]
+            ];
+        $startup = current(Query::queryAction('startups', $custom_args));
+
+        $custom_args['conditions'] =
+            [
+                ['startup', '=', $startup_id]
+            ];
+        $user = current(Query::queryAction('users', $custom_args));
+
+        $participants = Query::queryAction('participants', $custom_args);
+
+        $custom_args['conditions'] =
+            [
+                ['evaluator', '=', $user_id],
+                ['startup', '=', $startup_id],
+            ];
+
+        $ratings = Query::queryAction('rating', $custom_args);
+
+        $criterios = Query::queryAction('criterea');
+
+        foreach ($ratings as $r_id => $rating) {
+            $data[$r_id] = $rating;
+            $data[$r_id]['criterio'] = $criterios[$rating['criterea']];
+
+            $custom_args['conditions'] =
+                [
+                    ['id', '=', $rating['evaluator']]
+                ];
+        }
+
+        $user = current(Query::queryAction('users', $custom_args));
+
+        $vars =
+          [
+              'ratings' => $data,
+              'evaluator' => $user,
+              'startup' => $startup,
+              'user' => $user,
+              'qtd_particpants' => count($participants)
+          ];
+
+        return view('paineladm/avaliacao_view', $vars);
     }
 
     public function listRating()
@@ -122,9 +177,9 @@ class RatingController extends Controller
         $has_rating = @max(Query::getSampleData('rating', 'id', $custom_args));
 
         if ($has_rating) {
-          $result = self::registerRating($rating);
-        }else{
           $result = self::update($has_rating, $value['nota']);
+        }else{
+          $result = self::registerRating($rating);
         }
       }
 

@@ -214,7 +214,7 @@
                         <td>
                           <select onchange="redirectAction(this)" >
                             <option disabled="true" value="" selected="true" >---</option>
-                            <option value="{{ route('startup.rating.view', $startup['id']) }}" >
+                            <option value="{{ route('startup.rating.view.action', $startup['id']) }}" >
                                 Avaliar
                             </option>
                             <option value="{{ route('startup.view', $startup['id']) }}" >

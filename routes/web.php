@@ -44,7 +44,8 @@ Route::get('/projeto/{startup_id}/', 'StartupsController@viewStartup')->name('st
 Route::get('/painel', 'StartupsController@viewPainel')->name('painel');
 Route::get('/projetos', 'StartupsController@listStartups')->name('startup.list');
 
-Route::get('/projeto/{startup_id}/avaliacao/', 'RatingController@viewRating')->name('startup.rating.view');
+Route::get('/projeto/{startup_id}/avaliacao/', 'RatingController@viewRatingAction')->name('startup.rating.view.action');
+Route::get('/projeto/{startup_id}/avaliacao/{user_id}/', 'RatingController@viewRating')->name('startup.rating.view');
 Route::post('/startup/rating/', 'RatingController@actionRating')->name('startup.rating');
 Route::get('/avaliacoes', 'RatingController@listRating')->name('rating.list');
 
