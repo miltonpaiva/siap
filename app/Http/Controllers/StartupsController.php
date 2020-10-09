@@ -160,6 +160,8 @@ class StartupsController extends Controller
 
     public function actionRegister(Request $request)
     {
+      Query::transaction();
+
       $responses = $request->all();
       $attachments = [];
 
@@ -191,6 +193,8 @@ class StartupsController extends Controller
                   $uploadfile = $uploaddir . basename($file_name);
                   $uploaded = move_uploaded_file($temp_name, $uploadfile);
                 } catch (\Exception $e) {
+
+                    Query::transaction('rollBack');
                     return Redirect::back()->withErrors(['Não foi fazer upload da comprovacao.']);
                 }
               }
@@ -220,6 +224,8 @@ class StartupsController extends Controller
                   $id_partcipat = self::registerParticipant($participant);
 
                   if (!$id_partcipat) {
+
+                    Query::transaction('rollBack');
                     return Redirect::back()->withErrors(['Não foi possivel criar o participante.']);
                   }
 
@@ -231,6 +237,8 @@ class StartupsController extends Controller
                     'participant' => $id_partcipat,
                   ];
             }else{
+
+              Query::transaction('rollBack');
               return Redirect::back()->withErrors(['Não foi possivel criar o participante, sem comprovação']);
             }
         }
@@ -262,6 +270,8 @@ class StartupsController extends Controller
                   ];
 
             }else{
+
+              Query::transaction('rollBack');
               return Redirect::back()->withErrors(['Não foi fazer upload do video ou pdf.']);
             }
         }
@@ -272,14 +282,16 @@ class StartupsController extends Controller
       foreach ($attachments as $attachment) {
         $result = self::registerAttachment($attachment);
         if (!$result) {
+
+          Query::transaction('rollBack');
           return Redirect::back()->withErrors(['Não foi fazer guardar um dos arquivos, verificar nome ou tamanho']);
         }
         $attachments_saved[] = $result;
       }
 
-
       $result = self::update(['stage' => 'complete'], $startup_id);
 
+      Query::transaction('commit');
       return redirect()->route('concluido');
     }
 
@@ -383,7 +395,6 @@ class StartupsController extends Controller
             $this->cities[self::clearString($sttp['city'])] = $sttp['city'];
           }
         }
-
 
         foreach ($startups as $id => $startup) {
             $arr_ids[] = $id;
