@@ -31,6 +31,7 @@ Route::get('/login', function () {
 Route::post('/user/register/', 'UsersController@actionRegister')->name('user.register');
 Route::post('/user/login/', 'UsersController@actionLogin')->name('user.login');
 Route::get('/user/logout/', 'UsersController@actionLogout')->name('user.logout');
+Route::get('/usuarios', 'UsersController@listUsers')->name('user.list');
 
 Route::get('/response/register/', 'ResponsesController@actionRegister')->name('response.register');
 Route::get('/response/option/new/', 'ResponsesController@newOption')->name('response.new.option');

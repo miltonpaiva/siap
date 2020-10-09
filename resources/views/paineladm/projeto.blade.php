@@ -366,10 +366,10 @@
                                       <div class="col-sm-12 col-md-6 mb-3">
                                         <h6><b class="text-dark text-uppercase">Comprovação de Experiência: </b> <br> 
                                           <span class="ml-2"> 
-                                            {{$arquivos[$part['id']]}}
+                                            {{@$arquivos[$part['id']]}}
                                           </span>
                                           <br>
-                                          <a href="/files/{{$startup['id']}}/{{$arquivos[$part['id']]}}" target="_blank">
+                                          <a href="/files/{{$startup['id']}}/{{@$arquivos[$part['id']]}}" target="_blank">
                                             <button class="btn btn-info" type="button" >
                                               BAIXAR
                                             </button> 

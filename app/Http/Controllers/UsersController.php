@@ -54,7 +54,6 @@ class UsersController extends Controller
             );
 
         return redirect()->route('startup.register.view', ['startup_id' => $startup_id]);
-
     }
 
     public function actionLogin(Request $request)
@@ -141,5 +140,22 @@ class UsersController extends Controller
 
         session_destroy();
         return redirect()->route('user.login.view');
+    }
+
+    public function listUsers()
+    {
+        $user_logged = self::checkLogin();
+        if (is_object($user_logged)) {
+            return $user_logged;
+        }
+
+        $users = Query::queryAction('users');
+
+        $vars =
+        [
+            'users' => $users,
+        ];
+
+        return view('paineladm/listagem_usuarios', $vars);
     }
 }

@@ -51,6 +51,19 @@
           <span>Avaliações</span></a>
       </li>
 
+      <hr class="sidebar-divider">
+
+      <!-- Nav Item - Tables -->
+      <?php
+        if (strrpos(@$_SERVER['REQUEST_URI'], 'usuarios'))
+          { $usuarios = 'active'; }
+        ?>
+      <li class="nav-item <?= @$usuarios; ?>">
+        <a class="nav-link" href="{{ route('rating.list') }}">
+          <i class="fas fa-fw fa-table"></i>
+          <span>Usuarios</span></a>
+      </li>
+
       <!-- Divider -->
       <hr class="sidebar-divider d-none d-md-block">
 
