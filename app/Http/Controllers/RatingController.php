@@ -102,6 +102,7 @@ class RatingController extends Controller
 
       $startup_id = $data['startup'];
 
+
       foreach ($criterios as $c_id => $value) {
         $rating =
           [
@@ -111,13 +112,38 @@ class RatingController extends Controller
             'note' => $value['nota'],
           ];
 
-        $result = self::registerRating($rating);
+        $custom_args['conditions'] =
+            [
+                ['evaluator', '=', $evaluator],
+                ['startup', '=', $startup_id],
+                ['criterea', '=', $c_id],
+            ];
+
+        $has_rating = @max(Query::getSampleData('rating', 'id', $custom_args));
+
+        if ($has_rating) {
+          $result = self::registerRating($rating);
+        }else{
+          $result = self::update($has_rating, $value['nota']);
+        }
       }
 
       $result = Startup::update(['stage' => 'rated'], $startup_id);
 
       return redirect()->route('startup.list');
     }
+
+    public static function update($id, $note)
+    {
+        $result =
+            DB::table('rating')
+                      ->where('id', $id)
+                      ->update(['note' => $note]);
+
+        return $result;
+    }
+
+
 
     public static function registerRating($rating)
     {
