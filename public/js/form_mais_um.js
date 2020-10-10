@@ -114,8 +114,9 @@ html += '</div>';
 html += '<div class="form-group">';
 html += '<label for="comprovacao">Anexar Comprovação de Experiência e Conhecimento*</label>';
 html += '<div class="custom-file">';
-html += '<input type="file" class="custom-file-input" id="comprovacao'+ count +'" name="time[' + count + '][comprovacao]" >';
+html += '<input type="file" class="custom-file-input imput_comprovacao " id="comprovacao'+ count +'" name="time[' + count + '][comprovacao]" accept="application/pdf" >';
 html += '<label class="custom-file-label" id="uploadc'+ count +'" for="comprovacao'+ count +'">Comprovante</label>';
+html += '<small id="compHelp" class="form-text text-muted" style="color: red !important;">PERMITIDO APENAS ARQUIVOS (.pdf) QUE TENHA NO MÁXIMO 200MB</small>';
 html += '</div>';
 html += '</div> <button type="button" id="' + count + '" class="btn btn-outline-secondary btn-lg btn-block mt-5 mb-5 remover">Remover</button> </div>';
 
@@ -306,7 +307,7 @@ html += '</div> <button type="button" id="' + count + '" class="btn btn-outline-
                                                                     $("#comprovacao" + count).removeClass("validotwo");
                                                                     $("#comprovacao" + count).addClass("invalidotwo");
                                                                     $("#comprovacao" + count).focus();
-                                                                    alert('Comprovação Ausente !');
+                                                                    alert('Comprovação de algum participante Ausente !');
                                                                     return false;
                                                                 }else{
 

@@ -718,8 +718,9 @@
                                                 <div class="form-group mb-5">
                                                     <label class="pergunta" for="comprovacao">Anexar Comprovação de Experiência e Conhecimento*</label>
                                                     <div class="custom-file">
-                                                        <input type="file" class="custom-file-input" id="comprovacao" name="time[1][comprovacao]" >
+                                                        <input type="file" class="custom-file-input imput_comprovacao" id="comprovacao" name="time[1][comprovacao]" accept="application/pdf" >
                                                         <label id="uploadc" class="custom-file-label" for="comprovacao"></label>
+                                                        <small id="compHelp" class="form-text text-muted" style="color: red !important;">PERMITIDO APENAS ARQUIVOS (.pdf) QUE TENHA NO MÁXIMO 200MB</small>
                                                     </div>
                                                 </div>
                                             </div>
@@ -741,15 +742,17 @@
                                             <div class="form-group">
                                                 <label class="pergunta" for="estagiotp">Vídeo:</label>
                                                 <div class="custom-file">
-                                                    <input type="file" class="custom-file-input" id="customFilev" name="session[7][anexos][video]" >
+                                                    <input type="file" class="custom-file-input imput_trac" id="customFilev" name="session[7][anexos][video]" accept="video/*" >
                                                     <label id="upvideo" class="custom-file-label" for="customFile">Vídeo</label>
+                                                    <small id="compHelp" class="form-text text-muted" style="color: red !important;">PERMITIDO APENAS ARQUIVOS (.mp4) QUE TENHA NO MÁXIMO 200MB</small>
                                                 </div>
                                             </div>
                                             <div class="form-group">
                                                 <label class="pergunta" for="estagiotp">PDF:</label>
                                                 <div class="custom-file">
-                                                    <input type="file" class="custom-file-input" id="customFilep" name="session[7][anexos][pdf]" >
+                                                    <input type="file" class="custom-file-input imput_trac" id="customFilep" name="session[7][anexos][pdf]" accept="application/pdf" >
                                                     <label id="uppdf" class="custom-file-label" for="customFile">PDF</label>
+                                                    <small id="compHelp" class="form-text text-muted" style="color: red !important;">PERMITIDO APENAS ARQUIVOS (.pdf) QUE TENHA NO MÁXIMO 200MB</small>
                                                 </div>
                                             </div>
 
@@ -1030,6 +1033,7 @@ $(document).ready(function(){
   $(".btn_fade").click(function(e){
     e.preventDefault();
     var fade = this.id.replace('btn', 'time');
+    console.log(fade);
     $("#" + fade).fadeToggle("slow");
   });
 });
@@ -1047,6 +1051,5 @@ $(document).ready(function(){
         }
     }
 </script>
-
 </body>
 </html>

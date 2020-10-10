@@ -227,7 +227,30 @@ $(function(){
         var tel = $("#telcontato").val();
         var emailmenbro = $("#emailmenbro").val();
         var comprovacao = $("#comprovacao").val();
-        
+
+        var imputs_file_comp = document.getElementsByClassName('imput_comprovacao');
+        for(key in imputs_file_comp){
+            if (imputs_file_comp[key].id) {
+                if (imputs_file_comp[key].files.length > 0) {
+                    var file_data = imputs_file_comp[key].files[0];
+
+                    var v_size = (file_data.size < 208666624);
+                    var v_type = (file_data.type == 'application/pdf');
+                    var participante = imputs_file_comp[key].id.replace('comprovacao', 'participante ')
+
+                    if (!v_size) {
+                        alert('o arquivo do [' + participante + '] contem mais de 200MB, tente outro!');
+                        return false;
+                    }
+                    if (!v_type) {
+                        alert('o arquivo do [' + participante + '] não contem a extensão (.pdf), tente outro!');
+                        return false;
+                    }
+                }
+            }
+        }
+
+
             if(nomecompl == "") {
                 alert('ainda ha campos que estão invalidos, por gentileza verificar os formularios dos particpantes');
                 document.getElementById('all_ok').value = 'nao'
@@ -375,7 +398,7 @@ $(function(){
                                                                     $("#comprovacao").removeClass("validotwo");
                                                                     $("#comprovacao").addClass("invalidotwo");
                                                                     $("#comprovacao").focus();
-                                                                    alert('Comprovação Ausente !');
+                                                                    alert('Comprovação participante 1 Ausente !');
                                                                     return false;
                                                                 }else{
                                                                     document.getElementById('all_ok').value = 'ok';
@@ -395,7 +418,7 @@ $(function(){
                 }
             }
 
-        setTimeout(function(){ 
+    setTimeout(function(){ 
             var all_ok = document.getElementById('all_ok').value;
 
             console.log(all_ok)
@@ -458,17 +481,50 @@ function actionArquivos() {
                     if(videoUpload == ""){
                         $("#customFilev").removeClass("validotwo");
                         $("#customFilev").addClass("invalidotwo");
+                        alert('Não ha arquivo de video presente, adicione um para prosseguir');
                         return false;
                     }else{
                         console.log(videoUpload);
                         if(pdfUpload == ""){
                             $("#customFilep").removeClass("validotwo");
                             $("#customFilep").addClass("invalidotwo");
+                            alert('Não ha arquivo de pdf presente, adicione um para prosseguir');
                             return false;
                         }else{
                             console.log(pdfUpload);
+                            var imputs_file_trac = document.getElementsByClassName('imput_trac');
+                            for(key in imputs_file_trac){
+                                if (imputs_file_trac[key].id) {
+                                    if (imputs_file_trac[key].files.length > 0) {
+                                        var file_data = imputs_file_trac[key].files[0];
+
+                                        if (imputs_file_trac[key].id == 'customFilep') {
+                                            var v_type = (file_data.type == 'application/pdf');
+                                            var tipo = 'pdf';
+                                        }
+
+                                        if (imputs_file_trac[key].id == 'customFilev') {
+                                            var v_type = (file_data.type.split('/')[0] == 'video');
+                                            var tipo = 'video';
+                                        }
+
+                                        var v_size = (file_data.size < 208666624);
+
+                                        if (!v_size) {
+                                            alert('o arquivo de [' + tipo + '] contem mais de 200MB, tente outro!');
+                                            return false;
+                                        }
+                                        if (!v_type) {
+                                            alert('o arquivo de [' + tipo + '] não contem a extensão correta, tente outro!');
+                                            return false;
+                                        }
+                                    }
+                                }
+                            }
                         }
+
                     }
+
 
                     atual_fs = $(this).parent();
                     next_fs = $(this).parent().next();
