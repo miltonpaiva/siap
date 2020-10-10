@@ -54,6 +54,8 @@ class RatingController extends Controller
             return $user_logged;
         }
 
+        $data = [];
+
         $custom_args['conditions'] =
             [
                 ['id', '=', $startup_id]

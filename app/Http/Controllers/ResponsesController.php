@@ -69,7 +69,7 @@ class ResponsesController extends Controller
     public function actionRegister(Request $request)
     {
         $responses = $request->all();
-
+        $list_responses = [];
         $data = json_decode($responses['responses'], true);
         foreach ($data as $response) {
 
