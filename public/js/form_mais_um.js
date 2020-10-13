@@ -137,6 +137,7 @@ html += '</div> <button type="button" id="' + count + '" class="btn btn-outline-
     //Upload arquivo comprovacao
     $("#comprovacao" + count).change(function(){
         var nomeArquivo = $(this).val();
+        document.getElementById('uploadc' + count).innerHTML = '';
         $("#uploadc" + count).append("<span>" + nomeArquivo + "</span>");
     });
 

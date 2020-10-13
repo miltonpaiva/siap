@@ -204,6 +204,7 @@ $(function(){
     //Upload arquivo comprovacao
     $("#comprovacao").change(function(){
         var nomeArquivo = $(this).val();
+        document.getElementById('uploadc').innerHTML = '';
         $("#uploadc").append("<span>" + nomeArquivo + "</span>");
     });
 
@@ -234,7 +235,7 @@ $(function(){
                 if (imputs_file_comp[key].files.length > 0) {
                     var file_data = imputs_file_comp[key].files[0];
 
-                    var v_size = (file_data.size < 208666624);
+                    var v_size = (file_data.size < 199000000);
                     var v_type = (file_data.type == 'application/pdf');
                     var participante = imputs_file_comp[key].id.replace('comprovacao', 'participante ')
 
@@ -508,7 +509,7 @@ function actionArquivos() {
                                             var tipo = 'video';
                                         }
 
-                                        var v_size = (file_data.size < 208666624);
+                                        var v_size = (file_data.size < 199000000);
 
                                         if (!v_size) {
                                             alert('o arquivo de [' + tipo + '] contem mais de 200MB, tente outro!');
