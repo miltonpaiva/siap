@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <?php
-        $url = $_SERVER['HTTP_HOST'] . $_SERVER['SCRIPT_NAME'];
+        $url = @$_SERVER['HTTP_HOST'] . @$_SERVER['SCRIPT_NAME'];
         if (strpos($url, 'herokuapp.com')):
     ?>
             <!-- PERMITIR CONTEUDO MISTO TEMPORAREAMENTE -->
