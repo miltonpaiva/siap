@@ -226,7 +226,7 @@ class StartupsController extends Controller
                   if (!$id_partcipat) {
 
                     Query::transaction('rollBack');
-                    return Redirect::back()->withErrors(['Não foi possivel criar o participante.']);
+                    return Redirect::back()->withErrors(["Não foi possivel criar o participante [{$time['nome']}] ."]);
                   }
 
                 $attachments[] =
@@ -239,7 +239,7 @@ class StartupsController extends Controller
             }else{
 
               Query::transaction('rollBack');
-              return Redirect::back()->withErrors(['Não foi possivel criar o participante, sem comprovação']);
+              return Redirect::back()->withErrors(["Não foi possivel criar o participante [{$time['nome']}], sem comprovação"]);
             }
         }
 
@@ -272,7 +272,7 @@ class StartupsController extends Controller
             }else{
 
               Query::transaction('rollBack');
-              return Redirect::back()->withErrors(['Não foi fazer upload do video ou pdf.']);
+              return Redirect::back()->withErrors(["Não foi fazer upload do arquivo de {$type} [{$file_name}]."]);
             }
         }
 
@@ -284,7 +284,7 @@ class StartupsController extends Controller
         if (!$result) {
 
           Query::transaction('rollBack');
-          return Redirect::back()->withErrors(['Não foi fazer guardar um dos arquivos, verificar nome ou tamanho']);
+          return Redirect::back()->withErrors(["Não foi fazer guardar o arquivo [{$attachment['archive']}]."]);
         }
         $attachments_saved[] = $result;
       }
