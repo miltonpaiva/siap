@@ -113,10 +113,12 @@ class ResponsesController extends Controller
 
           $responses_saved = [];
           foreach ($list_responses as $response) {
-            if (isset($response['response'])) {
-              $responses_saved[] = self::update($response['response'], $response['option']);
-            }else{
-              $responses_saved[] = self::register($response);
+            if ($response['option'] != '') {
+                if (isset($response['response'])) {
+                  $responses_saved[] = self::update($response['response'], $response['option']);
+                }else{
+                  $responses_saved[] = self::register($response);
+                }
             }
           }
         echo json_encode(['status' => 200, 'message' => $responses_saved]);
