@@ -2,6 +2,8 @@ $(function(){
     var atual_fs, next_fs, prev_fs;
     var exprEmeio = /^[a-zA-Z0-9_\.\-]+@[a-zA-Z0-9\-]+\.[a-zA-Z0-9\-\.]+$/;
     var regex = /^\d{3}\.\d{3}\.\d{3}\-\d{2}$/;
+
+    var total_size = 0;
     $("#cpf").mask("999.999.999-99");
 
     $("#estado").focus();
@@ -212,6 +214,27 @@ $(function(){
 
     //Formulario 6
     $('#btnNextsix').click(function(){
+
+        total_size = 0;
+
+        var imputs_fils = document.getElementsByClassName('custom-file-input');
+        for(key in imputs_fils){
+            if (imputs_fils[key].id) {
+                if (imputs_fils[key].files.length > 0) {
+                    var file_data = imputs_fils[key].files[0];
+                    console.log(file_data)
+
+                    total_size += file_data.size;
+
+                    var v_size = (total_size < 990000000);
+
+                    if (!v_size) {
+                        alert('a soma dos aquivos se mostra superior a 1 GB, procure arquivos menores para prosseguir');
+                        return false;
+                    }
+                }
+            }
+        }
 
         var nomecompl = $("#nome-compl").val();
         var funcaopi = $("#funcaop").val();
@@ -475,6 +498,28 @@ function actionArquivos() {
 
                 //Formulario 7
                 $('#btnNextseven').click(function(){
+
+                    total_size = 0;
+
+                    var imputs_fils = document.getElementsByClassName('custom-file-input');
+                    for(key in imputs_fils){
+                        if (imputs_fils[key].id) {
+                            if (imputs_fils[key].files.length > 0) {
+                                var file_data = imputs_fils[key].files[0];
+                                console.log(file_data)
+
+                                total_size += file_data.size;
+
+                                var v_size = (total_size < 990000000);
+
+                                if (!v_size) {
+                                    alert('a soma dos aquivos se mostra superior a 1 GB, procure arquivos menores para prosseguir');
+                                    return false;
+                                }
+                            }
+                        }
+                    }
+
 
                     var videoUpload = $("#customFilev").val();
                     var pdfUpload = $("#customFilep").val();
