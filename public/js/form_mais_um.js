@@ -126,7 +126,9 @@ html += '</div> <button type="button" id="' + count + '" class="btn btn-outline-
 
   $('#btn_fade_' + count).click(function(e){
   	e.preventDefault();
-    $('#time_fade_' + count).fadeToggle("slow");
+    var fade = this.id.replace('btn', 'time');
+    console.log(fade);
+    $('#' + fade).fadeToggle("slow");
   });
 
 	$('.btn_fade').click(function(e){
