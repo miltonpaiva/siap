@@ -98,7 +98,7 @@ class UsersController extends Controller
 
                     $data_startup = current(Query::queryAction('startups', $custom_args));
 
-                    if ($data_startup['stage'] == 'complete') {
+                    if ($data_startup['stage'] != 'in_progress') {
                         return redirect()->route('concluido');
                     }
                     return redirect()->route('startup.register.view', ['startup_id' => $user['startup']]);
