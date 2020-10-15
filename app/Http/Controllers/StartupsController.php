@@ -49,6 +49,11 @@ class StartupsController extends Controller
     public function viewRegister($startup_id)
     {
 
+        $user_logged = User::checkLogin();
+        if (is_object($user_logged)) {
+            return $user_logged;
+        }
+
         $questions = Response::questionsList('array');
 
         $custom_args['conditions'] =

@@ -27,6 +27,8 @@ class UsersController extends Controller
 
     public function actionRegister(Request $request)
     {
+        session_start();
+
         $data = $request->all();
 
         $custom_args['conditions'] =
@@ -37,7 +39,7 @@ class UsersController extends Controller
         $user_exist = count(Query::queryAction('users', $custom_args));
 
         if ($user_exist > 0) {
-            return Redirect::back()->withErrors(['Esse email ja esta regsitrado, tente fazer login ou use outro']);
+            return Redirect::back()->withErrors(['Esse email ja está registrado, tente fazer login ou use outro.']);
         }
 
         $startup_id = Startup::semiRegister($data['startup']);
@@ -52,6 +54,14 @@ class UsersController extends Controller
                     'profile'  => 'Empreendedor',
                 ]
             );
+
+            $_SESSION['login'] =
+                [
+                    'user_id'      => $new_user_id,
+                    'user_name'    => $data['nome'],
+                    'startup_id'   => $startup_id,
+                    'user_profile' => 'Empreendedor',
+                ];
 
         return redirect()->route('startup.register.view', ['startup_id' => $startup_id]);
     }
@@ -84,6 +94,14 @@ class UsersController extends Controller
             if(current($data_user)['password'] == md5($data['senhalogin'])){
                 $user = current($data_user);
 
+                $_SESSION['login'] =
+                    [
+                        'user_id'      => $user['id'],
+                        'user_name'    => $user['name'],
+                        'startup_id'   => $user['startup'],
+                        'user_profile' => $user['profile'],
+                    ];
+
                 if ($user['profile'] == 'Empreendedor') {
                     $custom_args['columns'] =
                         [
@@ -105,13 +123,6 @@ class UsersController extends Controller
                 }
 
                 if ($user['profile'] == 'Gestor') {
-                    $_SESSION['login'] =
-                        [
-                            'user_id'      => $user['id'],
-                            'user_name'    => $user['name'],
-                            'startup_id'   => $user['startup'],
-                            'user_profile' => $user['profile'],
-                        ];
                     return redirect()->route('painel');
                 }
             }else{
@@ -130,7 +141,7 @@ class UsersController extends Controller
 
         if (!isset($_SESSION['login'])) {
             // NÃO LOGADO
-            return redirect()->route('home');
+            return redirect()->route('home')->withErrors(['Você precisa estar cadastrado ou logado para acessar a tela.']);
         }
     }
 
