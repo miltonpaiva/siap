@@ -7,117 +7,121 @@ $('#inclua_mais').click(function(){
 var html = '';
 html += '<button id="btn_fade_' + count + '" class="btn btn_fade btn-outline-secondary btn-lg btn-block mt-5 mb-5"> Formulário Participante ' + count + '</button>';
 
-html += '<div id="time_fade_' + count + '" style="display: none;" >';
-
-html += '<label for="estagiotp'+ count +'">Dados dos membros:</label>';
-html += '<div class="form-group">';
-html += '<label for="nome-compl">Nome Completo</label>';
-html += '<input type="text" class="form-control" id="nome-compl'+ count +'" name="time[' + count + '][nome]" aria-describedby="nomeclpHelp">';
-html += '<small id="nomeclpHelp'+ count +'" class="form-text text-muted">Campo obrigatório!</small>';
-html += '</div>';
-html += '<div class="form-group">';
-
-html += '<label for="funcaop'+ count +'">Função no Projeto (negócio, produto ou marketing)</label>';
-html += '<select class="form-control" id="funcaop'+ count +'" name="time[' + count + '][funcao]" aria-describedby="funcaopHelp">';
-html += '<option value="" disabled selected>Escolher uma das respostas abaixo</option>';
-html += '<option value="negócio">Negócio</option>';
-html += '<option value="Produto">Produto</option>';
-html += '<option value="Marketing">Marketing</option>';
-html += '</select>';
 
 
-html += '<small id="funcaopHelp'+ count +'" class="form-text text-muted">Campo obrigatório!</small>';
-html += '</div>';
-html += '<div class="form-group">';
-html += '<label for="datanasc'+ count +'">Data de Nascimento</label>';
-html += '<input type="date" class="form-control" id="datanasc'+ count +'" name="time[' + count + '][datanasc]" aria-describedby="datanascHelp">';
-html += '<small id="datanascHelp'+ count +'" class="form-text text-muted">Campo obrigatório!</small>';
-html += '</div>';
-html += '<div class="form-row">';
-html += '<div class="col-md-8 mb-3">';
-html += '<label for="rg'+ count +'">RG</label>';
-html += '<input type="number" class="form-control" id="rg'+ count +'" name="time[' + count + '][rg]" >';
-html += '<small id="rgHelp'+ count +'" class="form-text text-muted">Campo obrigatório!</small>';
-html += '</div>';
-html += '<div class="col-md-4 mb-3">';
-html += '<label for="orgemaissor'+ count +'">Órgão Emissor</label>';
-html += '<input type="text" class="form-control" id="orgemaissor'+ count +'" name="time[' + count + '][orgemaissor]" >';
-html += '<small id="orgemaissorHelp'+ count +'" class="form-text text-muted">Campo obrigatório!</small>';
-html += '</div>';
-html += '</div>';
-html += '<div class="form-group">';
-html += '<label for="cpf'+ count +'">CPF</label>';
-html += '<input type="text" class="form-control" id="cpf'+ count +'" name="time[' + count + '][cpf]" aria-describedby="cpfHelp'+ count +'">';
-html += '<small id="cpfHelp'+ count +'" class="form-text text-muted">Campo obrigatório!</small>';
-html += '</div>';
-html += '<div class="form-group">';
-html += '<label for="instensino'+ count +'">Instituição de Ensino</label>';
-html += '<input type="text" class="form-control" id="instensino'+ count +'" name="time[' + count + '][instensino]" aria-describedby="instensinoHelp'+ count +'">';
-html += '<small id="instensinoHelp'+ count +'" class="form-text text-muted">Campo obrigatório!</small>';
-html += '</div>';
-html += '<div class="form-group">';
-html += '<label for="curso'+ count +'">Curso</label>';
-html += '<input type="text" class="form-control" id="curso'+ count +'" name="time[' + count + '][curso]" aria-describedby="cursoHelp'+ count +'">';
-html += '<small id="cursoHelp'+ count +'" class="form-text text-muted">Campo obrigatório!</small>';
-html += '</div>';
-html += '<div class="form-group">';
-html += '<label for="categoria-projeto'+ count +'">Formação</label>';
-html += '<select class="form-control" id="formacao'+ count +'" name="time[' + count + '][formacao]" >';
-html += '<option value="" disabled selected>Escolher uma das respostas abaixo</option>';
-html += '<option value="1">Nível Médio Regular Incompleto</option>';
-html += '<option value="2">Nível Médio Regular Completo</option>';
-html += '<option value="3">Nível Médio Profissionalizante Incompleto</option>';
-html += '<option value="4">Nível Médio Profissionalizante Completo</option>';
-html += '<option value="5">Superior Completo</option>';
-html += '<option value="6">Superior Incompleto</option>';
-html += '<option value="7">Nível Técnico Incompleto</option>';
-html += '<option value="8">Nível Técnico Completo</option>';
-html += '</select>';
-html += '<small id="formacaoHel'+ count +'p" class="form-text text-muted">Campo obrigatório!</small>';
-html += '</div>';
-html += '<div class="form-row">';
-html += '<div class="col-md-6 mb-3">';
-html += '<label for="Logradouro'+ count +'">Logradouro</label>';
-html += '<input type="text" class="form-control" id="logradouro'+ count +'" name="time[' + count + '][logradouro]" >';
-html += '<small id="LogradouroHelp'+ count +'" class="form-text text-muted">Campo obrigatório!</small>';
-html += '</div>';
-html += '<div class="col-md-3 mb-3">';
-html += '<label for="estadom">Estado</label>';
-html += '<input type="text" class="form-control" id="estadom'+ count +'" name="time[' + count + '][estadom]" >';
-html += '<small id="estadomHelp'+ count +'" class="form-text text-muted">Campo obrigatório!</small>';
-html += '</div>';
-html += '<div class="col-md-3 mb-3">';
-html += '<label for="cidadem'+ count +'">Cidade</label>';
-html += '<input type="text" class="form-control" id="cidadem'+ count +'" name="time[' + count + '][cidadem]" > ';
-html += '<small id="cidademHelp'+ count +'" class="form-text text-muted">Campo obrigatório!</small>';
-html += '</div>';
-html += '</div>';
-html += '<div class="form-row">';
+html += '    <div id="time_fade_' + count + '" style="display: none;" >';
 
-html += '<div class="col-md-6 mb-3">';
-html += '<label for="emailmenbro'+ count +'">E-mail</label>';
-html += '<input type="text" class="form-control" id="emailmenbro'+ count +'" name="time[' + count + '][emailmenbro]" >';
-html += '<small id="emailmenbroHelp'+ count +'" class="form-text text-muted">Verifique novamente seu e-mail @, . !</small>';
-html += '</div>';
-html += '<div class="col-md-3 mb-3">';
-html += '<label for="telcontato'+ count +'">Telefone de contato</label>';
-html += '<input type="number" class="form-control" id="telcontato'+ count +'" name="time[' + count + '][telcontato]" >';
-html += '<small id="telcontatoHelp'+ count +'" class="form-text text-muted">Campo obrigatório!</small>';
-html += '</div>';
-html += '<div class="col-md-3 mb-3">';
-html += '<label class="pergunta" for="linkedin'+ count +'">Linked In</label>';
-html += '<input type="text" class="form-control" id="linkedin'+ count +'" name="time['+ count +'][linkedin]" >';
-html += '<small id="emailmenbroHelp'+ count +'" class="form-text text-muted">Ex.: https://www.linkedin.com/in/example/</small>';
-html += '</div>';
+html += '        <div class="form-group">';
+html += '            <label class="pergunta" for="nome-compl' + count + '">Nome Completo</label>';
+html += '            <input type="text" class="form-control" id="nome-compl' + count + '" name="time[' + count + '][nome]" aria-describedby="nomeclpHelp">';
+html += '            <small id="nomeclpHelp' + count + '" class="form-text text-muted obrigatorio">Campo obrigatório!</small>';
+html += '        </div>';
+html += '        <div class="form-row">';
+html += '            <div class="col-md-7 mb-3">';
+html += '                <label class="pergunta" for="funcaop' + count + '">Função no Projeto (negócio, produto ou marketing)</label>';
+html += '                <select class="form-control" id="funcaop' + count + '" name="time[' + count + '][funcao]" aria-describedby="funcaopHelp">';
+html += '                    <option value="" disabled selected value="" >Escolher uma das respostas abaixo</option>';
+html += '                    <option value="negócio">Negócio</option>';
+html += '                    <option value="Produto">Produto</option>';
+html += '                    <option value="Marketing">Marketing</option>';
+html += '                </select>';
+html += '                <small id="funcaopHelp' + count + '" class="form-text text-muted obrigatorio">Campo obrigatório!</small>';
+html += '            </div>';
+html += '            <div class="col-md-5 mb-3">';
+html += '                <label class="pergunta" for="datanasc' + count + '">Data de Nascimento</label>';
+html += '                <input type="date" class="form-control" id="datanasc' + count + '" name="time[' + count + '][datanasc]" aria-describedby="datanascHelp">';
+html += '                <small id="datanascHelp' + count + '" class="form-text text-muted obrigatorio">Campo obrigatório!</small>';
+html += '            </div>';
+html += '        </div>';
+html += '        <div class="form-row">';
+html += '            <div class="col-md-5 mb-3">';
+html += '              <label class="pergunta" for="rg' + count + '">RG</label>';
+html += '              <input type="text" class="form-control" id="rg' + count + '" name="time[' + count + '][rg]" maxlength="15" >';
+html += '              <small id="rgHelp' + count + '" class="form-text text-muted obrigatorio">Campo obrigatório!</small>';
+html += '            </div>';
+html += '            <div class="col-md-2 mb-3">';
+html += '              <label class="pergunta" for="orgemaissor' + count + '">Órgão Emissor</label>';
+html += '              <input type="text" class="form-control" id="orgemaissor' + count + '" name="time[' + count + '][orgemaissor]" >';
+html += '              <small id="orgemaissorHelp' + count + '" class="form-text text-muted obrigatorio">Campo obrigatório!</small>';
+html += '            </div>';
+html += '            <div class="col-md-5 mb-3">';
+html += '                <label class="pergunta" for="cpf' + count + '">CPF</label>';
+html += '                <input type="text" class="form-control" id="cpf' + count + '" name="time[' + count + '][cpf]" aria-describedby="cpfHelp" maxlength="15">';
+html += '                <small id="cpfHelp' + count + '" class="form-text text-muted obrigatorio">CPF inválido!</small>';
+html += '            </div>';
+html += '        </div>';
+html += '        <div class="form-row">';
+html += '            <div class="col-md-4 mb-3">';
+html += '                <label class="pergunta" for="instensino' + count + '">Instituição de Ensino</label>';
+html += '                <input type="text" class="form-control" id="instensino' + count + '" name="time[' + count + '][instensino]" aria-describedby="instensinoHelp">';
+html += '                <small id="instensinoHelp' + count + '" class="form-text text-muted obrigatorio">Campo obrigatório!</small>';
+html += '            </div>';
+html += '            <div class="col-md-4 mb-3">';
+html += '                <label class="pergunta" for="curso' + count + '">Curso</label>';
+html += '                <input type="text" class="form-control" id="curso' + count + '" name="time[' + count + '][curso]" aria-describedby="cursoHelp">';
+html += '                <small id="cursoHelp' + count + '" class="form-text text-muted obrigatorio">Campo obrigatório!</small>';
+html += '            </div>';
+html += '            <div class="col-md-4 mb-3">';
+html += '                <label class="pergunta" for="categoria' + count + '-projeto">Formação</label>';
+html += '                    <select class="form-control" id="formacao' + count + '" name="time[' + count + '][formacao]" >';
+html += '                    <option value="" disabled selected>Escolher uma das respostas abaixo</option>';
+html += '                    <option value="1">Nível Médio Regular Incompleto</option>';
+html += '                    <option value="2">Nível Médio Regular Completo</option>';
+html += '                    <option value="3">Nível Médio Profissionalizante Incompleto</option>';
+html += '                    <option value="4">Nível Médio Profissionalizante Completo</option>';
+html += '                    <option value="5">Superior Completo</option>';
+html += '                    <option value="6">Superior Incompleto</option>';
+html += '                    <option value="7">Nível Técnico Incompleto</option>';
+html += '                    <option value="8">Nível Técnico Completo</option>';
+html += '                    </select>';
+html += '                    <small id="formacaoHelp' + count + '" class="form-text text-muted obrigatorio">Campo obrigatório!</small>';
+html += '            </div>';
+html += '        </div>';
 
-html += '</div>';
-html += '<div class="form-group">';
-html += '<label for="comprovacao">Anexar Comprovação de Experiência e Conhecimento*</label>';
-html += '<div class="custom-file">';
-html += '<input type="file" class="custom-file-input imput_comprovacao " id="comprovacao'+ count +'" name="time[' + count + '][comprovacao]" accept="application/pdf" >';
-html += '<label class="custom-file-label" id="uploadc'+ count +'" for="comprovacao'+ count +'">Comprovante</label>';
-html += '<small id="compHelp" class="form-text text-muted" style="color: red !important;">PERMITIDO APENAS ARQUIVOS (.pdf) QUE TENHA NO MÁXIMO 200MB</small>';
-html += '</div>';
+html += '        <div class="form-row">';
+html += '            <div class="col-md-6 mb-3">';
+html += '              <label class="pergunta" for="logradouro' + count + '">Logradouro</label>';
+html += '              <input type="text" class="form-control" id="logradouro' + count + '" name="time[' + count + '][logradouro]">';
+html += '              <small id="logradouroHelp' + count + '" class="form-text text-muted obrigatorio">Campo obrigatório!</small>';
+html += '            </div>';
+html += '            <div class="col-md-3 mb-3">';
+html += '                <label class="pergunta" for="estadom' + count + '">Estado</label>';
+html += '                <input type="text" class="form-control" id="estadom' + count + '" name="time[' + count + '][estado]" >';
+html += '                <small id="estadomHelp' + count + '" class="form-text text-muted obrigatorio">Campo obrigatório!</small>';
+html += '              </div>';
+html += '            <div class="col-md-3 mb-3">';
+html += '              <label class="pergunta" for="cidadem' + count + '">Cidade</label>';
+html += '              <input type="text" class="form-control" id="cidadem' + count + '" name="time[' + count + '][cidade]" >';
+html += '              <small id="cidademHelp' + count + '" class="form-text text-muted obrigatorio">Campo obrigatório!</small>';
+html += '            </div>';
+html += '        </div>';
+
+html += '        <div class="form-row">';
+html += '            <div class="col-md-6 mb-3">';
+html += '                <label class="pergunta" for="emailmenbro' + count + '">E-mail</label>';
+html += '                <input type="text" class="form-control" id="emailmenbro' + count + '" name="time[' + count + '][emailmenbro]" >';
+html += '                 <small id="emailmenbroHelp' + count + '" class="form-text text-muted">Ex.: seuemail@seuemail.com!</small>';
+html += '            </div>';
+html += '            <div class="col-md-3 mb-3">';
+html += '                  <label class="pergunta" for="telcontato' + count + '">Telefone de contato</label>';
+html += '                  <input type="text" class="form-control" id="telcontato' + count + '" name="time[' + count + '][telcontato]" maxlength="14" >';
+html += '                  <small id="telcontatoHelp' + count + '" class="form-text text-muted">E.: 85 999990000</small>';
+html += '              </div>';
+html += '            <div class="col-md-3 mb-3">';
+html += '                <label class="pergunta" for="linkedin' + count + '">Linked In</label>';
+html += '                <input type="text" class="form-control" id="linkedin' + count + '" name="time[' + count + '][linkedin]" >';
+html += '                 <small id="emailmenbroHelp' + count + '" class="form-text text-muted">Ex.: https://www.linkedin.com/in/example/</small>';
+html += '              </div>';
+html += '        </div>';
+
+html += '        <div class="form-group mb-5">';
+html += '            <label class="pergunta" for="comprovacao' + count + '">Anexar Comprovação de Experiência e Conhecimento*</label>';
+html += '            <div class="custom-file">';
+html += '                <input type="file" class="custom-file-input imput_comprovacao" id="comprovacao' + count + '" name="time[' + count + '][comprovacao]" accept="application/pdf" >';
+html += '                <label id="uploadc' + count + '" class="custom-file-label" for="comprovacao' + count + '"></label>';
+html += '                <small id="compHelp' + count + '" class="form-text text-muted" style="color: red !important;">PERMITIDO APENAS ARQUIVOS (.pdf) QUE TENHA NO MÁXIMO 200MB</small>';
+html += '            </div>';
+
 html += '</div> <button type="button" id="' + count + '" class="btn btn-outline-secondary btn-lg btn-block mt-5 mb-5 remover">Remover</button> </div>';
 
 
@@ -163,7 +167,7 @@ html += '</div> <button type="button" id="' + count + '" class="btn btn-outline-
         var tel = $("#telcontato" + count).val();
         var emailmenbro = $("#emailmenbro" + count).val();
         var comprovacao = $("#comprovacao" + count).val();
-        
+        if (document.getElementsByClassName('btn_fade').length > 1) {
             if(nomecompl == "") {
                 document.getElementById('all_ok').value = 'nao'
                 $("#nome-compl" + count).removeClass("valido");
@@ -332,16 +336,17 @@ html += '</div> <button type="button" id="' + count + '" class="btn btn-outline-
                     }
                 }
             }
+        }else{
+            document.getElementById('all_ok').value = 'ok';
+        }
 
     });
-
-
-document.getElementById('all_ok').value = 'nao';
-
 
 });
 
 $('form').on('click', '.remover', function(){
     var button_id = $(this).attr('id');
-    $('#grupo' + button_id +'').remove();
+    count--;
+    $('#btn_fade_' + button_id +'').remove();
+    $('#time_fade_' + button_id +'').remove();
 });

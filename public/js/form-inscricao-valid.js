@@ -608,11 +608,13 @@ function actionArquivos() {
     //Upload video e PDF
     $("#customFilev").change(function(){
         var nomeVideo = $(this).val();
+        document.getElementById('upvideo').innerHTML = '';
         $("#upvideo").append("<span>" + nomeVideo + "</span>");
     });
 
     $("#customFilep").change(function(){
         var nomepdf = $(this).val();
+        document.getElementById('uppdf').innerHTML = '';
         $("#uppdf").append("<span>" + nomepdf + "</span>");
     });
 

@@ -105,7 +105,7 @@
                                          <div class="form-group">
                                             <label class="pergunta" for="categoria-projeto">Categoria de projeto</label>
                                                 <select class="form-control" id="categoria-projeto" name="session[1][categoria]" >
-                                                <option value="" disabled selected>Escolher uma das respostas abaixo</option>
+                                                <option value="" >Escolher uma das respostas abaixo</option>
                                                 <option 
                                                     value="criação"
 
@@ -154,7 +154,7 @@
                                                     @endif
 
                                                 >
-                                                    <option value="" disabled selected>Escolher uma das respostas abaixo</option>
+                                                    <option value="" >Escolher uma das respostas abaixo</option>
 
                                                     @foreach($question['options'] as $option)
 
@@ -621,7 +621,7 @@
                                                     <div class="col-md-7 mb-3">
                                                         <label class="pergunta" for="funcaop">Função no Projeto (negócio, produto ou marketing)</label>
                                                         <select class="form-control" id="funcaop" name="time[1][funcao]" aria-describedby="funcaopHelp">
-                                                            <option value="" disabled selected>Escolher uma das respostas abaixo</option>
+                                                            <option value="" >Escolher uma das respostas abaixo</option>
                                                             <option value="negócio">Negócio</option>
                                                             <option value="Produto">Produto</option>
                                                             <option value="Marketing">Marketing</option>
@@ -665,7 +665,7 @@
                                                     <div class="col-md-4 mb-3">
                                                         <label class="pergunta" for="categoria-projeto">Formação</label>
                                                             <select class="form-control" id="formacao" name="time[1][formacao]" >
-                                                            <option value="" disabled selected>Escolher uma das respostas abaixo</option>
+                                                            <option value="" >Escolher uma das respostas abaixo</option>
                                                             <option value="1">Nível Médio Regular Incompleto</option>
                                                             <option value="2">Nível Médio Regular Completo</option>
                                                             <option value="3">Nível Médio Profissionalizante Incompleto</option>
@@ -805,7 +805,7 @@
             function(data){
                  console.log(data);
                  if(id == 'estado' && cidade_id == null){
-                    html += '<option disabled selected> Escolher o estado sede da equipe </option>'; 
+                    html += '<option > Escolher o estado sede da equipe </option>'; 
                      for(var i = 0; i < data.estados.length; i++){
                         if (state_selected == data.estados[i].sigla) {
                          html += '<option value='+ data.estados[i].sigla +' selected>'+ data.estados[i].nome +'</option>'
@@ -814,7 +814,7 @@
                         }
                      }
                  }else{
-                    html += '<option disabled selected> Escolher o município sede da equipe </option>'; 
+                    html += '<option > Escolher o município sede da equipe </option>'; 
                     for(var i = 0; i < data.estados.length; i++){
                         if(data.estados[i].sigla == cidade_id){
                             for(var j = 0; j < data.estados[i].cidades.length; j++){
