@@ -4,6 +4,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Log;
 
 use DB;
 
@@ -106,6 +107,7 @@ class RatingController extends Controller
 
     public function listRating()
     {
+
         $data = [];
         $user_logged = User::checkLogin();
         if (is_object($user_logged)) {
@@ -134,11 +136,15 @@ class RatingController extends Controller
 
         $users = Query::queryActionIn('users', $custom_args_users);
 
+        $total = [];
         foreach ($ratings as $r_id => $rating) {
             $key = "{$rating['evaluator']}_{$rating['startup']}";
+            $total[$key] = (isset($total[$key])) ? $total[$key] : 0 ;
+
             $data[$key] = $rating;
             $data[$key]['user'] = $users[$rating['evaluator']];
             $data[$key]['startup'] = $startups[$rating['startup']];
+            $data[$key]['total'] = $total[$key] += $rating['note'];
         }
 
         $vars =

@@ -77,16 +77,20 @@
                   <thead>
                     <tr>
                       <th>Ação</th>
-                      <th>#</th>
+                      <th>Nota Total</th>
+                      <th>Status</th>
                       <th>Startup</th>
+                      <th>Categoria</th>
                       <th>Avaliador</th>
                     </tr>
                   </thead>
                   <tfoot>
                     <tr>
                       <th>Ação</th>
-                      <th>#</th>
+                      <th>Nota Total</th>
+                      <th>Status</th>
                       <th>Startup</th>
+                      <th>Categoria</th>
                       <th>Avaliador</th>
                     </tr>
                   </tfoot>
@@ -101,10 +105,26 @@
                             <option value="{{ route('startup.rating.view', [$rating['startup']['id'], $rating['user']['id']]) }}" >
                                 Visualizar
                             </option>
+
+                            @if($rating['startup']['stage'] == 'rated')
+                              <option value="#">
+                                  Aprov. 2° Fase
+                              </option>
+                              <option value="#">
+                                  Reprovar
+                              </option>
+                            @endif
+
                           </select>
                         </td>
-                        <td>{{$rating['id']}}</td>
+                        <td>{{$rating['total']}}</td>
+                        <td>
+                          @if($rating['startup']['stage'] == 'rated')
+                            Aguardando Habilitação
+                          @endif
+                        </td>
                         <td>{{$rating['startup']['name']}}</td>
+                        <td>{{$rating['startup']['category']}}</td>
                         <td>{{$rating['user']['name']}}</td>
                       </tr>
 
