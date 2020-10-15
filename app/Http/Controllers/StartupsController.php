@@ -4,6 +4,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Log;
+
 Use Redirect;
 use DB;
 
@@ -198,9 +200,10 @@ class StartupsController extends Controller
                   $uploadfile = $uploaddir . basename($file_name);
                   $uploaded = move_uploaded_file($temp_name, $uploadfile);
                 } catch (\Exception $e) {
-
+                    Log::error("Não foi possivel fazer upload da comprovação [{$file_name}] do participante [{$time['nome']}]", [$e->getMessage]);
                     Query::transaction('rollBack');
-                    return Redirect::back()->withErrors(['Não foi fazer upload da comprovacao.']);
+
+                    return Redirect::back()->withErrors(["Não foi possivel fazer upload da comprovação [{$file_name}] do participante [{$time['nome']}]"]);
                 }
               }
             }
@@ -308,6 +311,8 @@ class StartupsController extends Controller
 
         return $new_participant_id;
       } catch (\Exception $e) {
+        Log::error("Não foi possivel inserir o participante :", [$e->getMessage]);
+
         return false;
       }
     }
@@ -320,7 +325,9 @@ class StartupsController extends Controller
 
         return $new_attachment_id;
       } catch (\Exception $e) {
-        return false;
+        Log::error("Não foi possivel registrar o arquivo", [$e->getMessage]);
+
+       return false;
       }
     }
 
