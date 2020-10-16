@@ -7,6 +7,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta name="description" content="">
   <meta name="author" content="">
+  <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <?php
         $url = $_SERVER['HTTP_HOST'] . $_SERVER['SCRIPT_NAME'];
@@ -62,70 +63,80 @@
           </div>
           @endif
 
+          @if($errors->any())
+          <div class="alert alert-danger" role="alert" style="">
+              {{$errors->first()}}
+          </div>
+          @endif
+
           <!-- Page Heading -->
-          <h1 class="h3 mb-2 text-gray-800">Listagem</h1>
+          <h1 class="h3 mb-2 text-gray-800">Novo Usuário</h1>
 
           <!-- DataTales Example -->
+        <form id="formulario" action="{{ route('user.edit', $user['id'])}}" method="POST">
+            @method('POST')
+            @csrf <!-- {{ csrf_field() }} -->
 
           <div class="card shadow mb-4">
             <div class="card-header py-3">
-              <h6 class="m-0 font-weight-bold text-primary" style="float: left;">Usuarios</h6>
-              <a href="{{ route('user.add.view') }}">
-                <button class="btn btn-success" style="float: right;">novo</button>
-              </a>
+                <input type="submit" class="btn btn-success" style="float: right;" value="Salvar" >
             </div>
             <div class="card-body">
               <div class="table-responsive">
-                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-                  <thead>
-                    <tr>
-                      <th>Ação</th>
-                      <th>#</th>
-                      <th>Nome</th>
-                      <th>Email</th>
-                      <th>Perfil</th>
-                    </tr>
-                  </thead>
-                  <tfoot>
-                    <tr>
-                      <th>Ação</th>
-                      <th>#</th>
-                      <th>Nome</th>
-                      <th>Email</th>
-                      <th>Perfil</th>
-                    </tr>
-                  </tfoot>
-                  <tbody>
 
-                    @foreach($users as $user)
+                    <div class="form-group">
+                        <label class="pergunta" for="nome-compl">Nome Completo</label>
+                        <input type="text" class="form-control" id="nome-compl" name="nome" aria-describedby="nomeclpHelp" required="true" value="{{$user['name']}}">
+                        <small id="nomeclpHelp" class="form-text text-muted obrigatorio">Campo obrigatório!</small>
+                    </div>
+                    <div class="form-group">
+                        <label class="pergunta" for="email">Email</label>
+                        <input type="text" class="form-control" id="email" name="email" aria-describedby="nomeclpHelp" required="true" value="{{$user['email']}}">
+                        <small id="nomeclpHelp" class="form-text text-muted obrigatorio">Campo obrigatório!</small>
+                    </div>
+                    <div class="form-row">
+                        <div class="col-md-7 mb-3">
+                            <label class="pergunta" for="perfil">Perfil de Usuário</label>
+                            <select class="form-control" id="perfil" name="perfil" aria-describedby="funcaopHelp" required="true" >
+                                <option 
+                                  value='Gestor'
+                                  @if($user['profile'] == 'Gestor')
+                                    selected="true"
+                                  @endif
+                                >
+                                  Gestor
+                                </option>
+                                <option 
+                                  value='Técnico'
+                                    @if($user['profile'] == 'Técnico')
+                                      selected="true"
+                                    @endif
+                                >
+                                  Técnico
+                                </option>
+                                <option 
+                                  value='Avaliador'
+                                    @if($user['profile'] == 'Avaliador')
+                                      selected="true"
+                                    @endif
+                                >
+                                  Avaliador
+                                </option>
+                            </select>
+                            <small id="funcaopHelp" class="form-text text-muted obrigatorio">Campo obrigatório!</small>
+                        </div>
+                        <div class="col-md-5 mb-3">
+                          <label class="pergunta" for="senha">Senha</label>
+                          <input type="text" class="form-control" id="senha" name="senha" aria-describedby="nomeclpHelp" disabled="true" value="********" >
+                          <small id="nomeclpHelp" class="form-text text-muted obrigatorio">Campo obrigatório!</small>
+                        </div>
+                    </div>
 
-                      <tr>
-                        <td>
-                          <select onchange="redirectAction(this)" >
-                            <option disabled="true" value="" selected="true" >---</option>
-                            <option value="{{ route('user.edit.view', $user['id']) }}" >
-                                editar
-                            </option>
-                          </select>
-                        </td>
-                        <td>{{$user['id']}}</td>
-                        <td>{{$user['name']}}</td>
-                        <td>{{$user['email']}}</td>
-                        <td>{{$user['profile']}}</td>
-                      </tr>
 
-                    @endforeach
-
-                  </tbody>
-                </table>
-                <script>
-                    function redirectAction(select) {
-                      window.location.href = select.value;
-                    }
-                </script>
               </div>
             </div>
           </div>
+        </form>
 
         </div>
         <!-- /.container-fluid -->

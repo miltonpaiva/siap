@@ -4,6 +4,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Log;
+
 use Redirect;
 use DB;
 
@@ -169,4 +171,101 @@ class UsersController extends Controller
 
         return view('paineladm/listagem_usuarios', $vars);
     }
+
+    public function viewAdd()
+    {
+        $user_logged = self::checkLogin();
+        if (is_object($user_logged)) {
+            return $user_logged;
+        }
+
+        return view('paineladm/add_usuarios', []);
+    }
+
+    public function actionAdd(Request $request)
+    {
+        $data = $request->all();
+
+        $custom_args['conditions'] =
+            [
+                ['email', '=', $data['email']]
+            ];
+
+        $user_exist = count(Query::queryAction('users', $custom_args));
+
+        if ($user_exist > 0) {
+            return Redirect::back()->withErrors(['Esse email ja está registrado, use outro.']);
+        }
+
+        try {
+            $new_user_id =
+                DB::table('users')->insertGetId(
+                    [
+                        'name'     => $data['nome'],
+                        'email'    => $data['email'],
+                        'password' => md5($data['senha']),
+                        // 'startup'  => $startup_id,
+                        'profile'  => $data['perfil'],
+                    ]
+                );
+        } catch (\Exception $e) {
+            Log::error("Não foi possivel inserir o usuario ", [$e->getMessage()]);
+
+            return Redirect::back()->withErrors(["Não foi possivel inserir o usuario"]);
+        }
+
+        return redirect()->route('user.list');
+    }
+
+    public function actionEdit($user_id, Request $request)
+    {
+        $data = $request->all();
+
+        $custom_args['conditions'] =
+            [
+                ['email', '=', $data['email']]
+            ];
+
+        $user_exist = current(Query::queryAction('users', $custom_args));
+
+        if (isset($user_exist['id']) && $user_exist['id'] != $user_id) {
+            return Redirect::back()->withErrors(['Esse email ja está registrado.']);
+        }
+
+        try {
+            DB::table('users')
+                  ->where('id', $user_id)
+                  ->update(
+                    [
+                        'name'     => $data['nome'],
+                        'email'    => $data['email'],
+                        'profile'  => $data['perfil'],
+                    ]
+                  );
+        } catch (\Exception $e) {
+            Log::error("Não foi possivel editar o usuario ", [$e->getMessage()]);
+
+            return Redirect::back()->withErrors(["Não foi possivel editar o usuario"]);
+        }
+
+        return redirect()->route('user.list');
+    }
+
+    public function viewEdit($user_id)
+    {
+        $user_logged = self::checkLogin();
+        if (is_object($user_logged)) {
+            return $user_logged;
+        }
+
+        $custom_args['conditions'] =
+            [
+                ['id', '=', $user_id]
+            ];
+
+        $user = current(Query::queryAction('users', $custom_args));
+
+        return view('paineladm/edit_usuarios', ['user' => $user]);
+    }
+
 }
