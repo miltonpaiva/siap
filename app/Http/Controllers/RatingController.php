@@ -193,7 +193,7 @@ class RatingController extends Controller
 
       $result = Startup::update(['stage' => 'rated'], $startup_id);
 
-      return redirect()->route('startup.list');
+      return redirect()->route('rating.list');
     }
 
     public static function update($id, $note)
