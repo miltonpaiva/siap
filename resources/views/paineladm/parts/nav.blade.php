@@ -38,7 +38,7 @@
                   </a>
                   <!-- Dropdown - User Information -->
                   <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
-                    <a class="dropdown-item" href="#">
+                    <a class="dropdown-item" href="#" data-toggle="modal" data-target="#perfilModal">
                       <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
                       Perfil
                     </a>
@@ -65,6 +65,39 @@
       <div class="modal-footer">
         <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancelar</button>
         <a class="btn btn-primary" href="{{ route('user.logout') }}">Prosseguir</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+ <!-- Logout Modal-->
+ <div class="modal fade" id="perfilModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Perfil de usuario</h5>
+        <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">×</span>
+        </button>
+      </div>
+      <div class="modal-body">
+              <form>
+                <fieldset class="field_set" style="padding: 10px">
+                  <legend style="width:auto; margin-left: 10px; padding: 5px; font-size: 18px">Perfil de <?= $_SESSION['login']['user_name']; ?>: </legend>
+                  <div class="row">
+                    <div class="col-sm-12 col-md-6">
+                      <h6 c=""><b>Perfil: </b> <span> <?= $_SESSION['login']['user_profile']; ?></span></h6>
+                    </div>
+                    <div class="col-sm-12 col-md-6">
+                      <h6 c=""><b>Email: </b> <span> <?= @$_SESSION['login']['user_email']; ?></span></h6>
+                    </div>
+                  </div>
+
+                </fieldset>
+              </form>
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-secondary" type="button" data-dismiss="modal">Fechar</button>
       </div>
     </div>
   </div>

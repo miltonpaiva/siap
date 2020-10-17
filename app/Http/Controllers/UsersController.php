@@ -61,6 +61,7 @@ class UsersController extends Controller
                 [
                     'user_id'      => $new_user_id,
                     'user_name'    => $data['nome'],
+                    'user_email'    => $data['email'],
                     'startup_id'   => $startup_id,
                     'user_profile' => 'Empreendedor',
                 ];
@@ -100,6 +101,7 @@ class UsersController extends Controller
                     [
                         'user_id'      => $user['id'],
                         'user_name'    => $user['name'],
+                        'user_email'    => $user['email'],
                         'startup_id'   => $user['startup'],
                         'user_profile' => $user['profile'],
                     ];
