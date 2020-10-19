@@ -97,7 +97,26 @@
                     <div class="form-row">
                         <div class="col-md-7 mb-3">
                             <label class="pergunta" for="perfil">Perfil de Usuário</label>
-                            <select class="form-control" id="perfil" name="perfil" aria-describedby="funcaopHelp" required="true" >
+                            @if($user['profile'] == 'Empreendedor')
+                              <input type="hidden" value="Empreendedor" name="perfil">
+                            @endif
+                            <select 
+                                class="form-control" 
+                                id="perfil" 
+                                name="perfil" 
+                                aria-describedby="funcaopHelp" 
+                                required="true" 
+
+                                  @if($user['profile'] == 'Empreendedor')
+                                    disabled="true"
+                                  @endif
+                            >
+                                @if($user['profile'] == 'Empreendedor')
+                                  <option value='Empreendedor' selected="true" >
+                                    Empreendedor
+                                  </option>
+                                @endif
+
                                 <option 
                                   value='Gestor'
                                   @if($user['profile'] == 'Gestor')
@@ -127,7 +146,7 @@
                         </div>
                         <div class="col-md-5 mb-3">
                           <label class="pergunta" for="senha">Senha</label>
-                          <input type="text" class="form-control" id="senha" name="senha" aria-describedby="nomeclpHelp" disabled="true" value="********" >
+                          <input type="password" class="form-control" id="senha" name="senha" aria-describedby="nomeclpHelp" value="{{$user['password']}}" >
                           <small id="nomeclpHelp" class="form-text text-muted obrigatorio">Campo obrigatório!</small>
                         </div>
                     </div>

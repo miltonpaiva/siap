@@ -234,16 +234,21 @@ class UsersController extends Controller
             return Redirect::back()->withErrors(['Esse email ja está registrado.']);
         }
 
+        $args =
+            [
+                'name'     => $data['nome'],
+                'email'    => $data['email'],
+                'profile'  => $data['perfil'],
+            ];
+
+        if ($data['senha'] != $user_exist['password']) {
+            $args['password'] = md5($data['senha']);
+        }
+
         try {
             DB::table('users')
                   ->where('id', $user_id)
-                  ->update(
-                    [
-                        'name'     => $data['nome'],
-                        'email'    => $data['email'],
-                        'profile'  => $data['perfil'],
-                    ]
-                  );
+                  ->update($args);
         } catch (\Exception $e) {
             Log::error("Não foi possivel editar o usuario ", [$e->getMessage()]);
 
