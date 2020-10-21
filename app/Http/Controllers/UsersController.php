@@ -137,6 +137,7 @@ class UsersController extends Controller
         $routes_user =
             [
                 'startup.view',
+                'startup.register.view',
                 'user.painel'
             ];
 
