@@ -29,8 +29,15 @@
 
     <!-- Sidebar -->
 
+    <?php if ($_SESSION['login']['user_profile'] != 'Empreendedor'): ?>
+
     @include('paineladm/parts/sidebar')
 
+    <?php else: ?>
+
+    @include('paineluser/parts/sidebar')
+
+    <?php endif; ?>
     <!-- End of Sidebar -->
 
     <!-- Content Wrapper -->
