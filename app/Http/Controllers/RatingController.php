@@ -238,8 +238,8 @@ class RatingController extends Controller
             ];
 
         try {
+            Mail::to($user['email'])->send(new SendMailUser($data));
             $result = Startup::update(['stage' => 'approved'], $startup_id);
-            Mail::to('miltonpaiva268@gmail.com')->send(new SendMailUser($data));
         } catch (\Exception $e) {
             Log::error("Não foi possivel fazer a aprovação da startup [{$startup['name']}] pois houve um erro no envio do email.", [$e->getMessage()]);
 
