@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Route;
 
 use Redirect;
 use DB;
@@ -16,16 +17,6 @@ header("Access-Control-Allow-Origin: *");
 
 class UsersController extends Controller
 {
-    /**
-     * Handle the incoming request.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function __invoke(Request $request)
-    {
-        //
-    }
 
     public function actionRegister(Request $request)
     {
@@ -121,12 +112,12 @@ class UsersController extends Controller
                     $data_startup = current(Query::queryAction('startups', $custom_args));
 
                     if ($data_startup['stage'] != 'in_progress') {
-                        return redirect()->route('concluido');
+                        return redirect()->route('user.painel');
                     }
                     return redirect()->route('startup.register.view', ['startup_id' => $user['startup']]);
                 }
 
-                if ($user['profile'] == 'Gestor') {
+                if ($user['profile'] != 'Empreendedor') {
                     return redirect()->route('painel');
                 }
             }else{
@@ -143,9 +134,22 @@ class UsersController extends Controller
     {
         session_start();
 
+        $routes_user =
+            [
+                'startup.view',
+                'user.painel'
+            ];
+
         if (!isset($_SESSION['login'])) {
             // NÃO LOGADO
             return redirect()->route('home')->withErrors(['Você precisa estar cadastrado ou logado para acessar a tela.']);
+        }else{
+            $route = Route::current()->getName();
+            if ($_SESSION['login']['user_profile'] == 'Empreendedor') {
+                if (!in_array($route, $routes_user)) {
+                    return redirect()->route('user.painel')->withErrors(['Você não tem permissão para acessar a tela.']);
+                }
+            }
         }
     }
 
@@ -275,4 +279,13 @@ class UsersController extends Controller
         return view('paineladm/edit_usuarios', ['user' => $user]);
     }
 
+    public function viewPainel()
+    {
+        $user_logged = self::checkLogin();
+        if (is_object($user_logged)) {
+            return $user_logged;
+        }
+
+        return view('paineluser/index', []);
+    }
 }
