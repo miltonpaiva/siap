@@ -5,12 +5,15 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Mail;
 
+use Redirect;
 use DB;
 
 use App\Http\Controllers\StartupsController as Startup;
 use App\Http\Controllers\QueryActionController as Query;
 use App\Http\Controllers\UsersController as User;
+use App\Mail\SendMailUser;
 
 header("Access-Control-Allow-Origin: *");
 
@@ -206,8 +209,6 @@ class RatingController extends Controller
         return $result;
     }
 
-
-
     public static function registerRating($rating)
     {
         $new_rating_id =
@@ -216,4 +217,35 @@ class RatingController extends Controller
         return $new_rating_id;
     }
 
+    public function actionAprov($startup_id)
+    {
+        $custom_args['conditions'] =
+            [
+                ['id', '=', $startup_id]
+            ];
+        $startup = current(Query::queryAction('startups', $custom_args));
+
+        $custom_args['conditions'] =
+            [
+                ['startup', '=', $startup_id]
+            ];
+        $user = current(Query::queryAction('users', $custom_args));
+
+        $data =
+            [
+                'startup' => $startup,
+                'user' => $user,
+            ];
+
+        try {
+            $result = Startup::update(['stage' => 'approved'], $startup_id);
+            Mail::to('miltonpaiva268@gmail.com')->send(new SendMailUser($data));
+        } catch (\Exception $e) {
+            Log::error("Não foi possivel fazer a aprovação da startup [{$startup['name']}] pois houve um erro no envio do email.", [$e->getMessage()]);
+
+            return Redirect::back()->withErrors(["Não foi possivel fazer a aprovação da startup [{$startup['name']}] pois houve um erro no envio do email."]);
+        }
+
+        return redirect()->route('rating.list');
+    }
 }

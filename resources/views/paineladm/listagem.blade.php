@@ -62,6 +62,12 @@
           </div>
           @endif
 
+          @if($errors->any())
+          <div class="alert alert-danger" role="alert" style="">
+              {{$errors->first()}}
+          </div>
+          @endif
+
           <!-- Page Heading -->
           <h1 class="h3 mb-2 text-gray-800">Listagem</h1>
 

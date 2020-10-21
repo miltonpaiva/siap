@@ -6,7 +6,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
 
-Use Redirect;
+use Redirect;
 use DB;
 
 use App\Http\Controllers\ResponsesController as Response;

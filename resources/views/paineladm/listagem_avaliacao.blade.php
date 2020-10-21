@@ -62,6 +62,12 @@
           </div>
           @endif
 
+          @if($errors->any())
+          <div class="alert alert-danger" role="alert" style="">
+              {{$errors->first()}}
+          </div>
+          @endif
+
           <!-- Page Heading -->
           <h1 class="h3 mb-2 text-gray-800">Listagem</h1>
 
@@ -107,7 +113,7 @@
                             </option>
 
                             @if($rating['startup']['stage'] == 'rated')
-                              <option value="#">
+                              <option value="{{ route('startup.aprov', [$rating['startup']['id']]) }}">
                                   Aprov. 2° Fase
                               </option>
                               <option value="#">
@@ -121,6 +127,9 @@
                         <td>
                           @if($rating['startup']['stage'] == 'rated')
                             Aguardando Habilitação
+                          @endif
+                          @if($rating['startup']['stage'] == 'approved')
+                            Aguardando 2° avaliação
                           @endif
                         </td>
                         <td>{{$rating['startup']['name']}}</td>

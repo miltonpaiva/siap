@@ -36,6 +36,7 @@ Route::get('/user/logout/', 'UsersController@actionLogout')->name('user.logout')
 Route::get('/usuarios', 'UsersController@listUsers')->name('user.list');
 Route::get('/usuarios/registro', 'UsersController@viewAdd')->name('user.add.view');
 Route::get('/usuarios/{user_id}/editar', 'UsersController@viewEdit')->name('user.edit.view');
+Route::get('/painel-usuario', 'UsersController@viewPainel')->name('user.painel');
 
 Route::get('/response/register/', 'ResponsesController@actionRegister')->name('response.register');
 Route::get('/response/option/new/', 'ResponsesController@newOption')->name('response.new.option');
@@ -52,4 +53,5 @@ Route::post('/startup/rating/', 'RatingController@actionRating')->name('startup.
 Route::get('/projeto/{startup_id}/avaliacao/', 'RatingController@viewRatingAction')->name('startup.rating.view.action');
 Route::get('/projeto/{startup_id}/avaliacao/{user_id}/', 'RatingController@viewRating')->name('startup.rating.view');
 Route::get('/avaliacoes', 'RatingController@listRating')->name('rating.list');
+Route::get('/startup/{startup_id}/aprov/', 'RatingController@actionAprov')->name('startup.aprov');
 
