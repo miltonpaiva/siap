@@ -155,6 +155,9 @@ class RatingController extends Controller
         $total = [];
         $ids   = [];
 
+        $cities = self::getDataRegions()['cities'];
+        $regions = self::getDataRegions()['all_regions'];
+
         foreach ($ratings as $r_id => $rating) {
             if (isset($startups[$rating['startup']])) {
                 $key = "{$rating['evaluator']}_{$rating['startup']}";
@@ -166,6 +169,17 @@ class RatingController extends Controller
                 $data[$key]['user'] = $users[$rating['evaluator']];
                 $data[$key]['startup'] = $startups[$rating['startup']];
                 $data[$key]['total'] = $total[$key] += $rating['note'];
+
+                $city = $startups[$rating['startup']]['city'];
+                $is_city =
+                    isset(
+                      $cities[self::clearString($city)]
+                    );
+                if ($is_city) {
+                    $data[$key]['startup']['region'] = $regions[$cities[self::clearString($city)]];
+                }else{
+                    $data[$key]['startup']['region'] = 'sem região';
+                }
             }
         }
 
@@ -177,6 +191,17 @@ class RatingController extends Controller
                 $data[$key]['user']['name'] = 'Não avaliado';
                 $data[$key]['startup'] = $startup;
                 $data[$key]['total'] = $total[$key];
+
+                $city = $startup['city'];
+                $is_city =
+                    isset(
+                      $cities[self::clearString($city)]
+                    );
+                if ($is_city) {
+                    $data[$key]['startup']['region'] = $regions[$cities[self::clearString($city)]];
+                }else{
+                    $data[$key]['startup']['region'] = 'sem região';
+                }
             }
         }
 

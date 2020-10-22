@@ -93,6 +93,8 @@
                       <th>Nota Total</th>
                       <th>Status</th>
                       <th>Startup</th>
+                      <th>Cidade</th>
+                      <th>Região</th>
                       <th>Categoria</th>
                       <th>Avaliador</th>
                     </tr>
@@ -103,6 +105,8 @@
                       <th>Nota Total</th>
                       <th>Status</th>
                       <th>Startup</th>
+                      <th>Cidade</th>
+                      <th>Região</th>
                       <th>Categoria</th>
                       <th>Avaliador</th>
                     </tr>
@@ -157,6 +161,8 @@
                           @endif
                         </td>
                         <td>{{$rating['startup']['name']}}</td>
+                        <td>{{$rating['startup']['city']}}</td>
+                        <td>{{$rating['startup']['region']}}</td>
                         <td>{{$rating['startup']['category']}}</td>
                         <td>{{$rating['user']['name']}}</td>
                       </tr>
