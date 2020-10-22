@@ -75,6 +75,118 @@
           </div>
           @endif
 
+          <div class="card shadow mb-4">
+            <div class="card-header py-3">
+              <h6 class="m-0 font-weight-bold text-primary">Filtros</h6>
+            </div>
+            <div class="card-body">
+
+              <form class="form-inline">
+                <div class="form-group mb-2">
+                  <select class="form-control filter" id="regiao" onclick="clearOters(this)" >
+                    <option disabled="true" value="" selected >Região do Projeto</option>
+
+                      @foreach ($all_regions as $region_v => $region)
+                          <option value="{{ $region_v }}" >{{ $region }}</option>
+                      @endforeach
+
+                  </select>
+                </div>
+                <div class="form-group mx-sm-3 mb-2">
+
+                  <select class="form-control filter" id="cidade" onclick="clearOters(this)" >
+                    <option disabled="true" value="" selected >Cidade do Projeto</option>
+
+                      @foreach ($cities as $city_v => $city)
+                          <option value="{{ $city_v }}" >{{ $city }}</option>
+                      @endforeach
+
+                  </select>
+                </div>
+                <div class="form-group mb-2">
+
+                  <select class="form-control filter" id="articulador" onclick="clearOters(this)" >
+                    <option disabled="true" value="" selected >Articulador do Projeto</option>
+
+                      @foreach ($articuladores as $art_v => $art)
+                          <option value="{{ $art_v }}" >{{ $art }}</option>
+                      @endforeach
+
+                  </select>
+                </div>
+
+              </form>
+
+              <form class="form-inline">
+                <div class="form-group mx-sm-3 mb-2">
+
+                  <select class="form-control filter" id="tecnologia" onclick="clearOters(this)" >
+                    <option disabled="true" value="" selected >Tecnologia do Projeto</option>
+
+                      @foreach ($tecnologias as $tec_v => $tec)
+                          <option value="{{ $tec_v }}" >{{ $tec }}</option>
+                      @endforeach
+
+                  </select>
+                </div>
+
+                <button type="submit" id="btn_filter" class="btn btn-success mb-2">Filtrar</button>
+
+              </form>
+
+              <script>
+                function sendFilter() {
+                    var selects = document.getElementsByClassName('filter');
+                    var dominio_atual = window.location.href.split('?')[0];
+                    for(key in selects){
+                      if (selects[key].id) {
+                        var valid_slct = selects[key];
+                        if (valid_slct.value != '') {
+                          var valor = valid_slct.value;
+                          var filtro = valid_slct.id;
+                          window.location.href = dominio_atual + '?' + filtro + '=' + valor;
+                        }
+                      }
+                    }
+                }
+                document.getElementById('btn_filter').addEventListener("click", function(event) {
+                    event.preventDefault();
+                    sendFilter();
+                });
+
+                var query = location.search.slice(1);
+                var partes = query.split('&');
+                var _get = {};
+                partes.forEach(function (parte) {
+                    var chaveValor = parte.split('=');
+                    var chave = chaveValor[0];
+                    var valor = chaveValor[1];
+                    _get[chave] = valor;
+                });
+
+                for(key_g in _get){
+                  if (document.getElementById(key_g)) {
+                    document.getElementById(key_g).value = _get[key_g];
+                  }
+                }
+
+                function clearOters(current_select) {
+                    var selects = document.getElementsByClassName('filter');
+                    for(key in selects){
+                      if (selects[key].id) {
+                        var valid_slct = selects[key];
+                        if (valid_slct.id != current_select.id) {
+                          valid_slct.value = '';
+                        }
+                      }
+                    }
+                }
+
+              </script>
+            </div>
+          </div>
+
+
           <!-- Page Heading -->
           <h1 class="h3 mb-2 text-gray-800">Listagem</h1>
 

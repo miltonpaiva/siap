@@ -12,6 +12,7 @@ use DB;
 
 use App\Http\Controllers\StartupsController as Startup;
 use App\Http\Controllers\QueryActionController as Query;
+use App\Http\Controllers\FiltersController as Filters;
 use App\Http\Controllers\UsersController as User;
 use App\Mail\SendMailUser;
 
@@ -19,6 +20,7 @@ header("Access-Control-Allow-Origin: *");
 
 class RatingController extends Controller
 {
+    public static $message;
 
     public function viewRatingAction($startup_id)
     {
@@ -148,6 +150,27 @@ class RatingController extends Controller
 
         $startups = ($startups_avalied + $startups_unavalied);
 
+        foreach ($startups as $s_id => $sttp) {
+          if ($sttp['city'] != '000000') {
+            $this->cities[self::clearString($sttp['city'])] = $sttp['city'];
+          }
+        }
+
+        if (isset($_GET['regiao'])) {
+          $startups = Filters::getFilterRegion($startups);
+        }
+
+        if (isset($_GET['cidade'])) {
+          $startups = Filters::getFilterCity($startups);
+        }
+
+        if (isset($_GET['articulador'])) {
+          $startups = Filters::getFilterArticulador($startups);
+        }
+
+        if (isset($_GET['tecnologia'])) {
+          $startups = Filters::getFilterTecnologia($startups);
+        }
         $custom_args_users['values'] = $users_ids;
 
         $users = Query::queryActionIn('users', $custom_args_users);
@@ -207,7 +230,12 @@ class RatingController extends Controller
 
         $vars =
           [
+            'all_regions' => $this->getDataRegions()['all_regions'],
+            'articuladores'  => $this->getOptions(29),
+            'tecnologias'  => $this->getOptions(4),
+            'cities'  => $this->cities,
             'ratings' => $data,
+            'message'  => self::$message,
           ];
 
         return view('paineladm/listagem_avaliacao', $vars);

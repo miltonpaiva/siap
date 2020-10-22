@@ -26,13 +26,16 @@ class FiltersController extends Controller
         $responses = Query::queryAction('responses', $custom_args);
 
         foreach ($responses as $resp) {
-            $data[$resp['startup']] = $startups[$resp['startup']];
+            if (isset($startups[$resp['startup']])) {
+              $data[$resp['startup']] = $startups[$resp['startup']];
+            }
         }
 
         if (count($data) > 0) {
           return $data;
         }else{
           Startup::$message = ['type' => 'danger', 'message' => 'O filtro de ARTICULADOR não retornou dados !'];
+          $_SESSION['message'] = ['type' => 'danger', 'message' => 'O filtro de ARTICULADOR não retornou dados !'];
           return $startups;
         }
     }
@@ -49,13 +52,16 @@ class FiltersController extends Controller
         $responses = Query::queryAction('responses', $custom_args);
 
         foreach ($responses as $resp) {
-            $data[$resp['startup']] = $startups[$resp['startup']];
+            if (isset($startups[$resp['startup']])) {
+              $data[$resp['startup']] = $startups[$resp['startup']];
+            }
         }
 
         if (count($data) > 0) {
           return $data;
         }else{
           Startup::$message = ['type' => 'danger', 'message' => 'O filtro de TECNOLOGIA não retornou dados !'];
+          $_SESSION['message'] = ['type' => 'danger', 'message' => 'O filtro de TECNOLOGIA não retornou dados !'];
           return $startups;
         }
     }
@@ -74,6 +80,7 @@ class FiltersController extends Controller
           return $data;
         }else{
           Startup::$message = ['type' => 'danger', 'message' => 'O filtro de CIDADE não retornou dados !'];
+          $_SESSION['message'] = ['type' => 'danger', 'message' => 'O filtro de CIDADE não retornou dados !'];
           return $startups;
         }
     }
@@ -103,6 +110,7 @@ class FiltersController extends Controller
             return $data[$_GET['regiao']];
           }else{
             Startup::$message = ['type' => 'danger', 'message' => 'O filtro de REGIÃO não retornou dados !'];
+            $_SESSION['message'] = ['type' => 'danger', 'message' => 'O filtro de REGIÃO não retornou dados !'];
             return $startups;
           }
     }
