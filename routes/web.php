@@ -15,7 +15,7 @@ use Illuminate\Support\Facades\Route;
 
 
 
-Route::redirect('/', '/cadastro');
+Route::redirect('/', '/login');
 Route::get('/cadastro', function () {
     return view('home');
 })->name('home');
@@ -54,4 +54,5 @@ Route::get('/projeto/{startup_id}/avaliacao/', 'RatingController@viewRatingActio
 Route::get('/projeto/{startup_id}/avaliacao/{user_id}/', 'RatingController@viewRating')->name('startup.rating.view');
 Route::get('/avaliacoes', 'RatingController@listRating')->name('rating.list');
 Route::get('/startup/{startup_id}/aprov/', 'RatingController@actionAprov')->name('startup.aprov');
+Route::get('/startup/{startup_id}/reprov/', 'RatingController@actionReprov')->name('startup.reprov');
 
