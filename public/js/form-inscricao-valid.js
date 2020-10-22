@@ -357,7 +357,7 @@ $(function(){
                                         document.getElementById('all_ok').value = 'nao'
                                         $("#curso").removeClass("invalido");
                                         $("#curso").addClass("valido");
-                                        if(formacao == null){
+                                        if(formacao == null || formacao == '' || formacao < 1 ){
                                             document.getElementById('all_ok').value = 'nao'
                                             $("#formacao").removeClass("valido");
                                             $("#formacao").addClass("invalido");

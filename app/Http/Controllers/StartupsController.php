@@ -212,20 +212,20 @@ class StartupsController extends Controller
 
                 $participant =
                   [
-                    'name' => $time['nome'],
-                    'function' => $time['funcao'],
+                    'name' => @$time['nome'],
+                    'function' => @$time['funcao'],
                     'startup' => $startup_id,
-                    'rg' => $time['rg'],
-                    'cpf' => $time['cpf'],
-                    'institution' => $time['instensino'],
-                    'course' => $time['curso'],
-                    'formation' => $time['formacao'],
-                    'address' => $time['logradouro'],
+                    'rg' => @$time['rg'],
+                    'cpf' => @$time['cpf'],
+                    'institution' => @$time['instensino'],
+                    'course' => @$time['curso'],
+                    'formation' => @$time['formacao'],
+                    'address' => @$time['logradouro'],
                     'city' => @$time['cidade'],
                     'data_nasc' => @$time['datanasc'],
-                    'telephone' => $time['telcontato'],
-                    'email' => $time['emailmenbro'],
-                    'linkedin' => $time['linkedin'],
+                    'telephone' => @$time['telcontato'],
+                    'email' => @$time['emailmenbro'],
+                    'linkedin' => @$time['linkedin'],
                   ];
 
                 $partcipat_saved[] =
