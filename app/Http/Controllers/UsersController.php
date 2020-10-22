@@ -191,6 +191,8 @@ class UsersController extends Controller
 
     public function actionAdd(Request $request)
     {
+        session_start();
+
         $data = $request->all();
 
         $custom_args['conditions'] =
@@ -221,11 +223,20 @@ class UsersController extends Controller
             return Redirect::back()->withErrors(["Não foi possivel inserir o usuario"]);
         }
 
+        $_SESSION['message'] =
+        [
+            'type' => 'success',
+            'message' => "o usuario [{$data['nome']}] foi criado.",
+        ];
+
+
+
         return redirect()->route('user.list');
     }
 
     public function actionEdit($user_id, Request $request)
     {
+        session_start();
         $data = $request->all();
 
         $custom_args['conditions'] =
@@ -259,6 +270,12 @@ class UsersController extends Controller
 
             return Redirect::back()->withErrors(["Não foi possivel editar o usuario"]);
         }
+
+        $_SESSION['message'] =
+        [
+            'type' => 'success',
+            'message' => "o usuario [{$data['nome']}] foi editado.",
+        ];
 
         return redirect()->route('user.list');
     }

@@ -56,9 +56,22 @@
         <!-- Begin Page Content -->
         <div class="container-fluid">
 
+          <?php if (@$_SESSION['message']): ?>
+          <div class="alert alert-<?= $_SESSION['message']['type']; ?>" role="alert" style="">
+              <?= $_SESSION['message']['message']; ?>
+          </div>
+          <?php unset($_SESSION['message']); ?>
+          <?php endif; ?>
+
           @if(@$message['message'] != '')
           <div class="alert alert-{{@$message['type']}}" role="alert" style="">
               {{@$message['message']}}
+          </div>
+          @endif
+
+          @if($errors->any())
+          <div class="alert alert-danger" role="alert" style="">
+              {{$errors->first()}}
           </div>
           @endif
 
