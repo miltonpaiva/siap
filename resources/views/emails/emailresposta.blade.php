@@ -17,7 +17,7 @@
 
 											<h2 style="margin-bottom: 20px; line-height: 1.25; font-size: 28px;">Olá,</h2>
                                     
-											<p style="font-size: 16px; font-weight: normal; margin-bottom: 20px;">Francisco Clemilson,</p>
+											<p style="font-size: 16px; font-weight: normal; margin-bottom: 20px;">{{ $data['user']['name'] }},</p>
 											<p style="font-size: 16px; font-weight: normal; line-height: 1.65; margin-bottom: 20px;">Parabéns! Seu projeto foi habilitado para participar da 2ª fase de avaliação, ANÁLISE DE ATRATIVIDADE, onde você deverá preecher e atender a todos as questões dispostas
 											no formúlario. Boa sorte! Clique no botão que segue logo baixo!
 											</p>

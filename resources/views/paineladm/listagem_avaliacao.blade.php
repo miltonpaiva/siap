@@ -56,6 +56,13 @@
         <!-- Begin Page Content -->
         <div class="container-fluid">
 
+          <?php if (@$_SESSION['message']): ?>
+          <div class="alert alert-<?= $_SESSION['message']['type']; ?>" role="alert" style="">
+              <?= $_SESSION['message']['message']; ?>
+          </div>
+          <?php unset($_SESSION['message']); ?>
+          <?php endif; ?>
+
           @if(@$message['message'] != '')
           <div class="alert alert-{{@$message['type']}}" role="alert" style="">
               {{@$message['message']}}
@@ -104,7 +111,15 @@
 
                     @foreach($ratings as $rating)
 
-                      <tr>
+                      <tr
+                            @if($rating['startup']['stage'] == 'complete')
+                              class="table-danger"
+                            @endif
+
+                            @if($rating['startup']['stage'] == 'rated')
+                              class="table-warning"
+                            @endif
+                      >
                         <td>
                           <select onchange="redirectAction(this)" >
                             <option disabled="true" value="" selected="true" >---</option>
@@ -116,8 +131,14 @@
                               <option value="{{ route('startup.aprov', [$rating['startup']['id']]) }}">
                                   Aprov. 2° Fase
                               </option>
-                              <option value="#">
-                                  Reprovar
+                              <option value="{{ route('startup.reprov', [$rating['startup']['id']]) }}">
+                                  Não Habilitar
+                              </option>
+                            @endif
+
+                            @if($rating['startup']['stage'] == 'complete')
+                              <option value="{{ route('startup.rating.view.action', $rating['startup']['id']) }}" >
+                                  Avaliar
                               </option>
                             @endif
 
@@ -130,6 +151,9 @@
                           @endif
                           @if($rating['startup']['stage'] == 'approved')
                             Aguardando 2° avaliação
+                          @endif
+                          @if($rating['startup']['stage'] == 'complete')
+                            Aguardando 1° avaliação
                           @endif
                         </td>
                         <td>{{$rating['startup']['name']}}</td>
