@@ -131,23 +131,53 @@ class RatingController extends Controller
             }
         }
 
-        $custom_args_users['values'] = $sttps_ids;
+        $custom_args['values'] = $sttps_ids;
+        $custom_args['conditions'] =
+            [
+                ['stage', '<>', 'reproved']
+            ];
 
-        $startups = Query::queryActionIn('startups', $custom_args_users);
+        $startups_avalied = Query::queryActionIn('startups', $custom_args);
+
+        $custom_args['conditions'] =
+            [
+                ['stage', '=', 'complete']
+            ];
+
+        $startups_unavalied = Query::queryAction('startups', $custom_args);
+
+        $startups = ($startups_avalied + $startups_unavalied);
 
         $custom_args_users['values'] = $users_ids;
 
         $users = Query::queryActionIn('users', $custom_args_users);
 
         $total = [];
-        foreach ($ratings as $r_id => $rating) {
-            $key = "{$rating['evaluator']}_{$rating['startup']}";
-            $total[$key] = (isset($total[$key])) ? $total[$key] : 0 ;
+        $ids   = [];
 
-            $data[$key] = $rating;
-            $data[$key]['user'] = $users[$rating['evaluator']];
-            $data[$key]['startup'] = $startups[$rating['startup']];
-            $data[$key]['total'] = $total[$key] += $rating['note'];
+        foreach ($ratings as $r_id => $rating) {
+            if (isset($startups[$rating['startup']])) {
+                $key = "{$rating['evaluator']}_{$rating['startup']}";
+                $total[$key] = (isset($total[$key])) ? $total[$key] : 0 ;
+
+                $ids[] = $rating['startup'];
+
+                $data[$key] = $rating;
+                $data[$key]['user'] = $users[$rating['evaluator']];
+                $data[$key]['startup'] = $startups[$rating['startup']];
+                $data[$key]['total'] = $total[$key] += $rating['note'];
+            }
+        }
+
+        foreach ($startups as $id => $startup) {
+            if (!in_array($id, $ids)) {
+                $key = "0_{$id}";
+                $total[$key] = 0 ;
+                $data[$key]['user']['id'] = 0;
+                $data[$key]['user']['name'] = 'Não avaliado';
+                $data[$key]['startup'] = $startup;
+                $data[$key]['total'] = $total[$key];
+            }
         }
 
         $vars =
@@ -167,7 +197,6 @@ class RatingController extends Controller
       $criterios  = $data['avalicacao']['criterio'];
 
       $startup_id = $data['startup'];
-
 
       foreach ($criterios as $c_id => $value) {
         $rating =
@@ -196,6 +225,12 @@ class RatingController extends Controller
 
       $result = Startup::update(['stage' => 'rated'], $startup_id);
 
+      $_SESSION['message'] =
+        [
+            'type' => 'success',
+            'message' => "o Projeto [{$startup_id}] Avaliado com sucesso na etapa de Prontidão.",
+        ];
+
       return redirect()->route('rating.list');
     }
 
@@ -219,6 +254,8 @@ class RatingController extends Controller
 
     public function actionAprov($startup_id)
     {
+        session_start();
+
         $custom_args['conditions'] =
             [
                 ['id', '=', $startup_id]
@@ -244,6 +281,44 @@ class RatingController extends Controller
             Log::error("Não foi possivel fazer a aprovação da startup [{$startup['name']}] pois houve um erro no envio do email.", [$e->getMessage()]);
 
             return Redirect::back()->withErrors(["Não foi possivel fazer a aprovação da startup [{$startup['name']}] pois houve um erro no envio do email."]);
+        }
+
+      $_SESSION['message'] =
+        [
+            'type' => 'success',
+            'message' => "o Projeto [{$startup['name']}] habilitado para a etapa de Atratividade.",
+        ];
+
+        return redirect()->route('rating.list');
+    }
+
+    public function actionReprov($startup_id)
+    {
+        session_start();
+
+        $custom_args['conditions'] =
+            [
+                ['id', '=', $startup_id]
+            ];
+
+        $startup = current(Query::queryAction('startups', $custom_args));
+
+        $custom_args['conditions'] =
+            [
+                ['startup', '=', $startup_id]
+            ];
+
+        try {
+
+            $result = Startup::update(['stage' => 'reproved'], $startup_id);
+            $_SESSION['message'] =
+                [
+                    'type' => 'success',
+                    'message' => "o Projeto [{$startup_id}] reprovado na etapa de Prontidão.",
+                ];
+        } catch (\Exception $e) {
+            Log::error("Não foi possivel fazer a reprovação da startup [{$startup['name']}] .", [$e->getMessage()]);
+            return Redirect::back()->withErrors(["Não foi possivel fazer a reprovação da startup [{$startup['name']}]."]);
         }
 
         return redirect()->route('rating.list');

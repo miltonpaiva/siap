@@ -30,9 +30,9 @@ class SendMailUser extends Mailable
      */
     public function build()
     {
-        return $this->from('miltonpaiva268@gmail.com')
-                    // ->subhect('email de teste');
-                    ->view('emails/test')
+        return $this->from('contato@corredoresdigitais.info')
+                    ->subject('Aprovação da primeira fase')
+                    ->view('emails/emailresposta')
                     ->with([
                         'data' => $this->data,
                     ]);
