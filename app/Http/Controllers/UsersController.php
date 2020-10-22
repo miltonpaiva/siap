@@ -143,7 +143,7 @@ class UsersController extends Controller
 
         if (!isset($_SESSION['login'])) {
             // NÃO LOGADO
-            return redirect()->route('home')->withErrors(['Você precisa estar cadastrado ou logado para acessar a tela.']);
+            return redirect()->route('user.login.view')->withErrors(['Você precisa estar cadastrado ou logado para acessar a tela.']);
         }else{
             $route = Route::current()->getName();
             if ($_SESSION['login']['user_profile'] == 'Empreendedor') {

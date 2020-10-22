@@ -16,7 +16,7 @@
 										<td style="display: block !important; clear: both !important; margin: 0 auto !important; max-width: 580px !important; background: white; padding: 30px 35px;">
 
 											<h2 style="margin-bottom: 20px; line-height: 1.25; font-size: 28px;">Olá,</h2>
-                                    
+
 											<p style="font-size: 16px; font-weight: normal; margin-bottom: 20px;">{{ $data['user']['name'] }},</p>
 											<p style="font-size: 16px; font-weight: normal; line-height: 1.65; margin-bottom: 20px;">Parabéns! Seu projeto foi habilitado para participar da 2ª fase de avaliação, ANÁLISE DE ATRATIVIDADE, onde você deverá preecher e atender a todos as questões dispostas
 											no formúlario. Boa sorte! Clique no botão que segue logo baixo!
@@ -26,8 +26,8 @@
 														<tr>
 																<td align="center">
 																		<p style="font-size: 16px; font-weight: normal; margin-bottom: 20px; ">
-																				<a href="#" style="color: #1abc9c; text-decoration: none; display: inline-block; color: white; background: #1abc9c; border: solid #1abc9c; border-width: 10px 20px 8px; font-weight: bold; border-radius: 4px; text-decoration: none; line-height: 1.65;">
-																					Formulário de Atratividade
+																				<a href="{{$url_painel}}" style="color: #1abc9c; text-decoration: none; display: inline-block; color: white; background: #1abc9c; border: solid #1abc9c; border-width: 10px 20px 8px; font-weight: bold; border-radius: 4px; text-decoration: none; line-height: 1.65;">
+																					Painel do Usuário
 																				</a>
 																		</p>
 																</td>
