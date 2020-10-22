@@ -17,7 +17,7 @@ class CommentsTable extends Migration
             $table->id();
             $table->unsignedBigInteger('evaluator');
             $table->unsignedBigInteger('startup');
-            $table->longText('comment');
+            $table->longText('comment')->nullable();
             $table->foreign('evaluator')->references('id')->on('users');
             $table->foreign('startup')->references('id')->on('startups');
         });

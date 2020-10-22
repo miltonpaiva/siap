@@ -136,6 +136,16 @@
                   </fieldset>
                 </form>
 
+              <form>
+                <fieldset class="field_set" style="padding: 10px">
+                  <legend style="width:auto; margin-left: 10px; padding: 5px; font-size: 18px">Observações: </legend>
+                  <div class="row">
+                    <div class="col-sm-12 col-md-4">
+                      <p>{{$comment['comment']}}</p>
+                    </div>
+                  </div>
+                </fieldset>
+              </form>
             </div>
           </div>
 

@@ -98,9 +98,18 @@ class RatingController extends Controller
 
         $user = current(Query::queryAction('users', $custom_args));
 
+        $custom_args['conditions'] =
+            [
+                ['evaluator', '=', $user['id']],
+                ['startup', '=', $startup['id']],
+            ];
+
+        $comment = current(Query::queryAction('comments', $custom_args));
+
         $vars =
           [
               'ratings' => $data,
+              'comment' => $comment,
               'evaluator' => $user,
               'startup' => $startup,
               'user' => $user,
@@ -260,12 +269,6 @@ class RatingController extends Controller
             'note' => $value['nota'],
           ];
 
-        $custom_args['conditions'] =
-            [
-                ['evaluator', '=', $evaluator],
-                ['startup', '=', $startup_id],
-                ['criterea', '=', $c_id],
-            ];
 
         $has_rating = @max(Query::getSampleData('rating', 'id', $custom_args));
 
@@ -275,6 +278,26 @@ class RatingController extends Controller
           $result = self::registerRating($rating);
         }
       }
+        $custom_args['conditions'] =
+            [
+                ['evaluator', '=', $evaluator],
+                ['startup', '=', $startup_id],
+            ];
+
+        $has_comment = Query::queryAction('comments', $custom_args);
+
+        $comment_data =
+            [
+                'evaluator' => $evaluator,
+                'startup' => $startup_id,
+                'comment' => $data['observacoes'],
+            ];
+
+        if (count($has_comment) > 0) {
+          $result = self::updateComment(current($has_comment)['id'], $data['observacoes']);
+        }else{
+          $result = self::registerComment($comment_data);
+        }
 
       $result = Startup::update(['stage' => 'rated'], $startup_id);
 
@@ -297,12 +320,30 @@ class RatingController extends Controller
         return $result;
     }
 
+    public static function updateComment($id, $comment)
+    {
+        $result =
+            DB::table('comments')
+                      ->where('id', $id)
+                      ->update(['comment' => $comment]);
+
+        return $result;
+    }
+
     public static function registerRating($rating)
     {
         $new_rating_id =
             DB::table('rating')->insertGetId($rating);
 
         return $new_rating_id;
+    }
+
+    public static function registerComment($comment)
+    {
+        $new_comment_id =
+            DB::table('comments')->insertGetId($comment);
+
+        return $new_comment_id;
     }
 
     public function actionAprov($startup_id)

@@ -295,6 +295,18 @@
 
                     </tbody>
                 </table>
+                <fieldset class="field_set" style="padding: 10px">
+                  <legend style="width:auto; margin-left: 10px; padding: 5px; font-size: 18px">Observações: </legend>
+
+                  <div class="row">
+                    <div class="col-sm-12 col-md-12 mt-3">
+                      <textarea class="form-control" name="observacoes" id="observacoes" cols="30" rows="10"></textarea>
+                    </div>
+                  </div>
+
+                </fieldset>
+                <br>
+
                 <input type="submit" class="btn btn-success mb-2" value="Concluir Avaliação">
               </form>
 
