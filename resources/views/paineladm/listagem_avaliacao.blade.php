@@ -239,9 +239,12 @@
                         <td>
                           <select onchange="redirectAction(this)" >
                             <option disabled="true" value="" selected="true" >---</option>
+
+                            @if($rating['startup']['stage'] == 'rated' || $rating['startup']['stage'] == 'approved')
                             <option value="{{ route('startup.rating.view', [$rating['startup']['id'], $rating['user']['id']]) }}" >
-                                Visualizar
+                                Ver Avaliação
                             </option>
+                            @endif
 
                             @if($rating['startup']['stage'] == 'rated')
                               <option value="{{ route('startup.aprov', [$rating['startup']['id']]) }}">
