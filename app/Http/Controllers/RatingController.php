@@ -269,6 +269,12 @@ class RatingController extends Controller
             'note' => $value['nota'],
           ];
 
+        $custom_args['conditions'] =
+            [
+                ['evaluator', '=', $evaluator],
+                ['startup', '=', $startup_id],
+                ['criterea', '=', $c_id],
+            ];
 
         $has_rating = @max(Query::getSampleData('rating', 'id', $custom_args));
 
