@@ -36,7 +36,7 @@
                         <div class="col-sm-12 col-md-6">
                             <div class="card-body">
                                 <h2 class="card-title">Cadastre-se</h2>
-                                <form action="{{ route('user.register')}}" method="POST">
+                                <form action="{{ route('user.register.action')}}" method="POST">
                                     @method('POST')
                                     @csrf <!-- {{ csrf_field() }} -->
                                     <div class="form-group">

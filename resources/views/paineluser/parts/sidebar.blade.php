@@ -1,7 +1,7 @@
     <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
       <!-- Sidebar - Brand -->
-      <a class="sidebar-brand d-flex align-items-center justify-content-center" href="{{ route('user.painel') }}">
+      <a class="sidebar-brand d-flex align-items-center justify-content-center" href="{{ route('user.painel.view') }}">
         <div class="sidebar-brand-icon rotate-n-15">
           <i class="fas fa-rocket"></i>
         </div>
@@ -14,7 +14,7 @@
       <!-- Nav Item - Dashboard -->
       <?php if (strrpos(@$_SERVER['REQUEST_URI'], 'painel')){ $painel = 'active'; } ?>
       <li class="nav-item <?= @$painel; ?> ">
-        <a class="nav-link" href="{{ route('user.painel') }}">
+        <a class="nav-link" href="{{ route('user.painel.view') }}">
           <i class="fas fa-fw fa-tachometer-alt"></i>
           <span>Painel principal</span></a>
       </li>

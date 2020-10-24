@@ -35,7 +35,7 @@ class SendMailUser extends Mailable
                     ->view('emails/emailresposta')
                     ->with([
                         'data' => $this->data,
-                        'url_painel' => route('user.painel'),
+                        'url_painel' => route('user.painel.view'),
                     ]);
     }
 }

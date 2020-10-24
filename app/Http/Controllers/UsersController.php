@@ -112,7 +112,7 @@ class UsersController extends Controller
                     $data_startup = current(Query::queryAction('startups', $custom_args));
 
                     if ($data_startup['stage'] != 'in_progress') {
-                        return redirect()->route('user.painel');
+                        return redirect()->route('user.painel.view');
                     }
                     return redirect()->route('startup.register.view', ['startup_id' => $user['startup']]);
                 }
@@ -138,7 +138,7 @@ class UsersController extends Controller
             [
                 'startup.view',
                 'startup.register.view',
-                'user.painel'
+                'user.painel.view'
             ];
 
         if (!isset($_SESSION['login'])) {
@@ -148,7 +148,7 @@ class UsersController extends Controller
             $route = Route::current()->getName();
             if ($_SESSION['login']['user_profile'] == 'Empreendedor') {
                 if (!in_array($route, $routes_user)) {
-                    return redirect()->route('user.painel')->withErrors(['Você não tem permissão para acessar a tela.']);
+                    return redirect()->route('user.painel.view')->withErrors(['Você não tem permissão para acessar a tela.']);
                 }
             }
         }
@@ -162,7 +162,7 @@ class UsersController extends Controller
         return redirect()->route('user.login.view');
     }
 
-    public function listUsers()
+    public function actionList()
     {
         $user_logged = self::checkLogin();
         if (is_object($user_logged)) {
@@ -305,5 +305,15 @@ class UsersController extends Controller
         }
 
         return view('paineluser/index', []);
+    }
+
+    public function viewAttractive()
+    {
+        $user_logged = self::checkLogin();
+        if (is_object($user_logged)) {
+            return $user_logged;
+        }
+
+        return view('paineluser/atratividade_criacao', []);
     }
 }
