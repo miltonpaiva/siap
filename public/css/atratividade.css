@@ -1,0 +1,11 @@
+.maxcaracteres{
+    color: #1abc9c; 
+    font-size: 12px;
+}
+.contagem{
+    color: #c00; 
+    font-size: 12px;
+}
+textarea{  
+    overflow:hidden;
+}
