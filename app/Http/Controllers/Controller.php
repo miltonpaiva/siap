@@ -60,17 +60,21 @@ class Controller extends BaseController
           $has_archive = is_object($archive);
 
           if ($has_archive) {
+                $path_root = $_SERVER["DOCUMENT_ROOT"] . '/';
+                $uploaddir = "{$path_root}/files/" . $startup_id . '/';
+
+                $file_name = $archive->getClientOriginalName();
+                $temp_name = $archive->getPathName();
+
                 try {
-                  $path_root = $_SERVER["DOCUMENT_ROOT"] . '/';
-                  $uploaddir = "{$path_root}/files/" . $startup_id . '/';
 
                   $dir_exist = is_dir($uploaddir);
                   if (!$dir_exist) {
                       $dir_exist = mkdir($uploaddir, 0777, true);
+                  }else{
+                    chmod($uploaddir, 0777);
                   }
 
-                  $file_name = $archive->getClientOriginalName();
-                  $temp_name = $archive->getPathName();
                   $uploadfile = $uploaddir . basename($file_name);
                   $uploaded = move_uploaded_file($temp_name, $uploadfile);
                   $attachment =
