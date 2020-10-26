@@ -206,8 +206,8 @@
                       <th>Experiência</th>
                       <th>Alinhamento</th>
                       <th>Operação</th>
-                      <th>Startup</th>
                       <th>Status</th>
+                      <th>Startup</th>
                       <th>Cidade</th>
                       <th>Região</th>
                       <th>Categoria</th>
@@ -221,8 +221,8 @@
                       <th>Experiência</th>
                       <th>Alinhamento</th>
                       <th>Operação</th>
-                      <th>Startup</th>
                       <th>Status</th>
+                      <th>Startup</th>
                       <th>Cidade</th>
                       <th>Região</th>
                       <th>Categoria</th>
