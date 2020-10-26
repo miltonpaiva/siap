@@ -208,6 +208,7 @@
                       <th>Operação</th>
                       <th>Status</th>
                       <th>Startup</th>
+                      <th>Qtd. Time</th>
                       <th>Cidade</th>
                       <th>Região</th>
                       <th>Categoria</th>
@@ -223,6 +224,7 @@
                       <th>Operação</th>
                       <th>Status</th>
                       <th>Startup</th>
+                      <th>Qtd. Time</th>
                       <th>Cidade</th>
                       <th>Região</th>
                       <th>Categoria</th>
@@ -297,6 +299,7 @@
                           @endif
                         </td>
                         <td>{{$rating['startup']['name']}}</td>
+                        <td>{{$rating['startup']['qtd_prtc']}}</td>
                         <td>{{$rating['startup']['city']}}</td>
                         <td>{{$rating['startup']['region']}}</td>
                         <td>{{$rating['startup']['category']}}</td>

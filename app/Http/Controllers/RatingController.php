@@ -189,6 +189,16 @@ class RatingController extends Controller
 
         $users = Query::queryActionIn('users', $custom_args_users);
 
+        $custom_args_participants['column'] = 'startup';
+        $custom_args_participants['values'] = $sttps_ids;
+
+        $participants = Query::queryActionIn('participants', $custom_args_participants);
+
+        $prtc = [];
+        foreach ($participants as $p) {
+            $prtc[$p['startup']][$p['id']] = $p['id'];
+        }
+
         $total = [];
         $ids   = [];
 
@@ -206,6 +216,12 @@ class RatingController extends Controller
                 $data[$key]['user'] = $users[$rating['evaluator']];
                 $data[$key]['startup'] = $startups[$rating['startup']];
                 $data[$key]['total'] = $total[$key] += $rating['note'];
+
+                if (isset($prtc[$rating['startup']])) {
+                    $data[$key]['startup']['qtd_prtc'] = count($prtc[$rating['startup']]);
+                }else{
+                    $data[$key]['startup']['qtd_prtc'] = 0;
+                }
 
                 $city = $startups[$rating['startup']]['city'];
                 $is_city =
@@ -228,6 +244,12 @@ class RatingController extends Controller
                 $data[$key]['user']['name'] = 'Não avaliado';
                 $data[$key]['startup'] = $startup;
                 $data[$key]['total'] = $total[$key];
+
+                if (isset($prtc[$rating['startup']])) {
+                    $data[$key]['startup']['qtd_prtc'] = count($prtc[$rating['startup']]);
+                }else{
+                    $data[$key]['startup']['qtd_prtc'] = 0;
+                }
 
                 $city = $startup['city'];
                 $is_city =
