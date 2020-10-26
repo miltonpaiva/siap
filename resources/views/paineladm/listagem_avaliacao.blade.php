@@ -203,8 +203,11 @@
                     <tr>
                       <th>Ação</th>
                       <th>Nota Total</th>
-                      <th>Status</th>
+                      <th>Experiência</th>
+                      <th>Alinhamento</th>
+                      <th>Operação</th>
                       <th>Startup</th>
+                      <th>Status</th>
                       <th>Cidade</th>
                       <th>Região</th>
                       <th>Categoria</th>
@@ -215,8 +218,11 @@
                     <tr>
                       <th>Ação</th>
                       <th>Nota Total</th>
-                      <th>Status</th>
+                      <th>Experiência</th>
+                      <th>Alinhamento</th>
+                      <th>Operação</th>
                       <th>Startup</th>
+                      <th>Status</th>
                       <th>Cidade</th>
                       <th>Região</th>
                       <th>Categoria</th>
@@ -264,6 +270,21 @@
                           </select>
                         </td>
                         <td>{{$rating['total']}}</td>
+                        <td>
+                          Tecnologia: <b>{{@$notes[$rating['startup']['id']][1]}}</b>. <br><hr>
+                          Setor econômico: <b>{{@$notes[$rating['startup']['id']][2]}}</b>. <br><hr>
+                          Time multidisciplines: <b>{{@$notes[$rating['startup']['id']][3]}}</b>. <br><hr>
+                          Participação de mulheres: <b>{{@$notes[$rating['startup']['id']][4]}}</b>.
+                        </td>
+                        <td>
+                          Produto: <b>{{@$notes[$rating['startup']['id']][5]}}</b>. <br><hr>
+                          Setor: <b>{{@$notes[$rating['startup']['id']][7]}}</b>. <br><hr>
+                          Tecnologias: <b>{{@$notes[$rating['startup']['id']][6]}}</b>.
+                        </td>
+                        <td>
+                          Produto: <b>{{@$notes[$rating['startup']['id']][8]}}</b>. <br><hr>
+                          Vendas: <b>{{@$notes[$rating['startup']['id']][9]}}</b>. <br><hr>
+                        </td>
                         <td>
                           @if($rating['startup']['stage'] == 'rated')
                             Aguardando Habilitação

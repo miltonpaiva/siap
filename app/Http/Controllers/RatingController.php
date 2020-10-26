@@ -132,10 +132,13 @@ class RatingController extends Controller
 
         $sttps_ids = [];
         $users_ids = [];
+        $notes = [];
         foreach ($ratings as $r_id => $rating) {
             if (!in_array($rating['startup'], $sttps_ids)) {
                 $sttps_ids[] = $rating['startup'];
             }
+
+            $notes[$rating['startup']][$rating['criterea']] = $rating['note'];
 
             if (!in_array($rating['evaluator'], $users_ids)) {
                 $users_ids[] = $rating['evaluator'];
@@ -244,6 +247,7 @@ class RatingController extends Controller
             'tecnologias'  => $this->getOptions(4),
             'cities'  => $this->cities,
             'ratings' => $data,
+            'notes' => $notes,
             'message'  => self::$message,
           ];
 
