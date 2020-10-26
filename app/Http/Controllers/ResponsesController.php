@@ -4,10 +4,13 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\View;
 
+use Redirect;
 use DB;
 
+use App\Http\Controllers\StartupsController as Startup;
 use App\Http\Controllers\QueryActionController as Query;
 
 header("Access-Control-Allow-Origin: *");
@@ -151,6 +154,69 @@ class ResponsesController extends Controller
 
         echo json_encode(['status' => 200, 'message' => $result]);
         exit();
+    }
 
+    public function actionRegisterAttractive(Request $request)
+    {
+        session_start();
+        $startup_id = $_SESSION['login']['startup_id'];
+
+        $data = $request->all();
+
+        Query::transaction();
+
+        if (isset($data['files']['slide'])) {
+            $result = self::upArchive($data['files']['slide'], 'slide', $startup_id);
+            if (is_object($result)) { return $result; }
+            $attachments[] = $result;
+        }
+        if (isset($data['files']['certificados'])){
+            foreach ($data['files']['certificados'] as $att) {
+                $result = self::upArchive($att, 'certificado', $startup_id);
+                if (is_object($result)) { return $result; }
+                $attachments[] = $result;
+            }
+        }
+
+        foreach ($data['resposta'] as $criterea => $response) {
+            $attractive =
+                [
+                    'startup' => $startup_id,
+                    'criterea' => $criterea,
+                    'response' => $response,
+                ];
+
+            $result = self::registerAttractive($attractive);
+            if (is_object($result)) { return $result; }
+        }
+
+        $attachments_saved = [];
+        foreach ($attachments as $attachment) {
+            $result = Startup::registerAttachment($attachment);
+            if (is_object($result)) {
+              Query::transaction('rollBack');
+              return $result;
+            }
+            $attachments_saved[] = $result;
+        }
+
+        $result = Startup::update(['stage' => 'complete_attractive'], $startup_id);
+
+        Query::transaction('commit');
+
+        return redirect()->route('user.painel.view');
+    }
+
+    public static function registerAttractive($attractive)
+    {
+        try {
+            $new_attractive_id =
+                DB::table('attractive')->insertGetId($attractive);
+
+            return $new_attractive_id;
+         } catch (\Exception $e) {
+            Log::error("Não foi possivel registrar a resposta da startup [{$attractive['startup']}]", [$e->getMessage()]);
+            return Redirect::back()->withErrors(["Não foi fazer registrar a resposta da startup [{$attractive['startup']}]."]);
+         }
     }
 }

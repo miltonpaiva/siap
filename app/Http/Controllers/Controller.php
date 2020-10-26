@@ -7,6 +7,9 @@ use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Foundation\Bus\DispatchesJobs;
 use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Routing\Controller as BaseController;
+use Illuminate\Support\Facades\Log;
+
+use Redirect;
 
 use App\Http\Controllers\QueryActionController as Query;
 
@@ -50,6 +53,40 @@ class Controller extends BaseController
         }
 
         return $data;
+    }
+
+    public static function upArchive($archive, $type, $startup_id)
+    {
+          $has_archive = is_object($archive);
+
+          if ($has_archive) {
+                try {
+                  $path_root = $_SERVER["DOCUMENT_ROOT"] . '/';
+                  $uploaddir = "{$path_root}/files/" . $startup_id . '/';
+
+                  $dir_exist = is_dir($uploaddir);
+                  if (!$dir_exist) {
+                      $dir_exist = mkdir($uploaddir, 0777, true);
+                  }
+
+                  $file_name = $archive->getClientOriginalName();
+                  $temp_name = $archive->getPathName();
+                  $uploadfile = $uploaddir . basename($file_name);
+                  $uploaded = move_uploaded_file($temp_name, $uploadfile);
+                  $attachment =
+                      [
+                        'archive' => $file_name,
+                        'type' => $type,
+                        'startup' => $startup_id,
+                      ];
+
+                } catch (\Exception $e) {
+                    Log::error("Não foi possivel fazer upload do {$type} [{$file_name}] da startup [{$startup_id}]", [$e->getMessage()]);
+                    return Redirect::back()->withErrors(["Não foi possivel fazer upload do {$type} [{$file_name}] da startup [{$startup_id}]"]);
+                }
+                return $attachment;
+          }
+          return false;
     }
 
     public static function getDataRegions()

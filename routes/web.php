@@ -45,6 +45,7 @@ Route::get('/painel-usuario/atratividade', 'UsersController@viewAttractive')->na
 
 //ACTION ROUTES REPONSES
 Route::get('/response/register/', 'ResponsesController@actionRegister')->name('response.register');
+Route::post('/response/register/attractive', 'ResponsesController@actionRegisterAttractive')->name('response.register.attractive');
 Route::get('/response/option/new/', 'ResponsesController@newOption')->name('response.new.option');
 
 

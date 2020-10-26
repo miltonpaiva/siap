@@ -314,6 +314,18 @@ class UsersController extends Controller
             return $user_logged;
         }
 
-        return view('paineluser/atratividade_criacao', []);
+        $startup_id = $_SESSION['login']['startup_id'];
+
+        $custom_args['conditions'] =
+            [
+                ['id', '=', $startup_id]
+            ];
+
+        $startup = current(Query::queryAction('startups', $custom_args));
+
+        $view =
+            'paineluser/atratividade_' .
+             self::clearString($startup['category']);
+        return view($view, []);
     }
 }
