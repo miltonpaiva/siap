@@ -271,19 +271,19 @@
                         </td>
                         <td>{{$rating['total']}}</td>
                         <td>
-                          Tecnologia: <b>{{@$notes[$key][1]}}</b>. <br><hr>
-                          Setor econômico: <b>{{@$notes[$key][2]}}</b>. <br><hr>
-                          Time multidisciplines: <b>{{@$notes[$key][3]}}</b>. <br><hr>
-                          Participação de mulheres: <b>{{@$notes[$key][4]}}</b>.
+                          <p style="margin: 0px; font-size: 12px;"> Tecnologia: <b>{{@$notes[$key][1]}}</b>. </p><hr style="margin: 0px;" >
+                          <p style="margin: 0px; font-size: 12px;"> Setor econômico: <b>{{@$notes[$key][2]}}</b>.</p><hr style="margin: 0px;" >
+                          <p style="margin: 0px; font-size: 12px;"> Time multidisciplines: <b>{{@$notes[$key][3]}}</b>.</p><hr style="margin: 0px;" >
+                          <p style="margin: 0px; font-size: 12px;">Participação de mulheres: <b>{{@$notes[$key][4]}}</b>.</p>
                         </td>
                         <td>
-                          Produto: <b>{{@$notes[$key][5]}}</b>. <br><hr>
-                          Setor: <b>{{@$notes[$key][7]}}</b>. <br><hr>
-                          Tecnologias: <b>{{@$notes[$key][6]}}</b>.
+                          <p style="margin: 0px; font-size: 12px;"> Produto: <b>{{@$notes[$key][5]}}</b>. </p><hr style="margin: 0px;" >
+                          <p style="margin: 0px; font-size: 12px;"> Setor: <b>{{@$notes[$key][7]}}</b>. </p><hr style="margin: 0px;" >
+                          <p style="margin: 0px; font-size: 12px;">Tecnologias: <b>{{@$notes[$key][6]}}</b>.</p>
                         </td>
                         <td>
-                          Produto: <b>{{@$notes[$key][8]}}</b>. <br><hr>
-                          Vendas: <b>{{@$notes[$key][9]}}</b>. <br><hr>
+                          <p style="margin: 0px; font-size: 12px;"> Produto: <b>{{@$notes[$key][8]}}</b>. </p><hr style="margin: 0px;" >
+                          <p style="margin: 0px; font-size: 12px;"> Vendas: <b>{{@$notes[$key][9]}}</b>. </p>
                         </td>
                         <td>
                           @if($rating['startup']['stage'] == 'rated')
