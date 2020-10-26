@@ -325,9 +325,8 @@ class StartupsController extends Controller
 
         return $new_attachment_id;
       } catch (\Exception $e) {
-        Log::error("Não foi possivel registrar o arquivo", [$e->getMessage()]);
-
-       return false;
+        Log::error("Não foi possivel registrar o arquivo [{$attachment['archive']}] da startup [{$attachment['startup']}]", [$e->getMessage()]);
+        return Redirect::back()->withErrors(["Não foi fazer registrar o arquivo [{$attachment['archive']}] da startup [{$attachment['startup']}]."]);
       }
     }
 
