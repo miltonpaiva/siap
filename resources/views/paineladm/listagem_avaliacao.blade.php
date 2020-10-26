@@ -292,6 +292,9 @@
                             Aguardando Habilitação
                           @endif
                           @if($rating['startup']['stage'] == 'approved')
+                            Em Atratividade
+                          @endif
+                          @if($rating['startup']['stage'] == 'complete_attractive')
                             Aguardando 2° avaliação
                           @endif
                           @if($rating['startup']['stage'] == 'complete')
