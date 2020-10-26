@@ -138,7 +138,8 @@ class UsersController extends Controller
             [
                 'startup.view',
                 'startup.register.view',
-                'user.painel.view'
+                'user.painel.view',
+                'user.attractive.view',
             ];
 
         if (!isset($_SESSION['login'])) {
