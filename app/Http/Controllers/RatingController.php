@@ -138,7 +138,9 @@ class RatingController extends Controller
                 $sttps_ids[] = $rating['startup'];
             }
 
-            $notes[$rating['startup']][$rating['criterea']] = $rating['note'];
+            $key = "{$rating['evaluator']}_{$rating['startup']}";
+
+            $notes[$key][$rating['criterea']] = $rating['note'];
 
             if (!in_array($rating['evaluator'], $users_ids)) {
                 $users_ids[] = $rating['evaluator'];

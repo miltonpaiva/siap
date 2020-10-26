@@ -231,7 +231,7 @@
                   </tfoot>
                   <tbody>
 
-                    @foreach($ratings as $rating)
+                    @foreach($ratings as $key => $rating)
 
                       <tr
                             @if($rating['startup']['stage'] == 'complete')
@@ -271,19 +271,19 @@
                         </td>
                         <td>{{$rating['total']}}</td>
                         <td>
-                          Tecnologia: <b>{{@$notes[$rating['startup']['id']][1]}}</b>. <br><hr>
-                          Setor econômico: <b>{{@$notes[$rating['startup']['id']][2]}}</b>. <br><hr>
-                          Time multidisciplines: <b>{{@$notes[$rating['startup']['id']][3]}}</b>. <br><hr>
-                          Participação de mulheres: <b>{{@$notes[$rating['startup']['id']][4]}}</b>.
+                          Tecnologia: <b>{{@$notes[$key][1]}}</b>. <br><hr>
+                          Setor econômico: <b>{{@$notes[$key][2]}}</b>. <br><hr>
+                          Time multidisciplines: <b>{{@$notes[$key][3]}}</b>. <br><hr>
+                          Participação de mulheres: <b>{{@$notes[$key][4]}}</b>.
                         </td>
                         <td>
-                          Produto: <b>{{@$notes[$rating['startup']['id']][5]}}</b>. <br><hr>
-                          Setor: <b>{{@$notes[$rating['startup']['id']][7]}}</b>. <br><hr>
-                          Tecnologias: <b>{{@$notes[$rating['startup']['id']][6]}}</b>.
+                          Produto: <b>{{@$notes[$key][5]}}</b>. <br><hr>
+                          Setor: <b>{{@$notes[$key][7]}}</b>. <br><hr>
+                          Tecnologias: <b>{{@$notes[$key][6]}}</b>.
                         </td>
                         <td>
-                          Produto: <b>{{@$notes[$rating['startup']['id']][8]}}</b>. <br><hr>
-                          Vendas: <b>{{@$notes[$rating['startup']['id']][9]}}</b>. <br><hr>
+                          Produto: <b>{{@$notes[$key][8]}}</b>. <br><hr>
+                          Vendas: <b>{{@$notes[$key][9]}}</b>. <br><hr>
                         </td>
                         <td>
                           @if($rating['startup']['stage'] == 'rated')
