@@ -95,28 +95,40 @@
                         <p class="text-dark"><em>Qual é o problema?</em></p>
 
                         <div class="form-group">
-                          <textarea class="form-control text_resp" name="resposta[18]" id="respostaproblema1" rows='8' placeholder='Máximo de caracteres 1.000.' maxlength="1000"></textarea>
+                            @if(@$attrs[18]['id'])
+                            <input type="hidden" name="response[18]" value="{{$attrs[18]['id']}}">
+                            @endif
+                          <textarea class="form-control text_resp" name="resposta[18]" criterea="18" id="respostaproblema1" rows='8' placeholder='Máximo de caracteres 1.000.' maxlength="1000">{{@$attrs[18]['response']}}</textarea>
                           <label class="float-right" for="exampleFormControlTextarea1"><span class="contagem" id="caracteresproblema1"></span></label>
                         </div>
 
                         <p class="text-dark"><em>Quais evidências sustentam que o problema existe?</em></p>
 
                         <div class="form-group">
-                          <textarea class="form-control text_resp" name="resposta[19]" id="respostaproblema2" rows='8' placeholder='Máximo de caracteres 1.000.' maxlength="1000"></textarea>
+                            @if(@$attrs[19]['id'])
+                            <input type="hidden" name="response[19]" value="{{$attrs[19]['id']}}">
+                            @endif
+                          <textarea class="form-control text_resp" name="resposta[19]" criterea="19" id="respostaproblema2" rows='8' placeholder='Máximo de caracteres 1.000.' maxlength="1000">{{@$attrs[19]['response']}}</textarea>
                           <label class="float-right" for="exampleFormControlTextarea1"><span class="contagem" id="caracteresproblema2"></span></label>
                         </div>
 
                         <p class="text-dark"><em>O problema é urgente, mal atendido, impraticável e/ou inevitável?</em></p>
 
                         <div class="form-group">
-                          <textarea class="form-control text_resp" name="resposta[20]" id="respostaproblema3" rows='8' placeholder='Máximo de caracteres 1.000.' maxlength="1000"></textarea>
+                            @if(@$attrs[20]['id'])
+                            <input type="hidden" name="response[20]" value="{{$attrs[20]['id']}}">
+                            @endif
+                          <textarea class="form-control text_resp" name="resposta[20]" criterea="20" id="respostaproblema3" rows='8' placeholder='Máximo de caracteres 1.000.' maxlength="1000">{{@$attrs[20]['response']}}</textarea>
                           <label class="float-right" for="exampleFormControlTextarea1"><span class="contagem" id="caracteresproblema3"></span></label>
                         </div>
 
                         <p class="text-dark"><em>O problema é visível e/ou crítico?</em></p>
 
                         <div class="form-group">
-                          <textarea class="form-control text_resp" name="resposta[21]" id="respostaproblema4" rows='8' placeholder='Máximo de caracteres 1.000.' maxlength="1000"></textarea>
+                            @if(@$attrs[21]['id'])
+                            <input type="hidden" name="response[21]" value="{{$attrs[21]['id']}}">
+                            @endif
+                          <textarea class="form-control text_resp" name="resposta[21]" criterea="21" id="respostaproblema4" rows='8' placeholder='Máximo de caracteres 1.000.' maxlength="1000">{{@$attrs[21]['response']}}</textarea>
                           <label class="float-right" for="exampleFormControlTextarea1"><span class="contagem" id="caracteresproblema4"></span></label>
                         </div>
 
@@ -129,7 +141,10 @@
                         <p class="text-dark"><em>Quem é o cliente-alvo?</em></p>
 
                         <div class="form-group">
-                          <textarea class="form-control text_resp" name="resposta[22]" id="respostaClienteAlvo1" rows='8' placeholder='Máximo de caracteres 1.000.' maxlength="1000"></textarea>
+                            @if(@$attrs[22]['id'])
+                            <input type="hidden" name="response[22]" value="{{$attrs[22]['id']}}">
+                            @endif
+                          <textarea class="form-control text_resp" name="resposta[22]" criterea="22" id="respostaClienteAlvo1" rows='8' placeholder='Máximo de caracteres 1.000.' maxlength="1000">{{@$attrs[22]['response']}}</textarea>
                           <label class="float-right" for="exampleFormControlTextarea1"><span class="contagem" id="caracteresClienteAlvo1"></span></label>
                         </div>
 
@@ -137,7 +152,10 @@
                         <p class="text-dark"><em>Quais são as necessidades e desejos deles?</em></p>
 
                         <div class="form-group">
-                          <textarea class="form-control text_resp" name="resposta[23]" id="respostaClienteAlvo2" rows='8' placeholder='Máximo de caracteres 1.000.' maxlength="1000"></textarea>
+                            @if(@$attrs[23]['id'])
+                            <input type="hidden" name="response[23]" value="{{$attrs[23]['id']}}">
+                            @endif
+                          <textarea class="form-control text_resp" name="resposta[23]" criterea="23" id="respostaClienteAlvo2" rows='8' placeholder='Máximo de caracteres 1.000.' maxlength="1000">{{@$attrs[23]['response']}}</textarea>
                           <label class="float-right" for="exampleFormControlTextarea1"><span class="contagem" id="caracteresClienteAlvo2"></span></label>
                         </div>
 
@@ -145,7 +163,10 @@
                         <p class="text-dark"><em>Qual é o tamanho do mercado?</em></p>
 
                         <div class="form-group">
-                          <textarea class="form-control text_resp" name="resposta[24]" id="respostaClienteAlvo3" rows='8' placeholder='Máximo de caracteres 1.000.' maxlength="1000"></textarea>
+                            @if(@$attrs[24]['id'])
+                            <input type="hidden" name="response[24]" value="{{$attrs[24]['id']}}">
+                            @endif
+                          <textarea class="form-control text_resp" name="resposta[24]" criterea="24" id="respostaClienteAlvo3" rows='8' placeholder='Máximo de caracteres 1.000.' maxlength="1000">{{@$attrs[24]['response']}}</textarea>
                           <label class="float-right" for="exampleFormControlTextarea1"><span class="contagem" id="caracteresClienteAlvo3"></span></label>
                         </div>
 
@@ -158,7 +179,10 @@
                         <p class="text-dark"><em>Quais ganhos os clientes experimentarão?</em></p>
 
                         <div class="form-group">
-                          <textarea class="form-control text_resp" name="resposta[25]" id="respostaPropostaValor1" rows='8' placeholder='Máximo de caracteres 1.000.' maxlength="1000"></textarea>
+                            @if(@$attrs[25]['id'])
+                            <input type="hidden" name="response[25]" value="{{$attrs[25]['id']}}">
+                            @endif
+                          <textarea class="form-control text_resp" name="resposta[25]" criterea="25" id="respostaPropostaValor1" rows='8' placeholder='Máximo de caracteres 1.000.' maxlength="1000">{{@$attrs[25]['response']}}</textarea>
                           <label class="float-right" for="exampleFormControlTextarea1"><span class="contagem" id="caracteresPropostaValor1"></span></label>
                         </div>
                         
@@ -166,7 +190,10 @@
                         <p class="text-dark"><em>Que dores os clientes experimentarão?</em></p>
 
                         <div class="form-group">
-                          <textarea class="form-control text_resp" name="resposta[26]" id="respostaPropostaValor2" rows='8' placeholder='Máximo de caracteres 1.000.' maxlength="1000"></textarea>
+                            @if(@$attrs[26]['id'])
+                            <input type="hidden" name="response[26]" value="{{$attrs[26]['id']}}">
+                            @endif
+                          <textarea class="form-control text_resp" name="resposta[26]" criterea="26" id="respostaPropostaValor2" rows='8' placeholder='Máximo de caracteres 1.000.' maxlength="1000">{{@$attrs[26]['response']}}</textarea>
                           <label class="float-right" for="exampleFormControlTextarea1"><span class="contagem" id="caracteresPropostaValor2"></span></label>
                         </div>
 
@@ -179,7 +206,10 @@
                        <p class="text-dark"><em>Quem são os concorrentes e seus clientes?</em></p>
                        
                        <div class="form-group">
-                         <textarea class="form-control text_resp" name="resposta[27]" id="respostaConcorrentes1" rows='8' placeholder='Máximo de caracteres 1.000.' maxlength="1000"></textarea>
+                            @if(@$attrs[27]['id'])
+                            <input type="hidden" name="response[27]]" value="{{$attrs[27]['id']}}">
+                            @endif
+                         <textarea class="form-control text_resp" name="resposta[27]" criterea="27" id="respostaConcorrentes1" rows='8' placeholder='Máximo de caracteres 1.000.' maxlength="1000">{{@$attrs[27]['response']}}</textarea>
                          <label class="float-right" for="exampleFormControlTextarea1"><span class="contagem" id="caracteresConcorrentes1"></span></label>
                        </div>
 
@@ -187,7 +217,10 @@
                        <p class="text-dark"><em>Quais são os seus recursos mínimos viáveis?</em></p>
                        
                        <div class="form-group">
-                         <textarea class="form-control text_resp" name="resposta[28]" id="respostaConcorrentes2" rows='8' placeholder='Máximo de caracteres 1.000.' maxlength="1000"></textarea>
+                            @if(@$attrs[28]['id'])
+                            <input type="hidden" name="response[28]]" value="{{$attrs[28]['id']}}">
+                            @endif
+                         <textarea class="form-control text_resp" name="resposta[28]" criterea="28" id="respostaConcorrentes2" rows='8' placeholder='Máximo de caracteres 1.000.' maxlength="1000">{{@$attrs[28]['response']}}</textarea>
                          <label class="float-right" for="exampleFormControlTextarea1"><span class="contagem" id="caracteresConcorrentes2"></span></label>
                        </div>
 
@@ -195,7 +228,10 @@
                        <p class="text-dark"><em>Por que esses recursos são valiosos e raros?</em></p>
                        
                        <div class="form-group">
-                         <textarea class="form-control text_resp" name="resposta[29]" id="respostaConcorrentes3" rows='8' placeholder='Máximo de caracteres 1.000.' maxlength="1000"></textarea>
+                            @if(@$attrs[29]['id'])
+                            <input type="hidden" name="response[29]]" value="{{$attrs[29]['id']}}">
+                            @endif
+                         <textarea class="form-control text_resp" name="resposta[29]" criterea="29" id="respostaConcorrentes3" rows='8' placeholder='Máximo de caracteres 1.000.' maxlength="1000">{{@$attrs[29]['response']}}</textarea>
                          <label class="float-right" for="exampleFormControlTextarea1"><span class="contagem" id="caracteresConcorrentes3"></span></label>
                        </div>
 
@@ -203,7 +239,10 @@
                         <p class="text-dark"><em>Qual é o seu protótipo?</em></p>
                        
                         <div class="form-group">
-                          <textarea class="form-control text_resp" name="resposta[30]" id="respostaConcorrentes4" rows='8' placeholder='Máximo de caracteres 1.000.' maxlength="1000"></textarea>
+                            @if(@$attrs[30]['id'])
+                            <input type="hidden" name="response[30]" value="{{$attrs[30]['id']}}">
+                            @endif
+                          <textarea class="form-control text_resp" name="resposta[30]" criterea="30" id="respostaConcorrentes4" rows='8' placeholder='Máximo de caracteres 1.000.' maxlength="1000">{{@$attrs[30]['response']}}</textarea>
                           <label class="float-right" for="exampleFormControlTextarea1"><span class="contagem" id="caracteresConcorrentes4"></span></label>
                         </div>
                      
@@ -223,7 +262,10 @@
                           <p class="text-dark"><em>Quais são as estratégias e preços dos concorrentes?</em></p>
                           
                           <div class="form-group">
-                            <textarea class="form-control text_resp" name="resposta[31]" id="respostaEstrategiaMercado1" rows='8' placeholder='Máximo de caracteres 1.000.' maxlength="1000"></textarea>
+                            @if(@$attrs[31]['id'])
+                            <input type="hidden" name="response[31]" value="{{$attrs[31]['id']}}">
+                            @endif
+                            <textarea class="form-control text_resp" name="resposta[31]" criterea="31" id="respostaEstrategiaMercado1" rows='8' placeholder='Máximo de caracteres 1.000.' maxlength="1000">{{@$attrs[31]['response']}}</textarea>
                             <label class="float-right" for="exampleFormControlTextarea1"><span class="contagem" id="caracteresEstrategiaMercado1"></span></label>
                           </div>
 
@@ -231,7 +273,10 @@
                           <p class="text-dark"><em>Qual é a nossa estratégia e preços?</em></p>
                           
                           <div class="form-group">
-                            <textarea class="form-control text_resp" name="resposta[32]" id="respostaEstrategiaMercado2" rows='8' placeholder='Máximo de caracteres 1.000.' maxlength="1000"></textarea>
+                            @if(@$attrs[32]['id'])
+                            <input type="hidden" name="response[32]" value="{{$attrs[32]['id']}}">
+                            @endif
+                            <textarea class="form-control text_resp" name="resposta[32]" criterea="32" id="respostaEstrategiaMercado2" rows='8' placeholder='Máximo de caracteres 1.000.' maxlength="1000">{{@$attrs[32]['response']}}</textarea>
                             <label class="float-right" for="exampleFormControlTextarea1"><span class="contagem" id="caracteresEstrategiaMercado2"></span></label>
                           </div>
                           
@@ -245,7 +290,10 @@
                             </p>
                           
                           <div class="form-group">
-                            <textarea class="form-control text_resp" name="resposta[33]" id="respostaDistribuicao1" rows='8' placeholder='Máximo de caracteres 1.000.' maxlength="1000"></textarea>
+                            @if(@$attrs[33]['id'])
+                            <input type="hidden" name="response[33]" value="{{$attrs[33]['id']}}">
+                            @endif
+                            <textarea class="form-control text_resp" name="resposta[33]" criterea="33" id="respostaDistribuicao1" rows='8' placeholder='Máximo de caracteres 1.000.' maxlength="1000">{{@$attrs[33]['response']}}</textarea>
                             <label class="float-right" for="exampleFormControlTextarea1"><span class="contagem" id="caracteresDistribuicao1"></span></label>
                           </div>
 
@@ -254,7 +302,10 @@
                           </p>
 
                         <div class="form-group">
-                          <textarea class="form-control text_resp" name="resposta[34]" id="respostaDistribuicao2" rows='8' placeholder='Máximo de caracteres 1.000.' maxlength="1000"></textarea>
+                            @if(@$attrs[34]['id'])
+                            <input type="hidden" name="response[34]" value="{{$attrs[34]['id']}}">
+                            @endif
+                          <textarea class="form-control text_resp" name="resposta[34]" criterea="34" id="respostaDistribuicao2" rows='8' placeholder='Máximo de caracteres 1.000.' maxlength="1000">{{@$attrs[34]['response']}}</textarea>
                           <label class="float-right" for="exampleFormControlTextarea1"><span class="contagem" id="caracteresDistribuicao2"></span></label>
                         </div>
 
@@ -267,7 +318,10 @@
                           <p class="text-dark"><em>Qual é o plano e o orçamento de publicidade?</em></p>
 
                           <div class="form-group">
-                            <textarea class="form-control text_resp" name="resposta[35]" id="respostaPromocao1" rows='8' placeholder='Máximo de caracteres 1.000.' maxlength="1000"></textarea>
+                            @if(@$attrs[35]['id'])
+                            <input type="hidden" name="response[35]" value="{{$attrs[35]['id']}}">
+                            @endif
+                            <textarea class="form-control text_resp" name="resposta[35]" criterea="35" id="respostaPromocao1" rows='8' placeholder='Máximo de caracteres 1.000.' maxlength="1000">{{@$attrs[35]['response']}}</textarea>
                             <label class="float-right" for="exampleFormControlTextarea1"><span class="contagem" id="caracteresPromocao1"></span></label>
                           </div>
 
@@ -275,7 +329,10 @@
                           <p class="text-dark"><em>Qual é o plano de relações públicas?</em></p>
                           
                           <div class="form-group">
-                            <textarea class="form-control text_resp" name="resposta[36]" id="respostaPromocao2" rows='8' placeholder='Máximo de caracteres 1.000.' maxlength="1000"></textarea>
+                            @if(@$attrs[36]['id'])
+                            <input type="hidden" name="response[36]" value="{{$attrs[36]['id']}}">
+                            @endif
+                            <textarea class="form-control text_resp" name="resposta[36]" criterea="36" id="respostaPromocao2" rows='8' placeholder='Máximo de caracteres 1.000.' maxlength="1000">{{@$attrs[36]['response']}}</textarea>
                             <label class="float-right" for="exampleFormControlTextarea1"><span class="contagem" id="caracteresPromocao2"></span></label>
                           </div>
 
@@ -283,7 +340,10 @@
                           <p class="text-dark"><em>Qual é o plano de vendas pessoais?</em></p>
                           
                           <div class="form-group">
-                            <textarea class="form-control text_resp" name="resposta[37]" id="respostaPromocao3" rows='8' placeholder='Máximo de caracteres 1.000.' maxlength="1000"></textarea>
+                            @if(@$attrs[37]['id'])
+                            <input type="hidden" name="response[37]" value="{{$attrs[37]['id']}}">
+                            @endif
+                            <textarea class="form-control text_resp" name="resposta[37]" criterea="37" id="respostaPromocao3" rows='8' placeholder='Máximo de caracteres 1.000.' maxlength="1000">{{@$attrs[37]['response']}}</textarea>
                             <label class="float-right" for="exampleFormControlTextarea1"><span class="contagem" id="caracteresPromocao3"></span></label>
                           </div>
 
@@ -291,7 +351,10 @@
                           <p class="text-dark"><em>Qual é o plano e o orçamento de marketing direto?</em></p>
                           
                           <div class="form-group">
-                            <textarea class="form-control text_resp" name="resposta[38]" id="respostaPromocao4" rows='8' placeholder='Máximo de caracteres 1.000.' maxlength="1000"></textarea>
+                            @if(@$attrs[38]['id'])
+                            <input type="hidden" name="response[38]" value="{{$attrs[38]['id']}}">
+                            @endif
+                            <textarea class="form-control text_resp" name="resposta[38]" criterea="38" id="respostaPromocao4" rows='8' placeholder='Máximo de caracteres 1.000.' maxlength="1000">{{@$attrs[38]['response']}}</textarea>
                             <label class="float-right" for="exampleFormControlTextarea1"><span class="contagem" id="caracteresPromocao4"></span></label>
                           </div>
 
@@ -299,7 +362,10 @@
                           <p class="text-dark"><em>Qual é o plano e orçamento de promoção de vendas?</em></p>
                           
                           <div class="form-group">
-                            <textarea class="form-control text_resp" name="resposta[39]" id="respostaPromocao5" rows='8' placeholder='Máximo de caracteres 1.000.' maxlength="1000"></textarea>
+                            @if(@$attrs[39]['id'])
+                            <input type="hidden" name="response[39]" value="{{$attrs[39]['id']}}">
+                            @endif
+                            <textarea class="form-control text_resp" name="resposta[39]" criterea="39" id="respostaPromocao5" rows='8' placeholder='Máximo de caracteres 1.000.' maxlength="1000">{{@$attrs[39]['response']}}</textarea>
                             <label class="float-right" for="exampleFormControlTextarea1"><span class="contagem" id="caracteresPromocao5"></span></label>
                           </div>
 
@@ -318,7 +384,10 @@
                           <p class="text-dark"><em>Quais tipos de fluxos de receita são usados pelos concorrentes?</em></p>
                           
                           <div class="form-group">
-                            <textarea class="form-control text_resp" name="resposta[40]" id="respostaReceita1" rows='8' placeholder='Máximo de caracteres 1.000.' maxlength="1000"></textarea>
+                            @if(@$attrs[40]['id'])
+                            <input type="hidden" name="response[40]" value="{{$attrs[40]['id']}}">
+                            @endif
+                            <textarea class="form-control text_resp" name="resposta[40]" criterea="40" id="respostaReceita1" rows='8' placeholder='Máximo de caracteres 1.000.' maxlength="1000">{{@$attrs[40]['response']}}</textarea>
                             <label class="float-right" for="exampleFormControlTextarea1"><span class="contagem" id="caracteresReceita1"></span></label>
                           </div>
 
@@ -326,7 +395,10 @@
                           <p class="text-dark"><em>Que tipos de fluxos de receita usará?</em></p>
                           
                           <div class="form-group">
-                            <textarea class="form-control text_resp" name="resposta[41]" id="respostaReceita2" rows='8' placeholder='Máximo de caracteres 1.000.' maxlength="1000"></textarea>
+                            @if(@$attrs[41]['id'])
+                            <input type="hidden" name="response[41]" value="{{$attrs[41]['id']}}">
+                            @endif
+                            <textarea class="form-control text_resp" name="resposta[41]" criterea="41" id="respostaReceita2" rows='8' placeholder='Máximo de caracteres 1.000.' maxlength="1000">{{@$attrs[41]['response']}}</textarea>
                             <label class="float-right" for="exampleFormControlTextarea2"><span class="contagem" id="caracteresReceita2"></span></label>
                           </div>
 
@@ -334,7 +406,10 @@
                           <p class="text-dark"><em>Quais são suas receitas estimadas no primeiro e no segundo ano?</em></p>
                           
                           <div class="form-group">
-                            <textarea class="form-control text_resp" name="resposta[42]" id="respostaReceita3" rows='8' placeholder='Máximo de caracteres 1.000.' maxlength="1000"></textarea>
+                            @if(@$attrs[42]['id'])
+                            <input type="hidden" name="response[42]" value="{{$attrs[42]['id']}}">
+                            @endif
+                            <textarea class="form-control text_resp" name="resposta[42]" criterea="42" id="respostaReceita3" rows='8' placeholder='Máximo de caracteres 1.000.' maxlength="1000">{{@$attrs[42]['response']}}</textarea>
                             <label class="float-right" for="exampleFormControlTextarea2"><span class="contagem" id="caracteresReceita3"></span></label>
                           </div>
 
@@ -347,7 +422,10 @@
                           <p class="text-dark"><em>Quais são seus custos estimados detalhados no primeiro e no segundo ano?</em></p>
                           
                           <div class="form-group">
-                            <textarea class="form-control text_resp" name="resposta[43]" id="respostaCusto1" rows='8' placeholder='Máximo de caracteres 1.000.' maxlength="1000"></textarea>
+                            @if(@$attrs[43]['id'])
+                            <input type="hidden" name="response[43]" value="{{$attrs[43]['id']}}">
+                            @endif
+                            <textarea class="form-control text_resp" name="resposta[43]" criterea="43" id="respostaCusto1" rows='8' placeholder='Máximo de caracteres 1.000.' maxlength="1000">{{@$attrs[43]['response']}}</textarea>
                             <label class="float-right" for="exampleFormControlTextarea1"><span class="contagem" id="caracteresCusto1"></span></label>
                           </div>
   
@@ -360,7 +438,10 @@
                           <p class="text-dark"><em>Qual é o seu processo de venda?</em></p>
                           
                           <div class="form-group">
-                            <textarea class="form-control text_resp" name="resposta[44]" id="respostaVendas1" rows='8' placeholder='Máximo de caracteres 1.000.' maxlength="1000"></textarea>
+                            @if(@$attrs[44]['id'])
+                            <input type="hidden" name="response[44]" value="{{$attrs[44]['id']}}">
+                            @endif
+                            <textarea class="form-control text_resp" name="resposta[44]" criterea="44" id="respostaVendas1" rows='8' placeholder='Máximo de caracteres 1.000.' maxlength="1000">{{@$attrs[44]['response']}}</textarea>
                             <label class="float-right" for="exampleFormControlTextarea1"><span class="contagem" id="caracteresVendas1"></span></label>
                           </div>
                           
@@ -373,7 +454,10 @@
                           <p class="text-dark"><em>Quais são suas necessidades de financiamento?</em></p>
                           
                           <div class="form-group">
-                            <textarea class="form-control text_resp" name="resposta[45]" id="respostaFinanciamento1" rows='8' placeholder='Máximo de caracteres 1.000.' maxlength="1000"></textarea>
+                            @if(@$attrs[45]['id'])
+                            <input type="hidden" name="response[45]" value="{{$attrs[45]['id']}}">
+                            @endif
+                            <textarea class="form-control text_resp" name="resposta[45]" criterea="45" id="respostaFinanciamento1" rows='8' placeholder='Máximo de caracteres 1.000.' maxlength="1000">{{@$attrs[45]['response']}}</textarea>
                             <label class="float-right" for="exampleFormControlTextarea1"><span class="contagem" id="caracteresFinanciamento1"></span></label>
                           </div>
 
@@ -381,7 +465,10 @@
                           <p class="text-dark"><em>Quem são suas fontes candidatas de financiamento?</em></p>
                           
                           <div class="form-group">
-                            <textarea class="form-control text_resp" name="resposta[46]" id="respostaFinanciamento2" rows='8' placeholder='Máximo de caracteres 1.000.' maxlength="1000"></textarea>
+                            @if(@$attrs[46]['id'])
+                            <input type="hidden" name="response[46]" value="{{$attrs[46]['id']}}">
+                            @endif
+                            <textarea class="form-control text_resp" name="resposta[46]" criterea="46" id="respostaFinanciamento2" rows='8' placeholder='Máximo de caracteres 1.000.' maxlength="1000">{{@$attrs[46]['response']}}</textarea>
                             <label class="float-right" for="exampleFormControlTextarea1"><span class="contagem" id="caracteresFinanciamento2"></span></label>
                           </div>
 
@@ -400,7 +487,10 @@
                           <p class="text-dark"><em>Quem são os fundadores?</em></p>
                           
                           <div class="form-group">
-                            <textarea class="form-control text_resp" name="resposta[47]" id="respostaFundadores1" rows='8' placeholder='Máximo de caracteres 1.000.' maxlength="1000"></textarea>
+                            @if(@$attrs[47]['id'])
+                            <input type="hidden" name="response[47]" value="{{$attrs[47]['id']}}">
+                            @endif
+                            <textarea class="form-control text_resp" name="resposta[47]" criterea="47" id="respostaFundadores1" rows='8' placeholder='Máximo de caracteres 1.000.' maxlength="1000">{{@$attrs[47]['response']}}</textarea>
                             <label class="float-right" for="exampleFormControlTextarea1"><span class="contagem" id="caracteresFundadores1"></span></label>
                           </div>
                           
@@ -413,7 +503,10 @@
                           <p class="text-dark"><em>Quem são os mentores?</em></p>
                           
                           <div class="form-group">
-                            <textarea class="form-control text_resp" name="resposta[48]" id="respostaMentores1" rows='8' placeholder='Máximo de caracteres 1.000.' maxlength="1000"></textarea>
+                            @if(@$attrs[48]['id'])
+                            <input type="hidden" name="response[48]" value="{{$attrs[48]['id']}}">
+                            @endif
+                            <textarea class="form-control text_resp" name="resposta[48]" criterea="48" id="respostaMentores1" rows='8' placeholder='Máximo de caracteres 1.000.' maxlength="1000">{{@$attrs[48]['response']}}</textarea>
                             <label class="float-right" for="exampleFormControlTextarea1"><span class="contagem" id="caracteresMentores1"></span></label>
                           </div>
                           
@@ -426,7 +519,10 @@
                           <p class="text-dark"><em>Quem são os principais parceiros?</em></p>
 
                           <div class="form-group">
-                            <textarea class="form-control text_resp" name="resposta[49]" id="respostaParceiros1" rows='8' placeholder='Máximo de caracteres 1.000.' maxlength="1000"></textarea>
+                            @if(@$attrs[49]['id'])
+                            <input type="hidden" name="response[49]" value="{{$attrs[49]['id']}}">
+                            @endif
+                            <textarea class="form-control text_resp" name="resposta[49]" criterea="49" id="respostaParceiros1" rows='8' placeholder='Máximo de caracteres 1.000.' maxlength="1000">{{@$attrs[49]['response']}}</textarea>
                             <label class="float-right" for="exampleFormControlTextarea1"><span class="contagem" id="caracteresParceiros1"></span></label>
                           </div>
 
@@ -438,9 +534,13 @@
                       <fieldset id="section10" class="mt-3" style="padding: 10px">
 
                         <div class="form-group">
+                            @if(@$attrs[10]['id'])
+                            <input type="hidden" name="response[10]" value="{{$attrs[10]['id']}}">
+                            @endif
                           <label class="text-dark" for="linkVideo2"><b>Link do vídeo</b></label>
-                          <input type="text" class="form-control" id="linkVideo2" name="resposta[10]" onchange="fileLinkB()" aria-describedby="linkVideo2lHelp" placeholder="Ex.: https://www.youtube.com/watch?v=MQs_MGaXqhk">
-                          <div id="S2"></div>
+                          <input type="text" class="form-control text_resp " id="linkVideo2" name="resposta[10]" criterea="10" onchange="fileLinkB()" aria-describedby="linkVideo2lHelp" placeholder="Ex.: https://www.youtube.com/watch?v=MQs_MGaXqhk" value="{{@$attrs[10]['response']}}" >
+                          <div id="alertaLink2"></div>
+
                         </div>
 
                         <div class="form-group">
@@ -561,6 +661,54 @@
   <!-- Page level custom scripts -->
   <script src="{{ asset('js/datatables-demo.js') }}"></script>
 
+  <script>
+    var textareas = document.getElementsByClassName('text_resp');
+    var route = '{{ route('response.register.attractive.dinamic')}}';
+    var startup = <?= $_SESSION['login']['startup_id']; ?>;
+    for(key in textareas){
+        if (textareas[key].id) {
+            var data = textareas[key];
+            data.addEventListener("focusout", function(event) {
+            var criterea = event.target.getAttribute("criterea");
+            var response = event.target.value;
+
+            var url = route + '?startup=' + startup + '&criterea=' + criterea + '&response=' + response;
+            sendResponse(url);
+
+            });
+        }
+    }
+
+    function sendResponse(url) {
+
+        console.log('url');
+        console.log(url);
+
+        var xhttp = new XMLHttpRequest();
+        xhttp.open("GET", url, true);
+
+        xhttp.onreadystatechange = function(){
+            if ( xhttp.readyState == 4 && xhttp.status == 200 ) {
+
+                var request_response = xhttp.responseText;
+                console.log(xhttp.responseText);
+                if (request_response) {
+                    var json_config = JSON.parse(request_response);
+                    if (json_config.status == 400) {
+                        console.log('Não foi possivel salvar :(');
+                    }else{
+                        console.log('Salvo com sucesso ! :)');
+                    }
+                }else{
+                    console.log('Não foi possivel salvar :(');
+                }
+
+            }
+        }
+
+        xhttp.send();
+    }
+  </script>
 
 </body>
 </html>

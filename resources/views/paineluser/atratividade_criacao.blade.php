@@ -98,7 +98,10 @@
                         dinâmica do setor da startup.</em></p>
 
                         <div class="form-group">
-                          <textarea class="form-control text_resp " name="resposta[11]" id="resposta1" rows='11' placeholder='Máximo de caracteres 1.000.' maxlength="1000"></textarea>
+                          @if(@$attrs[11]['id'])
+                          <input type="hidden" name="response[11]" value="{{$attrs[11]['id']}}">
+                          @endif
+                          <textarea class="form-control text_resp " name="resposta[11]" criterea="11" id="resposta1" rows='11' placeholder='Máximo de caracteres 1.000.' maxlength="1000">{{@$attrs[11]['response']}}</textarea>
                           <label class="float-right" for="exampleFormControlTextarea1"><span class="contagem" id="caracteres1"></span></label>
                         </div>
 
@@ -110,7 +113,10 @@
                           nos clientes.</em></p>
 
                         <div class="form-group">
-                          <textarea class="form-control text_resp " name="resposta[12]" id="resposta2" rows='11' placeholder='Máximo de caracteres 1.000.' maxlength="1000"></textarea>
+                          @if(@$attrs[12]['id'])
+                          <input type="hidden" name="response[12]" value="{{$attrs[12]['id']}}">
+                          @endif
+                          <textarea class="form-control text_resp " name="resposta[12]" criterea="12" id="resposta2" rows='11' placeholder='Máximo de caracteres 1.000.' maxlength="1000">{{@$attrs[12]['response']}}</textarea>
                           <label class="float-right" for="exampleFormControlTextarea1"><span class="contagem" id="caracteres2"></span></label>
                         </div>
 
@@ -121,7 +127,10 @@
                           mercado no qual a startup vai operar.</em></p>
 
                         <div class="form-group">
-                          <textarea class="form-control text_resp " name="resposta[13]" id="resposta3" rows='11' placeholder='Máximo de caracteres 1.000.' maxlength="1000"></textarea>
+                          @if(@$attrs[13]['id'])
+                          <input type="hidden" name="response[13]" value="{{$attrs[13]['id']}}">
+                          @endif
+                          <textarea class="form-control text_resp " name="resposta[13]" criterea="13" id="resposta3" rows='11' placeholder='Máximo de caracteres 1.000.' maxlength="1000">{{@$attrs[13]['response']}}</textarea>
                           <label class="float-right" for="exampleFormControlTextarea1"><span class="contagem" id="caracteres3"></span></label>
                         </div>
                       </fieldset>
@@ -140,7 +149,10 @@
                             concorrentes para produzir um produto com mais benefícios para o cliente.</em></p>
 
                           <div class="form-group">
-                            <textarea class="form-control text_resp " name="resposta[14]" id="resposta4" rows='11' placeholder='Máximo de caracteres 1.000.' maxlength="1000"></textarea>
+                            @if(@$attrs[14]['id'])
+                            <input type="hidden" name="response[14]" value="{{$attrs[14]['id']}}">
+                            @endif
+                            <textarea class="form-control text_resp " name="resposta[14]" criterea="14" id="resposta4" rows='11' placeholder='Máximo de caracteres 1.000.' maxlength="1000">{{@$attrs[14]['response']}}</textarea>
                             <label class="float-right" for="exampleFormControlTextarea1"><span class="contagem" id="caracteres4"></span></label>
                           </div>
 
@@ -152,7 +164,10 @@
                             </p>
 
                           <div class="form-group">
-                            <textarea class="form-control text_resp " name="resposta[15]" id="resposta5" rows='11' placeholder='Máximo de caracteres 1.000.' maxlength="1000"></textarea>
+                            @if(@$attrs[15]['id'])
+                            <input type="hidden" name="response[15]" value="{{$attrs[15]['id']}}">
+                            @endif
+                            <textarea class="form-control text_resp " name="resposta[15]" criterea="15" id="resposta5" rows='11' placeholder='Máximo de caracteres 1.000.' maxlength="1000">{{@$attrs[15]['response']}}</textarea>
                             <label class="float-right" for="exampleFormControlTextarea1"><span class="contagem" id="caracteres5"></span></label>
                           </div>
 
@@ -163,7 +178,10 @@
                             são os principais benefícios que a solução oferece.</em></p>
 
                           <div class="form-group">
-                            <textarea class="form-control text_resp " name="resposta[16]" id="resposta6" rows='11' placeholder='Máximo de caracteres 1.000.' maxlength="1000"></textarea>
+                            @if(@$attrs[16]['id'])
+                            <input type="hidden" name="response[16]" value="{{$attrs[16]['id']}}">
+                            @endif
+                            <textarea class="form-control text_resp " name="resposta[16]" criterea="16" id="resposta6" rows='11' placeholder='Máximo de caracteres 1.000.' maxlength="1000">{{@$attrs[16]['response']}}</textarea>
                             <label class="float-right" for="exampleFormControlTextarea1"><span class="contagem" id="caracteres6"></span></label>
                           </div>
 
@@ -175,7 +193,10 @@
                             </p>
 
                           <div class="form-group">
-                            <textarea class="form-control text_resp " name="resposta[17]" id="resposta7" rows='11' placeholder='Máximo de caracteres 1.000.' maxlength="1000"></textarea>
+                            @if(@$attrs[17]['id'])
+                            <input type="hidden" name="response[17]" value="{{$attrs[17]['id']}}">
+                            @endif
+                            <textarea class="form-control text_resp " name="resposta[17]" criterea="17" id="resposta7" rows='11' placeholder='Máximo de caracteres 1.000.' maxlength="1000">{{@$attrs[17]['response']}}</textarea>
                             <label class="float-right" for="exampleFormControlTextarea1"><span class="contagem" id="caracteres7"></span></label>
                           </div>
                         </fieldset>
@@ -187,7 +208,10 @@
 
                         <div class="form-group">
                           <label class="text-dark" for="linkVideo"><b>Link do vídeo</b></label>
-                          <input type="text" class="form-control" id="resposta" name="resposta[10]" onchange="fileLink()" aria-describedby="linkVideolHelp" placeholder="Ex.: https://www.youtube.com/watch?v=MQs_MGaXqhk">
+                          @if(@$attrs[10]['id'])
+                          <input type="hidden" name="response[10]" value="{{$attrs[10]['id']}}">
+                          @endif
+                          <input type="text" class="form-control text_resp" id="linkVideo" name="resposta[10]" criterea="10" onchange="fileLink()" aria-describedby="linkVideolHelp" placeholder="Ex.: https://www.youtube.com/watch?v=MQs_MGaXqhk" value="{{@$attrs[10]['response']}}" >
                           <div id="alertaLink"></div>
                         </div>
 
@@ -289,7 +313,54 @@
   <!-- Page level custom scripts -->
   <script src="{{ asset('js/datatables-demo.js') }}"></script>
 
+  <script>
+    var textareas = document.getElementsByClassName('text_resp');
+    var route = '{{ route('response.register.attractive.dinamic')}}';
+    var startup = <?= $_SESSION['login']['startup_id']; ?>;
+    for(key in textareas){
+        if (textareas[key].id) {
+            var data = textareas[key];
+            data.addEventListener("focusout", function(event) {
+            var criterea = event.target.getAttribute("criterea");
+            var response = event.target.value;
 
+            var url = route + '?startup=' + startup + '&criterea=' + criterea + '&response=' + response;
+            sendResponse(url);
+
+            });
+        }
+    }
+
+    function sendResponse(url) {
+
+        console.log('url');
+        console.log(url);
+
+        var xhttp = new XMLHttpRequest();
+        xhttp.open("GET", url, true);
+
+        xhttp.onreadystatechange = function(){
+            if ( xhttp.readyState == 4 && xhttp.status == 200 ) {
+
+                var request_response = xhttp.responseText;
+                console.log(xhttp.responseText);
+                if (request_response) {
+                    var json_config = JSON.parse(request_response);
+                    if (json_config.status == 400) {
+                        console.log('Não foi possivel salvar :(');
+                    }else{
+                        console.log('Salvo com sucesso ! :)');
+                    }
+                }else{
+                    console.log('Não foi possivel salvar :(');
+                }
+
+            }
+        }
+
+        xhttp.send();
+    }
+  </script>
 </body>
 
 </html>

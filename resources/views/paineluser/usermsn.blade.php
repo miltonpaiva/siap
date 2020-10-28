@@ -322,12 +322,11 @@
 
         <!-- Begin Page Content -->
         <div class="container-fluid">
-            
-               
+
             <table class="body-wrap">
                 <tr>
                     <td class="container">
-            
+
                         <!-- Message start -->
                         <table>
                             <tr>
@@ -337,14 +336,14 @@
                             </tr>
                             <tr>
                                 <td class="content">
-            
+
                                     <h2>Olá,</h2>
-                                    
+
                                     <p>Francisco Clemilson,</p>
                                     <p>Parabéns! Seu projeto foi habilitado para participar da 2ª fase de avaliação, ANÁLISE DE ATRATIVIDADE, onde você deverá preecher e atender a todos as questões dispostas
                                     no formúlario. Boa sorte! Clique no botão que segue logo baixo!
                                     </p>
-            
+
                                     <table>
                                         <tr>
                                             <td align="center">
@@ -354,16 +353,16 @@
                                             </td>
                                         </tr>
                                     </table>
-            
+
                                 </td>
                             </tr>
                         </table>
-            
+
                     </td>
                 </tr>
             </table>
-        
-      </div>
+
+        </div>
       <!-- End of Main Content -->
 
       <!-- Footer -->
