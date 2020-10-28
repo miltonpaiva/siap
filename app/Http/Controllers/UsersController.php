@@ -230,8 +230,6 @@ class UsersController extends Controller
             'message' => "o usuario [{$data['nome']}] foi criado.",
         ];
 
-
-
         return redirect()->route('user.list');
     }
 
@@ -305,7 +303,16 @@ class UsersController extends Controller
             return $user_logged;
         }
 
-        return view('paineluser/index', []);
+        $startup_id = $_SESSION['login']['startup_id'];
+
+        $custom_args['conditions'] =
+            [
+                ['id', '=', $startup_id]
+            ];
+
+        $startup = current(Query::queryAction('startups', $custom_args));
+
+        return view('paineluser/index', [ 'startup' => $startup ]);
     }
 
     public function viewAttractive()
@@ -319,6 +326,18 @@ class UsersController extends Controller
 
         $custom_args['conditions'] =
             [
+                ['startup', '=', $startup_id]
+            ];
+
+        $attractives = Query::queryAction('attractive', $custom_args);
+
+        $attrs = [];
+        foreach ($attractives as $a_id => $attr) {
+            $attrs[$attr['criterea']] = $attr;
+        }
+
+        $custom_args['conditions'] =
+            [
                 ['id', '=', $startup_id]
             ];
 
@@ -327,6 +346,6 @@ class UsersController extends Controller
         $view =
             'paineluser/atratividade_' .
              self::clearString($startup['category']);
-        return view($view, []);
+        return view($view, ['attrs' => $attrs]);
     }
 }
