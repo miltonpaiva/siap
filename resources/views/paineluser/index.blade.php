@@ -94,7 +94,14 @@
                                 <div class="col-sm-12 col-md-6">
                                     <div class="card-body">
                                         <h2 class="card-title">Seu projeto foi enviado com sucesso!</h2>
+
+                                        @if($startup['stage'] != 'complete_attractive')
                                         <h4 class="card-title">Fique atento ao resultado parcial dos pré-aprovados que sairá no dia 10/11/2020. </h2>
+                                        @else
+                                        <h4 class="card-title">Estaremos divulgando o resultado dos aprovados dia 20/11/2020. </h2>
+                                        <h4 class="card-title">Fique atento e boa sorte!</h2>
+                                        @endif
+
 
                                     </div>
                                 </div>
