@@ -337,11 +337,16 @@
                             <tr>
                                 <td class="content">
 
-                                    <h2>Olá,</h2>
-
+                                    <h2>Parabéns!</h2>
+                                    
+                                    <!-- Trazer o nome do usuário dinânmico -->
                                     <p>Francisco Clemilson,</p>
-                                    <p>Parabéns! Seu projeto foi habilitado para participar da 2ª fase de avaliação, ANÁLISE DE ATRATIVIDADE, onde você deverá preecher e atender a todos as questões dispostas
-                                    no formúlario. Boa sorte! Clique no botão que segue logo baixo!
+                                 
+                                    <p>
+                                      Seu projeto foi habilitado para participar da 2ª fase de seleção do Programa Corredores Digitais, ANÁLISE DE ATRATIVIDADE. Você deverá preencher e atender a todos as questões dispostas no formulário até o dia 11/11/2020 às 23:59:59h.
+                                    </p>
+                                    <p>
+                                      Para te auxiliar na submissão preparamos o CURSO ANÁLISE DE ATRATIVIDADE, 20h, com os pontos importantes na hora de desenvolver um negócio inovador. <a href="#">Clique AQUI para acessar o curso.</a>
                                     </p>
 
                                     <table>
