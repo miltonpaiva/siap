@@ -312,7 +312,20 @@ class UsersController extends Controller
 
         $startup = current(Query::queryAction('startups', $custom_args));
 
-        return view('paineluser/index', [ 'startup' => $startup ]);
+        $is_criacao = ($startup['category'] == 'criação');
+
+        $url_curso =
+            ($is_criacao) ? 
+            'https://corredoresdigitais.teachable.com/p/curso-preparatorio-criacao-de-negocios' :
+            'https://corredoresdigitais.teachable.com/p/curso-preparatorio-tracao-de-negocios' ;
+
+        $vars =
+            [
+                'startup'   => $startup,
+                'url_curso' => $url_curso,
+            ];
+
+        return view('paineluser/index', $vars);
     }
 
     public function viewAttractive()
@@ -350,6 +363,19 @@ class UsersController extends Controller
 
         $attractives = Query::queryAction('attractive', $custom_args);
 
+        $custom_args['conditions'] =
+            [
+                ['startup', '=', $startup_id],
+                ['participant', '<>', NULL]
+            ];
+
+        $attachments = Query::queryAction('attachments', $custom_args);
+
+        $att_agroup = [];
+        foreach ($attachments as $a_id => $att) {
+            $att_agroup[$att['participant']] = $att;
+        }
+
         $attrs = [];
         foreach ($attractives as $a_id => $attr) {
             $attrs[$attr['criterea']] = $attr;
@@ -370,6 +396,7 @@ class UsersController extends Controller
                 'responses' => $resp_agroup,
                 'options'   => $opt_agroup,
                 'startup'   => $startup,
+                'attch'     => $att_agroup,
             ];
 
         $view =

@@ -35,7 +35,7 @@ class SendMailUser extends Mailable
         $url_curso =
             ($is_criacao) ? 
             'https://corredoresdigitais.teachable.com/p/curso-preparatorio-criacao-de-negocios' :
-            'https://algo.com' ;
+            'https://corredoresdigitais.teachable.com/p/curso-preparatorio-tracao-de-negocios' ;
 
         return $this->from('contato@corredoresdigitais.info')
                     ->subject('Seu projeto foi habilitado para a Etapa de Atratividade do Corredores Digitais')
