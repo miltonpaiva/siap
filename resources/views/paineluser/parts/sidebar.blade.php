@@ -40,6 +40,22 @@
       <!-- Divider -->
       <hr class="sidebar-divider">
 
+      <!-- Nav Item - Tables -->
+      <?php
+        $is_atratividade =
+        (
+          strrpos(@$_SERVER['REQUEST_URI'], 'atratividade')
+        );
+        if ($is_atratividade)
+          { $atratividade = 'active'; }
+        ?>
+      @if(@$startup['stage'] == 'approved')
+      <li class="nav-item <?= @$atratividade; ?>">
+        <a class="nav-link" href="{{ route('user.attractive.view') }}">
+          <i class="fas fa-fw fa-table"></i>
+          <span>Formulario de Atratividade</span></a>
+      </li>
+      @endif
       <!-- Divider -->
       <hr class="sidebar-divider d-none d-md-block">
 

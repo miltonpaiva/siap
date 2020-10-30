@@ -38,7 +38,7 @@
 
     <!-- Sidebar -->
 
-    @include('paineluser/parts/sidebar')
+    @include('paineluser/parts/sidebar', ['startup' => $startup])
 
     <!-- End of Sidebar -->
 
