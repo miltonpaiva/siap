@@ -48,6 +48,21 @@ class StartupsController extends Controller
         return $result;
     }
 
+    public static function updateParticipant($id, $participant)
+    {
+         try {
+            $result =
+                DB::table('participants')
+                          ->where('id', $id)
+                          ->update($participant);
+
+            return $result;
+         } catch (\Exception $e) {
+            Log::error("Não foi possivel atualizar o participante [{$participant['name']}]", [$e->getMessage()]);
+            return false;
+         }
+    }
+
     public function viewRegister($startup_id)
     {
 
@@ -226,6 +241,8 @@ class StartupsController extends Controller
                     'telephone' => @$time['telcontato'],
                     'email' => @$time['emailmenbro'],
                     'linkedin' => @$time['linkedin'],
+                    'state' => @$time['estado'],
+                    'emitting_organ' => @$time['orgemaissor'],
                   ];
 
                 $partcipat_saved[] =

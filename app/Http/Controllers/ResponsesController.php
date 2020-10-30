@@ -55,12 +55,17 @@ class ResponsesController extends Controller
 
     public static function update($id, $option)
     {
-        $result =
-            DB::table('responses')
-                      ->where('id', $id)
-                      ->update(['option' => $option]);
+        try {
+            $result =
+                DB::table('responses')
+                          ->where('id', $id)
+                          ->update(['option' => $option]);
 
-        return $result;
+            return $result;
+         } catch (\Exception $e) {
+            Log::error("Não foi possivel atualizar a Startup [{$attractive['startup']}]", [$e->getMessage()]);
+            return false;
+         }
     }
 
     public static function responseList()
@@ -163,7 +168,10 @@ class ResponsesController extends Controller
 
         $data = $request->all();
 
-        $attachments = [];
+        $sttp_up = self::updateStartup($startup_id, $data['startup']);
+        $prtcp_up = self::updateAndcreateParticipants($startup_id, $data);
+
+        $attachments = $prtcp_up['archive'];
 
         if (isset($data['files']['slide'])) {
             $result = self::upArchive($data['files']['slide'], 'slide', $startup_id);
@@ -200,6 +208,97 @@ class ResponsesController extends Controller
         ];
 
         return redirect()->route('user.painel.view');
+    }
+
+    public static function updateStartup($startup_id, $data)
+    {
+        $sttp =
+            [
+                'name' => $data['name'],
+                'city' => $data['city'],
+            ];
+
+        try {
+
+            $result_s = Startup::update($sttp, $startup_id);
+
+            foreach ($data['question'] as $question => $resp) {
+                $result_o[$question] = self::update($resp['response'], $resp['option']);
+            }
+
+            return ['startup' => $result_s, 'options' => $result_o, ];
+
+         } catch (\Exception $e) {
+            Log::error("Não foi possivel atualizar a Startup [{$attractive['startup']}]", [$e->getMessage()]);
+            return false;
+         }
+    }
+
+    public static function updateAndcreateParticipants($startup_id, $data)
+    {
+        $att_up = [];
+        if (isset($data['time'])) {
+            foreach ($data['time'] as $p_id => $time) {
+
+                $participant =
+                  [
+                    'name' => @$time['nome'],
+                    'function' => @$time['funcao'],
+                    'startup' => $startup_id,
+                    'rg' => @$time['rg'],
+                    'cpf' => @$time['cpf'],
+                    'institution' => @$time['instensino'],
+                    'course' => @$time['curso'],
+                    'formation' => @$time['formacao'],
+                    'address' => @$time['logradouro'],
+                    'city' => @$time['cidade'],
+                    'data_nasc' => @$time['datanasc'],
+                    'telephone' => @$time['telcontato'],
+                    'email' => @$time['emailmenbro'],
+                    'linkedin' => @$time['linkedin'],
+                    'state' => @$time['estado'],
+                    'emitting_organ' => @$time['orgemaissor'],
+                  ];
+
+                $partcipat_saved[] =
+                  $id_partcipat = Startup::updateParticipant($p_id, $participant);
+            }
+        }
+
+        if (isset($data['time_new'])) {
+            foreach ($data['time_new'] as $p_id => $time) {
+
+                $participant =
+                  [
+                    'name' => @$time['nome'],
+                    'function' => @$time['funcao'],
+                    'startup' => $startup_id,
+                    'rg' => @$time['rg'],
+                    'cpf' => @$time['cpf'],
+                    'institution' => @$time['instensino'],
+                    'course' => @$time['curso'],
+                    'formation' => @$time['formacao'],
+                    'address' => @$time['logradouro'],
+                    'city' => @$time['cidade'],
+                    'data_nasc' => @$time['datanasc'],
+                    'telephone' => @$time['telcontato'],
+                    'email' => @$time['emailmenbro'],
+                    'linkedin' => @$time['linkedin'],
+                    'state' => @$time['estado'],
+                    'emitting_organ' => @$time['orgemaissor'],
+                  ];
+
+                $partcipat_saved[] =
+                  $id_partcipat = Startup::registerParticipant($participant);
+
+                $result = self::upArchive($time['comprovacao'], 'experiencia', $startup_id);
+                $result['participant'] = $id_partcipat;
+
+                $att_up[] = $result;
+            }
+        }
+
+        return ['participants' => $partcipat_saved, 'archive' => $att_up];
     }
 
     public function saveDinamicResponse(Request $request)
