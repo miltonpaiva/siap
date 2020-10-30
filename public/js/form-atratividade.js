@@ -157,7 +157,7 @@ function checkBoxTermo(){
         }  
         if(sValor == ""){
             console.log(sValor);
-            document.getElementById("alertaSubmitLink").innerHTML = "<div class='alert alert-danger mt-3' role='alert'>O campo do PITCH VÍDEO não está preenchidos!</div>";
+            document.getElementById("alertaSubmitLink").innerHTML = "<div class='alert alert-danger mt-3' role='alert'>O campo PITCH VÍDEO ou SLIDE APRESENTAÇÂO não estão preenchidos!</div>";
             $("input[id=" + id + "]").css('border-color','#c00');
             return false;
         }         

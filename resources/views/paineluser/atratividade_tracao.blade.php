@@ -73,7 +73,7 @@
                   <a class="nav-item nav-link" id="nav-section8-tab" data-toggle="tab" href="#nav-section8" role="tab" aria-controls="nav-section8" aria-selected="false">Estratégia Financeira</a>
                   <a class="nav-item nav-link" id="nav-section9-tab" data-toggle="tab" href="#nav-section9" role="tab" aria-controls="nav-section9" aria-selected="false">Estratégia de Time</a>
                   <a class="nav-item nav-link" id="nav-section10-tab" data-toggle="tab" href="#nav-section10" role="tab" aria-controls="nav-section10" aria-selected="false">Slide e Vídeo</a>
-                  <a class="nav-item nav-link" id="nav-section11-tab" data-toggle="tab" href="#nav-section11" role="tab" aria-controls="nav-section11" aria-selected="false">Inclusão dos Certificados</a>
+                  <!--<a class="nav-item nav-link" id="nav-section11-tab" data-toggle="tab" href="#nav-section11" role="tab" aria-controls="nav-section11" aria-selected="false">Inclusão dos Certificados</a>-->
                   <a class="nav-item nav-link" id="nav-section12-tab" data-toggle="tab" href="#nav-section12" role="tab" aria-controls="nav-section12" aria-selected="false">Termo de Compromisso</a>
                 </div>
               </nav>
@@ -537,16 +537,24 @@
                             @if(@$attrs[10]['id'])
                             <input type="hidden" name="response[10]" value="{{$attrs[10]['id']}}">
                             @endif
-                          <label class="text-dark" for="linkVideo2"><b>Link do vídeo</b></label>
-                          <input type="text" class="form-control text_resp " id="linkVideo2" name="resposta[10]" criterea="10" onchange="fileLinkB()" aria-describedby="linkVideo2lHelp" placeholder="Ex.: https://www.youtube.com/watch?v=MQs_MGaXqhk" value="{{@$attrs[10]['response']}}" >
+                          <label class="text-dark" for="linkVideo2"><b>Link do pitch vídeo</b></label>
+                          <input type="text" class="form-control text_resp" id="linkVideo2" name="resposta[10]" criterea="10" onchange="fileLinkB()" aria-describedby="linkVideo2lHelp" placeholder="Ex.: https://www.youtube.com/watch?v=MQs_MGaXqhk" value="{{@$attrs[10]['response']}}" >
                           <div id="alertaLink2"></div>
+                          <div class="alert alert-secondary mt-3" role="alert">
+                              <p><strong>O pitch vídeo deverá ser estruturado em conformidade com as seções anteriores do formulário:</strong></p>
+                              <p><strong> 1.</strong> Identificação do projeto: nome da startup; cidade-sede da startup; tendência tecnológica; setor de atuação da startup; tipo de solução.</p>
+                              <p><strong> 2.</strong> Proposta de valor: problema; cliente-alvo; proposta de valor; concorrentes. </p>
+                              <p><strong> 3.</strong> Estratégia de mercado: preço; distribuição; promoção.</p>
+                              <p><strong> 4.</strong> Estratégia financeira: modelo de receita, modelo de custo, modelo de vendas ,modelo de financiamento.</p>
+                              <p><strong> 5.</strong> Estratégia de time: fundadores; mentores; parceiros.</p>
+                          </div>
 
                         </div>
 
                         <div class="form-group">
                           <label class="text-dark" for="slide"><b>Upload de slides de apresentação do projeto</b></label>
                           <div class="custom-file">
-                              <input type="file" class="custom-file-input imput_slideb" onchange="fileSlideB()" id="slide" name="files[slide]" accept="application/pdf">
+                              <input type="file" class="custom-file-input imput_slideb text_resp" onchange="fileSlideB()" id="slide" name="files[slide]" accept="application/pdf">
                               <div id="slidemsn2" class="custom-file-label text-truncate" for="slide">Somente arquivo: PDF </div>
                               <div id="alertaSlideSize2"></div>
                           </div>
@@ -555,7 +563,7 @@
                       </fieldset> 
                     </div>
 
-                      <!-- SESSAO 06 CERTIFICADOS -->
+                      <!-- SESSAO 06 CERTIFICADOS 
                       <div class="tab-pane fade" id="nav-section11" role="tabpanel" aria-labelledby="nav-section11-tab">
                         <fieldset id="section11" class="mt-3" style="padding: 10px">
 
@@ -569,7 +577,7 @@
                         </div>
   
                         </fieldset> 
-                      </div>
+                      </div>-->
 
                       <!-- SESSAO 07 TERMO DE COMPROMISSO -->
                       <div class="tab-pane fade" id="nav-section12" role="tabpanel" aria-labelledby="nav-section12-tab">
@@ -587,8 +595,9 @@
                           </div>
                           
                         </fieldset> 
-                        <button type="submit" id="btnSub2" class="btn btn-lg btn-info btn-block input-check"> Salvar as Informações </button>
-                        <div id="alertaLinkS"></div>
+                        <button type="submit" id="btnSub2" class="btn btn-lg btn-info btn-block input-check btnsub"> Salvar as Informações </button>
+                        <div id="alertaSubmitS"></div>
+                        <div id="alertaSubmitLinkS"></div>
                       </div>
                       
               </div>
