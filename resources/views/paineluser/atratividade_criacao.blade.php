@@ -73,7 +73,7 @@
                   <a class="nav-item nav-link active" id="nav-section1-tab" data-toggle="tab" href="#nav-section1" role="tab" aria-controls="nav-section1" aria-selected="true">Análise de Mercado</a>
                   <a class="nav-item nav-link" id="nav-section2-tab" data-toggle="tab" href="#nav-section2" role="tab" aria-controls="nav-section2" aria-selected="false">Oportunidade de Negócio</a>
                   <a class="nav-item nav-link" id="nav-section3-tab" data-toggle="tab" href="#nav-section3" role="tab" aria-controls="nav-section3" aria-selected="false">Slides e Vídeo</a>
-                  <a class="nav-item nav-link" id="nav-section4-tab" data-toggle="tab" href="#nav-section4" role="tab" aria-controls="nav-section4" aria-selected="false">Inclusão dos Certificados</a>
+                  <!--<a class="nav-item nav-link" id="nav-section4-tab" data-toggle="tab" href="#nav-section4" role="tab" aria-controls="nav-section4" aria-selected="false">Inclusão dos Certificados</a>-->
                   <a class="nav-item nav-link" id="nav-section5-tab" data-toggle="tab" href="#nav-section5" role="tab" aria-controls="nav-section5" aria-selected="false">Termo de Compromisso</a>
                 </div>
               </nav>
@@ -207,18 +207,24 @@
                       <fieldset id="section3" class="mt-3" style="padding: 10px">
 
                         <div class="form-group">
-                          <label class="text-dark" for="linkVideo"><b>Link do vídeo</b></label>
+                          <label class="text-dark" for="linkVideo"><b>Link do pitch vídeo</b></label>
                           @if(@$attrs[10]['id'])
                           <input type="hidden" name="response[10]" value="{{$attrs[10]['id']}}">
                           @endif
                           <input type="text" class="form-control text_resp" id="linkVideo" name="resposta[10]" criterea="10" onchange="fileLink()" aria-describedby="linkVideolHelp" placeholder="Ex.: https://www.youtube.com/watch?v=MQs_MGaXqhk" value="{{@$attrs[10]['response']}}" >
                           <div id="alertaLink"></div>
+                          <div class="alert alert-secondary mt-3" role="alert">
+                              <p><strong>O pitch vídeo deverá ser estruturado em conformidade com as seções anteriores do formulário:</strong></p>
+                              <p><strong> 1.</strong> A identificação do projeto: nome da startup; cidade-sede da startup; tendência tecnológica; setor de atuação da startup; tipo de solução.</p>
+                              <p><strong> 2.</strong> A análise de mercado: análise do setor; análise de mercado; análise de concorrentes.</p>
+                              <p><strong> 3.</strong> A oportunidade de negócio: inovação de valor; descrição do problema; descrição da solução; descrição da vantagem competitiva.</p>
+                          </div>
                         </div>
 
                         <div class="form-group">
                           <label class="text-dark" for="slide"><b>Upload de slides de apresentação do projeto</b></label>
                           <div class="custom-file">
-                              <input type="file" class="custom-file-input imput_slide" onchange="fileSlide()" id="slide" name="files[slide]" accept="application/pdf">
+                              <input type="file" class="custom-file-input imput_slide text_resp" onchange="fileSlide()" id="slide" name="files[slide]" accept="application/pdf">
                               <div id="slidemsn" class="custom-file-label text-truncate" for="slide">Somente arquivo: PDF </div>
                               <div id="alertaSlideSize"></div>
                           </div>
@@ -227,7 +233,7 @@
                       </fieldset>
                     </div>
 
-                      <!-- SESSAO 04 -->
+                      <!-- SESSAO 04 
                       <div class="tab-pane fade" id="nav-section4" role="tabpanel" aria-labelledby="nav-section4-tab">
                         <fieldset id="section4" class="mt-3" style="padding: 10px">
 
@@ -241,7 +247,7 @@
                         </div>
 
                         </fieldset>
-                      </div>
+                      </div>-->
 
                       <!-- SESSAO 05 -->
                       <div class="tab-pane fade" id="nav-section5" role="tabpanel" aria-labelledby="nav-section5-tab">
@@ -259,7 +265,10 @@
                           </div>
 
                         </fieldset>
-                        <button type="submit" id="btnSub" class="btn btn-lg btn-info btn-block input-check"> Salvar as Informações </button>
+                        <button type="submit" id="btnSub" class="btn btn-lg btn-info btn-block input-check btnsub"> Salvar as Informações </button>
+                        <div id="alertaSubmit"></div>
+                        <div id="alertaSubmitLink"></div>
+                        <div id="alertaSubmitSlide"></div>
                       </div>
 
               </div>

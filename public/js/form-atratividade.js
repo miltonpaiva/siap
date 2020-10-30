@@ -2,7 +2,8 @@ var textareas = document.getElementsByClassName('text_resp');
 for(key in textareas){
     if (textareas[key].id) {
         var data = textareas[key];
-        countCaracteres(data.id)
+        countCaracteres(data.id),
+        envForm(data.id)
     }
 }
 
@@ -26,42 +27,43 @@ function countCaracteres(id) {
     });
 }
 
-
+/*  VALIDA O LINK  */
 function fileLink(){
 
     var valorLink = document.getElementById('linkVideo').value;
-    var v = /^(?:https?:\/\/)?(?:www\.)?(?:youtu\.be\/|youtube\.com\/(?:embed\/|v\/|watch\?v=|watch\?.+&v=))((\w|-){11})(?:\S+)?$/;
-
-
-    if(valorLink == " " || !valorLink.match(v)){
-        document.getElementById("alertaLink").innerHTML = "<div class='alert alert-danger mt-3' role='alert'>Campo está vazio ou link está incorreto!</div>";
-        return false;
-    }else{
-        document.getElementById("alertaLink").innerHTML = "<div class='alert alert-success mt-3' role='alert'>Código do Link validado com sucesso! " +  RegExp.$1 + "</div>";
-        return false;
-    }
-
+    var vYoutube = /^(?:https?:\/\/)?(?:www\.)?(?:youtu\.be\/|youtube\.com\/(?:embed\/|v\/|watch\?v=|watch\?.+&v=))((\w|-){11})(?:\S+)?$/;
+    var ourV = /(http|https):\/\/(\w+:{0,1}\w*)?(\S+)(:[0-9]+)?(\/|\/([\w#!:.?+=&%!\-\/]))?/;
+    
+    
+        if(! (ourV.test(valorLink) || valorLink.match(vYoutube)) ){
+            document.getElementById("alertaLink").innerHTML = "<div class='alert alert-danger mt-3' role='alert'>O campo está vazio ou link está incorreto!</div>";
+            return false;
+        }else{
+            document.getElementById("alertaLink").innerHTML = "<div class='alert alert-success mt-3' role='alert'>Link validado com sucesso!</div>";
+            return false;
+        }
 };
 
 function fileSlide(){
 
     var imputs_file_comp = document.getElementsByClassName('imput_slide');
+ 
         for(key in imputs_file_comp){
             if (imputs_file_comp[key].id) {
                 if (imputs_file_comp[key].files.length > 0) {
                     var file_data = imputs_file_comp[key].files[0];
 
-                    var v_size = (file_data.size < 199000000);
+                    var v_size = (file_data.size < 200000000);
                     var v_type = (file_data.type == 'application/pdf');
                     //var participante = imputs_file_comp[key].id.replace('slide');
 
                     document.getElementById("slidemsn").innerText = file_data.name;
-                    document.getElementById("alertaSlideSize").innerHTML = "<div class='alert alert-success mt-3' role='alert'>O arquivo foi selecionado com sucesso!</div>";
+                    document.getElementById("alertaSlideSize").innerHTML = "<div class='alert alert-success mt-3' role='alert'>Arquivo selecionado com sucesso!</div>";
 
                     if (!v_size) {
                         //alert('o arquivo do [' + participante + '] contem mais de 200MB, tente outro!');
                         document.getElementById("slidemsn").text = file_data.name;
-                        document.getElementById("alertaSlideSize").innerHTML = "<div class='alert alert-danger mt-3' role='alert'>O arquivo contem mais de 200MB, tente outro!</div>";
+                        document.getElementById("alertaSlideSize").innerHTML = "<div class='alert alert-danger mt-3' role='alert'>O arquivo é maior que 200MB!</div>";
                         return false;
                     }
                     if (!v_type) {
@@ -75,39 +77,35 @@ function fileSlide(){
         }
 };
 
-function certificadoSlide(){
+/*function certificadoSlide(){
 
-    var imputs_file_comp = document.getElementsByClassName('imput_certificados');
-        for(key in imputs_file_comp){
-            if (imputs_file_comp[key].id) {
-                if (imputs_file_comp[key].files.length > 0) {
-                    var file_data = imputs_file_comp[key].files[0];
+    total_size = 0;
 
-                    var types = ['image/gif', 'image/jpeg', 'image/png', 'application/pdf'];
+    var imputs_fils = document.getElementsByClassName('imput_certificados');
+    for(key in imputs_fils){
+        if (imputs_fils[key].id) {
+            if (imputs_fils[key].files.length > 0) {
+                var file_data = imputs_fils[key].files[0];
+                console.log(file_data)
 
-                    var v_size = (file_data.size < 199000000);
-                    var v_type = (types.indexOf(file_data.type) > -1);
-                    //var participante = imputs_file_comp[key].id.replace('slide');
+                total_size += file_data.size;
 
-                    document.getElementById("certificadosmsn").innerText = file_data.name;
-                    document.getElementById("alertaCertificadoSize").innerHTML = "<div class='alert alert-success mt-3' role='alert'>O arquivo foi selecionado com sucesso! </div>";
+                var v_size = (total_size < 200000000);
 
-                    if (!v_size) {
-                        //alert('o arquivo do [' + participante + '] contem mais de 200MB, tente outro!');
-                        document.getElementById("certificadosmsn").text = file_data.name;
-                        document.getElementById("alertaCertificadoSize").innerHTML = "<div class='alert alert-danger mt-3' role='alert'>O arquivo contem mais de 200MB, tente outro!</div>";
-                        return false;
-                    }
-                    if (!v_type) {
-                        //alert('o arquivo do [' + participante + '] não contem a extensão (.pdf), tente outro!');
-                        document.getElementById("certificadosmsn").text = file_data.name;
-                        document.getElementById("alertaCertificadoSize").innerHTML = "<div class='alert alert-danger mt-3' role='alert'>um dos arquivos não contem a extensão correta, tente outro!</div>";
-                        return false;
-                    }
+                document.getElementById("certificadosmsn").innerText = file_data.name;
+                document.getElementById("alertaCertificadoSize").innerHTML = "<div class='alert alert-success mt-3' role='alert'>Arquivos selecionados com sucesso!</div>";
+
+                if (!v_size) {
+                    document.getElementById("certificadosmsn").text = file_data.name;
+                    document.getElementById("alertaCertificadoSize").innerHTML = "<div class='alert alert-danger mt-3' role='alert'>O tamanho dos arquivos é maior que 200MB!</div>";
+                    return false;
                 }
             }
         }
-};
+    }
+
+  
+};*/
 
 // Desabilita o botão Submit
 document.querySelector('.input-check').disabled=true;
@@ -118,12 +116,62 @@ function checkBoxTermo(){
     var btnCheck = document.getElementById('customCheck1');
     if(btnCheck.checked){
         document.querySelector('.input-check').disabled=false;
-        document.getElementById("alertaLink").innerHTML = "<div class='alert alert-danger mt-3' role='alert'>Este campo é de preenchimento obrigatório!</div>";
+        //document.getElementById("alertaLink").innerHTML = "<div class='alert alert-danger mt-3' role='alert'>Este campo é de preenchimento obrigatório!</div>";
         return false;
     }else{
         document.querySelector('.input-check').disabled=true;
-        document.getElementById("alertaLink").innerHTML = "<div class='alert alert-success mt-3' role='alert'>Código do Link validado com sucesso! " +  RegExp.$1 + "</div>";
+        //document.getElementById("alertaLink").innerHTML = "<div class='alert alert-success mt-3' role='alert'>Código do Link validado com sucesso! " +  RegExp.$1 + "</div>";
         return false;
     }
 
 };
+
+/*$("#btnSub").click(function() {
+			
+    var textareas = document.getElementsByClassName('text_resp').value;
+   
+           if(textareas = ""){
+
+            document.getElementById("alertaSubmit").innerHTML = "<div class='alert alert-danger mt-3' role='alert'>O tamanho dos arquivos é maior que 200MB!</div>";
+            return false;
+             
+           }else{
+               return false;
+           }
+    // isso vai cancelar qualquer ação padrão do elemento escolhido	
+   // e.preventDefault();
+    
+  }); */
+
+  function envForm(id){
+    $(document).on("click", ".btnsub", function () {
+        
+        var tValor =  $("textarea[id=" + id + "]").val();
+        var sValor =  $("input[id=" + id + "]").val();
+
+        if(tValor == ""){
+            console.log(tValor);
+            document.getElementById("alertaSubmit").innerHTML = "<div class='alert alert-danger mt-3' role='alert'>Existem campos de TEXTO não preenchidos!</div>";
+            $("textarea[id=" + id + "]").css('border-color','#c00');
+            return false;
+        }  
+        if(sValor == ""){
+            console.log(sValor);
+            document.getElementById("alertaSubmitLink").innerHTML = "<div class='alert alert-danger mt-3' role='alert'>O campo do PITCH VÍDEO não está preenchidos!</div>";
+            $("input[id=" + id + "]").css('border-color','#c00');
+            return false;
+        }         
+        return true;
+    });
+
+   /* $(document).on("click", ".btnsub", function () {
+        if(document.getElementById("slide").files.length == 0 ){
+            console.log('erro!');
+            document.getElementById("alertaSlideSize").innerHTML = "<div class='alert alert-danger mt-3' role='alert'>O campo é obrigatório!</div>";
+            return false;
+        }
+    });*/
+  }
+
+ 
+ 
