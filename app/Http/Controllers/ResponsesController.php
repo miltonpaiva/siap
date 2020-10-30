@@ -172,15 +172,15 @@ class ResponsesController extends Controller
         }else{
             return Redirect::back()->withErrors(["Não foi registrar a resposta da startup [{$startup_id}], slide ausente."]);
         }
-        if (isset($data['files']['certificados'])){
-            foreach ($data['files']['certificados'] as $att) {
-                $result = self::upArchive($att, 'certificado', $startup_id);
-                if (is_object($result)) { return $result; }
-                $attachments[] = $result;
-            }
-        }else{
-            return Redirect::back()->withErrors(["Não foi registrar a resposta da startup [{$startup_id}], não ha certificados."]);
-        }
+        // if (isset($data['files']['certificados'])){
+        //     foreach ($data['files']['certificados'] as $att) {
+        //         $result = self::upArchive($att, 'certificado', $startup_id);
+        //         if (is_object($result)) { return $result; }
+        //         $attachments[] = $result;
+        //     }
+        // }else{
+        //     return Redirect::back()->withErrors(["Não foi registrar a resposta da startup [{$startup_id}], não ha certificados."]);
+        // }
 
         $attachments_saved = [];
         foreach ($attachments as $attachment) {
