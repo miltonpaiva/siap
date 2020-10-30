@@ -223,7 +223,18 @@ class ResponsesController extends Controller
             $result_s = Startup::update($sttp, $startup_id);
 
             foreach ($data['question'] as $question => $resp) {
-                $result_o[$question] = self::update($resp['response'], $resp['option']);
+                if ($resp['response'] != '') {
+                    $result_o[$question] = self::update($resp['response'], $resp['option']);
+                }else{
+                    $response =
+                        [
+                            'question' => $question,
+                            'startup' => $startup_id,
+                            'option' => $resp['option'],
+                        ];
+
+                    $result_o[$question] = self::register($response);
+                }
             }
 
             return ['startup' => $result_s, 'options' => $result_o, ];
