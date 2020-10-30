@@ -324,10 +324,29 @@ class UsersController extends Controller
 
         $startup_id = $_SESSION['login']['startup_id'];
 
+        $custom_args['column'] = 'question';
+        $custom_args['values'] = [3,4,5];
+
+        $options = Query::queryActionIn('options', $custom_args);
+
+        $opt_agroup = [];
+        foreach ($options as $o_id => $opt) {
+            $opt_agroup[$opt['question']][$o_id] = $opt;
+        }
+
         $custom_args['conditions'] =
             [
                 ['startup', '=', $startup_id]
             ];
+
+        $responses = Query::queryActionIn('responses', $custom_args);
+
+        $participants = Query::queryAction('participants', $custom_args);
+
+        $resp_agroup = [];
+        foreach ($responses as $r_id => $resp) {
+            $resp_agroup[$resp['question']] = $resp;
+        }
 
         $attractives = Query::queryAction('attractive', $custom_args);
 
@@ -343,9 +362,19 @@ class UsersController extends Controller
 
         $startup = current(Query::queryAction('startups', $custom_args));
 
+        $startup['time'] = $participants;
+
+        $vars =
+            [
+                'attrs'     => $attrs,
+                'responses' => $resp_agroup,
+                'options'   => $opt_agroup,
+                'startup'   => $startup,
+            ];
+
         $view =
             'paineluser/atratividade_' .
              self::clearString($startup['category']);
-        return view($view, ['attrs' => $attrs]);
+        return view($view, $vars);
     }
 }

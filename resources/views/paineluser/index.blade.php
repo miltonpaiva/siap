@@ -118,10 +118,12 @@
 
                                         <h2>Olá,</h2>
 
-                                        <h4 class="card-title">Francisco Clemilson,</h4 >
-                                        <h4 class="card-title">Parabéns! Seu projeto foi habilitado para participar da 2ª fase de avaliação, ANÁLISE DE ATRATIVIDADE, onde você deverá preecher e atender a todos as questões dispostas
-                                        no formúlario. Boa sorte! Clique no botão que segue logo baixo!
-                                        </h4 >
+                                        <h4 class="card-title"><?= $_SESSION['login']['user_name']; ?>,</h4 >
+                                        <h4 class="card-title">Seu projeto foi habilitado para participar da 2ª fase de seleção do Programa Corredores Digitais, ANÁLISE DE ATRATIVIDADE. Você deverá preencher e atender a todos as questões dispostas no formulário até o dia 11/11/2020 às 23:59:59h.</h4>
+                                        <h4 class="card-title">Para te auxiliar na submissão preparamos o CURSO ANÁLISE DE ATRATIVIDADE, 20h, com os pontos importantes na hora de desenvolver um negócio inovador.</h4>
+                                        <h4 class="card-title">Clique <a href="{{@$url_curso}}" style="color: #1abc9c;">AQUI</a> para acessar o curso.</h4>
+                                        <h4 class="card-title">Boa sorte!</h4>
+                                        <h4 class="card-title">Para acessar o formulario, clique no botão que segue logo baixo!</h4>
 
                                     </div>
                                 </div>

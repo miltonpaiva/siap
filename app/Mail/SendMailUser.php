@@ -30,12 +30,20 @@ class SendMailUser extends Mailable
      */
     public function build()
     {
+        $is_criacao = ($this->data['startup']['category'] == 'criação');
+
+        $url_curso =
+            ($is_criacao) ? 
+            'https://corredoresdigitais.teachable.com/p/curso-preparatorio-criacao-de-negocios' :
+            'https://algo.com' ;
+
         return $this->from('contato@corredoresdigitais.info')
-                    ->subject('Aprovação da primeira fase')
+                    ->subject('Seu projeto foi habilitado para a Etapa de Atratividade do Corredores Digitais')
                     ->view('emails/emailresposta')
                     ->with([
                         'data' => $this->data,
                         'url_painel' => route('user.painel.view'),
+                        'url_curso'  => $url_curso,
                     ]);
     }
 }
