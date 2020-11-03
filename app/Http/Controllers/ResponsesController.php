@@ -12,6 +12,7 @@ use DB;
 
 use App\Http\Controllers\StartupsController as Startup;
 use App\Http\Controllers\QueryActionController as Query;
+use App\Http\Controllers\UsersController as User;
 
 header("Access-Control-Allow-Origin: *");
 
@@ -368,6 +369,124 @@ class ResponsesController extends Controller
             Log::error("Não foi possivel atualizar a resposta da startup [{$attractive['startup']}]", [$e->getMessage()]);
             return false;
          }
+    }
+
+    public function viewAttractiveResponses($startup_id)
+    {
+        $user_logged = User::checkLogin();
+        if (is_object($user_logged)) {
+            return $user_logged;
+        }
+
+        $custom_args['conditions'] =
+            [
+                ['id', '=', $startup_id],
+            ];
+
+        $startup = current(Query::queryAction('startups', $custom_args));
+
+        $criterea_per_session =
+            [
+                11 => 2,
+                12 => 2,
+                13 => 2,
+                14 => 3,
+                15 => 3,
+                16 => 3,
+                17 => 3,
+                18 => 2,
+                19 => 2,
+                20 => 2,
+                21 => 2,
+                22 => 2,
+                23 => 2,
+                24 => 2,
+                25 => 2,
+                26 => 2,
+                27 => 2,
+                28 => 2,
+                29 => 2,
+                30 => 2,
+                31 => 3,
+                32 => 3,
+                33 => 3,
+                34 => 3,
+                35 => 3,
+                36 => 3,
+                37 => 3,
+                38 => 3,
+                39 => 3,
+                40 => 4,
+                41 => 4,
+                42 => 4,
+                43 => 4,
+                44 => 4,
+                45 => 4,
+                46 => 4,
+                47 => 5,
+                48 => 5,
+                49 => 5,
+            ];
+
+        $custom_args['conditions'] =
+            [
+                ['stage', '=', 'atratividade'],
+                ['type', '=', $startup['category']],
+            ];
+
+        $critereas = Query::queryAction('criterea', $custom_args);
+
+        $custom_args['conditions'] =
+            [
+                ['startup', '=', $startup_id],
+            ];
+
+        $attractives = Query::queryAction('attractive', $custom_args);
+
+        $resp_agroup = [];
+        foreach ($attractives as $a_id => $attr) {
+            $key = @$criterea_per_session[$attr['criterea']];
+            if ($key) {
+                $resp_agroup[$key][$attr['criterea']] = $attr;
+                $resp_agroup[$key][$attr['criterea']]['criterea'] = $critereas[$attr['criterea']];
+            }else{
+                @$resp_agroup['video'][$attr['criterea']] = $attr;
+                @$resp_agroup['video'][$attr['criterea']]['criterea'] = $critereas[$attr['criterea']];
+            }
+        }
+
+        $data = $resp_agroup['video'][10]['response'];
+        $url['type'] = 'link';
+        $url['link'] = $data;
+
+        if (strrpos($data , 'youtube')) {
+            $id_video = explode('youtube.com/watch?v=', $data)[1];
+            $url['type'] = 'video';
+            $url['link'] = "https://www.youtube.com/embed/{$id_video}";
+        }
+        if (strrpos($data , 'youtu.be/')) {
+            $id_video = explode('youtu.be/', $data)[1];
+            $url['type'] = 'video';
+            $url['link'] = "https://www.youtube.com/embed/{$id_video}";
+        }
+
+        $custom_args['conditions'] =
+            [
+                ['startup', '=', $startup_id],
+                ['type', '=', 'slide'],
+            ];
+
+        $attachment = current(Query::queryAction('attachments', $custom_args));
+
+        $vars =
+            [
+                'responses' => $resp_agroup,
+                'url' => $url,
+                'attachment' => $attachment,
+                'startup' => $startup,
+            ];
+
+        return view('paineladm/atratividade', $vars);
     }
 
 }

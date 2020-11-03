@@ -56,6 +56,13 @@
           <span>Formulario de Atratividade</span></a>
       </li>
       @endif
+      @if(@$startup['stage'] == 'complete_attractive')
+      <li class="nav-item <?= @$atratividade; ?>">
+        <a class="nav-link" href="{{ route('attractive.response.view', $startup['id']) }}">
+          <i class="fas fa-fw fa-table"></i>
+          <span>Formulario de Atratividade</span></a>
+      </li>
+      @endif
       <!-- Divider -->
       <hr class="sidebar-divider d-none d-md-block">
 

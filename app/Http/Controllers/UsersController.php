@@ -1,6 +1,5 @@
 <?php
 
-
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
@@ -140,6 +139,7 @@ class UsersController extends Controller
                 'startup.register.view',
                 'user.painel.view',
                 'user.attractive.view',
+                'attractive.response.view',
             ];
 
         if (!isset($_SESSION['login'])) {
