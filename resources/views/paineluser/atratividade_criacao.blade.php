@@ -71,7 +71,7 @@
               <nav>
                 <div class="nav nav-tabs" id="nav-tab" role="tablist">
                   <a class="nav-item nav-link active" id="nav-section1-tab" data-toggle="tab" href="#nav-section0" role="tab" aria-controls="nav-section6" aria-selected="true">Revisão das Informações</a>
-                  <a class="nav-item nav-link" id="nav-section1-tab" data-toggle="tab" href="#nav-section1" role="tab" aria-controls="nav-section1" aria-selected="true">Análise de Mercado</a>
+                  <a class="nav-item nav-link" id="nav-section1-tab" data-toggle="tab" href="#nav-section1" role="tab" aria-controls="nav-section1" aria-selected="false">Análise de Mercado</a>
                   <a class="nav-item nav-link" id="nav-section2-tab" data-toggle="tab" href="#nav-section2" role="tab" aria-controls="nav-section2" aria-selected="false">Oportunidade de Negócio</a>
                   <a class="nav-item nav-link" id="nav-section3-tab" data-toggle="tab" href="#nav-section3" role="tab" aria-controls="nav-section3" aria-selected="false">Slides e Vídeo</a>
                   <!--<a class="nav-item nav-link" id="nav-section4-tab" data-toggle="tab" href="#nav-section4" role="tab" aria-controls="nav-section4" aria-selected="false">Inclusão dos Certificados</a>-->

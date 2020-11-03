@@ -69,7 +69,7 @@
               <nav>
                 <div class="nav nav-tabs" id="nav-tab" role="tablist">
                   <a class="nav-item nav-link active" id="nav-section1-tab" data-toggle="tab" href="#nav-section1" role="tab" aria-controls="nav-section6" aria-selected="true">Revisão das Informações</a>
-                  <a class="nav-item nav-link" id="nav-section6-tab" data-toggle="tab" href="#nav-section6" role="tab" aria-controls="nav-section6" aria-selected="true">Proposta de Valor</a>
+                  <a class="nav-item nav-link" id="nav-section6-tab" data-toggle="tab" href="#nav-section6" role="tab" aria-controls="nav-section6" aria-selected="false">Proposta de Valor</a>
                   <a class="nav-item nav-link" id="nav-section7-tab" data-toggle="tab" href="#nav-section7" role="tab" aria-controls="nav-section7" aria-selected="false">Estratégia de Mercado</a>
                   <a class="nav-item nav-link" id="nav-section8-tab" data-toggle="tab" href="#nav-section8" role="tab" aria-controls="nav-section8" aria-selected="false">Estratégia Financeira</a>
                   <a class="nav-item nav-link" id="nav-section9-tab" data-toggle="tab" href="#nav-section9" role="tab" aria-controls="nav-section9" aria-selected="false">Estratégia de Time</a>
