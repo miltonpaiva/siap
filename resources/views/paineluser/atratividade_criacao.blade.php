@@ -70,7 +70,7 @@
 
               <nav>
                 <div class="nav nav-tabs" id="nav-tab" role="tablist">
-                  <a class="nav-item nav-link active" id="nav-section1-tab" data-toggle="tab" href="#nav-section1" role="tab" aria-controls="nav-section6" aria-selected="true">Revisão das Informações</a>
+                  <a class="nav-item nav-link active" id="nav-section1-tab" data-toggle="tab" href="#nav-section0" role="tab" aria-controls="nav-section6" aria-selected="true">Revisão das Informações</a>
                   <a class="nav-item nav-link" id="nav-section1-tab" data-toggle="tab" href="#nav-section1" role="tab" aria-controls="nav-section1" aria-selected="true">Análise de Mercado</a>
                   <a class="nav-item nav-link" id="nav-section2-tab" data-toggle="tab" href="#nav-section2" role="tab" aria-controls="nav-section2" aria-selected="false">Oportunidade de Negócio</a>
                   <a class="nav-item nav-link" id="nav-section3-tab" data-toggle="tab" href="#nav-section3" role="tab" aria-controls="nav-section3" aria-selected="false">Slides e Vídeo</a>
@@ -86,7 +86,7 @@
               <div class="tab-content" id="nav-tabContent">
 
                     <!-- SESSÃO 00 REVISÃO DE DADOS -->
-                    <div class="tab-pane fade show active" id="nav-section1" role="tabpanel" aria-labelledby="nav-section1-tab">
+                    <div class="tab-pane fade show active" id="nav-section0" role="tabpanel" aria-labelledby="nav-section1-tab">
 
                       <fieldset id="section6" class="mt-3" style="padding: 10px">
 
