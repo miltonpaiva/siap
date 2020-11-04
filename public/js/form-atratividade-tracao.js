@@ -6,6 +6,13 @@ for(key in textareas){
         envForm(data.id)
     }
 }
+var inputs = document.getElementsByClassName('obrigatorio');
+for(key in inputs){
+    if (inputs[key].id) {
+        var data = inputs[key];
+        envForm(data.id)
+    }
+}
 
 function countCaracteres(id) {
     $(document).on("keyup", "#" + id , function () {
@@ -155,7 +162,7 @@ function checkBoxTermoB(){
 
   function envForm(id){
     $(document).on("click", ".btnsub", function () {
-        
+
         var tValor =  $("textarea[id=" + id + "]").val();
         var sValor =  $("input[id=" + id + "]").val();
 
@@ -163,14 +170,46 @@ function checkBoxTermoB(){
             console.log(tValor);
             document.getElementById("alertaSubmitS").innerHTML = "<div class='alert alert-danger mt-3' role='alert'>Existem campos de TEXTO não preenchidos!</div>";
             $("textarea[id=" + id + "]").css('border-color','#c00');
+
+            var input = document.getElementById(id);
+            if (input.getAttribute('session')) {
+                var id_session = input.getAttribute('session');
+                var session = document.getElementById(id_session + '-tab');
+                session.click();
+                input.focus();
+            }
             return false;
-        }  
+        }else{
+            $("textarea[id=" + id + "]").css('border-color','green');
+            document.getElementById("alertaSubmitS").innerHTML = "";
+        }
+
         if(sValor == ""){
             console.log(sValor);
-            document.getElementById("alertaSubmitLinkS").innerHTML = "<div class='alert alert-danger mt-3' role='alert'>O campo PITCH VÍDEO ou SLIDE APRESENTAÇÂO não estão preenchidos!</div>";
+            document.getElementById("alertaSubmitLinkS").innerHTML = "<div class='alert alert-danger mt-3' role='alert'>O campo PITCH VÍDEO ou SLIDE APRESENTAÇÂO ou campos na SESSÃO DE REVISÃO não estão preenchidos!</div>";
             $("input[id=" + id + "]").css('border-color','#c00');
+
+            var input = document.getElementById(id);
+            if (input.getAttribute('session')) {
+                var id_session = input.getAttribute('session');
+                var session = document.getElementById(id_session + '-tab');
+                session.click();
+                input.focus();
+            }
+            if (input.getAttribute('form_fade')) {
+                var id_form_fade = input.getAttribute('form_fade');
+                console.log(id_form_fade)
+                $("#" + id_form_fade).fadeIn("slow");
+                input.focus();
+                setTimeout(function(){
+                    document.getElementById("alertaSubmitLinkS").innerHTML = "<div class='alert alert-danger mt-3' role='alert'>Ha campos de PARTICIAPNTES não preenchidos!</div>";
+                }, 1000);
+            }
             return false;
-        }         
+        }else{
+            $("input[id=" + id + "]").css('border-color','green');
+            // document.getElementById("alertaSubmitLinkS").innerHTML = '';
+        }
         return true;
     });
 
