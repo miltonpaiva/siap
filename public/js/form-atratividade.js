@@ -6,6 +6,13 @@ for(key in textareas){
         envForm(data.id)
     }
 }
+var inputs = document.getElementsByClassName('obrigatorio');
+for(key in inputs){
+    if (inputs[key].id) {
+        var data = inputs[key];
+        envForm(data.id)
+    }
+}
 
 function countCaracteres(id) {
     $(document).on("keyup", "#" + id , function () {
@@ -55,19 +62,16 @@ function fileSlide(){
 
                     var v_size = (file_data.size < 200000000);
                     var v_type = (file_data.type == 'application/pdf');
-                    //var participante = imputs_file_comp[key].id.replace('slide');
 
                     document.getElementById("slidemsn").innerText = file_data.name;
                     document.getElementById("alertaSlideSize").innerHTML = "<div class='alert alert-success mt-3' role='alert'>Arquivo selecionado com sucesso!</div>";
 
                     if (!v_size) {
-                        //alert('o arquivo do [' + participante + '] contem mais de 200MB, tente outro!');
                         document.getElementById("slidemsn").text = file_data.name;
                         document.getElementById("alertaSlideSize").innerHTML = "<div class='alert alert-danger mt-3' role='alert'>O arquivo é maior que 200MB!</div>";
                         return false;
                     }
                     if (!v_type) {
-                        //alert('o arquivo do [' + participante + '] não contem a extensão (.pdf), tente outro!');
                         document.getElementById("slidemsn").text = file_data.name;
                         document.getElementById("alertaSlideSize").innerHTML = "<div class='alert alert-danger mt-3' role='alert'>O arquivo não é (.pdf), tente outro!</div>";
                         return false;
@@ -145,7 +149,7 @@ function checkBoxTermo(){
 
   function envForm(id){
     $(document).on("click", ".btnsub", function () {
-        
+
         var tValor =  $("textarea[id=" + id + "]").val();
         var sValor =  $("input[id=" + id + "]").val();
 
@@ -153,14 +157,46 @@ function checkBoxTermo(){
             console.log(tValor);
             document.getElementById("alertaSubmit").innerHTML = "<div class='alert alert-danger mt-3' role='alert'>Existem campos de TEXTO não preenchidos!</div>";
             $("textarea[id=" + id + "]").css('border-color','#c00');
+
+            var input = document.getElementById(id);
+            if (input.getAttribute('session')) {
+                var id_session = input.getAttribute('session');
+                var session = document.getElementById(id_session + '-tab');
+                session.click();
+                input.focus();
+            }
+
             return false;
-        }  
+        }else{
+            $("textarea[id=" + id + "]").css('border-color','green');
+            document.getElementById("alertaSubmit").innerHTML = "";
+        }
         if(sValor == ""){
             console.log(sValor);
-            document.getElementById("alertaSubmitLink").innerHTML = "<div class='alert alert-danger mt-3' role='alert'>O campo PITCH VÍDEO ou SLIDE APRESENTAÇÂO não estão preenchidos!</div>";
+            document.getElementById("alertaSubmitLink").innerHTML = "<div class='alert alert-danger mt-3' role='alert'>O campo PITCH VÍDEO ou SLIDE APRESENTAÇÂO ou campos na SESSÃO DE REVISÃO não estão preenchidos!</div>";
             $("input[id=" + id + "]").css('border-color','#c00');
+
+            var input = document.getElementById(id);
+            if (input.getAttribute('session')) {
+                var id_session = input.getAttribute('session');
+                var session = document.getElementById(id_session + '-tab');
+                session.click();
+                input.focus();
+            }
+            if (input.getAttribute('form_fade')) {
+                var id_form_fade = input.getAttribute('form_fade');
+                console.log(id_form_fade)
+                $("#" + id_form_fade).fadeIn("slow");
+                input.focus();
+                setTimeout(function(){
+                    document.getElementById("alertaSubmitLink").innerHTML = "<div class='alert alert-danger mt-3' role='alert'>Ha campos de PARTICIAPNTES não preenchidos!</div>";
+                }, 1000);
+            }
             return false;
-        }         
+        }else{
+            $("input[id=" + id + "]").css('border-color','green');
+            document.getElementById("alertaSubmitLink").innerHTML = '';
+        }
         return true;
     });
 
