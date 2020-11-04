@@ -466,8 +466,8 @@ class StartupsController extends Controller
             $arr_ids[] = $id;
             $startups[$id]['stage'] = self::$arr_status[$sttp['stage']];
 
-            if ($sttp['state'] == 000000) {$startups[$id]['state'] = 'não definido';}
-            if ($sttp['city'] == 000000) {$startups[$id]['city'] = 'não definido';}
+            if ($sttp['state'] == '000000') {$startups[$sttp['id']]['state'] = ' --- ';}
+            if ($sttp['city'] == '000000') {$startups[$sttp['id']]['city'] = ' --- ';}
 
             $startups[$id]['stage'] = self::$arr_status[$sttp['stage']];
 
@@ -479,7 +479,7 @@ class StartupsController extends Controller
             if ($is_city) {
                 $startups[$id]['region'] = $regions[$cities[self::clearString($city)]];
             }else{
-                $startups[$id]['region'] = 'sem região';
+                $startups[$id]['region'] = ' --- ';
             }
         }
 
@@ -507,6 +507,10 @@ class StartupsController extends Controller
         foreach ($lines as $line) {
             $result[] = file_put_contents($uploaddir, $line, FILE_APPEND);
         }
+
+        echo "<pre>";
+        print_r($startups);
+        exit();
 
         echo json_encode(['status' => 200, 'message' => 'arquivo gerado']);
         exit();
