@@ -447,11 +447,11 @@ class ResponsesController extends Controller
         foreach ($attractives as $a_id => $attr) {
             $key = @$criterea_per_session[$attr['criterea']];
             if ($key) {
-                $resp_agroup[$key][$attr['criterea']] = $attr;
-                $resp_agroup[$key][$attr['criterea']]['criterea'] = $critereas[$attr['criterea']];
+                @$resp_agroup[$key][$attr['criterea']] = $attr;
+                @$resp_agroup[$key][$attr['criterea']]['criterea'] = @$critereas[$attr['criterea']];
             }else{
                 @$resp_agroup['video'][$attr['criterea']] = $attr;
-                @$resp_agroup['video'][$attr['criterea']]['criterea'] = $critereas[$attr['criterea']];
+                @$resp_agroup['video'][$attr['criterea']]['criterea'] = @$critereas[$attr['criterea']];
             }
         }
 

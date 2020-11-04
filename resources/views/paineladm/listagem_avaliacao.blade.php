@@ -269,6 +269,12 @@
                               </option>
                             @endif
 
+                            @if($rating['startup']['stage'] == 'complete_attractive')
+                            <option value="{{ route('attractive.response.view', $rating['startup']['id']) }}" >
+                                Vis. Atratividade
+                            </option>
+                            @endif
+
                           </select>
                         </td>
                         <td>{{$rating['total']}}</td>

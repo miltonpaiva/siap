@@ -226,12 +226,19 @@
                         <td>
                           <select onchange="redirectAction(this)" >
                             <option disabled="true" value="" selected="true" >---</option>
+                            @if($startup['stage'] == 'complete')
                             <option value="{{ route('startup.rating.view.action', $startup['id']) }}" >
                                 Avaliar
                             </option>
+                            @endif
                             <option value="{{ route('startup.view', $startup['id']) }}" >
                                 Visualizar
                             </option>
+                            @if($startup['stage'] == 'complete_attractive')
+                            <option value="{{ route('attractive.response.view', $startup['id']) }}" >
+                                Vis. Atratividade
+                            </option>
+                            @endif
                           </select>
                         </td>
                         <td>{{$startup['id']}}</td>
@@ -239,7 +246,26 @@
                         <td>{{$startup['user']}}</td>
                         <td>{{$startup['email']}}</td>
                         <td>{{$startup['category']}}</td>
-                        <td>{{$startup['stage']}}</td>
+                        <td>
+                          @if($startup['stage'] == 'rated')
+                            Aguardando Habilitação
+                          @endif
+                          @if($startup['stage'] == 'approved')
+                            Em Atratividade
+                          @endif
+                          @if($startup['stage'] == 'complete_attractive')
+                            Aguardando 2° avaliação
+                          @endif
+                          @if($startup['stage'] == 'complete')
+                            Aguardando 1° avaliação
+                          @endif
+                          @if($startup['stage'] == 'in_progress')
+                            Em Prontidão
+                          @endif
+                          @if($startup['stage'] == 'reproved')
+                            Reprovado Prontidão
+                          @endif
+                        </td>
                       </tr>
 
                     @endforeach
