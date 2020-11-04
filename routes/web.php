@@ -54,6 +54,7 @@ Route::get('/atratividade/{startup_id}', 'ResponsesController@viewAttractiveResp
 //ACTION ROUTES STARTUPS
 Route::post('/startup/register/', 'StartupsController@actionRegister')->name('startup.register');
 Route::get('/startup/update/{startup_id?}/{state?}/{city?}/{category?}/', 'StartupsController@actionUpdate')->name('startup.update');
+Route::get('/startup/csv/', 'StartupsController@gerCsvStartups')->name('startup.csv');
 
 //VIEW ROUTES STARTUPS
 Route::get('/projeto/{startup_id}/registro/', 'StartupsController@viewRegister')->name('startup.register.view');

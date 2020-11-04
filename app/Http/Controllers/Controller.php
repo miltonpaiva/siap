@@ -19,6 +19,17 @@ class Controller extends BaseController
 {
     use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
 
+    public static $arr_status =
+          [
+            'rated' => 'Aguardando Habilitação',
+            'approved' => 'Em Atratividade',
+            'complete_attractive' => 'Aguardando 2° avaliação',
+            'complete' => 'Aguardando 1° avaliação',
+            'in_progress' => 'Em Prontidão',
+            'reproved' => 'Reprovado Prontidão',
+          ];
+
+
   	protected static function clearString ($string, $is_number = false)
   	{
 

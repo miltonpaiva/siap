@@ -451,4 +451,65 @@ class StartupsController extends Controller
 
         return view('paineladm/listagem', $vars);
     }
+
+    public function gerCsvStartups()
+    {
+        $path_root = $_SERVER["DOCUMENT_ROOT"] . '/';
+        $uploaddir = "{$path_root}/files/startups.txt";
+
+        $cities = self::getDataRegions()['cities'];
+        $regions = self::getDataRegions()['all_regions'];
+
+        $startups = Query::queryAction('startups');
+
+        foreach ($startups as $id => $sttp) {
+            $arr_ids[] = $id;
+            $startups[$id]['stage'] = self::$arr_status[$sttp['stage']];
+
+            if ($sttp['state'] == 000000) {$startups[$id]['state'] = 'não definido';}
+            if ($sttp['city'] == 000000) {$startups[$id]['city'] = 'não definido';}
+
+            $startups[$id]['stage'] = self::$arr_status[$sttp['stage']];
+
+            $city = $sttp['city'];
+            $is_city =
+                isset(
+                  $cities[self::clearString($city)]
+                );
+            if ($is_city) {
+                $startups[$id]['region'] = $regions[$cities[self::clearString($city)]];
+            }else{
+                $startups[$id]['region'] = 'sem região';
+            }
+        }
+
+        $custom_args_users['columns'] = ['id', 'name', 'email', 'startup'];
+        $custom_args_users['column'] = 'startup';
+        $custom_args_users['values'] = $arr_ids;
+
+        $users = Query::queryActionIn('users', $custom_args_users);
+
+        foreach ($users as $id => $user) {
+            $startups[$user['startup']]['user'] = $user['name'];
+            $startups[$user['startup']]['email'] = $user['email'];
+        }
+
+        $lines[] = "ID;STARTUP;CIDADE;ESTADO;REGIÃO;RESPONSÁVEL;RESP. EMAIL;CATEGORIA;STATUS\n";
+        foreach ($startups as $sttp) {
+            $lines[] =
+              "{$sttp['id']};{$sttp['name']};{$sttp['city']};{$sttp['state']};{$sttp['region']};{$sttp['user']};{$sttp['email']};{$sttp['category']};{$sttp['stage']}\n";
+        }
+
+        if (is_file($uploaddir)) {
+            unlink($uploaddir);
+        }
+
+        foreach ($lines as $line) {
+            $result[] = file_put_contents($uploaddir, $line, FILE_APPEND);
+        }
+
+        echo json_encode(['status' => 200, 'message' => 'arquivo gerado']);
+        exit();
+    }
+
 }

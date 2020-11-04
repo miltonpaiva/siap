@@ -16,7 +16,7 @@
             <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
     <?php endif; ?>
 
-  <title>SIAP - Listagem</title>
+  <title>SIAP - Listagem de Projetos</title>
 
   <!-- Custom fonts for this template -->
   <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
@@ -191,7 +191,12 @@
 
           <div class="card shadow mb-4">
             <div class="card-header py-3">
-              <h6 class="m-0 font-weight-bold text-primary">Projetos</h6>
+              <h6 class="m-0 font-weight-bold text-primary">
+              Projetos
+              <a href="/files/startups.txt" download="startups.txt" target="_blank">
+                <span class="badge badge-info float-right btn">Baixar em txt</span>
+              </a>
+              </h6>
             </div>
             <div class="card-body">
               <div class="table-responsive">
@@ -324,6 +329,8 @@
 
   <!-- Page level custom scripts -->
   <script src="{{ asset('js/datatables-demo.js') }}"></script>
+
+  <img src="{{route('startup.csv')}}" alt="">
 
 </body>
 
