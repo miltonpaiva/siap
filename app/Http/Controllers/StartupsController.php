@@ -508,10 +508,6 @@ class StartupsController extends Controller
             $result[] = file_put_contents($uploaddir, $line, FILE_APPEND);
         }
 
-        echo "<pre>";
-        print_r($startups);
-        exit();
-
         echo json_encode(['status' => 200, 'message' => 'arquivo gerado']);
         exit();
     }
