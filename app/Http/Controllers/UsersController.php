@@ -177,7 +177,7 @@ class UsersController extends Controller
             'users' => $users,
         ];
 
-        return view('paineladm/listagem_usuarios', $vars);
+        return view('paineladm/users/list', $vars);
     }
 
     public function viewAdd()
@@ -187,7 +187,7 @@ class UsersController extends Controller
             return $user_logged;
         }
 
-        return view('paineladm/add_usuarios', []);
+        return view('paineladm/users/add', []);
     }
 
     public function actionAdd(Request $request)
@@ -293,7 +293,7 @@ class UsersController extends Controller
 
         $user = current(Query::queryAction('users', $custom_args));
 
-        return view('paineladm/edit_usuarios', ['user' => $user]);
+        return view('paineladm/users/edit', ['user' => $user]);
     }
 
     public function viewPainel()
