@@ -58,6 +58,18 @@
         <div class="container-fluid">
 
 
+          @if(@$message['message'] != '')
+          <div class="alert alert-{{@$message['type']}}" role="alert" style="">
+              {{@$message['message']}}
+          </div>
+          @endif
+
+          @if($errors->any())
+          <div class="alert alert-danger" role="alert" style="">
+              {{$errors->first()}}
+          </div>
+          @endif
+
           <!-- Content Row -->
           <div class="row">
 

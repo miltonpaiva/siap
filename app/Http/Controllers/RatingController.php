@@ -147,7 +147,12 @@ class RatingController extends Controller
             }
         }
 
-        $custom_args['values'] = $sttps_ids;
+        if ($_SESSION['login']['user_profile'] == 'Avaliador') {
+            $custom_args['values'] = User::getLinkedStartups($_SESSION['login']['user_id']);
+        }else{
+            $custom_args['values'] = $sttps_ids;
+        }
+
         $custom_args['conditions'] =
             [
                 ['stage', '<>', 'reproved']
@@ -160,7 +165,15 @@ class RatingController extends Controller
                 ['stage', '=', 'complete']
             ];
 
-        $startups_unavalied = Query::queryAction('startups', $custom_args);
+        if ($_SESSION['login']['user_profile'] == 'Avaliador') {
+            $custom_args['values'] = User::getLinkedStartups($_SESSION['login']['user_id']);
+
+            $startups_unavalied = Query::queryActionIn('startups', $custom_args);
+
+        }else{
+            $startups_unavalied = Query::queryAction('startups', $custom_args);
+        }
+
 
         $startups = ($startups_avalied + $startups_unavalied);
 

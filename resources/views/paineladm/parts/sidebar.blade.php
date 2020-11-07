@@ -55,6 +55,7 @@
 
       <!-- Nav Item - Tables -->
       <?php
+      if ($_SESSION['login']['user_profile'] != 'Avaliador'):
         if (strrpos(@$_SERVER['REQUEST_URI'], 'usuarios'))
           { $usuarios = 'active'; }
         ?>
@@ -66,6 +67,7 @@
 
       <!-- Divider -->
       <hr class="sidebar-divider d-none d-md-block">
+    <?php endif; ?>
 
       <!-- Sidebar Toggler (Sidebar) -->
       <div class="text-center d-none d-md-inline">

@@ -271,6 +271,8 @@
                             </h5>
                           </div>
 
+                          <?php if ($_SESSION['login']['user_profile'] != 'Avaliador'): ?>
+
                           <div id="collapse_{{$part['id']}}" class="collapse hide" aria-labelledby="headingOne" data-parent="#accordionExample">
                             <div class="card-body">
 
@@ -388,6 +390,9 @@
 
                             </div>
                           </div>
+
+                          <?php endif ?>
+
                         </div>
 
                         @endforeach

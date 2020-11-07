@@ -400,7 +400,13 @@ class StartupsController extends Controller
             return $user_logged;
         }
 
-        $startups = Query::queryAction('startups');
+        if ($_SESSION['login']['user_profile'] == 'Avaliador') {
+            $custom_args['values'] = User::getLinkedStartups($_SESSION['login']['user_id']);
+
+            $startups = Query::queryActionIn('startups', $custom_args);
+        }else{
+            $startups = Query::queryAction('startups');
+        }
 
         if (isset($_GET['regiao'])) {
           $startups = Filters::getFilterRegion($startups);
