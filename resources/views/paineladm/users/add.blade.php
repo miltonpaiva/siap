@@ -97,7 +97,7 @@
                     <div class="form-row">
                         <div class="col-md-7 mb-3">
                             <label class="pergunta" for="perfil">Perfil de Usuário</label>
-                            <select class="form-control" id="perfil" name="perfil" aria-describedby="funcaopHelp" required="true" >
+                            <select class="form-control" id="perfil" name="perfil" aria-describedby="funcaopHelp" required="true" onchange="checkTypeUser()" >
                                 <option value="" >Escolher uma das respostas abaixo</option>
                                 <option value='Gestor'>Gestor</option>
                                 <option value='Técnico'>Técnico</option>
@@ -107,11 +107,12 @@
                         </div>
                         <div class="col-md-5 mb-3">
                           <label class="pergunta" for="senha">Senha</label>
-                          <input type="text" class="form-control" id="senha" name="senha" aria-describedby="nomeclpHelp" required="true" >
+                          <input type="text" class="form-control" id="senha" name="senha" aria-describedby="nomeclpHelp" required="true" minlength="8" >
                           <small id="nomeclpHelp" class="form-text text-muted obrigatorio">Campo obrigatório!</small>
                         </div>
                     </div>
 
+                    @include('paineladm/users/parts/link_startups')
 
               </div>
             </div>

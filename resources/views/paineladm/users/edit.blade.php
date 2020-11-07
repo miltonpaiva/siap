@@ -110,6 +110,8 @@
                                   @if($user['profile'] == 'Empreendedor')
                                     disabled="true"
                                   @endif
+
+                                  onchange="checkTypeUser()"
                             >
                                 @if($user['profile'] == 'Empreendedor')
                                   <option value='Empreendedor' selected="true" >
@@ -146,11 +148,12 @@
                         </div>
                         <div class="col-md-5 mb-3">
                           <label class="pergunta" for="senha">Senha</label>
-                          <input type="password" class="form-control" id="senha" name="senha" aria-describedby="nomeclpHelp" value="{{$user['password']}}" >
+                          <input type="password" class="form-control" id="senha" name="senha" aria-describedby="nomeclpHelp" value="{{$user['password']}}" minlength="8" >
                           <small id="nomeclpHelp" class="form-text text-muted obrigatorio">Campo obrigatório!</small>
                         </div>
                     </div>
 
+                    @include('paineladm/users/parts/link_startups')
 
               </div>
             </div>

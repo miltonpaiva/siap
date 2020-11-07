@@ -133,7 +133,7 @@ class UsersController extends Controller
     {
         session_start();
 
-        $routes_user =
+        $routes_user['Empreendedor'] =
             [
                 'startup.view',
                 'startup.register.view',
@@ -142,14 +142,30 @@ class UsersController extends Controller
                 'attractive.response.view',
             ];
 
+        $routes_user['Avaliador'] =
+            [
+                'startup.view',
+                'painel',
+                'attractive.response.view',
+                'rating.list',
+                'startup.rating.view',
+                'startup.rating.view.action',
+                'startup.list',
+            ];
+
         if (!isset($_SESSION['login'])) {
             // NÃO LOGADO
             return redirect()->route('user.login.view')->withErrors(['Você precisa estar cadastrado ou logado para acessar a tela.']);
         }else{
             $route = Route::current()->getName();
             if ($_SESSION['login']['user_profile'] == 'Empreendedor') {
-                if (!in_array($route, $routes_user)) {
+                if (!in_array($route, $routes_user['Empreendedor'])) {
                     return redirect()->route('user.painel.view')->withErrors(['Você não tem permissão para acessar a tela.']);
+                }
+            }
+            if ($_SESSION['login']['user_profile'] == 'Avaliador') {
+                if (!in_array($route, $routes_user['Avaliador'])) {
+                    return redirect()->route('painel')->withErrors(['Você não tem permissão para acessar a tela.']);
                 }
             }
         }
@@ -187,7 +203,15 @@ class UsersController extends Controller
             return $user_logged;
         }
 
-        return view('paineladm/users/add', []);
+        $custom_args['conditions'] =
+            [
+                ['stage', '<>', 'in_progress'],
+                ['stage', '<>', 'reproved'],
+            ];
+
+        $startups = Query::queryAction('startups', $custom_args);
+
+        return view('paineladm/users/add', [ 'startups' => $startups ]);
     }
 
     public function actionAdd(Request $request)
@@ -207,6 +231,8 @@ class UsersController extends Controller
             return Redirect::back()->withErrors(['Esse email ja está registrado, use outro.']);
         }
 
+        Query::transaction();
+
         try {
             $new_user_id =
                 DB::table('users')->insertGetId(
@@ -224,11 +250,19 @@ class UsersController extends Controller
             return Redirect::back()->withErrors(["Não foi possivel inserir o usuario"]);
         }
 
+        $links = self::addAndUpEvaluator($new_user_id, $data['startups']);
+        if (is_object($links)) {
+            Query::transaction('rollBack');
+            return $links;
+        }
+
         $_SESSION['message'] =
         [
             'type' => 'success',
             'message' => "o usuario [{$data['nome']}] foi criado.",
         ];
+
+        Query::transaction('commit');
 
         return redirect()->route('user.list');
     }
@@ -236,6 +270,7 @@ class UsersController extends Controller
     public function actionEdit($user_id, Request $request)
     {
         session_start();
+
         $data = $request->all();
 
         $custom_args['conditions'] =
@@ -248,6 +283,8 @@ class UsersController extends Controller
         if (isset($user_exist['id']) && $user_exist['id'] != $user_id) {
             return Redirect::back()->withErrors(['Esse email ja está registrado.']);
         }
+
+        Query::transaction();
 
         $args =
             [
@@ -270,11 +307,19 @@ class UsersController extends Controller
             return Redirect::back()->withErrors(["Não foi possivel editar o usuario"]);
         }
 
+        $links = self::addAndUpEvaluator($user_id, $data['startups']);
+        if (is_object($links)) {
+            Query::transaction('rollBack');
+            return $links;
+        }
+
         $_SESSION['message'] =
         [
             'type' => 'success',
             'message' => "o usuario [{$data['nome']}] foi editado.",
         ];
+
+        Query::transaction('commit');
 
         return redirect()->route('user.list');
     }
@@ -293,7 +338,81 @@ class UsersController extends Controller
 
         $user = current(Query::queryAction('users', $custom_args));
 
-        return view('paineladm/users/edit', ['user' => $user]);
+        $ratings = self::getLinkedStartups($user_id);
+
+        $custom_args['conditions'] =
+            [
+                ['stage', '<>', 'in_progress'],
+                ['stage', '<>', 'reproved'],
+            ];
+
+        $startups = Query::queryAction('startups', $custom_args);
+
+        foreach ($startups as $s_id => $sttp) {
+            if (in_array($s_id, $ratings)) {
+                $startups[$s_id]['checked'] = 'checked';
+            }
+        }
+
+        $vars =
+            [
+                'user' => $user,
+                'startups' => $startups,
+            ];
+
+        return view('paineladm/users/edit', $vars);
+    }
+
+    public static function getLinkedStartups($user_id)
+    {
+
+        $custom_args['conditions'] =
+            [
+                ['evaluator', '=', $user_id],
+                ['criterea', '=', '1'],
+            ];
+
+        $ratings = Query::getSampleData('rating', 'startup', $custom_args);
+
+        $custom_args['conditions'] =
+            [
+                ['evaluator', '=', $user_id],
+            ];
+
+        $links = Query::getSampleData('user_Link_startups', 'startup', $custom_args);
+
+        $startups = ($links + $ratings);
+
+        return $startups;
+    }
+
+    public static function addAndUpEvaluator($id_user, $arr_startups)
+    {
+        $arr_new_link_id = [];
+        $args =
+            [
+                ['evaluator', '=', $id_user],
+            ];
+
+        try {
+            DB::table('user_Link_startups')->where($args)->delete();
+
+            foreach ($arr_startups as $s_id) {
+                $arr_new_link_id[] =
+                    DB::table('user_Link_startups')->insertGetId(
+                        [
+                            'evaluator'=> $id_user,
+                            'startup'  => $s_id,
+                        ]
+                    );
+            }
+        } catch (\Exception $e) {
+            Log::error("Não foi possivel vincular alguma startup ao usuario [{$id_user}]", [$e->getMessage()]);
+
+            return Redirect::back()->withErrors(["Não foi possivel vincular alguma startup ao usuario [{$id_user}]"]);
+        }
+
+        return $arr_new_link_id;
     }
 
     public function viewPainel()
