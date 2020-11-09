@@ -80,7 +80,7 @@
                   <div class="row no-gutters align-items-center">
                     <div class="col mr-2">
                       <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">Projetos Inscritos</div>
-                      <div class="h5 mb-0 font-weight-bold text-gray-800">{{ $graph['startups'] }}</div>
+                      <div class="h5 mb-0 font-weight-bold text-gray-800">{{ @$graph['startups'] }}</div>
                     </div>
                     <div class="col-auto">
                       <i class="fas fa-calendar fa-2x text-gray-300"></i>
@@ -99,11 +99,11 @@
                       <div class="text-xs font-weight-bold text-success text-uppercase mb-1">Nª Projetos [Criação]</div>
                       <div class="row no-gutters align-items-center">
                         <div class="col-auto">
-                          <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">{{ $graph['category']['tração']['value'] }}</div>
+                          <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">{{ @$graph['category']['tração']['value'] }}</div>
                         </div>
                         <div class="col">
                           <div class="progress progress-sm mr-2">
-                            <div class="progress-bar bg-success" role="progressbar" style="width: {{ $graph['category']['tração']['percent'] }}%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
+                            <div class="progress-bar bg-success" role="progressbar" style="width: {{ @$graph['category']['tração']['percent'] }}%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
                           </div>
                         </div>
                       </div>
@@ -125,11 +125,11 @@
                       <div class="text-xs font-weight-bold text-info text-uppercase mb-1">Nª Projetos [Tração]</div>
                       <div class="row no-gutters align-items-center">
                         <div class="col-auto">
-                          <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">{{ $graph['category']['criação']['value'] }}</div>
+                          <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">{{ @$graph['category']['criação']['value'] }}</div>
                         </div>
                         <div class="col">
                           <div class="progress progress-sm mr-2">
-                            <div class="progress-bar bg-info" role="progressbar" style="width: {{ $graph['category']['criação']['percent'] }}%" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100"></div>
+                            <div class="progress-bar bg-info" role="progressbar" style="width: {{ @$graph['category']['criação']['percent'] }}%" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100"></div>
                           </div>
                         </div>
                       </div>
@@ -149,7 +149,7 @@
                   <div class="row no-gutters align-items-center">
                     <div class="col mr-2">
                       <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">Projetos Categorizados</div>
-                      <div class="h5 mb-0 font-weight-bold text-gray-800">{{ $graph['startups_categorized'] }}</div>
+                      <div class="h5 mb-0 font-weight-bold text-gray-800">{{ @$graph['startups_categorized'] }}</div>
                     </div>
                     <div class="col-auto">
                       <i class="fas fa-users fa-2x text-gray-300"></i>
@@ -177,13 +177,13 @@
                   <div class="progress mb-4">
                     <div class="progress-bar bg-danger" role="progressbar" style="width: 20%" aria-valuenow="30" aria-valuemin="0" aria-valuemax="100"></div>
                   </div>-->
-                  <h4 class="small font-weight-bold">Tração <span class="float-right">{{ $graph['category']['tração']['percent'] }}%</span></h4>
+                  <h4 class="small font-weight-bold">Tração <span class="float-right">{{ @$graph['category']['tração']['percent'] }}%</span></h4>
                   <div class="progress mb-4">
-                    <div class="progress-bar bg-warning" role="progressbar" style="width: {{ $graph['category']['tração']['percent'] }}%" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100"></div>
+                    <div class="progress-bar bg-warning" role="progressbar" style="width: {{ @$graph['category']['tração']['percent'] }}%" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100"></div>
                   </div>
-                  <h4 class="small font-weight-bold">Criação <span class="float-right">{{ $graph['category']['criação']['percent'] }}%</span></h4>
+                  <h4 class="small font-weight-bold">Criação <span class="float-right">{{ @$graph['category']['criação']['percent'] }}%</span></h4>
                   <div class="progress mb-4">
-                    <div class="progress-bar" role="progressbar" style="width: {{ $graph['category']['criação']['percent'] }}%" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100"></div>
+                    <div class="progress-bar" role="progressbar" style="width: {{ @$graph['category']['criação']['percent'] }}%" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100"></div>
                   </div>
                   <!--<h4 class="small font-weight-bold">Payout Details <span class="float-right">80%</span></h4>
                   <div class="progress mb-4">
@@ -418,11 +418,11 @@ var myPieChart = new Chart(ctx, {
     labels: ["Norte", "Nordeste", "Cento-Oeste", "Sudeste", "Sul"],
     datasets: [{
       data: [
-        {{ $graph['regions']['N']['value'] }},
-        {{ $graph['regions']['NE']['value'] }},
-        {{ $graph['regions']['CO']['value'] }},
-        {{ $graph['regions']['SE']['value'] }},
-        {{ $graph['regions']['S']['value'] }}
+        {{ @$graph['regions']['N']['value'] }},
+        {{ @$graph['regions']['NE']['value'] }},
+        {{ @$graph['regions']['CO']['value'] }},
+        {{ @$graph['regions']['SE']['value'] }},
+        {{ @$graph['regions']['S']['value'] }}
         ],
       backgroundColor: ['#4e73df', '#1cc88a', '#36b9cc', '#c00', '#ffff00'],
       hoverBackgroundColor: ['#2e59d9', '#17a673', '#2c9faf', '#c11', '#ffff11'],

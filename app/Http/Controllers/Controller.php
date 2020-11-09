@@ -52,6 +52,7 @@ class Controller extends BaseController
 
     public function getOptions($question)
     {
+        $data = [];
         $custom_args['conditions'] =
             [
                 ['question', '=', $question],

@@ -21,6 +21,7 @@ header("Access-Control-Allow-Origin: *");
 class RatingController extends Controller
 {
     public static $message;
+    public $cities;
 
     public function viewRatingAction($startup_id)
     {
@@ -133,6 +134,8 @@ class RatingController extends Controller
         $sttps_ids = [];
         $users_ids = [];
         $notes = [];
+
+        $this->cities = [];
         foreach ($ratings as $r_id => $rating) {
             if (!in_array($rating['startup'], $sttps_ids)) {
                 $sttps_ids[] = $rating['startup'];
