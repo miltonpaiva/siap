@@ -15,8 +15,8 @@ class CreateAttachmentsTable extends Migration
     {
         Schema::create('attachments', function (Blueprint $table) {
             $table->id();
-            $table->string('archive', 50);
-            $table->enum('type', ['video', 'venda', 'experiencia', 'pdf']);
+            $table->string('archive');
+            $table->enum('type', ['video','venda','experiencia','pdf','slide','certificado']);
             $table->unsignedBigInteger('startup');
             $table->bigInteger('participant')->nullable();
             $table->foreign('startup')->references('id')->on('startups');
