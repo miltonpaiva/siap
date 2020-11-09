@@ -31,6 +31,8 @@ php artisan migrate
 
 3- /database/inserts_iniciais/options.sql
 
+4- /database/inserts_iniciais/criterea.sql
+
 
 ## Alimetação do banco de teste
 
