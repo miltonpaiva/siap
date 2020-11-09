@@ -15,19 +15,19 @@ class ParticipantsTable extends Migration
     {
         Schema::create('participants', function (Blueprint $table) {
             $table->id();
-            $table->string('name', 100);
+            $table->string('name');
             $table->enum('function', ['negócio', 'Produto', 'Marketing']);
             $table->unsignedBigInteger('startup');
             $table->string('rg', 22);
             $table->string('cpf');
             $table->string('institution', 100);
-            $table->string('course', 50);
+            $table->string('course');
             $table->unsignedBigInteger('formation');
-            $table->string('address', 100);
-            $table->string('city', 50)->nullable();
-            $table->string('telephone', 15);
+            $table->string('address');
+            $table->string('city')->nullable();
+            $table->string('telephone');
             $table->string('email', 50);
-            $table->string('linkedin', 50)->nullable();
+            $table->string('linkedin')->nullable();
             $table->foreign('startup')->references('id')->on('startups');
             $table->foreign('formation')->references('id')->on('formations');
         });
