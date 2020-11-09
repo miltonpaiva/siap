@@ -30,6 +30,9 @@ class ParticipantsTable extends Migration
             $table->string('linkedin')->nullable();
             $table->foreign('startup')->references('id')->on('startups');
             $table->foreign('formation')->references('id')->on('formations');
+            $table->string('data_nasc');
+            $table->string('state');
+            $table->string('emitting_organ');
         });
     }
 
