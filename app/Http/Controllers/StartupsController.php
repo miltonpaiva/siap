@@ -132,6 +132,8 @@ class StartupsController extends Controller
 
         $attachments = Query::queryAction('attachments', $custom_args);
 
+        $formations = Query::getSampleData('formations', 'name');
+
         $arquivos = [];
         foreach ($attachments as $att) {
           if ($att['participant'] != '') {
@@ -162,6 +164,7 @@ class StartupsController extends Controller
               'responses'   => $responses_agrouped,
               'arquivos'    => $arquivos,
               'participants' => $participants,
+              'formations' => $formations,
               'questions'   => $questions,
           ];
 
@@ -185,6 +188,7 @@ class StartupsController extends Controller
       Query::transaction();
 
       $responses = $request->all();
+
       $attachments = [];
 
       $startup_id = $responses['session'][1]['startup_id'];

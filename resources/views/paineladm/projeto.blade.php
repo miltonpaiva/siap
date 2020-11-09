@@ -309,7 +309,11 @@
                                       <div class="col-sm-12 col-md-3 mb-3">
                                         <h6><b class="text-dark text-uppercase">Órgão Emissor: </b> <br> 
                                           <span class="ml-2"> 
+                                            @if($part['emitting_organ'])
+                                            {{$part['emitting_organ']}}
+                                            @else
                                             SSP - {{$startup['state']}}
+                                            @endif
                                         </span></h6>
                                       </div>
                                       <div class="col-sm-12 col-md-3 mb-3">
@@ -333,7 +337,7 @@
                                       <div class="col-sm-12 col-md-6 mb-3">
                                         <h6><b class="text-dark text-uppercase">Formação: </b> <br> 
                                           <span class="ml-2"> 
-                                          {{$part['formation']}}
+                                          {{$formations[$part['formation']]}}
                                         </span></h6>
                                       </div>
                                       <div class="col-sm-12 col-md-6 mb-3">
@@ -345,7 +349,12 @@
                                       <div class="col-sm-12 col-md-2 mb-3">
                                         <h6><b class="text-dark text-uppercase">Estado: </b> <br> 
                                           <span class="ml-2"> 
-                                          {{$startup['state']}}
+                                            @if($part['state'])
+                                            {{$part['state']}}
+                                            @else
+                                            {{$startup['state']}}
+                                            @endif
+
                                         </span></h6>
                                       </div>
                                       <div class="col-sm-12 col-md-3 mb-3">
