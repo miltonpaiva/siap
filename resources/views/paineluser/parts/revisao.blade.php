@@ -77,7 +77,7 @@
                         @foreach($startup['time'] as $t_id => $time)
 
                         <button id="btn_fade_{{$t_id}}" class="btn btn_fade btn-outline-secondary btn-lg btn-block mt-5 mb-5"> Participante: {{@$time['name']}} </button>
-                        <div id="time_fade_{{$t_id}}" style="display: none;">
+                        <div class="time_fade" id="time_fade_{{$t_id}}" style="display: none;">
 
                             <div class="form-group">
                                 <label class="pergunta" for="nome-compl">Nome Completo</label>
@@ -285,7 +285,7 @@
                                     <input type="text" class="form-control obrigatorio" session="nav-section0" value="{{@$attch[$time['id']]['archive']}}" disabled="true">
                                 </div>
                             </div>
-                            <button type="button" id="{{$t_id}}" class="btn btn-outline-secondary btn-lg btn-block mt-5 mb-5 remover">Remover: {{@$time['name']}}</button>
+                            <button type="button" id="{{$t_id}}" class="btn btn-outline-secondary btn-lg btn-block mt-5 mb-5 remove_particpant">Remover: {{@$time['name']}}</button>
                         </div>
 
                         @endforeach

@@ -163,6 +163,15 @@ function checkBoxTermoB(){
   function envForm(id){
     $(document).on("click", ".btnsub", function () {
 
+        var qtd_time = document.getElementsByClassName('time_fade').length;
+
+        if (qtd_time < 2) {
+            document.getElementById("alertaSubmitLinkS").innerHTML = "<div class='alert alert-danger mt-3' role='alert'>É necessario, no minimo, 2 PARTICIPANTES para prosseguir !</div>";
+            var session = document.getElementById('nav-section0-tab');
+            session.click();
+            return false;
+        }
+
         var tValor =  $("textarea[id=" + id + "]").val();
         var sValor =  $("input[id=" + id + "]").val();
 
@@ -202,7 +211,7 @@ function checkBoxTermoB(){
                 $("#" + id_form_fade).fadeIn("slow");
                 input.focus();
                 setTimeout(function(){
-                    document.getElementById("alertaSubmitLinkS").innerHTML = "<div class='alert alert-danger mt-3' role='alert'>Ha campos de PARTICIAPNTES não preenchidos!</div>";
+                    document.getElementById("alertaSubmitLinkS").innerHTML = "<div class='alert alert-danger mt-3' role='alert'>Ha campos de PARTICIPANTES não preenchidos!</div>";
                 }, 1000);
             }
             return false;

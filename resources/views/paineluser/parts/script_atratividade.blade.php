@@ -16,6 +16,7 @@
     var textareas = document.getElementsByClassName('text_resp');
     var route = '{{ route('response.register.attractive.dinamic')}}';
     var startup = <?= $_SESSION['login']['startup_id']; ?>;
+
     for(key in textareas){
         if (textareas[key].id) {
             var data = textareas[key];
@@ -47,11 +48,19 @@
                     var json_config = JSON.parse(request_response);
                     if (json_config.status == 400) {
                         console.log('Não foi possivel salvar :(');
+                        var msg = "Não foi possivel concluir a ação ! \n";
+                        msg += "recarregue a pagina e tente novamente";
+
+                        alert(msg);
                     }else{
                         console.log('Salvo com sucesso ! :)');
                     }
                 }else{
                     console.log('Não foi possivel salvar :(');
+                    var msg = "Não foi possivel concluir a ação ! \n";
+                    msg += "recarregue a pagina e tente novamente";
+
+                    alert(msg);
                 }
 
             }
@@ -72,7 +81,7 @@
         var html = '';
         html += '<button id="btn_fade_new_' + count + '" class="btn btn_fade btn-outline-secondary btn-lg btn-block mt-5 mb-5"> Formulário Novo Participante ' + count + '</button>';
 
-        html += '    <div id="time_fade_new_' + count + '" style="display: none;" >';
+        html += '    <div class="time_fade" id="time_fade_new_' + count + '" style="display: none;" >';
 
         html += '        <div class="form-group">';
         html += '            <label class="pergunta" for="nome-compl' + count + '">Nome Completo</label>';
@@ -221,8 +230,8 @@
     $('form').on('click', '.remover', function(){
         var button_id = $(this).attr('id');
         count--;
-        $('#btn_fade_new_' + button_id +'').remove();
-        $('#time_fade_new_' + button_id +'').remove();
+        $('#btn_fade_new_' + button_id).remove();
+        $('#time_fade_new_' + button_id).remove();
     });
 </script>
 
@@ -254,5 +263,20 @@
                  $('#startup_city').html(html);
              });
          }
+    });
+</script>
+
+<script>
+    // SCRIPT DE REMOÇÃO DE PARTICIPANTES
+    $('form').on('click', '.remove_particpant', function(){
+        var remove = confirm("Deseja remover o Participante ?");
+        if (remove) {
+            var button_id = $(this).attr('id');
+            var route = '{{ route('remove.participant')}}';
+            var url = route + '/' + button_id;
+            sendResponse(url)
+            $('#btn_fade_' + button_id).remove();
+            $('#time_fade_' + button_id).remove();
+        }
     });
 </script>

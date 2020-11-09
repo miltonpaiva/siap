@@ -518,4 +518,20 @@ class StartupsController extends Controller
         exit();
     }
 
+    public function removeParticipant($participant_id = '')
+    {
+      try {
+        $args =
+            [
+                ['id', '=', $participant_id],
+            ];
+
+        DB::table('participants')->where($args)->delete();
+
+        echo json_encode(['status' => 200, 'message' => 'ok']);
+      } catch (\Exception $e) {
+        Log::error("Não foi possivel remover o participante :", [$e->getMessage()]);
+        echo json_encode(['status' => 400, 'message' => $e->getMessage()]);
+      }
+    }
 }
