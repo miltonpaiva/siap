@@ -184,6 +184,10 @@ class RatingController extends Controller
           if ($sttp['city'] != '000000') {
             $this->cities[self::clearString($sttp['city'])] = $sttp['city'];
           }
+          if (!in_array($s_id, $sttps_ids)) {
+            $sttps_ids[] = $s_id;
+          }
+
         }
 
         if (isset($_GET['regiao'])) {
@@ -261,8 +265,8 @@ class RatingController extends Controller
                 $data[$key]['startup'] = $startup;
                 $data[$key]['total'] = $total[$key];
 
-                if (isset($prtc[$rating['startup']])) {
-                    $data[$key]['startup']['qtd_prtc'] = count($prtc[$rating['startup']]);
+                if (isset($prtc[$id])) {
+                    $data[$key]['startup']['qtd_prtc'] = count($prtc[$id]);
                 }else{
                     $data[$key]['startup']['qtd_prtc'] = 0;
                 }
