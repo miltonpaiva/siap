@@ -285,6 +285,7 @@
                                     <input type="text" class="form-control obrigatorio" session="nav-section0" value="{{@$attch[$time['id']]['archive']}}" disabled="true">
                                 </div>
                             </div>
+                            <button type="button" id="{{$t_id}}" class="btn btn-outline-secondary btn-lg btn-block mt-5 mb-5 remover">Remover: {{@$time['name']}}</button>
                         </div>
 
                         @endforeach

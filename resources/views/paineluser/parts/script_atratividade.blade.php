@@ -1,5 +1,6 @@
 
-  <script>
+<script>
+    // SCRIPT PARA AÇÃO DE FADE DOS PARTICIPANTES
     $(document).ready(function(){
       $(".btn_fade").click(function(e){
         e.preventDefault();
@@ -8,10 +9,10 @@
         $("#" + fade).fadeToggle("slow");
       });
     });
-  </script>
+</script>
 
-
-  <script>
+<script>
+    // SCRIPT PARA SALVAR AS RESPOSTAS DE FORMA DINAMICA
     var textareas = document.getElementsByClassName('text_resp');
     var route = '{{ route('response.register.attractive.dinamic')}}';
     var startup = <?= $_SESSION['login']['startup_id']; ?>;
@@ -58,10 +59,10 @@
 
         xhttp.send();
     }
-  </script>
+</script>
 
-  <script>
-
+<script>
+    // SCRIPT PARA INCLUSÃO DE NOVOS PARTICIPANTES
     var count = 0;
 
     $('#inclua_mais').click(function(e){
@@ -182,10 +183,9 @@
         html += '                <input type="file" class="custom-file-input imput_comprovacao" id="comprovacao' + count + '" name="time_new[' + count + '][comprovacao]" accept="application/pdf" >';
         html += '                <label id="uploadc' + count + '" class="custom-file-label" for="comprovacao' + count + '"></label>';
         html += '                <small id="compHelp' + count + '" class="form-text text-muted" style="color: red !important;">PERMITIDO APENAS ARQUIVOS (.pdf) QUE TENHA NO MÁXIMO 200MB</small>';
-        html += '            </div>';
+        html += '            </div><hr>';
 
-        html += '</div> <button type="button" id="' + count + '" class="btn btn-outline-secondary btn-lg btn-block mt-5 mb-5 remover">Remover</button> </div>';
-
+        html += '</div> <button type="button" id="' + count + '" class="btn btn-outline-secondary btn-lg btn-block mt-5 mb-5 remover">Remover Participante ' + count + '</button> </div>';
 
         $('.dados_membros').append(html);
 
@@ -224,9 +224,10 @@
         $('#btn_fade_new_' + button_id +'').remove();
         $('#time_fade_new_' + button_id +'').remove();
     });
+</script>
 
-  </script>
 <script>
+    // SCRIPT PARA CARREGAR AS CIDADES
     $(document).ready(function(){
          carregar_json();
          function carregar_json(){
