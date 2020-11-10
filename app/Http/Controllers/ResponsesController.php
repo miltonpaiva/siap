@@ -460,9 +460,11 @@ class ResponsesController extends Controller
         $url['link'] = $data;
 
         if (strrpos($data , 'youtube')) {
-            $id_video = explode('youtube.com/watch?v=', $data)[1];
-            $url['type'] = 'video';
-            $url['link'] = "https://www.youtube.com/embed/{$id_video}";
+            if (strrpos($data, 'youtube.com/watch?v=')) {
+                $id_video = explode('youtube.com/watch?v=', $data)[1];
+                $url['type'] = 'video';
+                $url['link'] = "https://www.youtube.com/embed/{$id_video}";
+            }
         }
         if (strrpos($data , 'youtu.be/')) {
             $id_video = explode('youtu.be/', $data)[1];
