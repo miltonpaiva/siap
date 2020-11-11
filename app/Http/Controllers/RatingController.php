@@ -51,7 +51,7 @@ class RatingController extends Controller
               'qtd_particpants' => count($participants)
           ];
 
-        return view('paineladm/avaliacao', $vars);
+        return view('paineladm/ratings/add', $vars);
     }
 
     public function viewRating($startup_id, $user_id)
@@ -117,7 +117,7 @@ class RatingController extends Controller
               'qtd_particpants' => count($participants)
           ];
 
-        return view('paineladm/avaliacao_view', $vars);
+        return view('paineladm/ratings/view', $vars);
     }
 
     public function listRating()
@@ -295,7 +295,7 @@ class RatingController extends Controller
             'message'  => self::$message,
           ];
 
-        return view('paineladm/listagem_avaliacao', $vars);
+        return view('paineladm/ratings/list', $vars);
     }
 
     public function actionRating(Request $request)
