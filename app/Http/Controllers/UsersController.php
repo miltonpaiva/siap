@@ -151,12 +151,10 @@ class UsersController extends Controller
         $routes_user['Avaliador'] =
             [
                 'startup.view',
-                'painel',
                 'attractive.response.view',
                 'rating.list',
                 'startup.rating.view',
                 'startup.rating.view.action',
-                'startup.list',
             ];
 
         if (!isset($_SESSION['login'])) {
@@ -171,7 +169,7 @@ class UsersController extends Controller
             }
             if ($_SESSION['login']['user_profile'] == 'Avaliador') {
                 if (!in_array($route, $routes_user['Avaliador'])) {
-                    return redirect()->route('painel')->withErrors(['Você não tem permissão para acessar a tela.']);
+                    return redirect()->route('rating.list')->withErrors(['Você não tem permissão para acessar a tela.']);
                 }
             }
         }

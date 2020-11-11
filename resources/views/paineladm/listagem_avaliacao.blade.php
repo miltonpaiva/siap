@@ -248,9 +248,9 @@
                           <select onchange="redirectAction(this)" >
                             <option disabled="true" value="" selected="true" >---</option>
 
-                            @if($rating['startup']['stage'] == 'rated' || $rating['startup']['stage'] == 'approved')
+                            @if($rating['startup']['stage'] == 'rated' || $rating['startup']['stage'] == 'approved' || $rating['startup']['stage'] == 'complete_attractive')
                             <option value="{{ route('startup.rating.view', [$rating['startup']['id'], $rating['user']['id']]) }}" >
-                                Ver Avaliação
+                                Vis. Prontidão
                             </option>
                             @endif
 

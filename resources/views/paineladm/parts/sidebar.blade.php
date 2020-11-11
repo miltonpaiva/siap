@@ -12,7 +12,10 @@
       <hr class="sidebar-divider my-0">
 
       <!-- Nav Item - Dashboard -->
-      <?php if (strrpos(@$_SERVER['REQUEST_URI'], 'painel')){ $painel = 'active'; } ?>
+      <?php
+      if ($_SESSION['login']['user_profile'] != 'Avaliador'):
+        if (strrpos(@$_SERVER['REQUEST_URI'], 'painel')){ $painel = 'active'; } 
+      ?>
       <li class="nav-item <?= @$painel; ?> ">
         <a class="nav-link" href="{{ route('painel') }}">
           <i class="fas fa-fw fa-tachometer-alt"></i>
@@ -21,9 +24,11 @@
 
       <!-- Divider -->
       <hr class="sidebar-divider">
+    <?php endif; ?>
 
       <!-- Nav Item - Tables -->
       <?php
+      if ($_SESSION['login']['user_profile'] != 'Avaliador'):
         $is_startup =
         (
           strrpos(@$_SERVER['REQUEST_URI'], 'startup') ||
@@ -39,6 +44,7 @@
       </li>
       <!-- Divider -->
       <hr class="sidebar-divider">
+    <?php endif; ?>
 
       <!-- Nav Item - Tables -->
       <?php
