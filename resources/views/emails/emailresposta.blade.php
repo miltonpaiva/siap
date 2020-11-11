@@ -15,21 +15,43 @@
 							<tr>
 									<td style="display: block !important; clear: both !important; margin: 0 auto !important; max-width: 580px !important; background: white; padding: 30px 35px;">
 
-										<h2 style="margin-bottom: 20px; line-height: 1.25; font-size: 28px;">Parabéns!</h2>
+										<h2 style="margin-bottom: 20px; line-height: 1.25; font-size: 28px;">
+											@if(@$data['user']['profile'] == 'Empreendedor')
+											Parabéns!
+											@endif
+
+											@if(@$data['user']['profile'] != 'Empreendedor')
+											Olá!
+											@endif
+										</h2>
 										<!-- nome tem que passar dinâmico -->
-										<p style="font-size: 16px; font-weight: normal; margin-bottom: 20px;">{{$data['user']['name']}},</p>
-										<p style="font-size: 16px; font-weight: normal; line-height: 1.65; margin-bottom: 20px;">Seu projeto foi habilitado para participar da 2ª fase de seleção do Programa Corredores Digitais, ANÁLISE DE ATRATIVIDADE. Você deverá preencher e atender a todos as questões dispostas no formulário até o dia 11/11/2020 às 23:59:59h.
+										<p style="font-size: 16px; font-weight: normal; margin-bottom: 20px;">{{@$data['user']['name']}},</p>
+
+										@if(@$data['user']['profile'] == 'Empreendedor')
+										<p style="font-size: 16px; font-weight: normal; line-height: 1.65; margin-bottom: 20px;">
+											Seu projeto foi habilitado para participar da 2ª fase de seleção do Programa Corredores Digitais, ANÁLISE DE ATRATIVIDADE. Você deverá preencher e atender a todos as questões dispostas no formulário até o dia 11/11/2020 às 23:59:59h.
 										</p>
 										<p style="font-size: 16px; font-weight: normal; line-height: 1.65; margin-bottom: 20px;">
-											Para te auxiliar na submissão preparamos o CURSO ANÁLISE DE ATRATIVIDADE, 20h, com os pontos importantes na hora de desenvolver um negócio inovador. <a href="{{$url_curso}}">Clique AQUI para acessar o curso.</a>
+											Para te auxiliar na submissão preparamos o CURSO ANÁLISE DE ATRATIVIDADE, 20h, com os pontos importantes na hora de desenvolver um negócio inovador. <a href="{{@$url_curso}}">Clique AQUI para acessar o curso.</a>
 										</p>
+										@endif
+
+										@if(@$data['user']['profile'] != 'Empreendedor')
+										<p style="font-size: 16px; font-weight: normal; line-height: 1.65; margin-bottom: 20px;">
+											Seu usuário foi criado com o perfil de {{@$data['user']['profile']}}, abaixo está o seu acesso:
+										</p>
+										<p style="font-size: 16px; font-weight: normal; line-height: 1.65; margin-bottom: 20px;">
+											<b>Login: </b>{{@$data['user']['email']}}<br>
+											<b>Senha: </b>{{@$data['user']['password']}}
+										</p>
+										@endif
 
 											<table style="margin: 0 auto !important;">
 													<tr>
 															<td align="center">
 																	<p style="font-size: 16px; font-weight: normal; margin-bottom: 20px; ">
-																			<a href="{{$url_painel}}" style="color: #1abc9c; text-decoration: none; display: inline-block; color: white; background: #1abc9c; border: solid #1abc9c; border-width: 10px 20px 8px; font-weight: bold; border-radius: 4px; text-decoration: none; line-height: 1.65;">
-																				Painel de Usuario
+																			<a href="{{@$url_painel}}" style="color: #1abc9c; text-decoration: none; display: inline-block; color: white; background: #1abc9c; border: solid #1abc9c; border-width: 10px 20px 8px; font-weight: bold; border-radius: 4px; text-decoration: none; line-height: 1.65;">
+																				ir para o Painel
 																			</a>
 																	</p>
 															</td>

@@ -30,19 +30,30 @@ class SendMailUser extends Mailable
      */
     public function build()
     {
-        $is_criacao = ($this->data['startup']['category'] == 'criação');
 
-        $url_curso =
-            ($is_criacao) ? 
-            'https://corredoresdigitais.teachable.com/p/curso-preparatorio-criacao-de-negocios' :
-            'https://corredoresdigitais.teachable.com/p/curso-preparatorio-tracao-de-negocios' ;
+        $subject = 'Criação de novo usuario no programa Corredores Digitais';
+        $route = 'painel';
+
+        $url_curso = '';
+        if ($this->data['user']['profile'] == 'Empreendedor') {
+            $is_criacao = ($this->data['startup']['category'] == 'criação');
+
+            $url_curso =
+                ($is_criacao) ? 
+                'https://corredoresdigitais.teachable.com/p/curso-preparatorio-criacao-de-negocios' :
+                'https://corredoresdigitais.teachable.com/p/curso-preparatorio-tracao-de-negocios' ;
+
+            $subject = 'Seu projeto foi habilitado para a Etapa de Atratividade do Corredores Digitais';
+            $route = 'user.painel.view';
+        }
+
 
         return $this->from('contato@corredoresdigitais.info')
-                    ->subject('Seu projeto foi habilitado para a Etapa de Atratividade do Corredores Digitais')
+                    ->subject($subject)
                     ->view('emails/emailresposta')
                     ->with([
                         'data' => $this->data,
-                        'url_painel' => route('user.painel.view'),
+                        'url_painel' => route($route),
                         'url_curso'  => $url_curso,
                     ]);
     }

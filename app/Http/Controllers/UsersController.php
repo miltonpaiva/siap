@@ -5,12 +5,14 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Mail;
 
 use Redirect;
 use DB;
 
 use App\Http\Controllers\StartupsController as Startup;
 use App\Http\Controllers\QueryActionController as Query;
+use App\Mail\SendMailUser;
 
 header("Access-Control-Allow-Origin: *");
 
@@ -91,7 +93,7 @@ class UsersController extends Controller
                     [
                         'user_id'      => $user['id'],
                         'user_name'    => $user['name'],
-                        'user_email'    => $user['email'],
+                        'user_email'   => $user['email'],
                         'startup_id'   => $user['startup'],
                         'user_profile' => $user['profile'],
                     ];
@@ -114,6 +116,10 @@ class UsersController extends Controller
                         return redirect()->route('user.painel.view');
                     }
                     return redirect()->route('startup.register.view', ['startup_id' => $user['startup']]);
+                }
+
+                if ($user['profile'] == 'Avaliador') {
+                    return redirect()->route('rating.list');
                 }
 
                 if ($user['profile'] != 'Empreendedor') {
@@ -246,24 +252,23 @@ class UsersController extends Controller
             ];
 
         $user_exist = count(Query::queryAction('users', $custom_args));
-
         if ($user_exist > 0) {
             return Redirect::back()->withErrors(['Esse email ja está registrado, use outro.']);
         }
 
         Query::transaction();
 
+        $user =
+            [
+                'name'     => $data['nome'],
+                'email'    => $data['email'],
+                'password' => md5($data['senha']),
+                'profile'  => $data['perfil'],
+            ];
+
         try {
             $new_user_id =
-                DB::table('users')->insertGetId(
-                    [
-                        'name'     => $data['nome'],
-                        'email'    => $data['email'],
-                        'password' => md5($data['senha']),
-                        // 'startup'  => $startup_id,
-                        'profile'  => $data['perfil'],
-                    ]
-                );
+                DB::table('users')->insertGetId($user);
         } catch (\Exception $e) {
             Log::error("Não foi possivel inserir o usuario ", [$e->getMessage()]);
 
@@ -275,6 +280,15 @@ class UsersController extends Controller
             Query::transaction('rollBack');
             return $links;
         }
+
+        $user['password'] = $data['senha'];
+
+        $data_mail =
+            [
+                'user' => $user,
+            ];
+
+        Mail::to($user['email'])->send(new SendMailUser($data_mail));
 
         $_SESSION['message'] =
         [
