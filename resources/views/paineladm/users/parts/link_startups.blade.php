@@ -11,6 +11,7 @@
                 <th>Vinclular</th>
                 <th>#</th>
                 <th>Nome</th>
+                <th>Vinculado</th>
               </tr>
             </thead>
             <tfoot>
@@ -18,6 +19,7 @@
                 <th>Vincular</th>
                 <th>#</th>
                 <th>Nome</th>
+                <th>Vinculado</th>
               </tr>
             </tfoot>
             <tbody>
@@ -44,6 +46,13 @@
                     <label for="check_startup_{{$startup['id']}}" style="width: 100%;height: 100%;margin: 0px;">
                       {{$startup['name']}}
                     </label>
+                  </td>
+                  <td style="padding: 5px;" >
+                    @if(@$links[$startup['id']])
+                      @foreach($links[$startup['id']] as $link)
+                        <p style="margin: 0px; font-size: 12px;"> <b>{{$link}}</b>. </p><hr style="margin: 0px;" >
+                      @endforeach
+                    @endif
                   </td>
                 </tr>
 

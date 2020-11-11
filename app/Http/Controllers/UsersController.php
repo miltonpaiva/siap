@@ -211,7 +211,27 @@ class UsersController extends Controller
 
         $startups = Query::queryAction('startups', $custom_args);
 
-        return view('paineladm/users/add', [ 'startups' => $startups ]);
+        $custom_args['conditions'] =
+            [
+                ['profile', '=', 'Avaliador'],
+            ];
+
+        $users = Query::getSampleData('users', 'name', $custom_args);
+
+        $links = Query::queryAction('user_Link_startups');
+
+        $lnk_p_sttp = [];
+        foreach ($links as $lnk) {
+            $lnk_p_sttp[$lnk['startup']][$lnk['evaluator']] = $users[$lnk['evaluator']];
+        }
+
+        $vars =
+            [
+                'startups' => $startups,
+                'links'    => $lnk_p_sttp,
+            ];
+
+        return view('paineladm/users/add', $vars);
     }
 
     public function actionAdd(Request $request)
@@ -333,6 +353,20 @@ class UsersController extends Controller
 
         $custom_args['conditions'] =
             [
+                ['profile', '=', 'Avaliador'],
+            ];
+
+        $users = Query::getSampleData('users', 'name', $custom_args);
+
+        $links = Query::queryAction('user_Link_startups');
+
+        $lnk_p_sttp = [];
+        foreach ($links as $lnk) {
+            $lnk_p_sttp[$lnk['startup']][$lnk['evaluator']] = $users[$lnk['evaluator']];
+        }
+
+        $custom_args['conditions'] =
+            [
                 ['id', '=', $user_id]
             ];
 
@@ -358,6 +392,7 @@ class UsersController extends Controller
             [
                 'user' => $user,
                 'startups' => $startups,
+                'links' => $lnk_p_sttp,
             ];
 
         return view('paineladm/users/edit', $vars);
