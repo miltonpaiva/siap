@@ -98,9 +98,12 @@
                   </div>
 
                   <div class="row">
-                    <div class="col-sm-12 col-md-4 mt-3 mb-3 mx-auto">
+                    <div class="col-sm-12 col-md-8 mt-3 mb-3 mx-auto">
                       <a href="{{ route('startup.view', $startup['id']) }}" target="_blank" >
                         <input type="button" class="btn btn-info" value="Confira Projeto na Íntegra" >
+                      </a>
+                      <a href="{{ route('attractive.response.view', $startup['id']) }}" target="_blank" >
+                        <input type="button" class="btn btn-info" value="Confira Respostas de Atratividade" >
                       </a>
                     </div>
                   </div>
@@ -125,13 +128,7 @@
                     </thead>
                     <tbody>
 
-                      @if($startup['category'] == 'tração')
-                      @include('paineladm/attractive/parts/table_tracao')
-                      @endif
-
-                      @if($startup['category'] == 'criação')
-                      @include('paineladm/attractive/parts/table_criacao')
-                      @endif
+                      @include('paineladm/attractive/parts/table')
 
                     </tbody>
                 </table>

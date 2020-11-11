@@ -265,11 +265,14 @@
 
                             @if($rating['startup']['stage'] == 'complete')
                               <option value="{{ route('startup.rating.view.action', $rating['startup']['id']) }}" >
-                                  Avaliar
+                                  Aval. Prontidão
                               </option>
                             @endif
 
                             @if($rating['startup']['stage'] == 'complete_attractive')
+                            <option value="{{ route('startup.rating.attractive.view', $rating['startup']['id']) }}" >
+                                Aval. Atratividade
+                            </option>
                             <option value="{{ route('attractive.response.view', $rating['startup']['id']) }}" >
                                 Vis. Atratividade
                             </option>
