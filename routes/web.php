@@ -20,6 +20,10 @@ Route::get('/cadastro', function () {
     return view('home');
 })->name('home');
 
+Route::get('/email', function () {
+    return view('emails/emailresposta');
+})->name('email');
+
 Route::get('/concluido', function () {
     return view('concluido');
 })->name('concluido');
@@ -71,6 +75,7 @@ Route::get('/startup/{startup_id}/reprov/', 'RatingController@actionReprov')->na
 
 //VIEW ROUTES RATING
 Route::get('/projeto/{startup_id}/avaliacao/', 'RatingController@viewRatingAction')->name('startup.rating.view.action');
+Route::get('/projeto/{startup_id}/avaliacao-atratividade/', 'RatingController@viewRatingAttractive')->name('startup.rating.attractive.view');
 Route::get('/projeto/{startup_id}/avaliacao/{user_id}/', 'RatingController@viewRating')->name('startup.rating.view');
 Route::get('/avaliacoes', 'RatingController@listRating')->name('rating.list');
 

@@ -155,6 +155,7 @@ class UsersController extends Controller
                 'rating.list',
                 'startup.rating.view',
                 'startup.rating.view.action',
+                'startup.rating.attractive.view',
             ];
 
         if (!isset($_SESSION['login'])) {

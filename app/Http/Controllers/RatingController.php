@@ -54,6 +54,37 @@ class RatingController extends Controller
         return view('paineladm/ratings/add', $vars);
     }
 
+    public function viewRatingAttractive($startup_id)
+    {
+        $user_logged = User::checkLogin();
+        if (is_object($user_logged)) {
+            return $user_logged;
+        }
+
+        $custom_args['conditions'] =
+            [
+                ['id', '=', $startup_id]
+            ];
+        $startup = current(Query::queryAction('startups', $custom_args));
+
+        $custom_args['conditions'] =
+            [
+                ['startup', '=', $startup_id]
+            ];
+        $user = current(Query::queryAction('users', $custom_args));
+
+        $participants = Query::queryAction('participants', $custom_args);
+
+        $vars =
+          [
+              'startup' => $startup,
+              'user' => $user,
+              'qtd_particpants' => count($participants)
+          ];
+
+        return view('paineladm/add_atratividade', $vars);
+    }
+
     public function viewRating($startup_id, $user_id)
     {
         $user_logged = User::checkLogin();
