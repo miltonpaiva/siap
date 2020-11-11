@@ -76,7 +76,7 @@
 
                   <div class="row">
                     <div class="col-sm-12 col-md-12 mb-2">
-                        <h6><b class="text-dark text-uppercase">{{$resp['criterea']['name']}}: </b> <br> 
+                        <h6><b class="text-dark text-uppercase">{{$resp['question']['name']}}: </b> <br> 
                           <span class="ml-2"> {{$resp['response']}}</span></h6>
                     </div>
                   </div>
@@ -94,7 +94,7 @@
 
                   <div class="row">
                     <div class="col-sm-12 col-md-12 mb-2">
-                        <h6><b class="text-dark text-uppercase">{{$resp['criterea']['name']}}: </b> <br> 
+                        <h6><b class="text-dark text-uppercase">{{$resp['question']['name']}}: </b> <br> 
                           <span class="ml-2"> {{$resp['response']}}</span></h6>
                     </div>
                   </div>
@@ -116,7 +116,7 @@
 
                   <div class="row">
                     <div class="col-sm-12 col-md-12 mb-2">
-                        <h6><b class="text-dark text-uppercase">{{$resp['criterea']['name']}}: </b> <br> 
+                        <h6><b class="text-dark text-uppercase">{{$resp['question']['name']}}: </b> <br> 
                           <span class="ml-2"> {{$resp['response']}}</span></h6>
                     </div>
                   </div>
@@ -134,7 +134,7 @@
 
                   <div class="row">
                     <div class="col-sm-12 col-md-12 mb-2">
-                        <h6><b class="text-dark text-uppercase">{{$resp['criterea']['name']}}: </b> <br> 
+                        <h6><b class="text-dark text-uppercase">{{$resp['question']['name']}}: </b> <br> 
                           <span class="ml-2"> {{$resp['response']}}</span></h6>
                     </div>
                   </div>
@@ -152,7 +152,7 @@
 
                   <div class="row">
                     <div class="col-sm-12 col-md-12 mb-2">
-                        <h6><b class="text-dark text-uppercase">{{$resp['criterea']['name']}}: </b> <br> 
+                        <h6><b class="text-dark text-uppercase">{{$resp['question']['name']}}: </b> <br> 
                           <span class="ml-2"> {{$resp['response']}}</span></h6>
                     </div>
                   </div>
@@ -170,7 +170,7 @@
 
                   <div class="row">
                     <div class="col-sm-12 col-md-12 mb-2">
-                        <h6><b class="text-dark text-uppercase">{{$resp['criterea']['name']}}: </b> <br> 
+                        <h6><b class="text-dark text-uppercase">{{$resp['question']['name']}}: </b> <br> 
                           <span class="ml-2"> {{$resp['response']}}</span></h6>
                     </div>
                   </div>

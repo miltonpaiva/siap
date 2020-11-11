@@ -19,7 +19,7 @@ class AttractiveTable extends Migration
             $table->unsignedBigInteger('criterea');
             $table->mediumText('response');
             $table->foreign('startup')->references('id')->on('startups');
-            $table->foreign('criterea')->references('id')->on('criterea');
+            $table->foreign('question')->references('id')->on('questions_attractive');
         });
     }
 

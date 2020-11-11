@@ -320,14 +320,14 @@ class ResponsesController extends Controller
         $attractive =
             [
                 'startup' => $data['startup'],
-                'criterea' => $data['criterea'],
+                'question' => $data['criterea'],
                 'response' => $data['response'],
             ];
 
         $custom_args['conditions'] =
             [
                 ['startup', '=', $data['startup']],
-                ['criterea', '=', $data['criterea']],
+                ['question', '=', $data['criterea']],
             ];
 
         $has_response = @max(Query::getSampleData('attractive', 'id', $custom_args));
@@ -385,7 +385,7 @@ class ResponsesController extends Controller
 
         $startup = current(Query::queryAction('startups', $custom_args));
 
-        $criterea_per_session =
+        $question_per_session =
             [
                 11 => 2,
                 12 => 2,
@@ -430,11 +430,10 @@ class ResponsesController extends Controller
 
         $custom_args['conditions'] =
             [
-                ['stage', '=', 'atratividade'],
                 ['type', '=', $startup['category']],
             ];
 
-        $critereas = Query::queryAction('criterea', $custom_args);
+        $questions = Query::queryAction('questions_attractive', $custom_args);
 
         $custom_args['conditions'] =
             [
@@ -445,13 +444,14 @@ class ResponsesController extends Controller
 
         $resp_agroup = [];
         foreach ($attractives as $a_id => $attr) {
-            $key = @$criterea_per_session[$attr['criterea']];
+            $key = @$question_per_session[$attr['question']];
+
             if ($key) {
-                @$resp_agroup[$key][$attr['criterea']] = $attr;
-                @$resp_agroup[$key][$attr['criterea']]['criterea'] = @$critereas[$attr['criterea']];
+                @$resp_agroup[$key][$attr['question']] = $attr;
+                @$resp_agroup[$key][$attr['question']]['question'] = @$questions[$attr['question']];
             }else{
-                @$resp_agroup['video'][$attr['criterea']] = $attr;
-                @$resp_agroup['video'][$attr['criterea']]['criterea'] = @$critereas[$attr['criterea']];
+                @$resp_agroup['video'][$attr['question']] = $attr;
+                @$resp_agroup['video'][$attr['question']]['question'] = @$questions[$attr['question']];
             }
         }
 

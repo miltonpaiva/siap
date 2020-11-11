@@ -545,7 +545,7 @@ class UsersController extends Controller
 
         $attrs = [];
         foreach ($attractives as $a_id => $attr) {
-            $attrs[$attr['criterea']] = $attr;
+            $attrs[$attr['question']] = $attr;
         }
 
         $custom_args['conditions'] =
