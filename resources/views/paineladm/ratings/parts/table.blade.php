@@ -3,9 +3,8 @@
                     <tr>
                       <th>Ação</th>
                       <th>Nota Total</th>
-                      <th>Experiência</th>
-                      <th>Alinhamento</th>
-                      <th>Operação</th>
+                      <th>Setor</th>
+                      <th>Tecnologia</th>
                       <th>Status</th>
                       <th>Startup</th>
                       <th>Qtd. Time</th>
@@ -19,9 +18,8 @@
                     <tr>
                       <th>Ação</th>
                       <th>Nota Total</th>
-                      <th>Experiência</th>
-                      <th>Alinhamento</th>
-                      <th>Operação</th>
+                      <th>Setor</th>
+                      <th>Tecnologia</th>
                       <th>Status</th>
                       <th>Startup</th>
                       <th>Qtd. Time</th>
@@ -94,21 +92,8 @@
                           </select>
                         </td>
                         <td>{{$rating['total']}}</td>
-                        <td>
-                          <p style="margin: 0px; font-size: 12px;"> Tecnologia: <b>{{@$notes[$key][1]}}</b>. </p><hr style="margin: 0px;" >
-                          <p style="margin: 0px; font-size: 12px;"> Setor: <b>{{@$notes[$key][2]}}</b>.</p><hr style="margin: 0px;" >
-                          <p style="margin: 0px; font-size: 12px;"> Time: <b>{{@$notes[$key][3]}}</b>.</p><hr style="margin: 0px;" >
-                          <p style="margin: 0px; font-size: 12px;"> Mulheres: <b>{{@$notes[$key][4]}}</b>.</p>
-                        </td>
-                        <td>
-                          <p style="margin: 0px; font-size: 12px;"> Produto: <b>{{@$notes[$key][5]}}</b>. </p><hr style="margin: 0px;" >
-                          <p style="margin: 0px; font-size: 12px;"> Setor: <b>{{@$notes[$key][7]}}</b>. </p><hr style="margin: 0px;" >
-                          <p style="margin: 0px; font-size: 12px;"> Tecnologias: <b>{{@$notes[$key][6]}}</b>.</p>
-                        </td>
-                        <td>
-                          <p style="margin: 0px; font-size: 12px;"> Produto: <b>{{@$notes[$key][8]}}</b>. </p><hr style="margin: 0px;" >
-                          <p style="margin: 0px; font-size: 12px;"> Vendas: <b>{{@$notes[$key][9]}}</b>. </p>
-                        </td>
+                        <td>{{$rating['startup']['tecno']}}</td>
+                        <td>{{$rating['startup']['setor']}}</td>
                         <td>
                           @if($rating['startup']['stage'] == 'rated')
                             Aguardando Habilitação
@@ -121,6 +106,9 @@
                           @endif
                           @if($rating['startup']['stage'] == 'complete')
                             Aguardando 1° avaliação
+                          @endif
+                          @if($rating['startup']['stage'] == 'rated_attractive')
+                            Avaliado Atratividade
                           @endif
                         </td>
                         <td>{{$rating['startup']['name']}}</td>

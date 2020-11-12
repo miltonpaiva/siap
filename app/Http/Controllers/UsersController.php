@@ -217,6 +217,13 @@ class UsersController extends Controller
 
         $startups = Query::queryAction('startups', $custom_args);
 
+        $sttps_ids = [];
+        foreach ($startups as $id => $sttp) {
+            $sttps_ids[$id] = $id;
+        }
+
+        $set_tec = $this->getSetorTecnologia($sttps_ids);
+
         $custom_args['conditions'] =
             [
                 ['profile', '=', 'Avaliador'],
@@ -229,6 +236,9 @@ class UsersController extends Controller
         $lnk_p_sttp = [];
         foreach ($links as $lnk) {
             $lnk_p_sttp[$lnk['startup']][$lnk['evaluator']] = $users[$lnk['evaluator']];
+
+            $startups[$lnk['startup']]['setor'] = $set_tec[$lnk['startup']][3];
+            $startups[$lnk['startup']]['tecno'] = $set_tec[$lnk['startup']][4];
         }
 
         $vars =
@@ -375,9 +385,13 @@ class UsersController extends Controller
         $links = Query::queryAction('user_Link_startups');
 
         $lnk_p_sttp = [];
+        $sttps_ids = [];
         foreach ($links as $lnk) {
             $lnk_p_sttp[$lnk['startup']][$lnk['evaluator']] = $users[$lnk['evaluator']];
+            $sttps_ids[$lnk['startup']] = $lnk['startup'];
         }
+
+        $set_tec = $this->getSetorTecnologia($sttps_ids);
 
         $custom_args['conditions'] =
             [
@@ -400,6 +414,9 @@ class UsersController extends Controller
             if (in_array($s_id, $ratings)) {
                 $startups[$s_id]['checked'] = 'checked';
             }
+
+            $startups[$s_id]['setor'] = $set_tec[$s_id][3];
+            $startups[$s_id]['tecno'] = $set_tec[$s_id][4];
         }
 
         $vars =
