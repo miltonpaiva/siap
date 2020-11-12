@@ -69,18 +69,26 @@
                   <legend style="width:auto; margin-left: 10px; padding: 5px; font-size: 18px"><strong class="text-info">Responsável: </strong></legend>
 
                   <div class="row">
+
+                    <?php if ($_SESSION['login']['user_profile'] != 'Avaliador'): ?>
                     <div class="col-sm-12 col-md-4 mb-2">
                         <h6><b class="text-dark text-uppercase">NOME: </b> <br> 
                           <span class="ml-2"> {{$startup['user']['name']}}</span></h6>
                     </div>
+                    <?php endif ?>
+
                     <div class="col-sm-12 col-md-4 mb-2">
                         <h6><b class="text-dark text-uppercase">STARTUP: </b> <br> 
                           <span class="ml-2"> {{$startup['name']}}</span></h6>
                     </div>
+
+                    <?php if ($_SESSION['login']['user_profile'] != 'Avaliador'): ?>
                     <div class="col-sm-12 col-md-4 mb-2">
                         <h6><b class="text-dark text-uppercase">E-MAIL: </b> <br> 
                           <span class="ml-2"> {{$startup['user']['email']}}</span></h6>
                     </div>
+                    <?php endif ?>
+
                   </div>
                 </fieldset>
 
@@ -92,10 +100,14 @@
                         <h6><b class="text-dark text-uppercase">ESTADO: </b> <br> 
                           <span class="ml-2"> {{$startup['state']}}</span></h6>
                       </div>
+
+                      <?php if ($_SESSION['login']['user_profile'] != 'Avaliador'): ?>
                       <div class="col-sm-12 col-md-4 mb-2">
                         <h6><b class="text-dark text-uppercase">MUNICÍPIO: </b> <br> 
                           <span class="ml-2"> {{$startup['city']}}</span></h6>
                       </div>
+                      <?php endif ?>
+
                       <div class="col-sm-12 col-md-4 mb-2">
                         <h6><b class="text-dark text-uppercase">CATEGORIA: </b> <br> 
                           <span class="ml-2"> {{$startup['category']}} de Negócio</span></h6>
@@ -257,6 +269,7 @@
                     </div>
 
                     <!-- Listagen dos membros --> 
+                    <?php if ($_SESSION['login']['user_profile'] != 'Avaliador'): ?>
 
                     <div class="accordion mt-3 mb-3" id="accordionExample">
 
@@ -270,8 +283,6 @@
                               </button>
                             </h5>
                           </div>
-
-                          <?php if ($_SESSION['login']['user_profile'] != 'Avaliador'): ?>
 
                           <div id="collapse_{{$part['id']}}" class="collapse hide" aria-labelledby="headingOne" data-parent="#accordionExample">
                             <div class="card-body">
@@ -400,13 +411,13 @@
                             </div>
                           </div>
 
-                          <?php endif ?>
-
                         </div>
 
                         @endforeach
 
                       </div>
+
+                      <?php endif ?>
 
                 </fieldset>
 

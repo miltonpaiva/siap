@@ -127,6 +127,10 @@ class RatingController extends Controller
 
         $ratings = Query::queryAction($table, $custom_args);
 
+        if (count($ratings) < 1) {
+            return Redirect::back()->withErrors(["Não ha avaliação disponivel"]);
+        }
+
         $stage = 'prontidão';
         $view = 'paineladm/ratings/view';
         if ($table == 'rating_attractive') {
@@ -183,6 +187,12 @@ class RatingController extends Controller
         $user_logged = User::checkLogin();
         if (is_object($user_logged)) {
             return $user_logged;
+        }
+
+        $usr_prf = $_SESSION['login']['user_profile'];
+
+        if ($usr_prf == 'Avaliador') {
+            return $this->getDataAvalaidor();
         }
 
         $ratings = Query::queryAction('rating');
@@ -354,6 +364,110 @@ class RatingController extends Controller
         return view('paineladm/ratings/list', $vars);
     }
 
+    public function getDataAvalaidor()
+    {
+        $usr_id = $_SESSION['login']['user_id'];
+        $sttps_ids = [];
+        $custom_args['values'] = User::getLinkedStartups($_SESSION['login']['user_id']);
+
+        $custom_args['conditions'] =
+            [
+                ['stage', '<>', 'reproved']
+            ];
+
+        $startups = Query::queryActionIn('startups', $custom_args);
+
+        $stts_valid =
+            [
+                // 'rated',
+                // 'complete',
+                'rated_attractive',
+                'complete_attractive',
+            ];
+
+        foreach ($startups as $s_id => $sttp) {
+            if (!in_array($sttp['stage'], $stts_valid)) {
+                unset($startups[$s_id]);
+            }
+          if ($sttp['city'] != '000000') {
+            $this->cities[self::clearString($sttp['city'])] = $sttp['city'];
+          }
+          if (!in_array($s_id, $sttps_ids)) {
+            $sttps_ids[] = $s_id;
+          }
+        }
+
+        if (isset($_GET['regiao'])) {
+          $startups = Filters::getFilterRegion($startups);
+        }
+
+        if (isset($_GET['cidade'])) {
+          $startups = Filters::getFilterCity($startups);
+        }
+
+        if (isset($_GET['articulador'])) {
+          $startups = Filters::getFilterArticulador($startups);
+        }
+
+        if (isset($_GET['tecnologia'])) {
+          $startups = Filters::getFilterTecnologia($startups);
+        }
+
+        $custom_args_participants['column'] = 'startup';
+        $custom_args_participants['values'] = $sttps_ids;
+
+        $participants = Query::queryActionIn('participants', $custom_args_participants);
+
+        $prtc = [];
+        foreach ($participants as $p) {
+            $prtc[$p['startup']][$p['id']] = $p['id'];
+        }
+
+        $ids   = [];
+
+        $cities = self::getDataRegions()['cities'];
+        $regions = self::getDataRegions()['all_regions'];
+
+        foreach ($startups as $id => $startup) {
+            if (!in_array($id, $ids)) {
+                $key = "{$usr_id}_{$id}";
+                $data[$key]['user']['id'] = $usr_id;
+                $data[$key]['user']['name'] = 'Não avaliado';
+                $data[$key]['startup'] = $startup;
+
+                if (isset($prtc[$id])) {
+                    $data[$key]['startup']['qtd_prtc'] = count($prtc[$id]);
+                }else{
+                    $data[$key]['startup']['qtd_prtc'] = 0;
+                }
+
+                $city = $startup['city'];
+                $is_city =
+                    isset(
+                      $cities[self::clearString($city)]
+                    );
+                if ($is_city) {
+                    $data[$key]['startup']['region'] = $regions[$cities[self::clearString($city)]];
+                }else{
+                    $data[$key]['startup']['region'] = 'sem região';
+                }
+            }
+        }
+
+        $vars =
+          [
+            'all_regions' => $this->getDataRegions()['all_regions'],
+            'articuladores'  => $this->getOptions(29),
+            'tecnologias'  => $this->getOptions(4),
+            'cities'  => $this->cities,
+            'ratings' => $data,
+            'message'  => self::$message,
+          ];
+
+        return view('paineladm/ratings/list', $vars);
+
+    }
+
     public function actionRating(Request $request)
     {
         $data = $request->all();
@@ -418,7 +532,7 @@ class RatingController extends Controller
         if ($table == 'rating_attractive') {
             $stage = 'atratividade';
             $msg = "o Projeto [{$startup_id}] Avaliado com sucesso na etapa de Atratividade.";
-            $stage = 'rated_attractive';
+            $stage_sttp = 'rated_attractive';
         }
 
         $custom_args['conditions'] =

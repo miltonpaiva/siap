@@ -86,12 +86,16 @@
                   </div>
 
                   <div class="row">
+
+                    <?php if ($_SESSION['login']['user_profile'] != 'Avaliador'): ?>
                     <div class="col-sm-12 col-md-4 mt-3">
                       <h6 c><b>Responsável: </b> <span> {{$user['name']}}</span></h6>
                     </div>
                     <div class="col-sm-12 col-md-4 mt-3">
                       <h6 c><b>Cidade: </b> <span> {{$startup['city']}}</span></h6>
                     </div>
+                    <?php endif ?>
+
                     <div class="col-sm-12 col-md-4 mt-3">
                       <h6 c><b>Nº de Membros: </b> <span> {{$qtd_particpants}}</span></h6>
                     </div>
@@ -100,10 +104,10 @@
                   <div class="row">
                     <div class="col-sm-12 col-md-8 mt-3 mb-3 mx-auto">
                       <a href="{{ route('startup.view', $startup['id']) }}" target="_blank" >
-                        <input type="button" class="btn btn-info" value="Confira Projeto na Íntegra" >
+                        <input type="button" class="btn btn-info" value="Visualizar Projeto Prontidão" >
                       </a>
                       <a href="{{ route('attractive.response.view', $startup['id']) }}" target="_blank" >
-                        <input type="button" class="btn btn-info" value="Confira Respostas de Atratividade" >
+                        <input type="button" class="btn btn-info" value="Visualizar Projeto Atratividade" >
                       </a>
                     </div>
                   </div>
@@ -139,7 +143,7 @@
 
                   <div class="row">
                     <div class="col-sm-12 col-md-12 mt-3">
-                      <textarea class="form-control" name="observacoes" id="observacoes" cols="30" rows="10"></textarea>
+                      <textarea class="form-control" name="observacoes" id="observacoes" cols="30" rows="10" required="true" ></textarea>
                     </div>
                   </div>
 

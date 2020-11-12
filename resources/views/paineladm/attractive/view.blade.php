@@ -81,7 +81,14 @@
                       <h6 c><b>Startup: </b> <span> {{$startup['name']}}</span></h6>
                     </div>
                     <div class="col-sm-12 col-md-4">
-                      <h6 c><b>Estado da startup: </b> <span> {{$startup['stage']}}</span></h6>
+                      <h6 c><b>Estado da startup: </b> <span> 
+                          @if($startup['stage'] == 'rated_attractive')
+                            Avaliado Atratividade
+                          @endif
+                          @if($startup['stage'] == 'complete_attractive')
+                            Aguardando 2° avaliação
+                          @endif
+                    </span></h6>
                     </div>
                   </div>
 
@@ -89,9 +96,13 @@
                     <div class="col-sm-12 col-md-4 mt-3">
                       <h6 c><b>Responsável: </b> <span> {{$user['name']}}</span></h6>
                     </div>
+
+                    <?php if ($_SESSION['login']['user_profile'] != 'Avaliador'): ?>
                     <div class="col-sm-12 col-md-4 mt-3">
                       <h6 c><b>Cidade: </b> <span> {{$startup['city']}}</span></h6>
                     </div>
+                    <?php endif ?>
+
                     <div class="col-sm-12 col-md-4 mt-3">
                       <h6 c><b>Nº de Membros: </b> <span> {{$qtd_particpants}}</span></h6>
                     </div>
@@ -100,7 +111,7 @@
                   <div class="row">
                     <div class="col-sm-12 col-md-4 mt-3 mb-3 mx-auto">
                       <a href="{{ route('startup.view', $startup['id']) }}" target="_blank" >
-                        <input type="button" class="btn btn-info" value="Confira Projeto na Íntegra" >
+                        <input type="button" class="btn btn-info" value="Visualizar Projeto Prontidão" >
                       </a>
                     </div>
                   </div>
