@@ -223,6 +223,10 @@ class UsersController extends Controller
         }
 
         $set_tec = $this->getSetorTecnologia($sttps_ids);
+        foreach ($startups as $id => $sttp) {
+            @$startups[$id]['setor'] = @$set_tec[$id][3];
+            @$startups[$id]['tecno'] = @$set_tec[$id][4];
+        }
 
         $custom_args['conditions'] =
             [
@@ -236,9 +240,6 @@ class UsersController extends Controller
         $lnk_p_sttp = [];
         foreach ($links as $lnk) {
             $lnk_p_sttp[$lnk['startup']][$lnk['evaluator']] = $users[$lnk['evaluator']];
-
-            $startups[$lnk['startup']]['setor'] = $set_tec[$lnk['startup']][3];
-            $startups[$lnk['startup']]['tecno'] = $set_tec[$lnk['startup']][4];
         }
 
         $vars =
@@ -415,8 +416,8 @@ class UsersController extends Controller
                 $startups[$s_id]['checked'] = 'checked';
             }
 
-            $startups[$s_id]['setor'] = $set_tec[$s_id][3];
-            $startups[$s_id]['tecno'] = $set_tec[$s_id][4];
+            @$startups[$s_id]['setor'] = @$set_tec[$s_id][3];
+            @$startups[$s_id]['tecno'] = @$set_tec[$s_id][4];
         }
 
         $vars =

@@ -53,12 +53,12 @@
                   </td>
                   <td>
                     <label for="check_startup_{{$startup['id']}}" style="width: 100%;height: 100%;margin: 0px;">
-                      {{$startup['tecno']}}
+                      {{@$startup['tecno']}}
                     </label>
                   </td>
                   <td>
                     <label for="check_startup_{{$startup['id']}}" style="width: 100%;height: 100%;margin: 0px;">
-                      {{$startup['setor']}}
+                      {{@$startup['setor']}}
                     </label>
                   </td>
                   <td style="padding: 5px;" >
