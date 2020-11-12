@@ -111,6 +111,20 @@ class RatingController extends Controller
             ];
         $startup = current(Query::queryAction('startups', $custom_args));
 
+        $cities = self::getDataRegions()['cities'];
+        $regions = self::getDataRegions()['all_regions'];
+
+        $city = $startup['city'];
+        $is_city =
+            isset(
+              $cities[self::clearString($city)]
+            );
+        if ($is_city) {
+            $startup['region'] = $regions[$cities[self::clearString($city)]];
+        }else{
+            $startup['region'] = 'sem região';
+        }
+
         $custom_args['conditions'] =
             [
                 ['startup', '=', $startup_id]
@@ -242,7 +256,6 @@ class RatingController extends Controller
         }else{
             $startups_unavalied = Query::queryAction('startups', $custom_args);
         }
-
 
         $startups = ($startups_avalied + $startups_unavalied);
 
@@ -389,16 +402,30 @@ class RatingController extends Controller
                 'complete_attractive',
             ];
 
+        $cities = self::getDataRegions()['cities'];
+        $regions = self::getDataRegions()['all_regions'];
+
         foreach ($startups as $s_id => $sttp) {
             if (!in_array($sttp['stage'], $stts_valid)) {
                 unset($startups[$s_id]);
             }
-          if ($sttp['city'] != '000000') {
-            $this->cities[self::clearString($sttp['city'])] = $sttp['city'];
-          }
-          if (!in_array($s_id, $sttps_ids)) {
-            $sttps_ids[] = $s_id;
-          }
+            if ($sttp['city'] != '000000') {
+                $this->cities[self::clearString($sttp['city'])] = $sttp['city'];
+            }
+            if (!in_array($s_id, $sttps_ids)) {
+                $sttps_ids[] = $s_id;
+            }
+
+            $city = $startups[$s_id]['city'];
+            $is_city =
+                isset(
+                  $cities[self::clearString($city)]
+                );
+            if ($is_city) {
+                $startups[$s_id]['region'] = $regions[$cities[self::clearString($city)]];
+            }else{
+                $startups[$s_id]['region'] = 'sem região';
+            }
         }
 
         if (isset($_GET['regiao'])) {
@@ -440,8 +467,8 @@ class RatingController extends Controller
                 $data[$key]['user']['name'] = 'Não avaliado';
                 $data[$key]['startup'] = $startup;
 
-                $data[$key]['startup']['setor'] = $set_tec[$id][3];
-                $data[$key]['startup']['tecno'] = $set_tec[$id][4];
+                @$data[$key]['startup']['setor'] = @$set_tec[$id][3];
+                @$data[$key]['startup']['tecno'] = @$set_tec[$id][4];
 
                 if (isset($prtc[$id])) {
                     $data[$key]['startup']['qtd_prtc'] = count($prtc[$id]);
@@ -683,3 +710,4 @@ class RatingController extends Controller
         return redirect()->route('rating.list');
     }
 }
+y

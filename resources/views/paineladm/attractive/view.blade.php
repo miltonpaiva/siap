@@ -74,13 +74,16 @@
                 <fieldset class="field_set" style="padding: 10px">
                   <legend style="width:auto; margin-left: 10px; padding: 5px; font-size: 18px">Resumo do projeto: </legend>
                   <div class="row">
-                    <div class="col-sm-12 col-md-4">
+                    <div class="col-sm-12 col-md-3">
                       <h6 c><b>Categoria: </b> <span> {{$startup['category']}}</span></h6>
                     </div>
-                    <div class="col-sm-12 col-md-4">
+                    <div class="col-sm-12 col-md-3">
                       <h6 c><b>Startup: </b> <span> {{$startup['name']}}</span></h6>
                     </div>
-                    <div class="col-sm-12 col-md-4">
+                    <div class="col-sm-12 col-md-3">
+                      <h6 c><b>Região: </b> <span> {{$startup['region']}}</span></h6>
+                    </div>
+                    <div class="col-sm-12 col-md-3">
                       <h6 c><b>Estado da startup: </b> <span> 
                           @if($startup['stage'] == 'rated_attractive')
                             Avaliado Atratividade

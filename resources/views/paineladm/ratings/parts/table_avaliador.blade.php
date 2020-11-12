@@ -6,6 +6,7 @@
                       <th>N° Membros</th>
                       <th>Setor</th>
                       <th>Tecnologia</th>
+                      <th>Região</th>
                       <th>Categoria</th>
                       <th>Status</th>
                     </tr>
@@ -17,6 +18,7 @@
                       <th>N° Membros</th>
                       <th>Setor</th>
                       <th>Tecnologia</th>
+                      <th>Região</th>
                       <th>Categoria</th>
                       <th>Status</th>
                     </tr>
@@ -67,6 +69,7 @@
                         <td>{{$rating['startup']['qtd_prtc']}}</td>
                         <td>{{$rating['startup']['tecno']}}</td>
                         <td>{{$rating['startup']['setor']}}</td>
+                        <td>{{$rating['startup']['region']}}</td>
                         <td>{{$rating['startup']['category']}}</td>
                         <td>
                           @if($rating['startup']['stage'] == 'rated')
