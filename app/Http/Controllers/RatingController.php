@@ -262,8 +262,8 @@ class RatingController extends Controller
         $set_tec = $this->getSetorTecnologia($sttps_ids);
         foreach ($startups as $s_id => $sttp) {
 
-          @$startups[$s_id]['setor'] = @$set_tec[$s_id][3];
-          @$startups[$s_id]['tecno'] = @$set_tec[$s_id][4];
+          $startups[$s_id]['setor'] = $set_tec[$s_id][3];
+          $startups[$s_id]['tecno'] = $set_tec[$s_id][4];
 
           if ($sttp['city'] != '000000') {
             $this->cities[self::clearString($sttp['city'])] = $sttp['city'];
@@ -467,8 +467,8 @@ class RatingController extends Controller
                 $data[$key]['user']['name'] = 'Não avaliado';
                 $data[$key]['startup'] = $startup;
 
-                @$data[$key]['startup']['setor'] = @$set_tec[$id][3];
-                @$data[$key]['startup']['tecno'] = @$set_tec[$id][4];
+                $data[$key]['startup']['setor'] = $set_tec[$id][3];
+                $data[$key]['startup']['tecno'] = $set_tec[$id][4];
 
                 if (isset($prtc[$id])) {
                     $data[$key]['startup']['qtd_prtc'] = count($prtc[$id]);
@@ -710,4 +710,3 @@ class RatingController extends Controller
         return redirect()->route('rating.list');
     }
 }
-y
