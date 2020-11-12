@@ -35,6 +35,9 @@ class SendMailUser extends Mailable
         $route = 'painel';
 
         $url_curso = '';
+        if ($this->data['user']['profile'] == 'Avaliador') {
+            $subject = 'Avaliação 2020 Programa Corredores Digitais';
+        }
         if ($this->data['user']['profile'] == 'Empreendedor') {
             $is_criacao = ($this->data['startup']['category'] == 'criação');
 
