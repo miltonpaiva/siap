@@ -50,6 +50,34 @@ class Controller extends BaseController
   		return $string;
   	}
 
+    public function getSetorTecnologia($arr_sttp)
+    {
+        $custom_args['values'] = $arr_sttp;
+        $custom_args['column'] = 'startup';
+
+        $custom_args['conditions'] =
+            [
+                ['question', '=', 4],
+            ];
+        $tec = Query::queryActionIn('responses', $custom_args);
+
+        $custom_args['conditions'] =
+            [
+                ['question', '=', 3],
+            ];
+        $set = Query::queryActionIn('responses', $custom_args);
+
+        $data = ($set + $tec);
+
+        $set_tec = [];
+        foreach ($data as $vl) {
+            $set_tec[$vl['startup']][$vl['question']] = 
+                $this->getOptions($vl['question'])[$vl['option']];
+        }
+
+        return $set_tec;
+    }
+
     public function getOptions($question)
     {
         $data = [];

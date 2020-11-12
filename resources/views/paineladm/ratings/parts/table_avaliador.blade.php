@@ -2,19 +2,23 @@
                   <thead>
                     <tr>
                       <th>Ação</th>
-                      <th>Status</th>
                       <th>Startup</th>
                       <th>N° Membros</th>
+                      <th>Setor</th>
+                      <th>Tecnologia</th>
                       <th>Categoria</th>
+                      <th>Status</th>
                     </tr>
                   </thead>
                   <tfoot>
                     <tr>
                       <th>Ação</th>
-                      <th>Status</th>
                       <th>Startup</th>
                       <th>N° Membros</th>
+                      <th>Setor</th>
+                      <th>Tecnologia</th>
                       <th>Categoria</th>
+                      <th>Status</th>
                     </tr>
                   </tfoot>
                   <tbody>
@@ -59,6 +63,11 @@
 
                           </select>
                         </td>
+                        <td>{{$rating['startup']['name']}}</td>
+                        <td>{{$rating['startup']['qtd_prtc']}}</td>
+                        <td>{{$rating['startup']['tecno']}}</td>
+                        <td>{{$rating['startup']['setor']}}</td>
+                        <td>{{$rating['startup']['category']}}</td>
                         <td>
                           @if($rating['startup']['stage'] == 'rated')
                             Aguardando Habilitação
@@ -76,9 +85,6 @@
                             Avaliado Atratividade
                           @endif
                         </td>
-                        <td>{{$rating['startup']['name']}}</td>
-                        <td>{{$rating['startup']['qtd_prtc']}}</td>
-                        <td>{{$rating['startup']['category']}}</td>
                       </tr>
 
                     @endforeach

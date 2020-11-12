@@ -427,6 +427,7 @@ class RatingController extends Controller
 
         $cities = self::getDataRegions()['cities'];
         $regions = self::getDataRegions()['all_regions'];
+        $set_tec = $this->getSetorTecnologia($sttps_ids);
 
         foreach ($startups as $id => $startup) {
             if (!in_array($id, $ids)) {
@@ -435,21 +436,13 @@ class RatingController extends Controller
                 $data[$key]['user']['name'] = 'Não avaliado';
                 $data[$key]['startup'] = $startup;
 
+                $data[$key]['startup']['setor'] = $set_tec[$id][3];
+                $data[$key]['startup']['tecno'] = $set_tec[$id][4];
+
                 if (isset($prtc[$id])) {
                     $data[$key]['startup']['qtd_prtc'] = count($prtc[$id]);
                 }else{
                     $data[$key]['startup']['qtd_prtc'] = 0;
-                }
-
-                $city = $startup['city'];
-                $is_city =
-                    isset(
-                      $cities[self::clearString($city)]
-                    );
-                if ($is_city) {
-                    $data[$key]['startup']['region'] = $regions[$cities[self::clearString($city)]];
-                }else{
-                    $data[$key]['startup']['region'] = 'sem região';
                 }
             }
         }
@@ -465,7 +458,6 @@ class RatingController extends Controller
           ];
 
         return view('paineladm/ratings/list', $vars);
-
     }
 
     public function actionRating(Request $request)
