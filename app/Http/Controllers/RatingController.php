@@ -87,6 +87,17 @@ class RatingController extends Controller
 
     public function viewRating($startup_id, $user_id)
     {
+        return self::dataRatingView('rating', $startup_id, $user_id);
+    }
+
+    public function viewgAttractiveRatin($startup_id, $user_id)
+    {
+        return self::dataRatingView('rating_attractive', $startup_id, $user_id);
+    }
+
+    public static function dataRatingView($table, $startup_id, $user_id)
+    {
+
         $user_logged = User::checkLogin();
         if (is_object($user_logged)) {
             return $user_logged;
@@ -114,18 +125,31 @@ class RatingController extends Controller
                 ['startup', '=', $startup_id],
             ];
 
-        $ratings = Query::queryAction('rating', $custom_args);
+        $ratings = Query::queryAction($table, $custom_args);
 
-        $criterios = Query::queryAction('criterea');
+        $stage = 'prontidão';
+        $view = 'paineladm/ratings/view';
+        if ($table == 'rating_attractive') {
+            $stage = 'atratividade';
+            $view = 'paineladm/attractive/view';
+        }
+
+        $custom_args['conditions'] =
+            [
+                ['stage', '=', $stage],
+            ];
+
+        $criterios = Query::queryAction('criterea', $custom_args);
 
         foreach ($ratings as $r_id => $rating) {
-            $data[$r_id] = $rating;
-            $data[$r_id]['criterio'] = $criterios[$rating['criterea']];
-
-            $custom_args['conditions'] =
-                [
-                    ['id', '=', $rating['evaluator']]
-                ];
+            if (isset($criterios[$rating['criterea']])) {
+                $data[$r_id] = $rating;
+                $data[$r_id]['criterio'] = $criterios[$rating['criterea']];
+                $custom_args['conditions'] =
+                    [
+                        ['id', '=', $rating['evaluator']]
+                    ];
+            }
         }
 
         $user = current(Query::queryAction('users', $custom_args));
@@ -134,9 +158,10 @@ class RatingController extends Controller
             [
                 ['evaluator', '=', $user['id']],
                 ['startup', '=', $startup['id']],
+                ['stage', '=', $stage],
             ];
 
-        $comment = current(Query::queryAction('comments', $custom_args));
+        $comment = max(Query::queryAction('comments', $custom_args));
 
         $vars =
           [
@@ -148,7 +173,7 @@ class RatingController extends Controller
               'qtd_particpants' => count($participants)
           ];
 
-        return view('paineladm/ratings/view', $vars);
+        return view($view, $vars);
     }
 
     public function listRating()
@@ -388,10 +413,12 @@ class RatingController extends Controller
       }
 
         $stage = 'prontidão';
-        $msg = 'o Projeto [{$startup_id}] Avaliado com sucesso na etapa de Prontidão.';
+        $stage_sttp = 'rated';
+        $msg = "o Projeto [{$startup_id}] Avaliado com sucesso na etapa de Prontidão.";
         if ($table == 'rating_attractive') {
             $stage = 'atratividade';
             $msg = "o Projeto [{$startup_id}] Avaliado com sucesso na etapa de Atratividade.";
+            $stage = 'rated_attractive';
         }
 
         $custom_args['conditions'] =
@@ -426,7 +453,7 @@ class RatingController extends Controller
             }
         }
 
-      $result = Startup::update(['stage' => 'rated_attractive'], $startup_id);
+      $result = Startup::update(['stage' => $stage_sttp], $startup_id);
 
       $_SESSION['message'] =
         [

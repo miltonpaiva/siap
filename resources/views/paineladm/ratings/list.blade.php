@@ -248,9 +248,13 @@
                           <select onchange="redirectAction(this)" >
                             <option disabled="true" value="" selected="true" >---</option>
 
-                            @if($rating['startup']['stage'] == 'rated' || $rating['startup']['stage'] == 'approved' || $rating['startup']['stage'] == 'complete_attractive')
+                            <option value="{{ route('startup.view', $rating['startup']['id']) }}" >
+                                Vis. Projeto
+                            </option>
+
+                            @if($rating['startup']['stage'] == 'rated' || $rating['startup']['stage'] == 'approved' || $rating['startup']['stage'] == 'complete_attractive' || $rating['startup']['stage'] == 'rated_attractive')
                             <option value="{{ route('startup.rating.view', [$rating['startup']['id'], $rating['user']['id']]) }}" >
-                                Vis. Prontidão
+                                Vis. Av. Prontidão
                             </option>
                             @endif
 
@@ -274,7 +278,16 @@
                                 Aval. Atratividade
                             </option>
                             <option value="{{ route('attractive.response.view', $rating['startup']['id']) }}" >
-                                Vis. Atratividade
+                                Form. Atratividade
+                            </option>
+                            @endif
+
+                            @if($rating['startup']['stage'] == 'rated_attractive')
+                            <option value="{{ route('attractive.response.view', $rating['startup']['id']) }}" >
+                                Form. Atratividade
+                            </option>
+                            <option value="{{ route('attractive.rating.view', [$rating['startup']['id'], $rating['user']['id']]) }}" >
+                                Vis. Av. Atratividade
                             </option>
                             @endif
 
