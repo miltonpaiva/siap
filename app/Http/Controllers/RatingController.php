@@ -262,8 +262,8 @@ class RatingController extends Controller
         $set_tec = $this->getSetorTecnologia($sttps_ids);
         foreach ($startups as $s_id => $sttp) {
 
-          $startups[$s_id]['setor'] = $set_tec[$s_id][3];
-          $startups[$s_id]['tecno'] = $set_tec[$s_id][4];
+          @$startups[$s_id]['setor'] = @$set_tec[$s_id][3];
+          @$startups[$s_id]['tecno'] = @$set_tec[$s_id][4];
 
           if ($sttp['city'] != '000000') {
             $this->cities[self::clearString($sttp['city'])] = $sttp['city'];

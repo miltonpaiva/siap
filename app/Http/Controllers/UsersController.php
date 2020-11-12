@@ -239,7 +239,7 @@ class UsersController extends Controller
 
         $lnk_p_sttp = [];
         foreach ($links as $lnk) {
-            $lnk_p_sttp[$lnk['startup']][$lnk['evaluator']] = $users[$lnk['evaluator']];
+            @$lnk_p_sttp[$lnk['startup']][$lnk['evaluator']] = @$users[$lnk['evaluator']];
         }
 
         $vars =
@@ -388,7 +388,7 @@ class UsersController extends Controller
         $lnk_p_sttp = [];
         $sttps_ids = [];
         foreach ($links as $lnk) {
-            $lnk_p_sttp[$lnk['startup']][$lnk['evaluator']] = $users[$lnk['evaluator']];
+            @$lnk_p_sttp[$lnk['startup']][$lnk['evaluator']] = @$users[$lnk['evaluator']];
             $sttps_ids[$lnk['startup']] = $lnk['startup'];
         }
 
