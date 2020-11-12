@@ -93,11 +93,11 @@
                   </div>
 
                   <div class="row">
+
+                    <?php if ($_SESSION['login']['user_profile'] != 'Avaliador'): ?>
                     <div class="col-sm-12 col-md-4 mt-3">
                       <h6 c><b>Responsável: </b> <span> {{$user['name']}}</span></h6>
                     </div>
-
-                    <?php if ($_SESSION['login']['user_profile'] != 'Avaliador'): ?>
                     <div class="col-sm-12 col-md-4 mt-3">
                       <h6 c><b>Cidade: </b> <span> {{$startup['city']}}</span></h6>
                     </div>
