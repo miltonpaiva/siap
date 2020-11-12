@@ -18,7 +18,7 @@ class RatingAttractiveTable extends Migration
             $table->unsignedBigInteger('evaluator');
             $table->unsignedBigInteger('startup');
             $table->unsignedBigInteger('criterea');
-            $table->int('note');
+            $table->bigInteger('note');
             $table->foreign('evaluator')->references('id')->on('users');
             $table->foreign('startup')->references('id')->on('startups');
             $table->foreign('criterea')->references('id')->on('criterea');

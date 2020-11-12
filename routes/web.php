@@ -70,6 +70,7 @@ Route::get('/projetos', 'StartupsController@listStartups')->name('startup.list')
 
 //ACTION ROUTES RATING
 Route::post('/startup/rating/', 'RatingController@actionRating')->name('startup.rating');
+Route::post('/startup/rating/attractive', 'RatingController@actionRatingAttractive')->name('startup.rating.attractive');
 Route::get('/startup/{startup_id}/aprov/', 'RatingController@actionAprov')->name('startup.aprov');
 Route::get('/startup/{startup_id}/reprov/', 'RatingController@actionReprov')->name('startup.reprov');
 

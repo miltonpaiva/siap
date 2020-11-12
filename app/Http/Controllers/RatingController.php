@@ -331,16 +331,31 @@ class RatingController extends Controller
 
     public function actionRating(Request $request)
     {
+        $data = $request->all();
+
+        return self::rating($data, 'rating');
+    }
+
+    public function actionRatingAttractive(Request $request)
+    {
+        $data = $request->all();
+
+        return self::rating($data, 'rating_attractive');
+    }
+
+    public static function rating($data, $table)
+    {
+
       session_start();
       $evaluator = $_SESSION['login']['user_id'];
-      $data = $request->all();
 
       $criterios  = $data['avalicacao']['criterio'];
 
       $startup_id = $data['startup'];
 
+      $result_attr = [];
       foreach ($criterios as $c_id => $value) {
-        $rating =
+        $rating_attr =
           [
             'evaluator' => $evaluator,
             'startup' => $startup_id,
@@ -355,18 +370,35 @@ class RatingController extends Controller
                 ['criterea', '=', $c_id],
             ];
 
-        $has_rating = @max(Query::getSampleData('rating', 'id', $custom_args));
+        $has_rating = @max(Query::getSampleData($table, 'id', $custom_args));
 
         if ($has_rating) {
-          $result = self::update($has_rating, $value['nota']);
+          $result = self::update($table, $has_rating, $value['nota']);
+          if (is_object($result)) {
+              return $result;
+          }
+          $result_attr[] = $result;
         }else{
-          $result = self::registerRating($rating);
+          $result = self::registerRating($table, $rating_attr);
+          if (is_object($result)) {
+              return $result;
+          }
+          $result_attr[] = $result;
         }
       }
+
+        $stage = 'prontidão';
+        $msg = 'o Projeto [{$startup_id}] Avaliado com sucesso na etapa de Prontidão.';
+        if ($table == 'rating_attractive') {
+            $stage = 'atratividade';
+            $msg = "o Projeto [{$startup_id}] Avaliado com sucesso na etapa de Atratividade.";
+        }
+
         $custom_args['conditions'] =
             [
                 ['evaluator', '=', $evaluator],
                 ['startup', '=', $startup_id],
+                ['stage', '=', $stage],
             ];
 
         $has_comment = Query::queryAction('comments', $custom_args);
@@ -376,29 +408,40 @@ class RatingController extends Controller
                 'evaluator' => $evaluator,
                 'startup' => $startup_id,
                 'comment' => $data['observacoes'],
+                'stage' => $stage,
             ];
 
         if (count($has_comment) > 0) {
           $result = self::updateComment(current($has_comment)['id'], $data['observacoes']);
+          if (is_object($result)) {
+              return $result;
+          }
         }else{
-          $result = self::registerComment($comment_data);
+            $result = 0;
+            if ($data['observacoes'] != '') {
+                $result = self::registerComment($comment_data);
+                if (is_object($result)) {
+                    return $result;
+                }
+            }
         }
 
-      $result = Startup::update(['stage' => 'rated'], $startup_id);
+      $result = Startup::update(['stage' => 'rated_attractive'], $startup_id);
 
       $_SESSION['message'] =
         [
             'type' => 'success',
-            'message' => "o Projeto [{$startup_id}] Avaliado com sucesso na etapa de Prontidão.",
+            'message' => $msg,
         ];
 
       return redirect()->route('rating.list');
+
     }
 
-    public static function update($id, $note)
+    public static function update($table, $id, $note)
     {
         $result =
-            DB::table('rating')
+            DB::table($table)
                       ->where('id', $id)
                       ->update(['note' => $note]);
 
@@ -415,10 +458,10 @@ class RatingController extends Controller
         return $result;
     }
 
-    public static function registerRating($rating)
+    public static function registerRating($table, $rating)
     {
         $new_rating_id =
-            DB::table('rating')->insertGetId($rating);
+            DB::table($table)->insertGetId($rating);
 
         return $new_rating_id;
     }

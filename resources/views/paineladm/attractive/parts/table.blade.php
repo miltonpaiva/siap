@@ -28,8 +28,8 @@
 <td>
 	<select class="custom-select" name="avalicacao[criterio][13][nota]" required>
 		<option value="" >Nota</option>
-		<option value="1" >1 -  Sim</option>
-		<option value="2" >2 -  Não</option>
+		<option value="0" >0 -  Sim</option>
+		<option value="1" >1 -  Não</option>
 	</select>
 </td>
 </tr>
@@ -144,8 +144,8 @@
 <td>
 	<select class="custom-select" name="avalicacao[criterio][17][nota]" required>
 		<option value="" >Nota</option>
-		<option value="1" >1 -  SIM</option>
-		<option value="2" >2 -  NÃO</option>
+		<option value="0" >0 -  SIM</option>
+		<option value="1" >1 -  NÃO</option>
 	</select>
 </td>
 </tr>

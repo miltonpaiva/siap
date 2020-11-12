@@ -112,7 +112,7 @@
               </form>
                 <br>
                 <p>Os projetos aceitos para o processo de seleção da Fase 2 serão avaliados nos seguintes critérios:</p>
-                <form id="formulario" action="{{ route('startup.rating')}}" method="POST">
+                <form id="formulario" action="{{ route('startup.rating.attractive')}}" method="POST">
                     @method('POST')
                     @csrf <!-- {{ csrf_field() }} -->
                     <input type="hidden" name="startup" value="{{$startup['id']}}">
