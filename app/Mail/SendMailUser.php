@@ -55,6 +55,7 @@ class SendMailUser extends Mailable
                         'data' => $this->data,
                         'url_painel' => route($route),
                         'url_curso'  => $url_curso,
+                        'url_files'  => route('files'),
                     ]);
     }
 }

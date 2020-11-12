@@ -24,7 +24,9 @@
 
 <tr>
 <td id>Problema e clusters regional </td>
-<td>O critério "Problema e Clusters Regional" avalia se o time identificou um problema específico da região.</td>
+<td>O critério "Problema e Clusters Regional" avalia se o time identificou um problema específico da região. <br>
+Acesse a listagem dos problemas <a href="/files/PCD - Clusters - Oportunidades.pdf" target="_blank" >AQUI</a>
+</td>
 <td>
 	<select class="custom-select" name="avalicacao[criterio][13][nota]" required>
 		<option value="" >Nota</option>

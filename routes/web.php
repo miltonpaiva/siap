@@ -19,6 +19,9 @@ Route::redirect('/', '/login');
 Route::get('/cadastro', function () {
     return view('home');
 })->name('home');
+Route::get('/files', function () {
+    return true;
+})->name('files');
 
 Route::get('/email', function () {
     return view('emails/emailresposta');

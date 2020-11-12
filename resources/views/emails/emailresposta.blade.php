@@ -36,7 +36,7 @@
 										</p>
 										@endif
 
-										@if(@$data['user']['profile'] != 'Empreendedor')
+										@if(@$data['user']['profile'] != 'Empreendedor' && @$data['user']['profile'] != 'Avaliador')
 										<p style="font-size: 16px; font-weight: normal; line-height: 1.65; margin-bottom: 20px;">
 											Seu usuário foi criado com o perfil de {{@$data['user']['profile']}}, abaixo está o seu acesso:
 										</p>
@@ -44,6 +44,33 @@
 											<b>Login: </b>{{@$data['user']['email']}}<br>
 											<b>Senha: </b>{{@$data['user']['password']}}
 										</p>
+										@endif
+
+										@if(@$data['user']['profile'] == 'Avaliador')
+
+											<p style="font-size: 16px; font-weight: normal; line-height: 1.65; margin-bottom: 20px;">
+												Obrigado por aceitar avaliar os projetos submetidos a edição 2020 do Corredores Digitais.
+											</p>
+											<p style="font-size: 16px; font-weight: normal; line-height: 1.65; margin-bottom: 20px;">
+												O processo de seleção da edição 2020 do Corredores Digitais, está sendo realizada em duas etapas: Analise de Prontidão e a Analise de Atratividade.
+											</p>
+											<p style="font-size: 16px; font-weight: normal; line-height: 1.65; margin-bottom: 20px;">
+												Na etapa de Prontidão foi avaliado o perfil dos integrantes do time, a experiência e se estavam alinhados aos setores e tecnologia prioritárias do programa. 
+											</p>
+											<p style="font-size: 16px; font-weight: normal; line-height: 1.65; margin-bottom: 20px;">
+												Na etapa de Atratividade, na qual você foi convidado a avaliar, será realizado uma avaliação da maturidade dos projetos dos times, levando em consideração os critérios: Problema e visão, Problema e clusters regional, Proposta de valor, Produto, Mercado, Modelo de receita e Escala. 
+											</p>
+											<p style="font-size: 16px; font-weight: normal; line-height: 1.65; margin-bottom: 20px;">
+												Para verificar o critério Problema e clusters regional, acesse a listagem dos problemas <a href="{{$url_files}}/PCD - Clusters - Oportunidades.pdf">AQUI.</a>
+											</p>
+											<p style="font-size: 16px; font-weight: normal; line-height: 1.65; margin-bottom: 20px;">
+												Segue seu acesso para verificar os projetos que você avaliará.
+											</p>
+											<p style="font-size: 16px; font-weight: normal; line-height: 1.65; margin-bottom: 20px;">
+												<b>Login: </b>{{@$data['user']['email']}}<br>
+												<b>Senha: </b>{{@$data['user']['password']}}
+											</p>
+
 										@endif
 
 											<table style="margin: 0 auto !important;">
@@ -57,6 +84,21 @@
 															</td>
 													</tr>
 											</table>
+
+										@if(@$data['user']['profile'] == 'Avaliador')
+
+											<p style="font-size: 16px; font-weight: normal; line-height: 1.65; margin-bottom: 20px;">
+												Qualquer dúvida entre em contato com a gente.
+											</p>
+											<p style="font-size: 16px; font-weight: normal; line-height: 1.65; margin-bottom: 20px;">
+												Um abraço,
+											</p>
+											<p style="font-size: 16px; font-weight: normal; line-height: 1.65; margin-bottom: 20px;">
+												Equipe Corredores Digitais.
+											</p>
+
+										@endif
+
 									</td>
 							</tr>
 					</table>
