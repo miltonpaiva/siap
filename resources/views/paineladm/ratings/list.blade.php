@@ -200,7 +200,7 @@
               <div class="table-responsive">
 
                 <?php if ($_SESSION['login']['user_profile'] != 'Avaliador'): ?>
-                  @include('paineladm/ratings/parts/table')
+                  @include('paineladm/ratings/parts/table_atratividade')
                 <?php endif; ?>
 
                 <?php if ($_SESSION['login']['user_profile'] == 'Avaliador'): ?>

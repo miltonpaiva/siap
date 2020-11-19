@@ -3,30 +3,26 @@
                     <tr>
                       <th>Ação</th>
                       <th>Nota Total</th>
+                      <th>Startup</th>
+                      <th>Categoria</th>
+                      <th>Região</th>
+                      <th>Cidade</th>
                       <th>Setor</th>
                       <th>Tecnologia</th>
                       <th>Status</th>
-                      <th>Startup</th>
-                      <th>Qtd. Time</th>
-                      <th>Cidade</th>
-                      <th>Região</th>
-                      <th>Categoria</th>
-                      <th>Avaliador</th>
                     </tr>
                   </thead>
                   <tfoot>
                     <tr>
                       <th>Ação</th>
                       <th>Nota Total</th>
+                      <th>Startup</th>
+                      <th>Categoria</th>
+                      <th>Região</th>
+                      <th>Cidade</th>
                       <th>Setor</th>
                       <th>Tecnologia</th>
                       <th>Status</th>
-                      <th>Startup</th>
-                      <th>Qtd. Time</th>
-                      <th>Cidade</th>
-                      <th>Região</th>
-                      <th>Categoria</th>
-                      <th>Avaliador</th>
                     </tr>
                   </tfoot>
                   <tbody>
@@ -92,6 +88,10 @@
                           </select>
                         </td>
                         <td>{{$rating['total']}}</td>
+                        <td>{{$rating['startup']['name']}}</td>
+                        <td>{{$rating['startup']['category']}}</td>
+                        <td>{{$rating['startup']['region']}}</td>
+                        <td>{{$rating['startup']['city']}}</td>
                         <td>{{$rating['startup']['tecno']}}</td>
                         <td>{{$rating['startup']['setor']}}</td>
                         <td>
@@ -111,12 +111,6 @@
                             Avaliado Atratividade
                           @endif
                         </td>
-                        <td>{{$rating['startup']['name']}}</td>
-                        <td>{{$rating['startup']['qtd_prtc']}}</td>
-                        <td>{{$rating['startup']['city']}}</td>
-                        <td>{{$rating['startup']['region']}}</td>
-                        <td>{{$rating['startup']['category']}}</td>
-                        <td>{{$rating['user']['name']}}</td>
                       </tr>
 
                     @endforeach
