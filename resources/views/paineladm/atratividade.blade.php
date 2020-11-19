@@ -72,6 +72,7 @@
                 <fieldset class="field_set" style="padding: 10px">
                   <legend style="width:auto; margin-left: 10px; padding: 5px; font-size: 18px"><strong class="text-info">Análise de Mercado: </strong></legend>
 
+                  @if(@$responses[2])
                   @foreach($responses[2] as $r_key => $resp)
 
                   <div class="row">
@@ -84,12 +85,14 @@
                   <hr>
 
                   @endforeach
+                  @endif
 
                 </fieldset>
 
                 <fieldset class="field_set" style="padding: 10px">
                   <legend style="width:auto; margin-left: 10px; padding: 5px; font-size: 18px"><strong class="text-info">Oportunidade de Negócio: </strong></legend>
 
+                  @if(@$responses[3])
                   @foreach($responses[3] as $r_key => $resp)
 
                   <div class="row">
@@ -102,6 +105,7 @@
                   <hr>
 
                   @endforeach
+                  @endif
 
                 </fieldset>
 
@@ -112,6 +116,7 @@
 
                 <fieldset class="field_set" style="padding: 10px">                  <legend style="width:auto; margin-left: 10px; padding: 5px; font-size: 18px"><strong class="text-info">Proposta de Valor: </strong></legend>
 
+                  @if(@$responses[2])
                   @foreach($responses[2] as $r_key => $resp)
 
                   <div class="row">
@@ -124,12 +129,14 @@
                   <hr>
 
                   @endforeach
+                  @endif
 
                 </fieldset>
 
                 <fieldset class="field_set" style="padding: 10px">
                   <legend style="width:auto; margin-left: 10px; padding: 5px; font-size: 18px"><strong class="text-info">Estratégia de Mercado: </strong></legend>
 
+                  @if(@$responses[3])
                   @foreach($responses[3] as $r_key => $resp)
 
                   <div class="row">
@@ -142,12 +149,14 @@
                   <hr>
 
                   @endforeach
+                  @endif
 
                 </fieldset>
 
                 <fieldset class="field_set" style="padding: 10px">
                   <legend style="width:auto; margin-left: 10px; padding: 5px; font-size: 18px"><strong class="text-info">Estratégia Financeira: </strong></legend>
 
+                  @if(@$responses[4])
                   @foreach($responses[4] as $r_key => $resp)
 
                   <div class="row">
@@ -160,12 +169,14 @@
                   <hr>
 
                   @endforeach
+                  @endif
 
                 </fieldset>
 
                 <fieldset class="field_set" style="padding: 10px">
                   <legend style="width:auto; margin-left: 10px; padding: 5px; font-size: 18px"><strong class="text-info">Estratégia de Time: </strong></legend>
 
+                  @if(@$responses[5])
                   @foreach($responses[5] as $r_key => $resp)
 
                   <div class="row">
@@ -178,6 +189,7 @@
                   <hr>
 
                   @endforeach
+                  @endif
 
                 </fieldset>
 
