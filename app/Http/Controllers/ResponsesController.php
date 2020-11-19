@@ -455,7 +455,7 @@ class ResponsesController extends Controller
             }
         }
 
-        $data = $resp_agroup['video'][10]['response'];
+        @$data = $resp_agroup['video'][10]['response'];
         $url['type'] = 'link';
         $url['link'] = $data;
 
