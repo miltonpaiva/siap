@@ -352,10 +352,12 @@ class UsersController extends Controller
             return Redirect::back()->withErrors(["Não foi possivel editar o usuario"]);
         }
 
-        $links = self::addAndUpEvaluator($user_id, $data['startups']);
-        if (is_object($links)) {
-            Query::transaction('rollBack');
-            return $links;
+        if (isset($data['startups'])) {
+            $links = self::addAndUpEvaluator($user_id, $data['startups']);
+            if (is_object($links)) {
+                Query::transaction('rollBack');
+                return $links;
+            }
         }
 
         $_SESSION['message'] =
@@ -448,7 +450,7 @@ class UsersController extends Controller
 
         $links = Query::getSampleData('user_Link_startups', 'startup', $custom_args);
 
-        $startups = ($links + $ratings);
+        $startups = $links;
 
         return $startups;
     }
