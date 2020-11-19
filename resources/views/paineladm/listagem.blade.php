@@ -248,8 +248,8 @@
                         </td>
                         <td>{{$startup['id']}}</td>
                         <td>{{$startup['name']}}</td>
-                        <td>{{$startup['user']}}</td>
-                        <td>{{$startup['email']}}</td>
+                        <td>{{@$startup['user']}}</td>
+                        <td>{{@$startup['email']}}</td>
                         <td>{{$startup['category']}}</td>
                         <td>
                           @if($startup['stage'] == 'rated')
