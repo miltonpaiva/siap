@@ -119,7 +119,7 @@ class UsersController extends Controller
                 }
 
                 if ($user['profile'] == 'Avaliador') {
-                    return redirect()->route('rating.list');
+                    return redirect()->route('rating.list', 'prontidao');
                 }
 
                 if ($user['profile'] != 'Empreendedor') {

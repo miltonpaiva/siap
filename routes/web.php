@@ -83,6 +83,5 @@ Route::get('/projeto/{startup_id}/avaliacao/', 'RatingController@viewRatingActio
 Route::get('/projeto/{startup_id}/avaliacao-atratividade/', 'RatingController@viewRatingAttractive')->name('startup.rating.attractive.view');
 Route::get('/projeto/{startup_id}/avaliacao/{user_id}/', 'RatingController@viewRating')->name('startup.rating.view');
 Route::get('/projeto/{startup_id}/avaliacao/{user_id}/atratividade', 'RatingController@viewgAttractiveRatin')->name('attractive.rating.view');
-Route::get('/avaliacoes', 'RatingController@listRating')->name('rating.list');
-Route::get('/avaliacoes/atratividade', 'RatingController@listRating')->name('rating.list.attractive');
+Route::get('/avaliacoes/{type}', 'RatingController@listRating')->name('rating.list');
 

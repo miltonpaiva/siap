@@ -39,11 +39,6 @@
                         <td>
                           <select onchange="redirectAction(this)" >
                             <option disabled="true" value="" selected="true" >---</option>
-                            <!-- 
-                            <option value="{{ route('startup.view', $rating['startup']['id']) }}" >
-                                Vis. Projeto
-                            </option>
-                            -->
 
                             @if($rating['startup']['stage'] == 'complete')
                               <option value="{{ route('startup.rating.view.action', $rating['startup']['id']) }}" >
@@ -60,6 +55,15 @@
                             @if($rating['startup']['stage'] == 'rated_attractive')
                             <option value="{{ route('attractive.rating.view', [$rating['startup']['id'], $rating['user']['id']]) }}" >
                                 Vis. Av. Atratividade
+                            </option>
+                            <option value="{{ route('startup.rating.view', [$rating['startup']['id'], $rating['user']['id']]) }}" >
+                                Vis. Av. Prontidão
+                            </option>
+                            @endif
+
+                            @if($rating['startup']['stage'] == 'rated')
+                            <option value="{{ route('startup.rating.view', [$rating['startup']['id'], $rating['user']['id']]) }}" >
+                                Vis. Av. Prontidão
                             </option>
                             @endif
 

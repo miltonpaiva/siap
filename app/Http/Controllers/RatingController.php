@@ -194,7 +194,7 @@ class RatingController extends Controller
         return view($view, $vars);
     }
 
-    public function listRating()
+    public function listRating($type)
     {
 
         $data = [];
@@ -206,10 +206,13 @@ class RatingController extends Controller
         $usr_prf = $_SESSION['login']['user_profile'];
 
         if ($usr_prf == 'Avaliador') {
-            return $this->getDataAvalaidor();
+            return $this->getDataAvalaidor($type);
         }
 
-        $ratings = Query::queryAction('rating');
+        $table = 'rating';
+        if ($type == 'atratividade') {$table = 'rating_attractive';}
+
+        $ratings = Query::queryAction($table);
 
         $sttps_ids = [];
         $users_ids = [];
@@ -230,32 +233,19 @@ class RatingController extends Controller
             }
         }
 
-        if ($_SESSION['login']['user_profile'] == 'Avaliador') {
-            $custom_args['values'] = User::getLinkedStartups($_SESSION['login']['user_id']);
-        }else{
-            $custom_args['values'] = $sttps_ids;
-        }
-
-        $custom_args['conditions'] =
-            [
-                ['stage', '<>', 'reproved']
-            ];
+        $custom_args['values'] = $sttps_ids;
 
         $startups_avalied = Query::queryActionIn('startups', $custom_args);
 
+        $stage = 'complete';
+        if ($type == 'atratividade') {$stage = 'complete_attractive';}
+
         $custom_args['conditions'] =
             [
-                ['stage', '=', 'complete']
+                ['stage', '=', $stage]
             ];
 
-        if ($_SESSION['login']['user_profile'] == 'Avaliador') {
-            $custom_args['values'] = User::getLinkedStartups($_SESSION['login']['user_id']);
-
-            $startups_unavalied = Query::queryActionIn('startups', $custom_args);
-
-        }else{
-            $startups_unavalied = Query::queryAction('startups', $custom_args);
-        }
+        $startups_unavalied = Query::queryAction('startups', $custom_args);
 
         $startups = ($startups_avalied + $startups_unavalied);
 
@@ -381,7 +371,7 @@ class RatingController extends Controller
         return view('paineladm/ratings/list', $vars);
     }
 
-    public function getDataAvalaidor()
+    public function getDataAvalaidor($type)
     {
         $usr_id = $_SESSION['login']['user_id'];
         $sttps_ids = [];
@@ -394,13 +384,38 @@ class RatingController extends Controller
 
         $startups = Query::queryActionIn('startups', $custom_args);
 
+        $custom_args['column'] = 'startup';
+
+        $custom_args['conditions'] =
+            [
+                ['evaluator', '=', $usr_id]
+            ];
+
+        $table = 'rating';
+        if ($type == 'atratividade') {$table = 'rating_attractive';}
+
+        $ratings = Query::queryActionIn($table, $custom_args);
+
+        $s_ids = [];
+        foreach ($ratings as $r_id => $rt) {
+            $s_ids[$rt['startup']] = $rt['startup'];
+        }
+
         $stts_valid =
             [
-                // 'rated',
-                // 'complete',
+                'rated',
+                'complete',
                 'rated_attractive',
                 'complete_attractive',
             ];
+
+        if ($type == 'atratividade') {
+            $stts_valid =
+                [
+                    'rated_attractive',
+                    'complete_attractive',
+                ];
+        }
 
         $cities = self::getDataRegions()['cities'];
         $regions = self::getDataRegions()['all_regions'];
@@ -425,6 +440,17 @@ class RatingController extends Controller
                 $startups[$s_id]['region'] = $regions[$cities[self::clearString($city)]];
             }else{
                 $startups[$s_id]['region'] = 'sem região';
+            }
+
+            if ($type == 'atratividade' && $sttp['stage'] == 'rated_attractive') {
+                if (!in_array($s_id, $s_ids)) {
+                    $startups[$s_id]['stage'] = 'complete_attractive';
+                }
+            }
+            if ($sttp['stage'] == 'rated') {
+                if (!in_array($s_id, $s_ids)) {
+                    $startups[$s_id]['stage'] = 'complete';
+                }
             }
         }
 

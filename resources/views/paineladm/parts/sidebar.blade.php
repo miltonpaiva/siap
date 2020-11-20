@@ -62,7 +62,10 @@
           <span>Avaliações</span></a>
           <ul class="collapse list-unstyled" id="avaliacoesSubmenu">
               <li class="nav-link" >
-                  <a href="{{ route('rating.list.attractive') }}" style="color: white;">Atratividade</a>
+                  <a href="{{ route('rating.list', 'atratividade') }}" style="color: white;">Atratividade</a>
+              </li>
+              <li class="nav-link" >
+                  <a href="{{ route('rating.list', 'prontidao') }}" style="color: white;">Prontidão</a>
               </li>
           </ul>
       </li>
