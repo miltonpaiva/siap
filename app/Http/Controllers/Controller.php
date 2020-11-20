@@ -24,6 +24,7 @@ class Controller extends BaseController
             'rated' => 'Aguardando Habilitação',
             'approved' => 'Em Atratividade',
             'complete_attractive' => 'Aguardando 2° avaliação',
+            'rated_attractive' => 'Avaliado Atratividade',
             'complete' => 'Aguardando 1° avaliação',
             'in_progress' => 'Em Prontidão',
             'reproved' => 'Reprovado Prontidão',

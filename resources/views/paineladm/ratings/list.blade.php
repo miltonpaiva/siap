@@ -195,6 +195,10 @@
           <div class="card shadow mb-4">
             <div class="card-header py-3">
               <h6 class="m-0 font-weight-bold text-primary">Avaliações</h6>
+              <a href="/files/ratings_attractive.txt" download="ratings_attractive.txt" target="_blank">
+                <span class="badge badge-info float-right btn">Baixar em txt</span>
+              </a>
+
             </div>
             <div class="card-body">
               <div class="table-responsive">
@@ -261,5 +265,7 @@
   <script src="{{ asset('js/datatables-demo.js') }}"></script>
 
 </body>
+
+  <img src="{{route('ratings.csv', 'atratividade')}}" alt="">
 
 </html>

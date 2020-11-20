@@ -48,13 +48,23 @@
 
       <!-- Nav Item - Tables -->
       <?php
-        if (strrpos(@$_SERVER['REQUEST_URI'], 'avaliacoes'))
+        $is_avaliacao = (
+          strrpos(@$_SERVER['REQUEST_URI'], 'avaliacoes') ||
+          strrpos(@$_SERVER['REQUEST_URI'], 'atratividade') ||
+          strrpos(@$_SERVER['REQUEST_URI'], 'prontidao')
+        );
+        if ($is_avaliacao)
           { $avaliacoes = 'active'; }
         ?>
       <li class="nav-item <?= @$avaliacoes; ?>">
-        <a class="nav-link" href="{{ route('rating.list') }}">
+        <a href="#avaliacoesSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle nav-link">
           <i class="fas fa-fw fa-table"></i>
           <span>Avaliações</span></a>
+          <ul class="collapse list-unstyled" id="avaliacoesSubmenu">
+              <li class="nav-link" >
+                  <a href="{{ route('rating.list.attractive') }}" style="color: white;">Atratividade</a>
+              </li>
+          </ul>
       </li>
 
       <hr class="sidebar-divider">

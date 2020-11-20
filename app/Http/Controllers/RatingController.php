@@ -709,4 +709,177 @@ class RatingController extends Controller
 
         return redirect()->route('rating.list');
     }
+
+    public function getCsvRatings($type)
+    {
+
+        $ratings = Query::queryAction('rating_attractive');
+
+        $sttps_ids = [];
+        $users_ids = [];
+        $notes = [];
+
+        $this->cities = [];
+        foreach ($ratings as $r_id => $rating) {
+            if (!in_array($rating['startup'], $sttps_ids)) {
+                $sttps_ids[] = $rating['startup'];
+            }
+
+            $key = "{$rating['evaluator']}_{$rating['startup']}";
+
+            $notes[$key][$rating['criterea']] = $rating['note'];
+
+            if (!in_array($rating['evaluator'], $users_ids)) {
+                $users_ids[] = $rating['evaluator'];
+            }
+        }
+
+        $custom_args['values'] = $sttps_ids;
+
+        $startups_avalied = Query::queryActionIn('startups', $custom_args);
+
+        $custom_args['conditions'] =
+            [
+                ['stage', '=', 'complete_attractive']
+            ];
+
+        $startups_unavalied = Query::queryAction('startups', $custom_args);
+
+        $startups = ($startups_avalied + $startups_unavalied);
+
+        $set_tec = $this->getSetorTecnologia($sttps_ids);
+        foreach ($startups as $s_id => $sttp) {
+
+          @$startups[$s_id]['setor'] = @$set_tec[$s_id][3];
+          @$startups[$s_id]['tecno'] = @$set_tec[$s_id][4];
+          $startups[$s_id]['stage'] = self::$arr_status[$sttp['stage']];
+
+          if ($sttp['city'] != '000000') {
+            $this->cities[self::clearString($sttp['city'])] = $sttp['city'];
+          }
+          if (!in_array($s_id, $sttps_ids)) {
+            $sttps_ids[] = $s_id;
+          }
+        }
+
+        $custom_args_users['values'] = $users_ids;
+
+        $users = Query::queryActionIn('users', $custom_args_users);
+
+        $custom_args_participants['column'] = 'startup';
+        $custom_args_participants['values'] = $sttps_ids;
+
+        $participants = Query::queryActionIn('participants', $custom_args_participants);
+
+        $prtc = [];
+        foreach ($participants as $p) {
+            $prtc[$p['startup']][$p['id']] = $p['id'];
+        }
+
+        $total = [];
+        $ids   = [];
+
+        $cities = self::getDataRegions()['cities'];
+        $regions = self::getDataRegions()['all_regions'];
+
+        foreach ($ratings as $r_id => $rating) {
+            if (isset($startups[$rating['startup']])) {
+                $key = "{$rating['evaluator']}_{$rating['startup']}";
+                $total[$key] = (isset($total[$key])) ? $total[$key] : 0 ;
+
+                $ids[] = $rating['startup'];
+
+                $data[$key] = $rating;
+                $data[$key]['user'] = $users[$rating['evaluator']];
+                $data[$key]['startup'] = $startups[$rating['startup']];
+                $data[$key]['total'] = $total[$key] += $rating['note'];
+
+                if (isset($prtc[$rating['startup']])) {
+                    $data[$key]['startup']['qtd_prtc'] = count($prtc[$rating['startup']]);
+                }else{
+                    $data[$key]['startup']['qtd_prtc'] = 0;
+                }
+
+                $city = $startups[$rating['startup']]['city'];
+                $is_city =
+                    isset(
+                      $cities[self::clearString($city)]
+                    );
+                if ($is_city) {
+                    $data[$key]['startup']['region'] = $regions[$cities[self::clearString($city)]];
+                }else{
+                    $data[$key]['startup']['region'] = ' --- ';
+                }
+            }
+        }
+
+        foreach ($startups as $id => $startup) {
+            if (!in_array($id, $ids)) {
+                $key = "0_{$id}";
+                $total[$key] = 0 ;
+                $data[$key]['user']['id'] = 0;
+                $data[$key]['user']['name'] = 'Não avaliado';
+                $data[$key]['startup'] = $startup;
+                $data[$key]['total'] = $total[$key];
+
+                if (isset($prtc[$id])) {
+                    $data[$key]['startup']['qtd_prtc'] = count($prtc[$id]);
+                }else{
+                    $data[$key]['startup']['qtd_prtc'] = 0;
+                }
+
+                $city = $startup['city'];
+                $is_city =
+                    isset(
+                      $cities[self::clearString($city)]
+                    );
+                if ($is_city) {
+                    $data[$key]['startup']['region'] = $regions[$cities[self::clearString($city)]];
+                }else{
+                    $data[$key]['startup']['region'] = ' --- ';
+                }
+            }
+        }
+
+
+        $lines[] = "ID;STARTUP;NOTA TOTAL;PROBLEMA E VISÃO;PROBLEMA E CLUSTERS REGIONAL;PROPOSTA DE VALOR;PRODUTO;MERCADO;MODELO DE RECEITA;ESCALA;AVALIADOR;CATEGORIA;REGIÃO;CIDADE;SETOR;TECNOLOGIA;STATUS;VOCÊ CONSIDERA QUE O PROJETO AVALIADO REALMENTE ESTÁ APTO PARA PARTICIPAR DE UM PROGRAMA DE EMPREENDEDORISMO INOVADOR? \n";
+        foreach ($data as $id => $d) {
+            $aprovado = ($notes[$id][17])? 'sim' : 'não' ;
+            $str =
+"{$d['startup']['id']};
+{$d['startup']['name']};
+{$d['total']};
+" . @$notes[$id][12] . ";
+" . @$notes[$id][13] . ";
+" . @$notes[$id][14] . ";
+" . @$notes[$id][15] . ";
+" . @$notes[$id][16] . ";
+" . @$notes[$id][10] . ";
+" . @$notes[$id][11] . ";
+{$d['user']['name']};
+{$d['startup']['category']};
+{$d['startup']['region']};
+{$d['startup']['city']};
+{$d['startup']['tecno']};
+{$d['startup']['setor']};
+{$d['startup']['stage']};
+" . $aprovado;
+            $lines[] = preg_replace( "/\r|\n/", "", $str) . " \n";
+        }
+
+        $path_root = $_SERVER["DOCUMENT_ROOT"] . '/';
+        $uploaddir = "{$path_root}/files/ratings_attractive.txt";
+
+        if (is_file($uploaddir)) {
+            @unlink($uploaddir);
+        }
+
+        foreach ($lines as $line) {
+            $result[] = @file_put_contents($uploaddir, $line, FILE_APPEND);
+        }
+
+        echo json_encode(['status' => 200, 'message' => 'arquivo gerado']);
+        exit();
+
+    }
 }
