@@ -405,13 +405,14 @@ class UsersController extends Controller
 
         $ratings = self::getLinkedStartups($user_id);
 
+        $custom_args['column'] = 'stage';
+        $custom_args['values'] = ['complete','rated','complete_attactive','rated_attractive'];
         $custom_args['conditions'] =
             [
-                ['stage', '<>', 'in_progress'],
-                ['stage', '<>', 'reproved'],
+                ['id', '<>', 0],
             ];
 
-        $startups = Query::queryAction('startups', $custom_args);
+        $startups = Query::queryActionIn('startups', $custom_args);
 
         foreach ($startups as $s_id => $sttp) {
             if (in_array($s_id, $ratings)) {
