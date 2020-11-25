@@ -207,7 +207,12 @@
               <div class="table-responsive">
 
                 <?php if ($_SESSION['login']['user_profile'] != 'Avaliador'): ?>
+                  <?php if (strrpos(@$_SERVER['REQUEST_URI'], 'atratividade')): ?>
                   @include('paineladm/ratings/parts/table_atratividade')
+                  <?php endif ?>
+                  <?php if (strrpos(@$_SERVER['REQUEST_URI'], 'prontidao')): ?>
+                  @include('paineladm/ratings/parts/table_prontidao')
+                  <?php endif ?>
                 <?php endif; ?>
 
                 <?php if ($_SESSION['login']['user_profile'] == 'Avaliador'): ?>
