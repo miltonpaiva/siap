@@ -30,6 +30,28 @@ class Controller extends BaseController
             'reproved' => 'Reprovado Prontidão',
           ];
 
+    public static $translate =
+          [
+            // STATUS
+            'rated'               => 'Aguardando Habilitação',
+            'approved'            => 'Em Atratividade',
+            'complete_attractive' => 'Aguardando 2° avaliação',
+            'rated_attractive'    => 'Avaliado Atratividade',
+            'complete'            => 'Aguardando 1° avaliação',
+            'in_progress'         => 'Em Prontidão',
+            'reproved'            => 'Reprovado Prontidão',
+
+            // COLUNAS
+            'name'                => 'Nome',
+            'state'               => 'Estado',
+            'city'                => 'Cidade',
+            'category'            => 'Categoria',
+            'profile'             => 'Perfil',
+            'stage'               => 'Status',
+            'password'            => ' ',
+            'users'               => 'Usuarios',
+          ];
+
 
   	protected static function clearString ($string, $is_number = false)
   	{
