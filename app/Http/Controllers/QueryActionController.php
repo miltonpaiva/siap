@@ -168,4 +168,16 @@ class QueryActionController extends Controller
 		return $sample_arr_data;
 	}
 
+	public static function getColuns($table)
+	{
+		$columns = [];
+      	$result = DB::select(DB::raw(" select column_name from INFORMATION_SCHEMA.COLUMNS where table_name = '{$table}';"));
+      	foreach ($result as $vl) {
+      		$col = $vl->column_name;
+			$columns[$col] = $col;
+      	}
+
+      	return $columns;
+	}
+
 }
