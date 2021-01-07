@@ -578,10 +578,12 @@ class RatingController extends Controller
         $stage = 'prontidão';
         $stage_sttp = 'rated';
         $msg = "o Projeto [{$startup_id}] Avaliado com sucesso na etapa de Prontidão.";
+        $route = 'prontidao';
         if ($table == 'rating_attractive') {
             $stage = 'atratividade';
             $msg = "o Projeto [{$startup_id}] Avaliado com sucesso na etapa de Atratividade.";
             $stage_sttp = 'rated_attractive';
+            $route = 'attractive';
         }
 
         $custom_args['conditions'] =
@@ -624,7 +626,7 @@ class RatingController extends Controller
             'message' => $msg,
         ];
 
-      return redirect()->route('rating.list');
+      return redirect()->route('rating.list', $route);
 
     }
 
@@ -701,7 +703,7 @@ class RatingController extends Controller
             'message' => "o Projeto [{$startup['name']}] habilitado para a etapa de Atratividade.",
         ];
 
-        return redirect()->route('rating.list');
+        return redirect()->route('rating.list', 'prontidao');
     }
 
     public function actionReprov($startup_id)
@@ -733,7 +735,7 @@ class RatingController extends Controller
             return Redirect::back()->withErrors(["Não foi possivel fazer a reprovação da startup [{$startup['name']}]."]);
         }
 
-        return redirect()->route('rating.list');
+        return redirect()->route('rating.list', 'prontidao');
     }
 
     public function getCsvRatings($type)
@@ -764,6 +766,33 @@ class RatingController extends Controller
 
         $startups_avalied = Query::queryActionIn('startups', $custom_args);
 
+        $questions_attr =
+        [
+            14,
+            15,
+            16,
+            17,
+        ];
+        // $questions_attr =
+        // [
+        // 18,
+        // 19,
+        // 20,
+        // 21,
+        // 22,
+        // 23,
+        // 24,
+        // 25,
+        // 26,
+        // 27,
+        // 28,
+        // 29,
+        // 30,
+        // ];
+        $custom_args['column'] = 'question';
+        $custom_args['values'] = $questions_attr;
+        $responses_att = Query::queryActionIn('attractive', $custom_args);
+
         $custom_args['conditions'] =
             [
                 ['stage', '=', 'complete_attractive']
@@ -786,6 +815,14 @@ class RatingController extends Controller
           if (!in_array($s_id, $sttps_ids)) {
             $sttps_ids[] = $s_id;
           }
+        }
+
+        foreach ($responses_att as $rsp) {
+            $algo[$rsp['startup']][$rsp['question']] = $rsp['response'];
+        }
+
+        foreach ($startups as $s_id => $sttp) {
+            @$startups[$s_id]['attr'] = implode(';', @$algo[$s_id]);
         }
 
         $custom_args_users['values'] = $users_ids;
@@ -814,6 +851,10 @@ class RatingController extends Controller
                 $total[$key] = (isset($total[$key])) ? $total[$key] : 0 ;
 
                 $ids[] = $rating['startup'];
+
+                if ($rating['criterea'] == 13) {
+                    $startups[$rating['startup']]['clusters'] = $rating['note'];
+                }
 
                 $data[$key] = $rating;
                 $data[$key]['user'] = $users[$rating['evaluator']];
@@ -867,30 +908,25 @@ class RatingController extends Controller
             }
         }
 
+        $add = "INOVAÇÃO DE VALOR;DESCRIÇÃO DO PROBLEMA;DESCRIÇÃO DA SOLUÇÃO;DESCRIÇÃO DA VANTAGEM COMPETITIVA;";
+        // $add = "QUAL É O PROBLEMA?;QUAIS EVIDÊNCIAS SUSTENTAM QUE O PROBLEMA EXISTE?;O PROBLEMA É URGENTE, MAL ATENDIDO, IMPRATICÁVEL E/OU INEVITÁVEL?;O PROBLEMA É VISÍVEL E/OU CRÍTICO?;QUEM É O CLIENTE-ALVO?;QUAIS SÃO AS NECESSIDADES E DESEJOS DELES?;QUAL É O TAMANHO DO MERCADO?;QUAIS GANHOS OS CLIENTES EXPERIMENTARÃO?;QUE DORES OS CLIENTES EXPERIMENTARÃO?;QUEM SÃO OS CONCORRENTES E SEUS CLIENTES?;QUAIS SÃO OS SEUS RECURSOS MÍNIMOS VIÁVEIS?;POR QUE ESSES RECURSOS SÃO VALIOSOS E RAROS?;QUAL É O SEU PROTÓTIPO?";
 
-        $lines[] = "ID;STARTUP;NOTA TOTAL;PROBLEMA E VISÃO;PROBLEMA E CLUSTERS REGIONAL;PROPOSTA DE VALOR;PRODUTO;MERCADO;MODELO DE RECEITA;ESCALA;AVALIADOR;CATEGORIA;REGIÃO;CIDADE;SETOR;TECNOLOGIA;STATUS;VOCÊ CONSIDERA QUE O PROJETO AVALIADO REALMENTE ESTÁ APTO PARA PARTICIPAR DE UM PROGRAMA DE EMPREENDEDORISMO INOVADOR? \n";
+        $lines[] = "ID;STARTUP;CATEGORIA;REGIÃO;CIDADE;SETOR;TECNOLOGIA;NOTA CLUSTERS;{$add}\n";
         foreach ($data as $id => $d) {
-            $aprovado = ($notes[$id][17])? 'sim' : 'não' ;
             $str =
 "{$d['startup']['id']};
 {$d['startup']['name']};
-{$d['total']};
-" . @$notes[$id][12] . ";
-" . @$notes[$id][13] . ";
-" . @$notes[$id][14] . ";
-" . @$notes[$id][15] . ";
-" . @$notes[$id][16] . ";
-" . @$notes[$id][10] . ";
-" . @$notes[$id][11] . ";
-{$d['user']['name']};
 {$d['startup']['category']};
 {$d['startup']['region']};
 {$d['startup']['city']};
-{$d['startup']['tecno']};
-{$d['startup']['setor']};
-{$d['startup']['stage']};
-" . $aprovado;
-            $lines[] = preg_replace( "/\r|\n/", "", $str) . " \n";
+" . str_replace(';', '', $d['startup']['tecno']) . ";
+" . str_replace(';', '', $d['startup']['setor']) . ";
+{$d['startup']['clusters']};
+{$d['startup']['attr']}
+";
+            if ($d['startup']['attr'] != '') {
+                $lines[] = preg_replace( "/\r|\n/", "", $str) . " \n";
+            }
         }
 
         $path_root = $_SERVER["DOCUMENT_ROOT"] . '/';
