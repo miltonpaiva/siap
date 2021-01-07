@@ -87,6 +87,21 @@
       <!-- Divider -->
       <hr class="sidebar-divider d-none d-md-block">
     <?php endif; ?>
+      <!-- Nav Item - Tables -->
+      <?php
+      if ($_SESSION['login']['user_profile'] != 'Avaliador'):
+        if (strrpos(@$_SERVER['REQUEST_URI'], 'csv'))
+          { $csv = 'active'; }
+        ?>
+      <li class="nav-item <?= @$csv; ?>">
+        <a class="nav-link" href="{{ route('startup.csv.view') }}">
+          <i class="fas fa-fw fa-table"></i>
+          <span>Exportar para CSV</span></a>
+      </li>
+
+      <!-- Divider -->
+      <hr class="sidebar-divider d-none d-md-block">
+    <?php endif; ?>
 
       <!-- Sidebar Toggler (Sidebar) -->
       <div class="text-center d-none d-md-inline">
